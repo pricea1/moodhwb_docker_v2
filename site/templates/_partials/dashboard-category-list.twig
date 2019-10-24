@@ -1,0 +1,44 @@
+	{% if inputSuffix is not defined %}
+		{% set inputSuffix = "self" %}
+	{% endif %}
+
+	{% if categoryName is defined and fieldName is defined %}
+
+		<div class="profile-dashboard__difficulties  ">
+			<ul class="three-columns profile-dashboard-category-list"><!--
+			-->{% nav category in craft.categories.group(categoryName) %}<!--
+				{% set hasCategory = null %}
+		        {% for myCategory in currentUser[fieldName] %}
+					{% if myCategory.id == category.id %}
+						{% set hasCategory = 'true' %}
+					{% endif %}
+				{% endfor %}
+		        --><li class="input-custom-checkbox-container profile-dashboard__category {% if hasCategory is not null %}profile-dashboard__mycategory{% else %}profile-dashboard__notmycategory{% endif %}">				        	
+					<input id="profileInput{{ fieldName | kebab }}{{ category.id }}-{{ inputSuffix }}" class="profile-dashboard__input profile-dashboard__input--autoupdate user-category-input" type="checkbox" name="fields[{{ fieldName }}][]" {% if hasCategory is not null %}checked{% endif %} value="{{ category.id }}">
+					<label for="profileInput{{ fieldName | kebab }}{{ category.id }}-{{ inputSuffix }}" class="profile-dashboard-category-label profile-dashboard-__{{ categoryName }}-{{ category.slug }}">{{ category.title }}</label>
+					{% if category.urlAddress %}
+							<a class="user-category-list__link" href="{{ category.urlAddress }}"> <img class="user-category-list__link-image" src="/resources/images/externallink_icon.png"></a>
+					{% endif %}
+					
+					{% if category.showAlertMessage %}
+						<div class="user-category-alert-message">
+							{{ "We recommend you speak to someone about this" | t }}
+						</div>
+					{% endif %}
+		            {% ifchildren %}
+		                <ul>
+		                    {% children %}
+		                </ul>
+		            {% endifchildren %}
+		        </li><!--
+			    -->{% endnav %}<!--
+		    	--><li class="profile-dashboard__no-category-msg">
+					{{ "You haven't selected anything in this section" |t }}
+					<input name="fields[{{ fieldName }}][]" value=" " type="hidden" >
+		    	</li><!--
+			--></ul>
+			
+		</div>
+
+
+	{% endif %}

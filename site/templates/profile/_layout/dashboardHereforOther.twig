@@ -1,0 +1,310 @@
+{% extends "_layout" %}
+
+
+{% block content %}
+OTHER
+
+{% set userId = craft.request.getQuery('id') %}
+{% if craft.request.getQuery('id') and currentUser.admin %}
+	{% set profileUser =  craft.users.id( userId ).first() %}
+{% else %}
+	{% set profileUser = currentUser %}
+{% endif %}
+
+{% set moodAnswers = craft.profiler.getAllMoodScoresForUser( userId ) %}
+{% set totalMoodScore = 0 %}
+
+{% set lastViewedDate = craft.userLogin.getLastViewedDate() %}
+
+{% set moduleBookmark = craft.moduleActions.getMostRecentModuleBookmark() %}
+
+{% if moduleBookmark %}
+	{% set subModule = craft.entries.section('modules').id(moduleBookmark.submoduleId).first() %}
+	{% set module = subModule.parent %}
+{% else %}
+	{# If no modules have been viewed then default to depression module #}
+	{% set module = craft.entries.section('modules').slug("what-is-depression").first() %}
+	{% set subModule = module.children.first() %}
+{% endif %}
+
+
+{% set lastModule = '<a class="' ~module.moduleColour ~ '" href="' ~module.url ~ '">' ~ module.title ~ '</a> ' %}
+{% set lastSubmodule = '<a class="' ~module.moduleColour ~ '" href="' ~module.url ~'#' ~ subModule.slug ~ '">' ~ subModule.title ~ '</a> ' %}
+
+
+<div id="profileDashboardHeadingContainer" class="profile-dashboard-heading-container">
+
+	<div class="row">
+
+		<div  class="small-12 column">
+
+			<div id="profileDashboardHeading" class="profile-dashboard-heading">
+				<h2 class="profile-dashboard-heading__text">{{ "My Profile"|t }}</h2>
+				{% if profileUser.photoUrl %}
+					<img class="profile-dashboard__photo" src="{{ profileUser.getPhotoUrl(140) }}" alt="Profile picture for {{ profileUser.fullName }}">
+				{% else %}
+					<img class="profile-dashboard__photo" src="/resources/images/sprite/face-6.png" alt="Profile picture for {{ profileUser.fullName }}">
+
+				{% endif %}
+
+			</div>
+		</div>
+	</div>
+
+	<div id="profileDashboardDetails">
+
+
+		<div class="profile-dashboard__details-container">
+
+			<div class="row">
+			<div class="small-12 column">
+
+					<form id="profileImageForm" class="profile-dashboard-image-form" method="post" accept-charset="UTF-8" enctype="multipart/form-data">
+						{{ getCsrfInput() }}
+						<input type="hidden" name="action" value="users/saveUser">
+					    <input type="hidden" name="userId" value="{{ profileUser.id }}">
+						{# Show standard file upload for non JS browsers and JS enhanced upload to JS browsers} #}
+						<noscript>
+							<input type="file" name="userPhoto" value="{{ 'Change my picture'|t }}">
+							<button class="button" type="submit">{{ 'Submit'|t }}</button>
+						</noscript>
+						<div class="non-js-hide profile-dashboard-photo-upload">
+							<input type="file" id="fileElem" multiple accept="image/*" style="display:none">
+							<button class="button profile-dashboard-photo-upload__button" href="#" id="fileSelect"><span class="profile-dashboard__photo-upload__button-txt">{{ "Change my picture"|t }}</span><span class="hide profile-dashboard__photo-msg">{{ "Updating picture"|t }}...</span></button>
+							
+						</div>
+
+					</form>
+
+			</div>
+			</div>
+
+
+			<div class="row">
+			<div class="small-12 column">	
+				<form class="profile-dashboard__details-form" method="post" accept-charset="UTF-8">
+					{{ getCsrfInput() }}
+					<input type="hidden" name="action" value="users/saveUser">
+				    <input type="hidden" name="userId" value="{{ profileUser.id }}">
+
+				
+					<div class="profile-dashboard__details">
+						<div class="profile-dashboard__details__item profile-dashboard__details__item--edit">
+							<h4 class="profile-dashboard-subheading">{{ "Why am I here?"|t }}</h4>
+							{% set hereForSettings = craft.fields.getFieldByHandle('hereFor').settings %}
+								{% for hereFor in hereForSettings['options']  %}
+									       
+								    <div class="input-custom-radio-container profile-dashboard-radio-container">
+
+										<input id="profileInputHereFor{{ hereFor.value | kebab }}" class="profile-dashboard__input profile-dashboard__input--autoupdate" type="radio" name="fields[hereFor]" {% if hereFor.value == profileUser.hereFor %}checked{% endif %} value="{{ hereFor.value }}">
+										<label for="profileInputHereFor{{ hereFor.value | kebab }}" class="">{{ hereFor.label|t }}</label>
+									</div>
+								{% endfor %}
+								<noscript>
+									<button class="round profile-dashboard__submit-button" type="submit">{{ "Submit"|t }}</button>
+								</noscript>
+						</div>
+
+						<div class="profile-dashboard__details__item">
+							<button class="round profile-dashboard__item-button profile-dashboard__submit-button" type="submit">{{ "Submit"|t }}</button>
+							<button class="non-js-hide round profile-dashboard__item-button profile-dashboard__edit-button" type="button"><span class="profile-dashboard__edit-button-edit-text">{{"Edit"|t}}</span><span class="profile-dashboard__edit-button-cancel-text">{{ "Close"|t }}</span></button>
+							<h4 class="profile-dashboard-subheading">{{ "My difficulties"|t }}</h4>
+							{% set categoryName = "difficulty" %}
+							{% set fieldName = "difficulty" %}
+							{% include "_partials/dashboard-category-list.twig" %}
+
+						</div>
+
+						<div class="profile-dashboard__details__item">
+							<button class="round profile-dashboard__item-button profile-dashboard__submit-button" type="submit">{{ "Submit"|t }}</button>
+							<button class="non-js-hide round profile-dashboard__item-button profile-dashboard__edit-button" type="button"><span class="profile-dashboard__edit-button-edit-text">{{"Edit"|t}}</span><span class="profile-dashboard__edit-button-cancel-text">{{ "Close"|t }}</span></button>
+							<h4 class="profile-dashboard-subheading">{{ "My reasons"|t }}</h4>
+							{% set categoryName = "reason" %}
+							{% set fieldName = "reason" %}
+							{% include "_partials/dashboard-category-list.twig" %}
+
+						</div>
+
+						<div class="profile-dashboard__details__item">
+							<button class="round profile-dashboard__item-button profile-dashboard__submit-button" type="submit">{{ "Submit"|t }}</button>
+							<button class="non-js-hide round profile-dashboard__item-button profile-dashboard__edit-button" type="button"><span class="profile-dashboard__edit-button-edit-text">{{"Edit"|t}}</span><span class="profile-dashboard__edit-button-cancel-text">{{ "Close"|t }}</span></button>
+							<h4 class="profile-dashboard-subheading">{{ "My symptoms"|t }}</h4>
+							{% set categoryName = "symptom" %}
+							{% set fieldName = "symptom" %}
+							{% include "_partials/dashboard-category-list.twig" %}
+							
+						</div>
+					</div>
+
+
+
+				</form>
+			</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="profile-dashboard-mood-container">
+	<div id="profileDashboardMoodScrollContainer" class="profile-dashboard-mood-scroll-container">
+			<ul id="profileDashboardMoodList" class="inline-list profile-dashboard-mood-list">
+			{% for moodAnswer in moodAnswers %}
+				<li class="profile-dashboard-mood-list__item profile-answer-rating-{{ moodAnswer.value }}{% if loop.first %} profile-dashboard-mood-list__first{% endif %}{% if loop.last %} profile-dashboard-mood-list__last{% endif %} ">
+					<div class="profile-dashboard-mood-icon profile-dashboard-mood-icon-{{ moodAnswer.value}}">
+						{% include "_images/mood-icon-" ~ moodAnswer.value %}
+
+					</div>
+					<div class="profile-dashboard-mood-text">{{ moodAnswer.questionId }} <span class="profile-dashboard-mood-score">{{ moodAnswer.value }}</span></div>
+				</li>
+
+				{% set totalMoodScore = totalMoodScore + moodAnswer.score %}
+
+			{% endfor %}
+			</ul>
+
+
+	</div>
+	<div class="row">
+	<div class="small-12 column profile-dashboard-mood-button-container">
+
+		<a class="button profile-dashboard-mood-button" href="{{ url('profile/questions-' ~ currentUser.hereFor) }}" class="button">{{ "Update my mood" | t}}</a>
+
+	</div>
+	</div>
+</div>
+
+{# display response appropriate to mood indicator #}
+{% if date(lastViewedDate) > date('-12hours') %}
+	{% set lastLoginTime = "Less than 12 hours" %}
+{% else %}
+	{% set lastLoginTime = "More than 12 hours" %}
+{% endif %}
+
+<div>
+{% for suggestions in entry.answerResponse if suggestions.lastLoginTime == lastLoginTime %}
+	{% if moodAnswers|length > 0 %}
+		
+		{% if suggestions.type == "suggestions" and suggestions.minScore <= totalMoodScore and suggestions.maxScore >= totalMoodScore %}
+		<div class="row">
+			<div class="column">
+				<h3 class="profile-dashboard-response-heading">{{ suggestions.greeting }}</h3>
+				<div class="profile-dashboard-message">
+					{{ suggestions.message }}
+				</div>
+
+				<div class="profile-dashboard-response-text">
+				{{ suggestions.body | replace({
+					LASTMODULELINK: lastModule,
+					LASTSUBMODULELINK: lastSubmodule
+				}) | raw }}
+				</div>			
+			</div>
+		</div>		
+		{% endif %}
+
+	{% else %}
+		{# No responses been given yet so show incompleted message #}
+		{% if suggestions.type == "incomplete" %}
+			<div class="row">
+				<div class="column">
+					<h3 class="profile-dashboard-response-heading">{{ suggestions.heading }}</h3>
+					<div class="profile-dashboard-response-text">
+					{{ suggestions.body }}
+					</div>			
+				</div>
+			</div>	
+		{% endif %}
+
+	{% endif %}
+
+{% endfor %}
+</div>
+
+{# list modules #}
+{% set modules = craft.entries.section('modules').level('1') %}
+
+<div class="profile-dashboard-module-wrapper">
+
+	<div class="row">
+	{% for module in modules %}	
+
+		<div class="small-12 medium-4 column profile-dashboard-module-column-{{ cycle([1,2,3], loop.index0 ) }}">
+
+			<div class="profile-dashboard-module-container profile-dashboard__module-container-{{module.slug}}  {{ module.moduleColour }}">
+
+				<h4 class="profile-dashboard-module-heading invert-module-block-themed">
+
+				{% set image = module.image|first %}
+
+					<div class="profile-dashboard-module-image-container">
+					{% if image %}
+					   <img class="profile-dashboard-module-image" src="{{ image.imageFile.first().url }}" alt="{{ image.imageAlt }}" />
+					{% endif %}
+					</div>
+
+				{{ module.getLink() }}
+				</h4>
+			
+				<div class="profile-dashboard-module-list-container {{ module.moduleColour }}">
+					<div class="module-block-themed">
+						<ul class="three-columns profile-dashboard-module-list">
+
+						{% set allModuleStatus = craft.moduleActions.getAllModuleStatus() %}
+
+						{% for submodule in module.getChildren() %}
+							
+	
+							{% if submodule.showInNav %}
+								
+								{% set currentStatus = '' %}
+								{% for moduleStatus in allModuleStatus %}
+									{% if moduleStatus.submoduleId == submodule.id %}
+										{% set currentStatus = moduleStatus.status %}
+									{% endif %}
+								{% endfor %}
+
+								<li class="profile-dashboard-module-list__item {{ currentStatus }}">
+									<a href="{{ submodule.url }}" data-js-url="{{ module.url }}#{{ submodule.slug }}">{{ submodule.title }}</a>
+								</li>
+							{% endif %}
+						{% endfor %}	
+
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		{% if loop.index is divisible by(3) %}
+			</div>
+			<div class="profile-dashboard-submodule-container"></div>
+		</div> {# end tag for profile-dashboard-module-wrapper #}
+		
+		<div class="profile-dashboard-module-wrapper">
+		<div class="row">
+
+		{% endif %}
+
+	{% endfor %}
+	</div>
+	<div class="profile-dashboard-submodule-container"></div>
+
+	<footer class="profile-dashboard-footer">
+		<div class="row">
+		<div class="small-12 column">
+			<h3 class="profile-dashboard-footer-heading">{{ "Monitor your mood with the mobile application"|t }}</h3>
+			<a href="{{ url('help/install-mobile-mood-monitor-app') }}" class="button round profile-dashboard-footer-link">{{ "Get the mobile app"|t }}</a>
+		</div>
+		</div>
+	</footer>
+
+</div>
+
+{% endblock %}
+
+{% block jsBlock %}
+<script type="text/javascript">
+	opad.initJsModule(['dashboard']);	
+</script>
+{% endblock %}

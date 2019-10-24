@@ -1,0 +1,41 @@
+<div class="module-block image-large-content-block">
+	<div class="row">
+		<div class="small-12 columns">
+
+			<h2 class="large-heading">{{ entry.contentBlockHeading }}</h2>
+			<div class="content-block content-block-large-paragraph content-block-text-container">
+				{{ entry.contentBlockText }}
+			</div>
+
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="small-12 column">
+			<div class="content-block-image-container">
+				{% if entry.contentBlockImage.first() %}
+					{% set image = entry.contentBlockImage.first() %}
+					{% if image.type == "image" %}
+
+					<img class="image-large-content-block-image"
+							alt="{{image.imageAlt}}"
+							src="{{ image.imageFile.first().getUrl() }}"
+					>
+
+					{% endif %}
+				{% endif %}
+			</div>
+		</div>
+
+	</div>
+
+	<div class="row">
+		<div class="small-12 column">
+			<div class="two-columns content-block content-block-main-text">
+				{{ entry.body }}
+			</div>
+		</div>
+	</div>
+
+	{% include "_partials/collapsible-content" %}
+</div>

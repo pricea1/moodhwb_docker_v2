@@ -1,0 +1,27 @@
+
+
+<li data-stuff-i-like-id="{{ stuffILike.id }}" class="profile-goals__list-item profile-stuff-i-like__list-item">
+
+	<div class="row">
+	<div class="small-12 column">
+
+	{{#if stuffILike.url }}
+	<a class="profile-stuff-i-like__user-link" href="{{ stuffILike.url }}">
+	{{/if}}
+
+		<span class="ss-icon profile-stuff-i-like-icon"></span>
+
+		<span class="profile-stuff-i-like__title">{{ stuffILike.title}}</span>
+		
+		<a href="/actions/profiler/stuffILike/deleteStuffILike?stuffILikeId={{ stuffILike.id }}" class="profile-goal__action-link profile-stuff-i-like__action-link" data-stuff-i-like-action="delete"><span class="show-for-sr">Delete</span><span class="ss-icon ss-icon-circle ss-delete"></span></a>
+	
+	{{#if stuffILike.url }}
+		</a>
+	{{/if}}
+	
+	</div>
+	</div>
+
+</li>
+
+

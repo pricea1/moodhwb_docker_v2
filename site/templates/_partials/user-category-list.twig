@@ -1,0 +1,49 @@
+	{% if categoryName is defined and fieldName is defined and categoryName != "" %}
+		<ul class="user-category-list three-columns">
+			{% nav category in craft.categories.group(categoryName).all() %}
+				{% set hasCategory = null %}
+				{% if  currentUser[fieldName] is defined %}
+			        {% for myCategory in currentUser[fieldName] %}
+						{% if myCategory.id == category.id %}
+							{% set hasCategory = 'true' %}
+						{% endif %}
+					{% endfor %}
+				{% endif %}
+
+				{% set categoryMatchesModule =  category.moduleList.ids() | indexOf(entry.id) %}
+
+				{% if showAllCats is defined or category.moduleList is not defined or category.moduleList |length == 0 or categoryMatchesModule != -1 %}
+				        <li class="user-options-category__item profile-user-options__category {% if hasCategory is not null %}profile-user-options__mycategory{% else %}profile-user-options__notmycategory{% endif %} input-custom-checkbox-container">				        	
+							<input id="profileInput{{ fieldName | kebab }}{{ category.id }}" class="profile-user-options__input user-category-input" type="checkbox" name="fields[{{ fieldName }}][]" {% if hasCategory is not null %}checked{% endif %} value="{{ category.id }}">
+							<label for="profileInput{{ fieldName | kebab }}{{ category.id }}" class="profile-user-options__label profile-user-options__{{ categoryName }} profile-user-options-__{{ categoryName }}-{{ category.slug }}">{{ category.title }}</label>
+							{% if category.urlAddress %}
+								<a class="user-category-list__link" href="{{ category.urlAddress }}"> <img class="user-category-list__link-image" src="/resources/images/externallink_icon.png"></a>
+							{% endif %}
+							{% if category.body %}
+								<div class="user-category-list__desc">{{ category.body}}
+								</div>
+							{% endif %}
+							
+							
+							{% if category.showAlertMessage %}
+								<div class="user-category-alert-message">
+									{{ "We recommend you speak to someone about this" | t }}
+								</div>
+							{% endif %}
+				        </li>
+			    {% else %}
+					{% if hasCategory %}
+						<li style="display:none">
+							<input id="profileInput{{ fieldName | kebab }}{{ category.id }}" class="profile-user-options__input user-category-input" type="checkbox" name="fields[{{ fieldName }}][]" checked value="{{ category.id }}">
+						</li>
+					{% endif %}    
+		        {% endif %}
+
+					{% ifchildren %}
+						{% children %}
+					{% endifchildren %}
+		    {% endnav %}
+		</ul>
+
+
+	{% endif %}

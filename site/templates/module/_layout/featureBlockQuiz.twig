@@ -1,0 +1,41 @@
+<div id="feature-block-quiz-{{entry.title}}" class="module-block module-block-themed feature-block-quiz" data-modules="slick-carousel,feature-block-quiz">
+
+
+	<div class="row">
+	<div class="small-12 columns">
+
+		<h3 class="feature-block-heading">{{ entry.featureBlockQuizHeading }}</h3>
+
+		<noscript>
+			{{ "Javascript is required to interact with this section" | t }}
+		</noscript>
+
+
+		<div class="feature-block-quiz-container slick-carousel-container">	
+
+		{% for matrixItem in entry.featureBlockQuizQuestion %}
+			<div class="feature-block-quiz-question-container">
+				<div class="feature-block-quiz-question">{{ matrixItem.question}}</div>
+				{% set itemCount = loop.length %}
+				{% set currentItem = loop.index %}
+				<ul class="slick-dots">
+					{% for i in 1..itemCount %}<!--
+					--><li class="{% if currentItem == i %}slick-active{% endif %}" aria-hidden="false"><button type="button" data-role="none">{{ i }}</button></li><!--
+					-->{% endfor %}
+				</ul>
+
+
+				<ul class="feature-block-quiz-answer-list">
+					<li class="feature-block-quiz-answer-item {% if matrixItem.correctAnswer == 'answer1' %}feature-block-quiz-answer-correct{% endif %}"><button class="feature-block-button">{{ matrixItem.answer1 }}</button></li>
+					<li class="feature-block-quiz-answer-item {% if matrixItem.correctAnswer == 'answer2' %}feature-block-quiz-answer-correct{% endif %}"><button class="feature-block-button">{{ matrixItem.answer2 }}</button></li>
+					<li class="feature-block-quiz-answer-item {% if matrixItem.correctAnswer == 'answer3' %}feature-block-quiz-answer-correct{% endif %}"><button class="feature-block-button">{{ matrixItem.answer3 }}</button></li>
+				</ul>
+			</div>
+		{% endfor %}
+			<div class="feature-block-quiz-complete">{{ "Thank you, the quiz is complete"|t }}</div>
+		</div>
+
+	</div>
+	</div>
+
+</div>

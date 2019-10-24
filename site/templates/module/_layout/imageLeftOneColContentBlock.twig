@@ -1,0 +1,51 @@
+<div class="module-block image-left-one-colContentBlock">
+	<div class="row">
+		<div class="small-12 columns">
+
+			<h2 class="large-heading">{{ entry.contentBlockHeading }}</h2>
+			<div class="content-block content-block-large-paragraph ">
+				{{ entry.contentBlockText }}
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+
+		<div class="small-12 medium-6 column">
+			{% if entry.contentBlockImage.first() %}
+				{% set image = entry.contentBlockImage.first() %}
+				{% include "_partials/responsive_image" %}
+			{% endif %}
+		</div>
+
+		<div class="small-12 medium-6 column">
+
+			<div class="content-block-sub-item-container">
+				<div class="row">
+					{% for item in entry.contentBlockItems %}
+						<div class="small-12 column">
+							<div class="content-block content-block-sub-item">
+								<h3 class="content-block-subheading">{{ item.heading }}</h3>
+								{{ item.text }}
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	{% if entry.contentBlockText2 %}
+	<div class="row">
+		<div class="small-12 columns">
+			<div class="content-block-text-container content-block-text-container--2">
+				{{ entry.contentBlockText2 }}
+			</div>
+		</div>
+	</div>
+	{% endif %}
+
+	{% include "_partials/collapsible-content" %}
+
+</div>

@@ -1,0 +1,59 @@
+	{% set footerEntryList = craft.entries.slug('footer-v2') %}
+	{% set entry = footerEntryList.first() %}
+
+	<div class="row">
+
+		{% for item in entry.contentBlockItems %}
+
+				<div class="small-12 medium-4 column ">
+					<div>
+			
+						<h4 class="profile-dashboard-module-heading invert-module-block-themed">
+
+						<a href="{{ item.linkTo.first().url }}">
+							{% set image = item.imageFile|first %}
+							<div class="profile-dashboard-module-image-container">
+							{% if image %}
+							   <img class="profile-dashboard-module-image" src="{{ image.url }}" alt="{{ item.imageAlt }}" />
+							{% endif %}
+							</div>
+	
+						{{ item.heading }}
+						</a>
+
+						</h4>
+					{{ item.text }}
+
+					</div>
+					
+				</div>
+			
+		{% endfor %}
+
+		{% if craft.locale == "en_gb" %}
+			{% set localeUrl = craft.config.siteUrl['cy_gb'] %}
+		{% else %}
+			{% set localeUrl = craft.config.siteUrl['en_gb'] %}
+		{% endif %}
+
+		<div class="small-12 medium-4 column ">
+			<div>
+	
+				<h4 class="profile-dashboard-module-heading invert-module-block-themed">
+
+				<a href="{{ localeUrl }}">
+					<div class="profile-dashboard-module-image-container">
+					   <img class="profile-dashboard-module-image" src="{{ "/resources/images/footer-language-icon-" ~ craft.locale ~ ".png" }}" alt="*" />
+					</div>
+
+				{{ "Yn Gymraeg" |t}}
+				</a>
+
+				</h4>
+				{{ "Gall y pecyn hwn hefyd yn cael ei ddefnyddio yn y Gymraeg" | t}}
+
+			</div>
+			
+		</div>
+
+	</div>

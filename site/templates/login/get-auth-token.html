@@ -1,0 +1,9 @@
+{% header "Content-Type: application/json" %}
+{% extends "_no-layout" %}
+
+{% block content %}
+{
+	"csrfTokenName": "{{ craft.config.csrfTokenName|e('url') }}",
+	"csrfTokenValue": "{{ craft.request.csrfToken|e('url') }}"
+}
+{% endblock %}

@@ -1,0 +1,50 @@
+
+<div class="module-block intro-content-block">
+	
+	<div class="row intro-video-row">
+	<div class="small-12 column intro-video-column">
+
+		{% set image = entry.introContentBlockImage|first %}	
+		<div class="intro-content-block-media-container">
+			<div class="intro-content-block-image ">
+			 	{% if image %}
+					<img 	srcset="{{ image.imageFile.first().getUrl('fullWidthMedium') }} 768w,
+						{{ image.imageFile.first().getUrl('fullWidthLarge') }} 1024w"
+						sizes="(min-width: 49em) 100vw, 100vw"
+						alt="{{image.imageAlt}}"
+						src="{{ image.imageFile.first().getUrl('fullWidthMedium') }}">
+			 	{% endif %}
+			</div>
+
+
+			{% if entry.video | length %}
+			{% set video = entry.video | first %}
+			<div class="intro-content-block-video-container">
+				<div id="videoElement-{{entry.slug}}" class="intro-content-block-video">Loading the player...</div>
+
+				<script type="text/javascript">
+				opadVideoEl = "videoElement-{{entry.slug}}";
+				opadVideoImage = "{{ image.imageFile.first().getUrl('fullWidthMedium') }}";
+				opadVideoUrl_mp4 = "{{ video.url }}";
+				opadVideoUrl_hls = "{{ video.url | replace({
+					'.mp4':'.m3u8',
+					'/video_mp4': '/video_hls3'
+					}) }}";
+				</script>
+			</div>
+			{% endif %}
+
+		</div>
+	</div>
+	</div>
+
+	<div class="row">
+	<div class="small-12 columns">
+		<h2 class="large-heading">{{ entry.introContentBlockHeading }}</h2>
+		<div class="content-block content-block-large-paragraph intro-content-block-text two-columns">{{ entry.introContentBlockText }}</div>
+
+	</div>
+	</div>
+
+	{% include "_partials/collapsible-content" %}
+</div>

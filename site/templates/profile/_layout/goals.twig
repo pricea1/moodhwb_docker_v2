@@ -1,0 +1,172 @@
+{% extends "_layout" %}
+
+{% block content %}
+
+<div id="profileDashboardContainer" class="profile-goals-container">
+
+	<div id="profileDashboardHeadingContainer" class="profile-dashboard-heading-container">
+
+		<div class="row">
+
+			<div  class="small-12 column">
+
+				<div id="profileDashboardHeading" class="profile-dashboard-heading profile-dashboard--no-arrow">
+					<h2 class="profile-dashboard-heading__text">{{ entry.heading }}</h2>
+					<button class="button radius round profile-dashboard-show-button">
+						<span class="profile-dashboard-show-button--show">{{ "Add" | t}} <span class="show-for-medium-up">{{"goal" | t }}</span></span>
+						<span class="profile-dashboard-show-button--cancel">{{ "Close" | t }}</span>
+					</button>
+				</div>
+
+			</div>
+		</div>
+
+		<div id="profileDashboardDetails" class="profile-dashboard-details ">
+			<div class="profile-dashboard__details-container profile-goal__details-container">
+
+				<div class="row">
+
+						<div class="profile-goals__new-container">
+							<form id="profileGoalForm" class="profile-goals-form" method="post" accept-charset="UTF-8">
+							{{ getCsrfInput() }}
+
+							    <input type="hidden" name="action" value="profiler/goal/addGoal">
+
+								<div  class="small-12 medium-4 column">
+
+								    <input id="profileGoalActivity" name="activity" class="	radius profile-goals-input" type="text" placeholder="{{ "Enter a title"|t }}">
+								</div>
+								<div  class="small-12 medium-4 column">
+
+									<select id="profileGoalTimesPerWeek" name="timesPerWeek" class="radius profile-goals-select">
+										<option value="1">{{ "How many times per week" | t}}</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+									</select>
+								</div>
+
+								<div  class="small-12 medium-4 column">
+
+									<button type="submit" class="button radius round profile-goals-add-button">{{ 'Add this'|t }}</button>
+								</div>
+						    </form>
+						</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	{% set goalList = craft.profiler.getAllGoals() %}
+
+	{# check if all ToDo's done #}
+	{% set allGoalsDone = true %}
+	{% if goalList | length == 0 %}
+		{% set allGoalsDone = false %}
+	
+	{% endif %}
+	{% for goal in goalList if goal.status == 'todo' %}
+		{% set allGoalsDone = false %}	
+	{% endfor %}
+
+	<div class="row">
+		<div class="small-12 column">
+			<div class="text-center profile-goals__welcome-msg">
+				{% if allGoalsDone %}
+					{{ entry.profileToDoDoneMessage }}
+				{% else %}
+					{{ entry.body }}
+				{% endif %}
+				<div class="text-center profile-goals__welcome-msg {% if goalList | length != 0 %}hide{% endif %}">
+						<picture class="profile-goals__welcome-msg__img">
+						  <!--[if IE 9]><video style="display: none;"><![endif]-->
+						  <source srcset="/resources/images/weeklygoals-large.jpg" media="(min-width: 1023px)">
+						  <!--[if IE 9]></video><![endif]-->
+						  <img class="profile-empty-list-image" srcset="/resources/images/weeklygoals-small.jpg" alt="Stuff I Like image">
+						</picture>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="profile-goals-subheading-container {% if goalList | length == 0 %}hide{% endif %}">
+		<div class="row">
+			<div class="small-12 column">
+				<h3 class="profile-goals-subheading">{{ "To do"|t }}</h3>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+	<div class="profile-goals__list-container {% if goalList | length == 0 %}hide{% endif %}">
+
+		<div class="profile-goals__todo-list {% if allGoalsDone %}hide{% endif %}">
+			
+			<ul class="profile-goals__list profile-goals__list--todo ">
+				{% for goal in goalList %}
+
+					<li data-goal-id="{{ goal.id }}" aria-hidden="{% if goal.status == "todo" %}false{% else %}true{% endif %}" class="profile-goals__list-item" data-status="{{ goal.status }}">
+
+						<div class="row">
+							<div class="small-12 column">
+								<span class="icon-circle profile-goals__times-completed">{{ goal.timesPerWeek - goal.timesCompleted }}</span><span class="profile-goals__activity" id="profileGoalActivity">{{ goal.activity}}</span>
+					
+							<a href="{{ actionUrl('profiler/goal/doneActivity', { goalId: goal.id }) }}" class="profile-goal__action-link" data-goal-status="{{ goal.status }}" data-times-per-week="{{ goal.timesPerWeek }}" data-times-completed="{{ goal.timesCompleted }}" data-goal-action="complete"><span class="show-for-sr">{{ 'Complete activity'|t }}</span><span class="ss-icon ss-icon-circle ss-check"></span></a>
+
+							<a href="{{ actionUrl('profiler/goal/deleteGoal', { goalId: goal.id }) }}" class="profile-goal__action-link" data-goal-action="delete"><span class="show-for-sr">{{ 'Delete activity'|t }}</span><span class="ss-icon ss-icon-circle ss-delete"></span></a>
+						</div>
+					</div>
+
+					</li>
+				{% endfor %}
+			</ul>
+		</div>				
+
+	</div>
+
+	<div class="profile-goals-subheading-container {% if goalList | length == 0 %}hide{% endif %}">
+		<div class="row">
+			<div class="small-12 column">
+				<h3 class="profile-goals-subheading">{{ "Completed"|t }}</h3>
+			</div>
+		</div>
+	</div>
+
+	<div class="profile-goals__list-container {% if goalList | length == 0 %}hide{% endif %}">
+		<ul class="profile-goals__list profile-goals__list--completed">
+			{% for goal in goalList %}
+				<li data-goal-id="{{ goal.id }}" aria-hidden="{% if goal.status == "completed" %}false{% else %}true{% endif %}" class="profile-goals__list-item" data-status="{{ goal.status }}">
+					<div class="row">
+						<div class="small-12 column">
+
+							<span class="profile-goals__activity">{{ goal.activity}}</span>
+							<a href="{{ actionUrl('profiler/goal/resetActivity', { goalId: goal.id }) }}" class="btn btn-default btn-sm profile-goal__action-link" data-goal-action="undo"><span class="show-for-sr">{{ 'Reset activity'|t }}</span><span class="ss-icon ss-icon-circle ss-replay"></span></a>
+						</div>
+					</div>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+	
+
+</div>
+
+{% endblock %}
+
+{% block jsBlock %}
+	<script>
+		$(document).ready(function(){
+			opad.initJsModule(['profile-goals']);
+		});
+	</script>
+{% endblock %}

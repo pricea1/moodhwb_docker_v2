@@ -7,7 +7,7 @@ services:
       ports:
           - 80:80
       volumes:
-          - ./src/web:/var/www/html/web
+          - ./site/web:/var/www/html/web
 
   php:
       build:
@@ -16,33 +16,35 @@ services:
       expose:
           - 9000
       volumes:
-          - ./src/config:/var/www/html/config
-          - ./src/templates:/var/www/html/templates
-          - ./src/modules:/var/www/html/modules
-          - ./src/web:/var/www/html/web
-          - ./src/composer.json:/var/www/html/composer.json
+          - ./site/config:/var/www/html/config
+          - ./site/templates:/var/www/html/templates
+          - ./site/modules:/var/www/html/modules
+          - ./site/web:/var/www/html/web
+          - ./site/composer.json:/var/www/html/composer.json
       environment:
         ENVIRONMENT: dev
         DB_DRIVER: mysql
         DB_SERVER: database
-        DB_USER: project
-        DB_PASSWORD: project
-        DB_DATABASE: project
-        DB_TABLE_PREFIX: craft_
+        DB_USER: craftcms
+        DB_PASSWORD: craftcms
+        DB_DATABASE: craftcms5
+        DB_TABLE_PREFIX: craft
         SITE_URL: http://localhost
         SECURITY_KEY: asdfasdfasdfasdfasdf
 
   database:
-      image: mariadb:10.3
-      volumes:
-          - db-data:/var/lib/mysql
-      ports:
-          - 3306:3306
-      environment:
-          MYSQL_ROOT_PASSWORD: secret
-          MYSQL_DATABASE: project
-          MYSQL_USER: project
-          MYSQL_PASSWORD: project
+    image: mariadb:10.3
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./db:/var/lib/mysql
+      - ./db_init:/docker-entrypoint-initdb.d
+      - ./db_conf:/etc/mysql/conf.d
+    environment:
+      - MYSQL_ROOT_PASSWORD=craftcms
+      - MYSQL_DATABASE=craftcms5
+      - MYSQL_USER=craftcms
+      - MYSQL_PASSWORD=craftcms
 
   phpmyadmin:
       image: phpmyadmin/phpmyadmin
@@ -50,6 +52,3 @@ services:
           - 8085:80
       environment:
           PMA_HOST: database
-
-volumes:
-  db-data:

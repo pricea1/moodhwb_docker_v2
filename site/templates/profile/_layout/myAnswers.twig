@@ -1,0 +1,198 @@
+{% extends "_layout" %}
+
+
+{% if craft.request.getQuery('id') and currentUser.admin %}
+	{% set profileUser =  craft.users.id( userId ).first() %}
+{% else %}
+	{% set profileUser = currentUser %}
+{% endif %}
+
+{% block content %}
+
+	<div id="profileDashboardContainer" class="my-answers__container">
+		
+		<div class="row">
+		<div class="small-12 column">
+			<h2 class="my-answers__heading">{{ entry.title }}</h2>
+			{{ entry.contentBlockText }}
+
+			
+		</div>
+		</div>
+
+		<div class="row">
+		<div class="small-12 column text-center">
+			<div class="my-answers__header-image-container">
+				<picture class="my-answers__header-img">
+					  <!--[if IE 9]><video style="display: none;"><![endif]-->
+				  <source srcset="/resources/images/my-answers-header-small.png" media="(max-width: 1024px)">
+				  <!--[if IE 9]></video><![endif]-->
+				  <img srcset="/resources/images/my-answers-header-large.png" alt="Mood monitor image">
+				</picture>
+			</div>
+		</div>
+		</div>
+
+		<div class="feature-block-option">
+			<form id="profileDashboardForm" class="profile-dashboard__details-form" method="post" accept-charset="UTF-8">
+				{{ getCsrfInput() }}
+				<input type="hidden" name="action" value="users/saveUser">
+			    <input type="hidden" name="userId" value="{{ profileUser.id }}">
+					<input id="userDefinedOptionsField" type="hidden" name="fields[userDefinedOptions]" value="{% if profileUser.userDefinedOptions %}{{ profileUser.userDefinedOptions }}{% else %}{}{% endif %}">
+				<input id="userDefinedOptionsOtherField" type="hidden" name="fields[userDefinedOptionsOther]" value="{% if profileUser.userDefinedOptionsOther %}{{ profileUser.userDefinedOptionsOther }}{% else %}{}{% endif %}">
+				<div class="profile-dashboard__details__item-container">
+					<div class="row">
+					<div class="small-12 column">	
+
+					
+						<div class="profile-dashboard__details">
+							<div class="profile-dashboard__details__item profile-dashboard__details__item--edit">
+								<h4 class="profile-dashboard-subheading">{{ "Why am I here?"|t }}</h4>
+								{% set hereForSettings = craft.fields.getFieldByHandle('hereFor').settings %}
+									{% for hereFor in hereForSettings['options']  %}
+										       
+									    <div class="input-custom-radio-container profile-dashboard-radio-container">
+
+											<input id="profileInputHereFor{{ hereFor.value | kebab }}" class="profile-dashboard__input profile-dashboard__input--herefor profile-dashboard__input--autoupdate" type="radio" name="fields[hereFor]" {% if hereFor.value == profileUser.hereFor %}checked{% endif %} value="{{ hereFor.value }}">
+											<label for="profileInputHereFor{{ hereFor.value | kebab }}" class="">{{ hereFor.label|t }}</label>
+										</div>
+									{% endfor %}
+									<noscript>
+										<button class="round profile-dashboard__submit-button" type="submit">{{ "Submit"|t }}</button>
+									</noscript>
+							</div>
+						</div>
+
+					</div>
+					</div>
+				</div>
+			{% set inputSuffix = "" %}
+
+			{% set categoryTitle = "My difficulties" %}				
+			{% set categoryName = "difficulty" %}
+			{% set fieldName = "difficulty" %}
+			{% include "_partials/dashboard-category-display.twig" %}
+
+
+			{% set categoryTitle = "Effects on life" %}
+			{% set categoryName = "effect" %}
+			{% set optionsId = "effect" %}
+
+			<div id="{{ optionsId }}" class="profile-dashboard__details__item-container profile-dashboard-here-for-self">
+				{% include "_partials/dashboard-user-defined-options-display.twig" %}
+			</div>
+
+			{% set categoryTitle = "My reasons" %}				
+			{% set categoryName = "reason" %}
+			{% set fieldName = "reason" %}
+			{% include "_partials/dashboard-category-display.twig" %}
+
+
+			{% set categoryTitle = "My strengths" %}				
+			{% set categoryName = "strengths" %}
+			{% set fieldName = "strengths" %}
+			{% include "_partials/dashboard-category-display.twig" %}
+
+			{% set categoryTitle = "Self help" %}				
+			{% set categoryName = "help" %}
+			{% set fieldName = "help" %}
+			{% include "_partials/dashboard-category-display.twig" %}	
+
+			{% set categoryTitle = "My resources" %}				
+			{% set categoryName = "resource" %}
+			{% set fieldName = "resource" %}
+			{% include "_partials/dashboard-category-display.twig" %}	
+			
+			{% set categoryTitle = "My contacts" %}				
+			{% set categoryName = "contacts" %}
+			{% set fieldName = "contacts" %}
+			{% include "_partials/dashboard-category-display.twig" %}	
+
+			{#
+			{% set categoryTitle = "My contacts" %}
+			{% set categoryName = "contact" %}
+			{% set optionsId = "exercise-who-would-you-contact" %}
+			<div id="{{ optionsId }}" class="profile-dashboard__details__item-container profile-dashboard-here-for-self">
+				{% include "_partials/dashboard-user-defined-options-display.twig" %}
+			</div>
+			#}
+
+			{#
+			{% set moduleResource = {} %}				
+			{% for module in modules %}
+				{% set moduleId = module.id %}
+				{% set moduleResource = moduleResource|merge( { moduleId : [] } ) %}
+			{% endfor %}
+
+			{% set resourceCategories = craft.categories.group(categoryName) %}
+			{% for resource in resourceCategories %}
+					{% set resourceModules = resource.moduleList.ids() %}
+					{% for resourceModuleId in resourceModules %}
+						{% set resourceSubModule = craft.entries.id(resourceModuleId).first() %}
+						{% set resourceModule = resourceSubModule.getParent() %}
+						{% if resourceModule %}
+						== {{ resourceModule.title }}
+						{% endif %}
+					{% endfor %}
+					
+			{% endfor %}
+			#}
+			{% set inputSuffix = "other" %}
+
+			{% set categoryTitle = "Their difficulties" %}				
+			{% set categoryName = "difficulty" %}
+			{% set fieldName = "hereForOtherDifficulty" %}
+			{% include "_partials/dashboard-category-display.twig" %}
+
+
+			{% set categoryTitle = "Their reasons" %}				
+			{% set categoryName = "reason" %}
+			{% set fieldName = "hereForOtherReason" %}
+			{% include "_partials/dashboard-category-display.twig" %}
+
+			{% set categoryTitle = "Their strengths" %}				
+			{% set categoryName = "strengths" %}
+			{% set fieldName = "hereForOtherStrengths" %}
+			{% include "_partials/dashboard-category-display.twig" %}
+
+			{% set categoryTitle = "What might help the young person?" %}				
+			{% set categoryName = "help" %}
+			{% set fieldName = "hereForOtherHelp" %}
+			{% include "_partials/dashboard-category-display.twig" %}
+
+			{% set categoryTitle = "My resources" %}				
+			{% set categoryName = "resource" %}
+			{% set fieldName = "hereForOtherResource" %}
+			{% include "_partials/dashboard-category-display.twig" %}
+			
+
+			{% set categoryTitle = "My contacts" %}				
+			{% set categoryName = "contacts" %}
+			{% set fieldName = "hereForOtherContacts" %}
+			{% include "_partials/dashboard-category-display.twig" %}	
+
+
+			
+
+			
+
+			</form>
+		</div>
+
+		<div class="my-answers__footer-image-container text-center">
+			<img src="/resources/images/my-answers-footer.png" alt="Mood monitor footer image">
+		</div>
+
+	</div>
+
+{% endblock %}
+
+{% block jsBlock %}
+
+	<script>
+		$(document).ready(function(){
+			opad.initJsModule(['my-answers','feature-block-options']);
+		});
+	</script>
+
+{% endblock %}

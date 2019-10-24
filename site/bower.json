@@ -1,0 +1,21 @@
+{
+  "name": "craftgulp",
+  "version": "0.0.0",
+  "authors": [
+    "Mathias Stav <mathias@feed.no>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "normalize-css": "~3.0.1",
+    "jquery": "~2.1.1",
+    "modernizr": "~2.8.2",
+    "foundation": "~5.5.2",
+    "jquery-visible": "~1.2.0",
+    "slick.js": "~1.5.5",
+    "handlebars": "~3.0.3",
+    "picturefill": "~2.3.1",
+    "jquery.columnizer": "~1.6.2"
+  }
+}
+

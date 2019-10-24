@@ -1,0 +1,138 @@
+{% extends "_layout" %}
+
+{% set questionEntryList = craft.entries.slug('questions-self') %}
+{% set questionEntry = questionEntryList.first() %}
+
+{% block content %}
+
+<script type="text/javascript"
+        src="https://www.gstatic.com/charts/loader.js"></script>
+<script>
+var monthNames = ["{{ "January"|t }}", "{{ "February"|t }}", "{{ "March"|t}}", "{{ "April"|t}}", "{{"May"|t}}", "{{"June"|t}}",
+	  "{{"July"|t}}", "{{"August"|t}}", "{{"September"|t}}", "{{"October"|t}}", "{{"November"|t}}", "{{"December"|t}}"
+	];
+</script>
+{% if currentUser.hereFor == "other" %}
+	<div class="row">
+		<div class="small-12 column">
+			<div class="text-center profile-stuff-i-like__welcome-msg ">
+				<div class="light-heading profile-stuff-i-list__welcome-msg__heading">{{ "Mood monitor" |t }}</div>
+				<p class="profile-stuff-i-list__welcome-msg__text">{{ "This is where the young person can view what they have recorded about their mood and other issues. This is not available when viewing for someone else."|t }}</p>
+				
+
+				<picture class="profile-stuff-i-list__welcome-msg__img">
+				  <!--[if IE 9]><video style="display: none;"><![endif]-->
+				  <source srcset="/resources/images/moodmonitor-large.jpg" media="(min-width: 1023px)">
+				  <!--[if IE 9]></video><![endif]-->
+				  <img class="profile-empty-list-image" srcset="/resources/images/moodmonitor-small.jpg" alt="Mood monitor image">
+				</picture>
+			</div>
+		</div>
+	</div>
+		
+{% else %}
+	<div id="profileDashboardContainer" class="mood-monitor-container">
+
+		<div id="profileDashboardHeadingContainer" class="profile-dashboard-heading-container">
+		
+			<div class="row">
+
+				<div  class="small-12 column">
+
+					<div id="profileDashboardHeading" class="profile-dashboard-heading">
+						<h2 id="profileDashboardHeadingText" class="profile-dashboard-heading__text">{{ now|date("F") |t }} {{ now|date("Y") }}</h2>
+
+						<a class="button profile-dashboard-mood-button mood-monitor-mood-button" href="{{ url('profile/questions-' ~ currentUser.hereFor) }}" class="button">{{ "Update my mood" | t}}</a>
+					</div>
+				</div>
+			</div>
+
+			<div id="profileDashboardDetails" class="profile-dashboard-details ">
+				<div class="profile-dashboard__details-container">
+
+				<div class="mood-monitor-date-container">
+					{% set moodDateList = craft.profiler.getMoodDateList() %}
+					{% for moodYear, moodMonthList in moodDateList %}
+						{% set moodCurrentYear = loop.last %}
+
+
+						<div class="row">
+						<div class="small-12 column">
+							<h3 class="mood-monitor-year">{{ moodYear }}</h3>
+						</div>
+						</div>
+						<div class="row">
+						<div class="small-12 column">
+						{% for moodDate in moodMonthList %}<!--
+							--><button class="button radius round mood-monitor-date-button {% if moodCurrentYear and loop.last %}mood-monitor-date-button__last{% endif %}" data-mood-month="{{moodYear}}-{{moodDate.num}}">{{ moodDate.text |t}}</button><!--
+				
+						-->{% endfor %}
+
+						</div>
+
+						</div>
+					{% endfor %}
+				</div>
+				</div>
+			</div>
+
+
+
+		</div>
+
+		<div class="row">
+			<div class="small-12 column">
+				<div class="mood-monitor-week-heading-container">
+					<a class="mood-monitor-arrow mood-monitor-arrow__left" href="#" data-offset-dir="-1"><span class="show-for-sr">{{ "Next chart dates"|t }}</span></a>
+					<h2 id="moodMonitorWeekHeading" class="text-center mood-monitor-week-heading">{{ "Loading"|t }}</h2>
+					<a class="mood-monitor-arrow mood-monitor-arrow__right" data-offset-dir="1" href="#"><span class="show-for-sr">{{ "Next chart dates"|t }}</span></a>
+				</div>
+			</div>
+		</div>
+
+		{% for question in questionEntry.profileQuestions %}
+			{% if question.type == "question" %}
+
+				<div class="row">
+				<div class="small-12 column">
+					<h3 class="mood-monitor-chart-heading">{{ question.questionTitle }}</h3>
+					<div class="mood-monitor-chart-container-outer">
+						<div id="{{ question.questionId }}ChartContainer" class="mood-monitor-chart-container" data-mood-id="{{ question.questionId }}">
+						</div>
+					</div>
+				</div>
+				</div>
+
+			{% endif %}
+		{% endfor %}
+
+		<div class="row">
+			<div class="small-12 column">
+				<h3 class="mood-monitor-chart-heading">{{ "Diary"|t }}</h3>
+				<div class="mood-monitor-diary-container-outer">
+					<div id="freetextContainer" class="mood-monitor-diary-container" data-mood-id="freetext" data-no-entry-msg="{{ "No diary entries"|t }}">
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+{% endif %}
+{% endblock %}
+
+{% block jsBlock %}
+
+	<script>
+	    
+	    google.charts.load('43', {packages: ['corechart','line']});
+	
+		google.charts.setOnLoadCallback(function(){
+
+			//var data = new google.visualization.DataTable();
+
+			opad.initJsModule(['mood-monitor']);
+		});
+	
+	</script>
+
+{% endblock %}

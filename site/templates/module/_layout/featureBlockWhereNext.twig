@@ -1,0 +1,30 @@
+{% set nextModule = currentModule.nextSibling %}
+
+	<div class="row">
+	<div class="small-12 medium-4 medium-offset-4">
+
+	<div class="{{ nextModule.moduleColour }} feature-block-where-next-container">
+		<div class="text-center module-block invert-module-block-themed ">
+			<h3 class="light-heading">{{ "Where to go next?"| t }}</h3>
+					
+					<h4 class="profile-dashboard-module-heading">	
+						<a class="feature-block-where-next-link" href="{{ nextModule.url }}">
+						{% set image = nextModule.image|first %}
+
+							<div class="profile-dashboard-module-image-container">
+							{% if image %}
+							   <img class="profile-dashboard-module-image" src="{{ image.imageFile.first().url }}" alt="{{ image.imageAlt }}" />
+							{% endif %}
+							</div>
+							{{ nextModule.title }}
+						</a>
+					</h4>
+					<div class="feature-block-where-next-description">
+					{{ nextModule.body }}
+					</div>
+
+		</div>
+	</div>
+
+	</div>
+	</div>

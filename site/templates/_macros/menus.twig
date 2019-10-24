@@ -1,0 +1,18 @@
+{% macro generateMenu(entry) %}
+  {% import _self as menuMacros %}
+  {% if entry is defined %}
+
+    {% if entry.topMenu is defined %}
+      {% for navItem in entry.topMenu %}
+        <li class="off-canvas-list__item {% if navItem.id == entry.id %}off-canvas-list__item--current{% endif %}">{{ navItem.getLink() }}</li>
+      {% endfor %}
+
+      {% if entry.parent is defined %}
+        {{ menuMacros.generateMenu(entry.Parent) }}
+      {% endif %}
+
+    {% endif %}
+
+  {% endif %}
+
+{% endmacro %}

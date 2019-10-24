@@ -1,0 +1,16 @@
+
+	<div class="row">
+	<div class="small-12 column">
+				<div class="profile-dashboard__details__item">
+					<button class="round profile-dashboard__item-button-right profile-dashboard__submit-button" type="submit">{{ "Submit"|t }}</button>
+					<button class="non-js-hide round profile-dashboard__item-button-right profile-dashboard__edit-button" type="button"><span class="profile-dashboard__edit-button-edit-text">{{"Edit"|t}}</span><span class="profile-dashboard__edit-button-cancel-text">{{ "Close"|t }}</span></button>
+					<h4 class="profile-dashboard-subheading">{{ categoryTitle |t }}</h4>
+
+					{% include "_partials/dashboard-user-defined-options.twig" %}
+					<div class="profile-dashboard__new-item profile-dashboard__edit-only">
+						<input class="feature-block-option-mylist-input" placeholder="{{ 'Item'|t }}">
+						<button class="round feature-block-option-mylist-add">{{ "Add"|t }} {{ categoryName |t}}</button>
+					</div>
+				</div>
+	</div>
+	</div>
