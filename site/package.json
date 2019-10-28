@@ -9,10 +9,15 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "del": "^5.1.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
     "gulp-compass": "^2.1.0",
+    "gulp-imagemin": "^6.1.1",
+    "gulp-livereload": "^4.0.2",
     "gulp-sass": "^4.0.2",
+    "gulp-uglify": "^3.0.2",
+    "gulp-usemin": "^0.3.30",
     "node-sass": "^4.13.0"
   }
 }
