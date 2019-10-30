@@ -1,0 +1,89 @@
+{#
+ # Helpentry template
+ # -------------------
+ #
+ # This template gets loaded whenever a News entry’s URL is
+ # requested. That’s because the News section’s Template setting is
+ # set to “news/_entry”, the path to this template.
+ #
+ # When this template is loaded, it will already have an ‘entry’
+ # variable, set to the requested News entry.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://buildwithcraft.com/docs/routing
+ #}
+
+{% extends "_layout" %}
+
+	{% block jsBlock %}
+
+	{# Inline script to load rest of module content after first page is loaded #}
+	<script>
+		$(document).ready(function(){
+			opad.initJsModule();
+		});
+	</script>
+	{% endblock %}
+	
+
+{% block content %}
+<div class="module-block">
+	<article>
+
+	<div class="row">
+	<div class="small-12 columns">
+		<h2 class="large-heading">{{ entry.title }}</h2>
+	</div>
+	</div>
+
+	{% set image = entry.introContentBlockImage|first %}
+	{% if image or entry.video|length > 0 %}
+
+		<div class="row intro-video-row">
+		<div class="small-12 column intro-video-column">
+
+		
+			<div class="intro-content-block-media-container">
+				<div class="intro-content-block-image ">
+				 	{% if image %}
+						<img 	srcset="{{ image.imageFile.first().getUrl('fullWidthMedium') }} 768w,
+							{{ image.imageFile.first().getUrl('fullWidthLarge') }} 1024w"
+							sizes="(min-width: 49em) 100vw, 100vw"
+							alt="{{image.imageAlt}}"
+							src="{{ image.imageFile.first().getUrl('fullWidthMedium') }}">
+				 	{% endif %}
+				</div>
+
+
+				{% if entry.video | length %}
+				{% set video = entry.video | first %}
+				<div class="intro-content-block-video-container">
+					<div id="videoElement-{{entry.slug}}" class="intro-content-block-video">Loading the player...</div>
+
+					<script type="text/javascript">
+					opadVideoEl = "videoElement-{{entry.slug}}";
+					opadVideoImage = "{{ image.imageFile.first().getUrl('fullWidthMedium') }}";
+					opadVideoUrl_mp4 = "{{ video.url }}";
+					opadVideoUrl_hls = "{{ video.url | replace({
+						'.mp4':'.m3u8',
+						'/video_mp4': '/video_hls3'
+						}) }}";
+					</script>
+				</div>
+				{% endif %}
+
+			</div>
+		</div>
+		</div>
+	{% endif %}
+
+	<div class="row">
+	<div class="small-12 columns">
+		<div class="content-block content-block-large-paragraph intro-content-block-text two-columns">{{ entry.body }}</div>
+
+	</div>
+	</div>
+
+	</article>
+</div>
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends "_layout" %}
+
+{% block content %}
+
+<div class="row">
+	<div class="column">
+		<div class="profile-question__progress">
+			<a id="prevArrowButton" class="profile-question__previous" href="{{ craft.request.urlReferrer }}">
+				<div class="show-for-medium-up">
+					<span class="ss-icon ss-navigateleft"></span>{{ "Previous" | t }}
+				</div>
+				<div class="hide-for-medium-up">
+					<span class="ss-icon ss-navigateleft"></span>
+				</div>
+				</a>
+			{{ "Step"|t }} <span class="profile-question_progress-indicator">1</span> {{ "out of"|t }} {{ entry.profileQuestions|length + 1}}
+		</div>
+
+	</div>
+</div>
+
+<div class="primary-panel mood-monitor-panel mood-questions-panel">
+
+
+	<form method="post" accept-charset="UTF-8">
+		{{ getCsrfInput() }}
+		{% if craft.request.urlReferrer == url('profile/mood-monitor') %}
+			{% set redirectUrl = craft.request.urlReferrer %}
+		{% else %}
+			{% set redirectUrl = url('profile/dashboard') %}
+		{% endif %}
+
+	    <input type="hidden" name="action" value="profiler/question/saveAllQuestions">
+		<input id="profileQuestionRedirect" type="hidden" name="redirect" value="profile/dashboard" data-uri="{{ redirectUrl }}">
+		<div>
+
+		<div class="profile-question-container slick-carousel-container">	
+			
+			
+		{% for question in entry.profileQuestions %}
+
+			{% include "_partials/profile-" ~ question.type %}
+
+		{% endfor %}
+
+		<div class="profile-question">
+				<input name="profileQuestionType" class="profile-question-type" type="hidden" value="generic" />
+				<input name="profileQuestionId" class="profile-question-questionid" type="hidden" value="freetext" />
+
+				<div class="profile-question--inner">
+					<div class="text-center profile-question-heading">
+						<p>{{ "Is there anything about the last 7 days you'd like to add?"| t}}</p>
+					</div>
+
+					<textarea name="profileQuestionValue" class="profile-question-value profile-question--textarea" placeholder="{{"For example this could be a dairy entry over the last 7 days"|t}}"></textarea>
+				</div>
+
+			</div>
+			
+
+		</div>
+
+		</div>
+
+		<div class="row">
+		<div class="column">
+			<div class="slick-next__container">
+				<button id="nextArrowButton" type="button" class="slick-next" data-endtext="{{ "Save and finish"|t}}">{{ "Save and continue" | t }}</button>
+				<a id="skipStep" class="slick-skip">{{ "Skip this step" | t}}</a>
+			</div>
+		</div>
+		</div>
+		
+		
+		<noscript>
+		<button type="submit" class="button">{{ "Submit answers" | t}}</button>
+		</noscript>
+	</form>
+
+</div>
+
+{% endblock %}
+
+{% block jsBlock %}
+	<script>
+		$(document).ready(function(){
+			opad.initJsModule(['profile','slick-carousel']);
+		});
+	</script>
+{% endblock %}

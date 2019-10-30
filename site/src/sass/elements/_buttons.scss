@@ -1,0 +1,28 @@
+button:focus{
+	outline: 0;
+}
+
+.button {
+	line-height: rem-calc(20);
+	padding: ($button-med/2) ($button-med * 2);
+}
+
+.button:hover{
+	text-decoration: none;
+}
+
+.button--invert{
+	background: $button-bg-color-invert;
+
+	color: $button-color-invert;
+
+	&:hover,
+	&:visited{
+		text-decoration: none;
+	}
+
+	&:hover{
+		color: $button-color-invert;
+		background: $button-bg-color-hover-invert;
+	}
+}

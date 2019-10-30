@@ -1,0 +1,61 @@
+{% extends "_layout" %}
+
+{% block content %}
+	
+	{% set questionEntryList = craft.entries.slug('questions-' ~ currentUser.hereFor) %}
+	{% set questionEntry = questionEntryList.first() %}
+
+	<div class="text-center mood-monitor-intro">
+		
+		<div class="row">
+		<div class="small-12 column">
+		
+			<div class="mood-monitor-intro-breadcrumb">
+				<ul class="profile-question__dot-breadcrumb">
+				{% set navPercSteps = 100 / (questionEntry.profileQuestions|length - 1) %}
+
+				{% for question in questionEntry.profileQuestions %}
+							<li class="profile-question-nav__item" style="width: {{ navPercSteps }}%; left: {{ loop.index0 * navPercSteps }}%" >
+								<span class="profile-question-nav__link">
+									<span class="profile-question-nav__link-text">{{ question.questionTitle }}</span>
+								</span>
+							</li>
+					{% endfor %}
+				</ul>
+			</div>
+		
+		</div>
+		</div>
+
+		<div class="primary-panel mood-monitor-panel">
+			<div class="row">
+			<div class="small-12 column">
+
+				<h2 class="mood-monitor-heading">{{ entry.heading }}</h2>
+				
+				
+				{% if currentUser.hereFor == 'self' %}
+					{{ entry.hereForSelfText }}
+				{% else %}
+					{{ entry.hereForOtherText }}
+				{% endif %}
+
+				<ul>
+					<li class="mood-monitor-option">
+						<a href="{{ siteUrl }}" class="button round button--invert mood-monitor-option-link ">{{ "I'll just browse" | t}}</a>
+					</li>
+					<li class="mood-monitor-option">
+						<a href="{{ url('profile/questions-' ~ currentUser.hereFor) }}" class="button round mood-monitor-option-link">{{ "Get started" | t}}</a>
+					</li>
+
+				</ul>
+
+			</div>
+			</div>
+		</div>
+
+		<div class="primary-panel">
+			{% include '_partials/footer' %}
+		</div>
+	</div>
+{% endblock %}

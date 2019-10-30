@@ -1,0 +1,48 @@
+.svg-container {
+	position: relative;
+
+	&[data-mood-value="1"],
+	&[data-mood-value="2"]{
+		.svg-icon-head{
+			fill: $mood-color-negative;
+		}
+	}
+
+	&[data-mood-value="3"],
+	&[data-mood-value="4"],
+	&[data-mood-value="5"]{
+		.svg-icon-head{
+			fill: $mood-color-neutral;
+		}
+	}
+
+
+	&[data-mood-value="6"],
+	&[data-mood-value="7"]{
+		.svg-icon-head{
+			fill: $mood-color-positive;
+		}
+	}	
+
+}
+
+.svg-icon{
+	position: relative;
+
+	svg{
+		width: 100%;
+		height: 100%;
+	}
+}
+
+
+
+
+.svg-icon-head{
+		display: block !important;
+		position: absolute;
+		width: 100%;
+		margin: auto;
+}
+
+

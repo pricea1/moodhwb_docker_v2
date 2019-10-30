@@ -1,0 +1,43 @@
+h2 {
+	font-weight: 300;
+	font-size: rem-calc(32);
+	line-height: rem-calc(32);
+	margin-top: rem-calc(20);
+	margin-bottom: rem-calc(20); // 20 as it takes into account 150% line-height
+
+	@media #{$medium-up}{
+//		margin-top: rem-calc(60);
+	}
+}
+
+.large-heading{
+	@media #{$medium-up}{
+		font-size: rem-calc(40);
+	}
+
+}
+
+[data-modules="module"]{
+		.large-heading{
+			margin-top: 0;
+		}
+}
+
+.light-heading{
+	font-weight: 300;
+	font-size: rem-calc(24);
+	line-height: rem-calc(32);
+	margin-bottom: rem-calc(20);
+
+	@media #{$medium-up}{
+		font-size: rem-calc(36);
+		line-height: rem-calc(50);
+	}
+
+}
+
+.primary-panel{
+	.light-heading {
+		color: $black;
+	}
+}

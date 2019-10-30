@@ -1,0 +1,22 @@
+.feature-block-fact-text{
+	
+	margin-top: rem-calc(-10); // To compensate for increased line height of text and ensure its 40px between top and text
+
+	@media #{$medium-up}{
+	    display: inline-block;
+	    vertical-align: top;
+
+	}
+	
+	p{
+		margin-bottom: 0;
+		font-size: rem-calc(24);
+		line-height: rem-calc(36);
+		font-weight: 300;
+
+		@media #{$medium-up}{
+			font-size: rem-calc(32);
+			line-height: rem-calc(44);
+		}
+	}
+}

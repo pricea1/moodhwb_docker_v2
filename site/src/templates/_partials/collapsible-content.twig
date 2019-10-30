@@ -1,0 +1,10 @@
+{% for item in entry.collapsibleContent %}
+	<div class="row">
+		<div class="small-12 columns">
+			<div class="module-collapsible__container">
+				<div class="module-collapsible__link">{{ item.linkTitle | default("More information") |t }}</div>
+				<div class="content-block-sub-item module-collapsible__content">{{ item.text}}</div>
+			</div>
+		</div>
+	</div>
+{% endfor %}

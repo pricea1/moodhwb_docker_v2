@@ -1,0 +1,23 @@
+input[type="checkbox"] + label,
+input[type="radio"] + label{
+	margin-left: rem-calc(15);
+}
+
+input[type="text"],
+input[type="password"]{
+		@extend .radius;
+}
+
+input{
+  line-height: rem-calc(20);
+  padding: rem-calc(5);
+	border: none;
+	@include border-radius(5px);
+
+	color: $oil;
+
+	&[type="text"],
+	&[type="password"]{
+		height: rem-calc(40);
+	}
+}

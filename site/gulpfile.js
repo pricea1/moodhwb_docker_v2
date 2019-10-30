@@ -48,19 +48,26 @@ function moveTemplates(){
 	.pipe(gulp.dest('./templates'));
 }
 
-
-
 function moveImages () {
   return gulp.src('./src/images/**/*')
     .pipe(imagemin({
       progressive: true,
       interlaced: true
     }))
-    .pipe(gulp.dest('./web/resources/images'));
+    .pipe(gulp.dest('./web/images'));
+
+}
+
+function moveFonts() {
+  return gulp.src('./src/fonts/**/*')
+    .pipe(gulp.dest('./web/fonts'));
 
 }
 
 function minify() {
+	gulp.src(['.src/js/feature-block/**'])
+	.pipe(gulp.dest('./web/js/feature-block/'));
+
 	return gulp.src(['./src/templates/_layout.html'])
 	.pipe(usemin({
 		assetsDir: 'src',
@@ -84,7 +91,7 @@ function watch() {
 	gulp.watch('./src/css/**/*.css', { delay: 500 }).on('change', function(file) {
 
 		return gulp.src([file])
-		.pipe( gulp.dest("./web/resources/css"))
+		.pipe( gulp.dest("./web/css"))
 		.pipe(livereload());
 	});
 
@@ -96,7 +103,7 @@ function watch() {
 		var folder = destFile.split('/');
 		folder.pop();
 		var destFolder = folder.join("/");
-
+console.log('move ' + file + " to " + destFolder);
 		return gulp.src([file])
 		.pipe( gulp.dest(destFolder));
 	});
@@ -109,5 +116,5 @@ function watch() {
 
 }
 
-gulp.task('build', gulp.series(moveTemplates, moveImages, hbtemplatesCompile, minify, moveIndexTemplate));
+gulp.task('build', gulp.series(moveTemplates, moveImages, moveFonts, hbtemplatesCompile, minify, moveIndexTemplate));
 gulp.task(watch);

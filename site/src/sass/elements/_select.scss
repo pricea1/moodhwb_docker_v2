@@ -1,0 +1,14 @@
+select,
+select:hover,
+select:focus{
+	background-color: $button-bg-color;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAMCAYAAABr5z2BAAAABGdBTUEAALGPC/xhBQAAAM5JREFUKBV9kL0KwkAQhJMQCARUSKE+g6/mK9kJWlhoaxWwtBP8qQXf4/wmXJLlcsnAcLuzM5vLJQlwzqVwC5fqpyCP96aNjyaHeyg84egSzbyHo8nk+vpJncGLehXeQhrUzOKcYfwF5g19jatb4usaXTOLb/v/O7vW12/OtafqEMp075DRHEMH/cczHB0QdPseCHrMS+iM9PLkfdJUDAp4jYRaSbPCRIYlhhLe2oQ5pZXDRETBOId3E1Y9i1jHJQIVfHhW486JCeGFOGFJ/q8qdflga4RSAAAAAElFTkSuQmCC);
+	background-position: right 15px center;
+	color: $white;
+	font-size: rem-calc(16);
+	line-height: 1em;
+	height: rem-calc(40);
+	padding-top: 0;
+	padding-bottom: 0;
+	border: none;
+}

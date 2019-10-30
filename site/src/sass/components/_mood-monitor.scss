@@ -1,0 +1,207 @@
+.mood-monitor-container{
+	padding-bottom: rem-calc(60);
+}
+
+.mood-monitor-panel{
+	background-color: $mood-monitor-colour;
+	color: $oil;
+	height: rem-calc(290);
+	overflow-y: auto;
+
+	@media #{$medium-up}{
+		height: rem-calc(280);
+		padding-top: rem-calc(30);
+	}
+
+	p{
+		margin-bottom: rem-calc(16);
+
+		@media #{$medium-up}{
+			margin-bottom: rem-calc(50);
+		}
+	}
+}
+
+.mood-questions-panel{
+
+	height: initial; // Adjusts height accoring to slide being shown
+	padding-bottom: rem-calc(18);
+	padding-top: rem-calc(8);
+
+	@media #{$medium-up}{
+		padding-bottom: rem-calc(56);
+		padding-top: rem-calc(12);
+
+		p{
+			margin-bottom: rem-calc(16);
+
+			@media #{$medium-up}{
+				margin-bottom: rem-calc(18);
+			}
+		}
+
+	}
+}
+
+.mood-monitor-heading{
+
+	@media #{$small-only}{
+		margin-bottom: rem-calc(10);
+	}
+}
+
+.mood-monitor-option{
+	width: 100%;
+	margin-bottom: rem-calc(10);
+
+	@media #{$medium-up}{
+		width: rem-calc(190);
+		display: inline-block;
+		margin-left: rem-calc(10);
+		margin-right: rem-calc(10);
+	}
+}
+
+.mood-monitor-option-link{
+	font-size: rem-calc(20);
+	font-weight: bold;
+	width: 100%;
+	display: inline-block;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.mood-monitor-chart-heading{
+	margin-top: rem-calc(20);
+	margin-bottom: 0;
+	font-size: rem-calc(20);
+}
+
+.mood-monitor-week-heading{
+	font-size: rem-calc(20);
+	line-height: rem-calc(52);
+	font-weight: bold;
+	margin-bottom: 0;
+}
+
+.mood-monitor-chart-container-outer{
+/*
+	@media #{$small-only}{
+		width: 100%;
+		overflow-x: scroll;
+		-webkit-overflow-scrolling: touch;
+	}
+*/
+}
+
+.mood-monitor-chart-container{
+	min-height: 180px; // To create empty space of 180px high chart to go into when JS has calculated
+
+	@media #{$small-only}{
+//		width: 400%;
+	}
+}
+
+.google-visualization-tooltip{
+	border-radius: 16px !important;
+	padding: rem-calc(20) !important;
+	color: $white;
+	border: none !important;
+	min-width: rem-calc(170);
+	background-color: rgba( 51,51,51,0.8 ) !important;
+	font-size: rem-calc(16) !important;
+	line-height: rem-calc(20) !important;
+	box-shadow: none !important;
+	z-index: 100;
+	position: relative;
+
+	&:after{
+		content: $symbol-delete;
+		font-family: $symbol-font-family;
+		position: absolute;
+		top: 8px;
+		right: 10px;
+	}
+
+	&__text{
+		margin-top: 1em;
+	}
+
+}
+
+.mood-monitor-date-container{
+	padding-bottom: rem-calc(10);
+}
+
+.mood-monitor-year{
+	font-size: rem-calc(32);
+	margin-top: rem-calc(10);
+	margin-bottom: rem-calc(24);
+	color: $oil;
+	font-weight: 300;
+}
+
+.mood-monitor-date-button{
+	font-size: rem-calc(16);
+	font-weight: bold;
+	min-width: rem-calc(60);
+	height: rem-calc(30);
+	padding: rem-calc(5);
+	margin-right: rem-calc(10);
+	margin-bottom: rem-calc(10);
+
+}
+
+.mood-monitor-mood-button{
+
+	display: none;
+
+	@media #{$medium-up}{
+		display: block;
+	    top: rem-calc(15);
+        max-width: rem-calc(308);
+	    margin: 0 auto;
+	}
+
+}
+
+.mood-monitor-week-heading-container{
+	position: relative;
+}
+
+.mood-monitor-arrow{
+	@include nav-arrow(60);
+    position: absolute;
+    top: rem-calc(10);
+
+    &:after{
+    	position: relative;
+    	top: 0;
+    	left:0;
+    }
+
+    &__left{
+	    left: 0;
+	 	&:after{
+	 		@include rotate(-90deg);
+	 	}
+    }
+
+    &__right{
+	    right: 0;
+	    &:after{
+	 		@include rotate(90deg);
+	 	}
+    }
+}
+
+.mood-monitor-diary{
+
+	&-container{
+		margin-top: rem-calc(10);
+	}
+
+	&-item--heading{
+		font-weight: bold;
+	}
+}

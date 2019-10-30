@@ -1,0 +1,52 @@
+<div class="module-block four-image-content-block">
+	<div class="row">
+		<div class="small-12 columns">
+
+			<h2 class="large-heading">{{ entry.contentBlockHeading }}</h2>
+			<div class="content-block content-block-large-paragraph content-block-text-container">
+				{{ entry.contentBlockText }}
+			</div>
+
+		</div>
+	</div>
+
+	<div class="row">
+
+
+
+			<div class="content-block-sub-item-container">
+				{% for item in entry.contentBlockItems %}
+					<div class="small-12 medium-3 column custom-grid__tablet-6 {% if loop.last %}end{% endif %}">
+
+						<div class="content-block-sub-item">
+							
+							{% if item.imageFile and item.imageFile.first() %}
+							<img class="content-block-sub-item__image content-block-sub-item__image--above" src="{{ item.imageFile.first().getUrl('square3col') }}" alt="{{ item.imageAlt }}">
+							{% endif %}
+							
+							{% if item.heading %}						
+								<h3 class="content-block-subheading">{{ item.heading }}</h3>
+							{% endif %}
+							{{ item.text }}
+						</div>
+
+
+					</div>
+				{% endfor %}
+			</div>
+
+	</div>
+	
+	{% if entry.contentBlockText2 %}
+	<div class="row">
+		<div class="small-12 columns">
+			<div class="content-block-sub-item content-block-text-container content-block-text-container--2">
+				{{ entry.contentBlockText2 }}
+			</div>
+		</div>
+	</div>
+	{% endif %}
+
+	{% include "_partials/collapsible-content" %}
+
+</div>

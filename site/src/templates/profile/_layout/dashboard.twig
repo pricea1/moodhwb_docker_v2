@@ -1,0 +1,294 @@
+{% extends "_layout" %}
+
+{% block topnav %}
+  <li class="off-canvas-list__item">
+    <a href="/?view=1">{{ "Welcome" |t }}</a>
+  </li>
+{% endblock %}
+
+{% block content %}
+
+  {% set userId = craft.request.getQuery('id') %}
+
+  {#
+                  {% set moodAnswers = craft.profiler.getAllMoodScoresForUser( userId ) %}
+                  #}
+
+  {% set totalMoodScore = 0 %}
+
+  {% set lastViewedDate = craft.userLogin.getLastViewedDate() %}
+
+  <div>LAST VIEWED=
+    {{lastViewedDate}}
+  </div>
+
+  {# TODO PLUGIN
+                {% set moduleBookmark = craft.moduleActions.getMostRecentModuleBookmark() %}
+                {% if moduleBookmark %}
+                  {% set currentSubModule = craft.entries.section('modules').id(moduleBookmark.submoduleId).first() %}
+                  {% set currentModule = currentSubModule.parent %}
+                  {% set moduleMessage = "You last viewed" | t %}
+                {% else %}
+                #}
+  {# If no modules have been viewed then default to depression module #}
+  {% set currentModule = craft.entries.section('modules').slug("what-is-depression").first() %}
+  {% set currentSubModule = currentModule.children.first() %}
+  {% set moduleMessage = "Start your journey here" | t %}
+  {#
+                {% endif %}
+              #}
+  {% set showModuleSelf = currentModule %}
+  {% set showModuleOther = craft.entries.section('modules').id(112).first() %}
+  {# Family and friends module (ID:112) is treated differently on Here For Others #}
+
+  {# list modules #}
+  {% set modules = craft.entries.section('modules').level('1') %}
+
+    <div id="profileDashboardContainer" class="profile-dashboard-container" data-here-for="{{ currentUser.hereFor }}"> <div class="profile-dashboard-here-for-self">
+
+      <div class="profile-dashboard-mood-container">
+
+        <div class="profile-dashboard-heading">
+          <strong>{{ "Hello there!"|t}}</strong>
+          <div class="profile-dashboard-heading__light-text">{{ "Your current mood score"|t}}</div>
+        </div>
+        <div id="profileDashboardMoodScrollContainer" class="profile-dashboard-mood-scroll-container">
+
+          <ul
+            id="profileDashboardMoodList" class="inline-list profile-dashboard-mood-list">{#
+                                                                                                                              						{% for moodAnswer in moodAnswers.self %}
+                                                                                                                              							{% if moodAnswer.question.value > 0 %}
+                                                                                                                              								{% set moodValue = moodAnswer.question.value %}
+                                                                                                                              							{% else %}
+                                                                                                                              								{% set moodValue = "No data"|t %}
+                                                                                                                              							{% endif %}
+                                                                                                                              							<li class="profile-dashboard-mood-list__item profile-answer-rating-{{ moodAnswer.question.value }}{% if loop.first %} profile-dashboard-mood-list__first{% endif %}{% if loop.last %} profile-dashboard-mood-list__last{% endif %} ">
+                                                                                                                              								<div class="svg-container profile-dashboard-mood-icon profile-dashboard-mood-icon-{{ moodAnswer.question.value}}" data-mood-value="{{ moodAnswer.question.value }}">
+                                                                                                                              						
+                                                                                                                              									{% include "_images/mood-icon-" ~ moodAnswer.question.value %}
+                                                                                                                              									
+                                                                                                                              
+                                                                                                                              								</div>
+                                                                                                                              								<div class="profile-dashboard-mood-text">
+                                                                                                                              									<div class="profile-dashboard-mood-score">{{ moodValue }}</div>
+                                                                                                                              									{{ moodAnswer.questionTitle }}
+                                                                                                                              								</div>
+                                                                                                                              							</li>
+                                                                                                                              							{% if moodAnswer["score"] is defined %}
+                                                                                                                              								{% set totalMoodScore = totalMoodScore + moodAnswer.score %}
+                                                                                                                              							{% endif %}
+                                                                                                                              						{% endfor %}
+                                                                                                                              						#}
+          </ul>
+
+
+        </div>
+        <div class="row">
+          <div class="small-12 medium-4 column profile-dashboard-mood-button-container">
+
+            <a class="button profile-dashboard-mood-button profile-dashboard-mood-button--invert" href="{{ url('profile/questions-' ~ currentUser.hereFor) }}" class="button">{{ "Update my mood" | t}}</a>
+
+          </div>
+          <div class="small-12 medium-4 column profile-dashboard-mood-button-container">
+
+            <a class="button profile-dashboard-mood-button" href="{{ url('profile/mood-monitor') }}" class="button">{{ "My mood diary" | t}}</a>
+
+          </div>
+          <div class="small-12 medium-4 column profile-dashboard-mood-button-container">
+
+            <a class="button profile-dashboard-mood-button" href="{{ url('profile/my-answers') }}" class="button">{{ "My answers" | t}}</a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {# display response appropriate to mood indicator #}
+    {% if date(lastViewedDate) > date('-12hours') %}
+      {% set lastLoginTime = "Less than 12 hours" %}
+    {% else %}
+      {% set lastLoginTime = "More than 12 hours" %}
+    {% endif %}
+
+    <div class="profile-dashboard-here-for-self">
+      <div class="profile-dashboard-suggestions__container">
+        {% for suggestions in entry.answerResponse if suggestions.lastLoginTime == lastLoginTime %}
+          {#
+                                                                                          			{% if moodAnswers|length > 0 %}
+                                                                                          				
+                                                                                          				{% if suggestions.type == "suggestions" and suggestions.minScore <= totalMoodScore and suggestions.maxScore >= totalMoodScore %}
+                                                                                          				<div class="row">
+                                                                                          					<div class="column">
+                                                                                          						<div class="profile-dashboard-message">
+                                                                                          							{{ suggestions.message }}
+                                                                                          						</div>		
+                                                                                          					</div>
+                                                                                          				</div>		
+                                                                                          				{% endif %}
+                                                                                          
+                                                                                          			{% else %}
+                                                                                          			#}
+          {# No responses been given yet so show incompleted message #}
+            {% if suggestions.type == "incomplete" %}
+              <div class="row"> <div class="column">
+                <h3 class="profile-dashboard-response-heading">{{ suggestions.heading }}</h3>
+                <div class="profile-dashboard-response-text">
+                  {{ suggestions.body }}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+
+          {#
+                                                                                          			{% endif %}
+                                                                                          			#}
+        {% endfor %}
+
+        <div class="row">
+          <div class="small-12 column">
+            <div class="profile-dashboard-suggestions__message">
+              {{ "Within each topic we’ve highlighted"|t }}
+              <span class="ss-icon ss-star"></span>
+              {{ " areas that might be useful based on your answers"|t }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="profile-dashboard-here-for-other profile-dashboard-here-for-other-content">
+      {% for suggestions in entry.answerResponse if suggestions.type == "hereForOther" and suggestions.minScore <= totalMoodScore and suggestions.maxScore >= totalMoodScore %}
+        <div class="row">
+          <div class="column">
+            <h3 class="profile-dashboard-response-heading">{{ suggestions.greeting }}</h3>
+            <div class="profile-dashboard-message">
+              {{ suggestions.message }}
+            </div>
+
+          </div>
+        </div>
+
+      {% endfor %}
+
+    </div>
+
+    <div class="profile-dashboard-module-wrapper">
+      {% cache %}
+      <div class="row profile-dashboard-here-for-other">
+        <div class="small-12 column">
+          <h3 class="light-heading ">{{ "Sections for young people" |t }}</h3>
+        </div>
+      </div>
+
+      {%if showModuleSelf.slug == "what-is-depression" or showModuleSelf.slug == "possible-reasons" or showModuleSelf.slug == "self-help" %}
+        <div class="row profile-dashboard-row-has-hint">
+        {% else %}
+          <div class="row">
+          {%endif %}
+
+          {% for module in modules %}
+
+            {% if module.slug == "where-to-get-help" and module.id != showModuleSelf.id %}
+              {% set moduleMessage2 = "If you need to talk to someone" | t %}
+              {% set moduleClass = "module-selected-perm" %}
+            {% else %}
+              {%if showModuleSelf.id == module.id %}
+                {% set moduleMessage2 = moduleMessage %}
+                {% set moduleClass = "module-selected-perm" %}
+              {% else %}
+                {% set moduleMessage2 = "" %}
+                {% set moduleClass = "module-no-hint" %}
+              {% endif %}
+            {% endif %}
+
+            <div class="small-12 medium-4 column profile-dashboard-module-column-{{ cycle([1,2,3], loop.index0 ) }} {{ moduleClass }}">
+              <div class="profile-dashboard-module-container profile-dashboard__module-container-{{module.slug}}  {{ module.moduleColour }} {% if module.id == showModuleOther.id %}profile-dashboard-here-for-self{% endif %} ">
+
+                {% if moduleMessage2 %}
+                  <div class="profile-dashboard-module-hint">
+                    {{ moduleMessage2 }}
+                  </div>
+                {% endif %}
+
+
+                <h4 class="profile-dashboard-module-heading invert-module-block-themed {% if module.id == showModuleSelf.id %}profile-dashboard-module-show-self{% endif %}">
+                  <a href="{{ module.getUrl() }}">
+                    {% set image = module.image|first %}
+
+                    <div class="profile-dashboard-module-image-container">
+                      {% if image %}
+                        <img class="profile-dashboard-module-image" src="{{ image.imageFile.first().url }}" alt="{{ image.imageAlt }}"/>
+                      {% endif %}
+                    </div>
+
+                    <div>{{ module.title}}</div>
+
+                  </a>
+                </h4>
+
+                <div class="profile-dashboard-module-description">{{ module.body }}</div>
+
+              </div>
+            </div>
+
+            {% if loop.last %}
+            </div>
+          </div>
+        {% else %}
+
+          {% if loop.index is divisible by(3) %}
+          </div>
+
+        </div>
+        {# end tag for profile-dashboard-module-wrapper #}
+
+        <div class="profile-dashboard-module-wrapper">
+          <div class="row profile-dashboard-row-has-hint">
+
+          {% endif %}
+        {% endif %}
+
+      {% endfor %}
+    </div>
+    {% endcache %}
+
+    <div class="primary-panel">
+      {% include '_partials/footer_v2' %}
+    </div>
+
+    {%include '_partials/strapline' %}
+
+
+  </div>
+
+  {% set hasVisitedDashboard = getCookie('dshVisit') %}
+  {% if not hasVisitedDashboard %}
+
+    {{ setCookie( 'dshVisit', true, 0) }}
+
+    {# TODO PLUGIN
+                            {% if moduleBookmark %}
+                              <div id="continueModal" class="reveal reveal-modal profile-dashboard__modal" data-reveal aria-labelledby="Continue previous session" aria-hidden="true" role="dialog">
+                        
+                                <div>
+                                  <h2 class="modal__heading">{{ "Would you like to continue where you left off?"|t }}</h2>
+                                  <p class="modal_para">
+                                    <a class="button profile-dashboard-mood-button profile-dashboard-mood-button--invert modal__button" href="{{ currentSubModule.url }}">{{ currentSubModule.title}}</a>
+                        
+                                  </p>
+                                  <h2 class="modal__heading">{{"Or from the beginning?"|t}}</h2>
+                                  <p class="modal_para">
+                                    <a class="modal__link" href="{{ url('what-is-depression') }}">Introduction</a>
+                                  </p>
+                                </div>
+                              </div>
+                            {% endif %}
+                            #}
+  {% endif %}
+
+</div>{% endblock %}{% block jsBlock %}
+<script type="text/javascript">
+  opad.initJsModule(['dashboard', 'feature-block-options']);
+</script>{% endblock %}

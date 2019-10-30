@@ -1,0 +1,9 @@
+a, a:hover, a:focus {
+	text-decoration: underline;
+}
+ 
+p {
+	a, a:hover, a:focus {
+		text-decoration: underline;
+	}	
+}

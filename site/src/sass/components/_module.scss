@@ -1,0 +1,410 @@
+@mixin nav-arrow($container-height:$module-nav-height){
+
+		z-index: 10; // Ensure its above others when opening/closing
+		position: relative;
+
+		&:after{
+			content: $symbol-chevron-up;
+			padding: 1px 0 0 1px;
+			font-family: $symbol-font-family;
+			position: absolute;
+			top: rem-calc($container-height/4);
+			right: 0;
+			@include circle-icon($container-height/2, 16);
+
+			@include transition-property(transform);
+			@include transition-duration(0.1s);
+			@include transition-timing-function(linear);
+		}
+
+
+
+		&.nav-arrow--closed:after{
+			@include rotate(180deg);
+		}
+}
+
+.js {
+
+	.module-nav__item {
+
+	}
+
+	.module-anchor {
+		// Position anchor so heading will be visiible below fixed header
+		position: absolute;
+		margin-top: rem-calc(100);
+
+		@media #{$medium-up}{
+			margin-top: rem-calc(120);
+		}
+	}
+/*
+	.module-nav__row--not-current{
+		max-height: rem-calc(60);
+		@include transition-property(max-height);
+		@include transition-duration(4s);
+		@include transition-timing-function(linear);
+	}
+*/
+	.module-nav--closed {
+
+		.module-nav {
+
+			&__list--level1 {
+
+				.module-nav__row--not-current {
+					max-height: 0;
+				}
+			}
+
+			@media #{$small-only}{
+
+				&__list--level2 {
+
+					.module-nav__row--not-current {
+						max-height: 0;
+					}
+					/*
+					.module-nav__item {
+						max-height: 0;
+						overflow: hidden;
+					}
+
+					.active,
+					.module-nav__item--current {
+						max-height: rem-calc(60);
+					}
+					*/
+				}
+
+			}
+
+			&__row--current{
+				.module-nav__item{
+					&:after{
+						@include rotate(180deg);
+					}
+				}
+			}
+		}
+
+	}
+
+}
+
+
+.module-block-themed{
+	padding-top: rem-calc(40);
+	padding-bottom: rem-calc(60);
+}
+
+
+.module-nav-container {
+	padding: 0;
+}
+
+.module-nav-container.fixed {
+	left: auto;
+}
+
+.module-nav {
+	/* Limit width of nav otherwise it goes full screen width when in fixed position with Magallan */
+	/*
+	max-width: $small-breakpoint;
+	@media #{$medium-up} {
+		max-width: $medium-breakpoint;
+	}
+	*/
+	&__list {
+		cursor: pointer;
+		margin-bottom: 0;
+	}
+
+	&__row {
+		font-size: rem-calc(18);
+		font-weight: bold;
+		height: rem-calc($module-nav-height);
+		max-height: rem-calc($module-nav-height);
+		line-height: rem-calc($module-nav-height);
+		list-style: none;
+		position: relative;
+		text-align: center;
+		overflow: hidden;
+
+		@media #{$small-only}{
+			// Override breadcrumb settings on medium viewport
+			left: auto !important;
+			width: 100% !important;
+		}
+	}
+
+	&__row--hidden{
+		display: none;
+	}
+
+
+	&__list--level1 {
+		.module-nav__item--current{
+			@include nav-arrow();
+		}
+	}
+
+	@media #{$small-only}{
+		.module-nav__row--current {
+			.module-nav__item{
+				@include nav-arrow();
+			}
+		}
+
+		&__list--level2 {
+
+		    margin-left: rem-calc(-20); // to break out of grid and bring list item to full width of screen
+		    margin-right: rem-calc(-20);
+
+			.module-nav__row{
+				border-bottom: 1px solid rgba(51,51,51,0.2);
+
+				.module-nav__item {
+					&:after{
+						right: rem-calc(20); // To compensate on breaking out of row to allow border between items to go full screen
+					}
+				}
+
+				&--tooltip{
+					display: none;
+				}
+			}
+		}
+
+		&.module-nav--closed{
+			.module-nav__list--level2 {
+				.module-nav__row{
+					border: none;
+				}
+			}
+		}
+	}
+
+	@media #{$medium-up}{
+
+		&__list--level2 {
+			@include dot-breadcrumb(module-nav__row, module-nav__link, module-nav__link-text);
+			margin: rem-calc(18) rem-calc(50) rem-calc(50) rem-calc(50);
+
+			.module-nav__row {
+				float: left;
+				overflow: visible;
+				top: rem-calc(4);
+
+				&--tooltip{
+					display: none;
+				}
+
+
+				&--highlight:hover{
+					.module-nav__row--tooltip{
+						background: $white;
+						display: block;
+						width: rem-calc(180);
+						left: rem-calc(-90);
+						top: rem-calc(-76);
+						z-index: 200;
+						box-shadow: 0px 2px 4px rgba(0,0,0,0.5);
+
+						&:after{
+							background: url('data:image/svg+xml;utf8,<?xml version="1.0" encoding="UTF-8"?>
+							<svg width="39px" height="32px" viewBox="0 0 39 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+							    <defs>
+							        <polygon id="path-1" points="83.5 36 99 60 68 60"></polygon>
+							        <filter x="-22.6%" y="-37.5%" width="145.2%" height="158.3%" filterUnits="objectBoundingBox" id="filter-2">
+							            <feOffset dx="0" dy="-2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+							            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+							            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+							        </filter>
+							    </defs>
+							    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+							        <g id="Rectangle-3" transform="translate(-64.000000, -34.000000)">
+							            <g id="Triangle" transform="translate(83.500000, 48.000000) rotate(180.000000) translate(-83.500000, -48.000000) ">
+							                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+							                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+							            </g>
+							        </g>
+							    </g>
+							</svg>') no-repeat 50%;
+						}
+					}
+				}
+
+
+			}
+
+
+		}
+
+	}
+
+
+
+	&__item-container{
+		position: relative;
+	}
+
+
+
+
+	&__link {
+		display: block;
+		width: 100%;
+		height: 100%;
+		color: $oil;
+		text-decoration: none;
+	}
+
+	&__next-container{
+		margin-top: rem-calc(42);
+	}
+
+	&__next-header{
+		font-size: rem-calc(24);
+		line-height: rem-calc(24);
+		font-weight: bold;
+		margin-bottom: rem-calc(14);
+	}
+
+	&__next-link{
+		font-size: rem-calc(24);
+		line-height: rem-calc(24);
+		font-weight: bold;
+	}
+
+}
+
+/* Theme settings */
+@each $theme-name, $theme-settings in $themes{
+
+	$theme-color: #{map-get($theme-settings, 'color')};
+	$theme-background: #{map-get($theme-settings, 'background')};
+
+	a.module-#{$theme-name}{
+		color: $theme-background;
+	}
+
+
+	.module-#{$theme-name}{
+
+		// Used to create theme coloured nav
+		&__element{
+			background-color: $theme-background;
+
+			.module-nav__link,
+			.module-nav__link:hover,
+			.module-nav__link:visited {
+				color: $theme-color;
+			}
+		}
+
+		.module-block-themed{
+			background-color: $theme-background;
+			color: $theme-color;
+
+			h2,h3,a,a:hover,a:visited, label{
+				color: $theme-color;
+			}
+		}
+
+		.invert-module-block-themed{
+			color: $theme-background;
+
+			h2,h3,a, a:hover, a:visited, label{
+				color: $theme-background;
+			}
+		}
+
+
+		.module-nav__row {
+			&:after {
+				border-color: $theme-background;
+			}
+
+			.module-nav__link{
+				&:before{
+					content: ' ';
+					font-size: 0;
+					@include transition-property(background-color height width left top font-size);
+					@include transition-duration(0.1s); // Same speed as slider
+					@include transition-timing-function(linear);
+				}
+
+			}
+
+			&.module-nav__row--highlight {
+				.module-nav__link {
+					&:before{
+						content: $symbol-star;
+						position: absolute;
+						font-family: $symbol-font-family;
+						font-size: rem-calc(24);
+						font-weight: bold;
+						height: 30px;
+						width: 30px;
+						line-height: rem-calc(32);
+						background-color: none;
+						color: #4589B6;
+						top: 15px;
+						left: $column-gutter;
+
+						@media #{$medium-up}{
+							top: -12px;
+							left: -15px;
+							font-size: rem-calc(16);
+							font-weight: normal;
+							color: $oil;
+						}
+
+					}
+				}
+			}
+
+			&[data-status="viewed"],
+			&[data-status="current"] {
+
+
+				@media #{$medium-up}{
+
+					.module-nav__link {
+
+						color: $oil;
+
+						&:before{
+							//content: $symbol-circle-checked;
+							background-color: $theme-background;
+						}
+					}
+
+					&.module-nav__row--highlight {
+						.module-nav__link {
+							&:before{
+								color: $white;
+							}
+						}
+					}
+				}
+			}
+
+
+
+
+		}
+
+		.slick-dots{
+			.slick-active {
+				button{
+					background: $theme-color;
+				}
+			}
+		}
+
+
+	}
+}

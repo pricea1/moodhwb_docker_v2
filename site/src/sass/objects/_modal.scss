@@ -1,0 +1,18 @@
+.reveal-modal{
+	text-align: center;
+	min-height: auto;
+	top: rem-calc(50px) !important;
+
+	@media #{$medium-up}{
+		top: rem-calc(150px) !important;
+	}
+}
+
+.modal-button-container{
+	margin-top: rem-calc(30);
+}
+
+.modal-save-profile-button{
+	min-width: rem-calc(160);
+	margin: auto rem-calc(10);
+}
