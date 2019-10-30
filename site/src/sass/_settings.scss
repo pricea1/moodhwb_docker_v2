@@ -1,0 +1,77 @@
+/* Themes */
+$primary-color: rgb(52, 102, 136);
+$dark-primary-color: rgb(61, 148, 144);
+$menu-background-current: rgb(60, 134, 131);
+$highlight-colour: rgb(133, 133, 133);
+$mood-monitor-colour: rgb(232,232,212);
+$profile-colour: $mood-monitor-colour;
+$range-slider-bg: rgb(202, 194, 182);
+$range-slider-border: rgba(0, 0, 0, 0);
+
+$link-color: #346688;
+$link-color-hover: #333;
+$mood-color-positive: rgb(84, 183, 110);
+$mood-color-neutral: rgb(252, 193, 71);
+$mood-color-negative: rgb(246, 118, 123);
+
+@import "foundation-settings";
+
+/* Colours */
+$white: #fff;
+$dark: #3f3d32;
+
+/* Symbol font settings */
+$symbol-font-family: 'SSStandard';
+$symbol-font-default-size: rem-calc(24);
+$symbol-circle-fill: '\f111';
+$symbol-circle-nofill: '\f10c';
+$symbol-circle-checked: '\f058';
+$symbol-chevron-down: '\f501';
+$symbol-chevron-up: '\f500';
+$symbol-chevron-left: '\25C5';
+$symbol-chevron-right: '\25BB';
+$symbol-arrow-right: '\27A1';
+$symbol-video-play: '\25B6';
+$symbol-video-replay: '\21BA';
+$symbol-video-loading: '\EB83';
+$symbol-checked: '\2713';
+$symbol-module-arrow: '\25B4';
+$symbol-section-pointer: '\25BE';
+$symbol-tick: '\2713';
+$symbol-bookmark: '\1F516';
+$symbol-delete: '\2421';
+$symbol-star: '\22C6';
+
+$module-nav-height: 60;
+
+$button-bg-color-invert: rgba(255,255,255,1);
+$button-bg-color-hover-invert: rgba(0,0,0,0.3);
+$button-color-invert: $oil;
+
+$themes: (
+	theme-1: (
+		background: #4589b6,
+		color: $white
+	),
+	theme-2: (
+		background: #42b389,
+		color: $white
+	),
+	theme-3: (
+		background: #f7c53e,
+		color: $dark
+	),
+	theme-4: (
+		background: #f9a73c,
+		color: $dark
+	),
+	theme-5: (
+		background: #75d3ca,
+		color: $dark
+	),
+	theme-6: (
+		background: #f7737c,
+		color: $dark
+	),
+
+)

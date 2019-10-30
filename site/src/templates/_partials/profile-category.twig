@@ -1,0 +1,16 @@
+{% set categoryName = question.categoryType.value %}
+{% set fieldName = question.categoryId %}
+
+<div class="profile-question">
+<div class="profile-question--inner">
+	<input name="profileQuestionType[{{ question.categoryId }}]" class="profile-question-type" type="hidden" value="{{ question.type }}" />
+	<input name="profileQuestionId[{{ question.categoryId }}]" class="profile-question-questionid" type="hidden" value="{{ fieldName }}" />
+	<div class="text-center profile-question-heading">
+		{{ question.text}}
+	</div>
+
+{% set showAllCats = true %}
+	{% include "_partials/user-category-list.twig" %}
+
+</div>
+</div>

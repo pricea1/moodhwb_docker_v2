@@ -1,0 +1,18 @@
+{# Concatenate the children on the requested module to append to module page #}
+{{ entry.type }}
+{% if entry.type == "modules" %}
+
+		{# Append sub module content #}
+		{% set currentModule = entry %}
+		{% for entry in currentModule.getChildren() %}
+			{% if not loop.first %}
+				<a class="module-anchor" name="{{ entry.slug }}"></a>
+				<div data-uri="{{entry.uri}}" data-magellan-destination="{{ entry.slug }}">
+					{% include "module/_layout/" ~ entry.type %}
+				</div>
+			{% endif %}
+		{% endfor %}
+
+		{% include "module/_layout/featureBlockFeedback" %}
+
+{% endif %}

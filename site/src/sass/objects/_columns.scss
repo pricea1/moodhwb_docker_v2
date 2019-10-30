@@ -1,0 +1,50 @@
+.no-csscolumns {
+	// Settings for when browser doesn't support CSS multi columsn eg. ie9
+	@media #{$small-only}{
+		// Stack two columns on small views
+		.columnizer-column{
+			width: 100% !important;
+			float: none !important;
+		}
+	}
+
+	@media #{$medium-up}{
+		.columnizer-first {
+			padding-right: rem-calc(10);
+		}
+		.columnizer-last {
+			padding-left: rem-calc(10);
+		}
+	}
+}
+
+@media #{$medium-up}{
+
+	.two-columns,
+	.three-columns{
+		@include column-gap(normal);
+
+		>*{
+			// give it a bottom margin so column items lines up
+		    margin-bottom: 1px;
+			display: block;
+			@include break-inside(avoid);
+
+		}
+
+		>p {
+			padding-bottom: $paragraph-line-height;
+		}
+
+	}
+
+	.two-columns{
+		@include column-count(2);
+	}
+
+	.three-columns{
+		@include column-count(3);
+	}
+}
+
+

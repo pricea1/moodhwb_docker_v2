@@ -1,0 +1,68 @@
+.link{
+
+	font-size: rem-calc(18);
+
+	&--dark{
+		color: $link-color;
+
+		&__icon{
+			background: $link-color;
+		}
+	}
+
+	&:hover, &:focus{
+		 cursor: pointer;
+
+		.link--dark{
+			color: $link-color-hover;
+
+			.link--dark__icon{
+				background: $link-color-hover;
+			}
+		}
+
+
+	}
+
+
+	&__video{
+		font-weight: bold;
+	}
+
+	@media #{$medium-up}{
+		font-size: rem-calc(24);
+	}
+
+	.ss-icon{
+		background-color: $link-color;
+		color: $white;
+		font-size: rem-calc(16);
+		border-radius: 30px;
+		display: inline-block;
+	    width: rem-calc(30);
+	    height: rem-calc(30);
+	    margin-right: rem-calc(10);
+	    vertical-align: text-top;
+
+	    &::before{
+	    	margin-left: rem-calc(2);
+	    }
+
+	}
+
+	.ss-play{
+
+		&::before{
+			// Align video icon to center of container
+			margin-left: rem-calc(5);
+			line-height: rem-calc(34);
+		}
+	}
+
+	&:hover, &:focus{
+
+		.ss-icon {
+		   	background-color: $link-color-hover;
+		}
+	}
+}

@@ -1,0 +1,9 @@
+html:not(.js){
+	.non-js-hide {
+		display: none !important;
+	}
+}
+
+.hide {
+	display: none !important;
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="175px" height="68px" viewBox="0 0 175 68" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 44.1 (41455) - http://www.bohemiancoding.com/sketch -->
+    <title>Rectangle 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="LargeViewport" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD" transform="translate(-637.000000, -383.000000)" fill="#FFFFFF">
+            <g id="Rectangle-3" transform="translate(641.000000, 385.000000)">
+                <rect x="0" y="0" width="167" height="39" rx="19.5"></rect>
+                <polygon id="Triangle" transform="translate(83.500000, 48.000000) rotate(180.000000) translate(-83.500000, -48.000000) " points="83.5 36 99 60 68 60"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

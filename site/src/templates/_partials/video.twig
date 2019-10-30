@@ -1,0 +1,59 @@
+{% if entry.video | length %} 
+{% set video = entry.video | first %}
+
+
+<div id="videoModal" class="reveal-modal  jwplayer__modal" data-reveal aria-labelledby="Introduction video" aria-hidden="true" role="dialog">
+
+	<div class="intro-content-block-video-close">
+		<div class="close-reveal-modal intro-content-block-video-close__button">{{ "Close video" | t }}<span class="ss-icon ss-delete"></span>
+		</div>
+	</div>
+	<div class="intro-content-block-media-container">
+		<div class="intro-content-block-video-container">
+			<div id="videoElement-{{entry.slug}}" class="intro-content-block-video">Loading the player...
+			</div>
+
+			<script type="text/javascript">
+			opadVideoEl = "videoElement-{{entry.slug}}";
+			opadVideoUrl_mp4 = "{{ video.url }}";
+			opadVideoUrl_hls = "{{ video.url | replace({
+				'.mp4':'.m3u8',
+				'/video_mp4': '/video_hls3'
+				}) }}";
+
+				var playerInstance = jwplayer(opadVideoEl);
+				playerInstance.setup({
+					aspectratio: '16:9',
+					width: '100%', 
+
+					playlist: [{
+				        sources: [{ 
+				            file: opadVideoUrl_hls
+				        },{
+				            file: opadVideoUrl_mp4
+				        }]
+				    }],
+		//			    primary: "flash"
+
+				});
+
+		$(document).ready(
+			function(){		
+				$('#videoPlay').on('click', function(){
+					// Need to manually open modal to allow auto video play on mobile as it needs to be linked to click event
+						$('#videoModal').foundation('reveal', 'open');
+						playerInstance.play(true);
+				})				
+
+				$(document).on('close.fndtn.reveal', '[data-reveal]', function () {
+				  playerInstance.stop();
+				});
+		})
+
+
+			</script>
+		</div>
+	</div>
+
+</div>
+{% endif %}

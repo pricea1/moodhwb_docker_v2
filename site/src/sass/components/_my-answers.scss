@@ -1,0 +1,59 @@
+.my-answers{
+
+	&__container{
+		background: #E8E8D4;
+		padding-top: rem-calc(30);
+
+		@media #{$medium-up}{
+			padding-top: rem-calc(24);
+		}
+
+		.profile-dashboard-subheading{
+			color:  $oil;
+			font-weight: 200;
+			margin-top: 0;
+			margin-bottom: rem-calc(10);
+		}
+
+		.profile-dashboard__no-category-msg,
+		.feature-block-option-mylist--empty,
+		.feature-block-option-subheading{
+			color: $oil;
+
+		}
+
+		.profile-dashboard__details__item--edit{
+			.profile-dashboard-category-label{
+				color: $oil !important;
+			}
+
+		}
+
+		.profile-dashboard__edit-button{
+			background: rgba( 51, 51, 51, 0.5);
+		}
+	}
+
+	&__heading{
+		font-weight: 200;
+		margin-bottom: rem-calc(16);
+
+		@media #{$medium-up}{
+			font-size: rem-calc(40);
+			margin-bottom: rem-calc(10);
+		}
+	}
+
+	&__header-image-container{
+		margin-top: rem-calc(10);
+
+		@media #{$medium-up}{
+			margin-top: rem-calc(40);
+		}
+	}
+
+	&__footer-image-container{
+		margin-top: rem-calc(80);
+	}
+
+}

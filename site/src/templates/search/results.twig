@@ -1,0 +1,39 @@
+{% extends "_layout" %}
+
+{% block content %}
+
+<div class="row">
+<div class="column">
+	<h1>Search Results</h1>
+
+	{% set query = craft.request.getParam('q') %}
+	{% set entries = craft.entries.search(query).section('Modules').level([1,2]).order('score') %}
+
+	{% if entries|length %}
+	    <p>{{ entries|length }} results:</p>
+
+	    <ul class="search-results__list">
+	        {% for entry in entries %}
+	            <li class="search-results__list__entry">
+	            {% if entry.level == 2 %}
+	            	{% set parentEntry = entry.parent %}
+	            	<a href="{{ parentEntry.url }}">{{ parentEntry.title }}</a> > 
+	            {% endif %}
+	            <a href="{{ entry.url }}">{{ entry.title }}</a>
+	            {% if entry.contentBlockText %}
+		            {{ entry.contentBlockText }}
+	            {% else %}
+	            	{% if entry.level == 1 %}	            	
+	            		{{ entry.body}}
+	            	{% endif %}
+	            {% endif %}
+	            </li>
+	        {% endfor %}
+	    </ul>
+	{% else %}
+	    <p>Your search for “{{ query }}” didn’t return any results.</p>
+	{% endif %}
+</div>
+</div>
+
+{% endblock %}

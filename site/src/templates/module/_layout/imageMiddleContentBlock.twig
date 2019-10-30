@@ -1,0 +1,63 @@
+<div class="module-block image-middle-content-block">
+<div class="row">
+	<div class="small-12 columns">
+
+	<h2 class="large-heading">{{ entry.contentBlockHeading }}</h2>
+	<div class="content-block-large-paragraph content-block-text-container">
+		{{ entry.contentBlockText }}
+	</div>
+
+	</div>
+</div>
+
+{% set subItemHalf = ceil(entry.contentBlockItems.total()/2) %}
+
+<div class="row">
+
+	<div class="small-12 medium-3 column">
+
+		<div class="content-block-sub-item-container">
+			{% for item in entry.contentBlockItems|slice(0, subItemHalf) %}
+				<div class="content-block-sub-item">
+					<h3 class="content-block-subheading">{{ item.heading }}</h3>
+					{{ item.text }}
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+	<div class="small-12 medium-6 column">
+		{% if entry.contentBlockImage.first() %}
+			{% set image = entry.contentBlockImage.first() %}
+			{% include "_partials/responsive_image" %}
+		{% endif %}
+	</div>
+
+	<div class="small-12 medium-3 column">
+
+		<div class="content-block content-block-sub-item-container">
+			{% for item in entry.contentBlockItems|slice(subItemHalf, 20) %}
+				<div class="content-block-sub-item">
+					<h3 class="content-block-subheading">{{ item.heading }}</h3>
+					{{ item.text }}
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+</div>
+
+	{% if entry.contentBlockText2 %}
+	<div class="row">
+		<div class="small-12 columns">
+			<div class="content-block content-block-text-container content-block-text-container--2">
+				{{ entry.contentBlockText2 }}
+			</div>
+		</div>
+	</div>
+	{% endif %}
+
+	{% include "_partials/collapsible-content" %}
+	
+
+</div>

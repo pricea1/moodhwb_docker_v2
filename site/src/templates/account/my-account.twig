@@ -1,0 +1,99 @@
+{% extends "_layout" %}
+
+{% block content %}
+
+<div class="login-container text-center primary-panel">
+{% macro errorList(errors) %}
+    {% if errors %}
+        <ul class="errors">
+            {% for error in errors %}
+                <li>
+                <small class="error">
+                    {{ error }}
+                </small>
+                </li>
+    
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endmacro %}
+
+{% from _self import errorList %}
+
+<div class="row">
+<div class="small-12 medium-4 medium-offset-4 column">
+    <h1 class="light-heading">{{ "My Account"|t}}</h1>
+</div>
+</div>
+
+<div class="row">
+<div class="small-12 medium-4 medium-offset-4 column">
+{% if craft.request.getQuery('status') == 'emailSent' %}
+{{ entry.emailSentText }}
+{% endif %}
+
+
+<form method="post" accept-charset="UTF-8">
+
+        {{ getCsrfInput() }}
+        <input type="hidden" name="action" value="users/saveUser">
+        <input type="hidden" name="redirect" value="my-account?status=emailSent">
+        <input type="hidden" name="userId" value="{{ currentUser.id }}">
+
+        <label for="email">Email</label>
+        <input id="email"  class="radius login-input" type="text" name="email" value="{{ currentUser.email }}">
+        {% if account is defined %}
+            {{ errorList(account.getErrors('email')) }}
+        {% endif %}
+
+        <label for="password">Current Password</label>
+        <input type="password"  class="radius login-input" id="currentPassword" name="password" />
+        {% if account is defined %}
+            {{ errorList(account.getErrors('currentPassword')) }}
+        {% endif %}
+
+        <input type="submit" class="button round login-submit" value="{{ 'Change email'|t }}" />
+
+</form>
+
+</div>
+</div>
+
+<div class="row">
+<div class="small-12 medium-4 medium-offset-4 column">
+<h2 class="light-heading">Password</h2>
+
+{% if craft.request.getQuery('status') == 'pwdChanged' %}
+{{ entry.passwordChangedText }}
+{% endif %}
+
+
+<form method="post" accept-charset="UTF-8" data-abide>
+
+        {{ getCsrfInput() }}
+        <input type="hidden" name="action" value="users/saveUser">
+        <input type="hidden" name="redirect" value="my-account?status=pwdChanged">
+        <input type="hidden" name="userId" value="{{ currentUser.id }}">
+
+        <input type="password" id="currentPassword"  class="radius login-input" name="password" placeholder="{{ 'Current password'|t}}" />
+        {% if account is defined %}
+            {{ errorList(account.getErrors('currentPassword')) }}
+        {% endif %}
+
+        <input type="password" id="newPassword"  class="radius login-input" name="newPassword" placeholder="{{ 'New password'|t}}" />
+        {% if account is defined %}
+            {{ errorList(account.getErrors('newPassword')) }}
+        {% endif %}
+
+        <input type="password" id="newPassword"  class="radius login-input" name="newPassword" placeholder="{{ 'Confirm new password'|t}}" data-equalto="newPassword"/>
+        <small class="error">The password did not match</small>
+
+        <input type="submit" class="button round login-submit" value="{{ 'Change password'|t }}" />
+
+</form>
+
+</div>
+</div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,1 @@
+opad.initJsModule(['slick-carousel','feature-block-quiz']);

@@ -1,0 +1,41 @@
+.row {
+	// Add 10px whitespace on left and right of grid (column gutter add a further 10px)
+	padding-left: rem-calc(10);
+	padding-right: rem-calc(10);
+
+	@media #{$medium-up}{
+		padding-left: rem-calc(20);
+		padding-right: rem-calc(20);		
+	}
+
+	.row {
+		@include grid-row(false);
+	}
+}
+
+.profile-dashboard-module-list-row {
+	@media #{$small-only}{
+		padding-left: rem-calc(10);
+		padding-right: rem-calc(10);
+	}
+}
+
+.layout-main-container {
+	margin: 0 auto; max-width: $medium-breakpoint;
+}
+
+.custom-grid{
+
+	&__tablet-6{
+
+		@media (min-width: 763px) {
+			width: 50%;
+
+			&:nth-child(odd){
+				clear: left;
+			}			
+		}
+
+
+	}
+}

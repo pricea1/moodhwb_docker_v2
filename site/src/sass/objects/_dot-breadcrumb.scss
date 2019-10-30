@@ -1,0 +1,145 @@
+
+@mixin dot-breadcrumb($list-item, $dot-item, $dot-text) {
+
+	cursor: auto;
+	position: relative;
+	min-height: rem-calc(80);
+
+	// Compensate for size of breadcrumb circle
+	margin-left: rem-calc(5);
+	margin-right: rem-calc(5);
+
+	// Add margins so text can fit in on medium+ viewport
+	@media #{$medium-up}{
+		margin-left: rem-calc(85);
+		margin-right: rem-calc(85);
+	}
+
+
+	.#{$list-item} {
+	    position: absolute; // so that before and after content is positioned absolute to this element
+
+		&:before,
+		&:after {
+			content: ' ';
+			height: 10px;
+			display: block;
+			border-top: 5px solid $iron;
+			position: absolute;
+			width: 100%;
+		}
+
+		&:after {
+			max-width: 0;
+			overflow: hidden;
+		    position: absolute;
+		    border-top: 5px solid $oil;
+		    top: 0;
+
+			@include transition-property(max-width);
+			@include transition-duration(0.5s); // Same speed as slider
+			@include transition-timing-function(linear);
+		}
+
+		&:last-of-type:before,
+		&:last-of-type:after{
+			display:none;
+		}
+
+
+		@media #{$medium-up}{
+			font-weight: normal;
+
+			&.module-nav__row--current {
+				font-weight: bold;
+			}
+		}
+
+		.#{$dot-text}{
+			position: absolute;
+			font-size: rem-calc(14);
+			left: rem-calc(-46);
+  		top: 5px;
+  		width: rem-calc(90);
+  		line-height: rem-calc(20);
+	    margin-top: rem-calc(25);
+		}
+
+	}
+
+	.module-nav__row-last{
+		width: 0 !important;
+	}
+
+	.#{$dot-item} {
+
+		display: inline;
+
+		.profile-question-nav__link-text{
+			display: none;
+		}
+
+
+		@media #{$medium-up}{
+			    display: block;
+			    margin-left: -100%;
+			    margin-top: rem-calc(20);
+			    text-align: center;
+
+				.profile-question-nav__link-text{
+					display: inline;
+				}
+
+		}
+
+
+
+		// Adds circle to submodule navigation
+		&:before{
+			content: ' ';
+			position: absolute;
+			top: rem-calc(-5);
+			left: rem-calc(-7);
+			height: 16px;
+			width: 16px;
+			padding-left:1px;
+			padding-right: 1px;
+			text-align: center;
+			background-color: $iron;
+			z-index: 10;
+			@include border-radius(50px);
+
+
+
+		}
+
+
+	}
+
+	.#{$list-item}{
+		&[data-status="viewed"],
+		&[data-status="current"]{
+			.#{$dot-item} {
+				&:before{
+					background-color: $oil;
+				}
+			}
+		}
+	}
+
+	.#{$list-item}[data-status="current"]{
+		.profile-question-nav__link-text{
+			font-weight: bold;
+		}
+	}
+
+	.#{$list-item}[data-status="viewed"]{
+		&:after {
+			max-width: 100%;
+		}
+
+
+	}
+
+
+}

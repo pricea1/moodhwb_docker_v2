@@ -1,0 +1,34 @@
+.feature-block-feedback-container{
+	min-height: rem-calc(300);
+}
+
+.feature-block-feedback-heading{
+	margin-bottom: rem-calc(10);
+}
+
+.feature-block-feedback-text{
+	margin-bottom: rem-calc(20);
+}
+
+.feature-block-feedback-textarea{
+	height: rem-calc(100);
+}
+
+.feature-block-feedback-button{
+    height: rem-calc(30);
+    padding: 0 rem-calc(20);
+}
+
+.feature-block-feedback-thankyou{
+	display: none;
+}
+
+.form-submitted{
+	.feature-block-feedback-inputs{
+		display: none;
+	}
+
+	.feature-block-feedback-thankyou{
+		display: block;
+	}
+}

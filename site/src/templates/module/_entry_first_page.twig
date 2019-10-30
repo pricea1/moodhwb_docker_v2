@@ -1,0 +1,155 @@
+{% extends "_layout" %}
+
+{% if entry.type == "modules" %}
+  {# If viewing index page then get first child to view and get the pages to concatenate to the end #}
+  {% set currentModule = entry %}
+  {% set subModuleList = currentModule.getChildren() %}
+  {% set entry = entry.getChildren().first() %}
+
+  {% block jsBlock %}
+
+    {# Inline script to load rest of module content after first page is loaded #}
+    <script>
+      $(document).ready(function () {
+        opad.initJsModule();
+      });
+    </script>
+  {% endblock %}
+
+{% else %}
+  {% set currentModule = entry.parent %}
+{% endif %}
+
+
+{% if currentModule.moduleColour != '' %}
+  {% set moduleColourClass = currentModule.moduleColour %}
+{% else %}
+  {% set moduleColourClass = "" %}
+{% endif %}
+
+
+{% block content %}
+  {% cache using key currentModule.uri %}
+  <div
+    class="{{ moduleColourClass }}" data-modules="module">
+    {#
+        		Create nav of all available modules
+        		#}
+    {% set modules = craft.entries.section('modules').level(1) %}
+
+    <div class="module-nav-container">
+      <nav id="moduleNav" class="module-nav module-nav--closed">
+
+        <div class="module-nav__list module-nav__list--level1">
+          {% for module in modules %}
+            <div class="{{ module.moduleColour }}__element">
+              {% if currentModule.id == module.id %}
+                <div class="row module-nav__row module-nav__row--current">
+                  <div class="small-12 columns ">
+                    <div class="module-nav__item module-nav__item--current {{ module.moduleColour }}__element module-nav__link">
+                      {{ module.title }}
+                      <a href="#submodules" class="show-for-sr">{{ "List submodules"|t }}</a>
+                    </div>
+                  </div>
+                </div>
+              {% else %}
+                <div class="row module-nav__row module-nav__row--not-current {{ module.moduleColour }}__element">
+                  <div class="small-12 columns">
+                    <div class="module-nav__item ">
+                      <a class="module-nav__link" href="{{ module.url }}">{{ module.title }}</a>
+                    </div>
+                  </div>
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      </nav>
+
+      {#
+            			Create nav of current sub modules
+            			#}
+      <a id="submodules" href="#skip-submodules" class="show-for-sr">{{ "Skip submodules navigation"|t}}</a>
+      <nav id="submoduleNav" class="module-nav module-nav--closed module-theme-invert-text">
+        <div class="row">
+          <div class="small-12 columns">
+            <div class="module-nav__list module-nav__list--level2">
+
+              {% set itemCount = 0 %}
+              {% for page in entry.parent.getChildren() %}
+                {% if page.showInNav %}
+                  {% set itemCount = itemCount + 1 %}
+                {% endif %}
+              {% endfor %}
+              {% set navPercSteps = 100 / (itemCount-1) %}
+              {% set itemIndex = 0 %}
+              {% for page in entry.parent.getChildren() %}
+                <div class="module-nav__row {%if loop.first %}module-nav__row--current{% else %}module-nav__row--not-current{% endif %} {% if page.showInNav %}module-nav__row--not-hidden{% else %}module-nav__row--hidden{% endif %} {% if itemIndex == itemCount - 1%}module-nav__row-last{% endif %}" style="{% if not loop.last %}width: {{ navPercSteps }}%; {% endif %}left: {{ itemIndex * navPercSteps }}%" data-page-id="{{ page.id }}" data-page-uri="{{ page.uri }}">
+
+                  <div class="module-nav__item">
+                    <a class="module-nav__link" href="{{ page.url }}">
+                      <span class="module-nav__link-text">{{ page.title }}</span>
+                    </a>
+                  </div>
+                </div>
+
+
+                {% if page.showInNav %}
+                  {% set itemIndex = itemIndex + 1 %}
+                {% endif %}
+              {% endfor %}
+
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+
+    <div>
+
+      {% include "module/_layout/" ~ entry.type %}
+
+      {% for entry in entry.getChildren() %}
+        {% include "module/_layout/" ~ entry.type %}
+      {% endfor %}
+    </div>
+
+    {% set nextSibling = craft.entries.positionedAfter(entry).order('lft asc').first() %}
+    {% if not nextSibling %}
+      {% set nextSiblingModule = craft.entries.nextSiblingOf(entry.parent).first() %}
+      {% if nextSiblingTest.type == "modules" %}
+        {% set nextSibling = nextSiblingModule %}
+      {% endif %}
+    {% endif %}
+
+    {% set previousSibling = entry.getPrevSibling() %}
+
+    {% if not previousSibling %}
+      {% set previousSiblingModule = entry.parent.getPrevSibling() %}
+      {% if previousSiblingModule and previousSiblingModule.type == "modules" %}
+        {% set previousSibling = previousSiblingModule %}
+      {% endif %}
+    {% endif %}
+
+    {% if nextSibling %}
+      <div class="module-nav__next-container text-center">
+        <div class="module-nav__next-header">{{"Next"|t}}</div>
+
+        <a class="button profile-dashboard-mood-button profile-dashboard-mood-button--invert profile-dashboard-mood-button--not-wide" href="{{ nextSibling.url }}">{{ nextSibling.title }}</a>
+      </div>
+    {% endif %}
+    {% if previousSibling %}
+      <div class="module-nav__next-container text-center">
+        <div class="module-nav__next-header">{{"Previous"|t}}</div>
+        <a class="module-nav__next-link" href="{{ previousSibling.url }}">{{ previousSibling.title }}</a>
+      </div>
+    {% endif %}
+
+    <div id="moduleEnd"></div>
+
+  </div>
+
+  {% endcache %}
+{% endblock %}

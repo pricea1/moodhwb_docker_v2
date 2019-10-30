@@ -1,0 +1,7 @@
+<li class="button round feature-block-option-mylist__item">
+{{#if option.url }}
+	<a class="feature-block-option-mylist-item__value" data-json='{"text": "{{ option.text }}", "url": "{{ option.url }}" }' href="{{ option.url }}">{{ option.text }}</a>{{else }}
+	<span class="feature-block-option-mylist-item__value" data-json='{"text": "{{ option.text }}" }'>{{ option.text }}</span><!--
+-->{{/if }}<!--
+--><span class="feature-block-option-mylist-delete"></span>
+</li> 

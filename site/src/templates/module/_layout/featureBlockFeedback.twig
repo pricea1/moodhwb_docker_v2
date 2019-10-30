@@ -1,0 +1,38 @@
+<div id="feature-block-feedback" class="module-block module-block-themed feature-block-feedback-container" data-modules="feature-block-feedback">
+	
+
+	<div class="row">
+	<div class="small-12 columns">
+	
+	<h2 class="light-heading feature-block-feedback-heading">{{"Your opinion is really valuable" | t}}</h2>
+	<form id="featureBlockFeebackForm" method="post" accept-charset="UTF-8">
+		{{ getCsrfInput() }}
+		<input type="hidden" name="action" value="contactForm/sendMessage">
+	    <input type="hidden" name="fromEmail" value="{{ currentUser.email }}">
+	    <input type="hidden" name="message[email]" value="{{ currentUser.email }}">
+		<input type="hidden" name="message[module]" value="{{ currentModule.slug }}">
+	    {# Include options field so that option field is always sent with form even if no others are checked #}
+		
+		<div class="feature-block-feedback-inputs">
+			<div class="feature-block-feedback-text">{{ "Please tell us what you thought of this section" | t }}</div>
+
+			<textarea id="message" class="radius feature-block-feedback-textarea" name="message[body]" placeholder="{{ 'Your comments'|t }} ">{% if message is defined %}{{ message.message }}{% endif %}</textarea>
+	  
+	  		<input class="hide" name="furtherInfo" type="text"/>{# Honeypot field #}
+
+			<button type="submit" class="button round feature-block-feedback-button">{{ "Send comments" | t}}</button>
+		</div>
+
+		<div class="feature-block-feedback-thankyou">
+			{{ "Thank you for your feedback" | t}}
+		</div>
+
+	</form>
+
+	</div>
+	</div>
+
+
+
+
+</div>

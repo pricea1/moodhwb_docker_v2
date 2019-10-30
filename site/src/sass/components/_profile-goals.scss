@@ -1,0 +1,106 @@
+
+.profile-goals-form{
+	padding-top: rem-calc(10);
+}
+
+
+
+.profile-goals-add-button{
+	width: 100%;
+	margin-bottom: rem-calc(20);
+}
+
+.profile-goals-container{
+	margin-bottom: rem-calc(100);
+}
+
+.profile-goals__welcome-msg{
+
+	margin-bottom: rem-calc(95);
+	background: $white;
+
+	p{
+		@extend .light-heading;
+		margin-bottom: rem-calc(16);
+		padding-top: rem-calc(20);
+	}
+}
+
+.profile-goals-subheading-container{
+	background-color: $mood-monitor-colour;
+	height: rem-calc(60);
+}
+
+.profile-goals-subheading{
+	line-height: rem-calc(60);
+	font-size: rem-calc(20);
+	margin: 0;
+}
+
+.profile-goal__action-link{
+	float:right;
+	margin-left: rem-calc(20);
+	margin-top: rem-calc(15);
+}
+
+.profile-goals__times-completed{
+	margin-right: rem-calc(20);
+	vertical-align: middle;
+	font-weight: bold;
+}
+
+.profile-goals__activity{
+	font-size: rem-calc(20);
+	line-height: rem-calc(60);
+	vertical-align: middle;
+	font-weight: bold;
+}
+
+.profile-goals__list{
+	margin-bottom: 0;
+}
+
+.profile-goals__list-item,
+.profile-stuff-i-like__list-item {
+	max-height: rem-calc(60);
+	overflow: hidden;
+	border-bottom: 1px solid #ccc;
+
+	@include transition-property(max-height);
+	@include transition-duration(0.1s);
+	@include transition-timing-function(linear);
+}
+
+.profile-goals__list--todo {
+
+	.profile-goals__list-item{
+
+		.profile-goal__action-link[data-goal-action="undo"]{
+			display: none;
+		}
+
+		&[data-status = "deleted"]{
+			display: none;
+		}
+
+		&[data-status = "completed"]{
+			.icon-circle{
+					background: rgba(51,51,51,0.3);
+			}
+
+			.profile-goal__action-link[data-goal-action="undo"]{
+				display: block;
+			}
+			.profile-goal__action-link[data-goal-action="complete"]{
+				display: none;
+			}
+
+			.profile-goals__activity{
+				color: rgba( 51,51,51,0.3);
+		    text-decoration: line-through;
+			}
+
+		}
+	}
+
+}

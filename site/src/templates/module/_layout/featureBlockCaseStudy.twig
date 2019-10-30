@@ -1,0 +1,51 @@
+<div id="feature-block-case-study" class="module-block feature-block-case-study-container" data-modules="feature-block-case-study">
+	
+	<div class="module-block-themed ">
+
+		<div class="row">
+		{% set image = entry.image|first %}
+			{% if image %}
+				<div class="small-4 medium-2 columns">
+				
+					
+					<div class="feature-block-case-study-image-container">
+
+					{% if image and image.type == "image" %}
+						<img class="feature-block-case-study-image" src="{{ image.imageFile.first().getUrl('small') }}"
+						>
+					{% endif %}
+					</div>
+				</div>
+	
+				<div class="small-12 medium-10 columns">	
+					<quote class="feature-block-case-study-quote">{{entry.quote}}</quote>
+				</div>
+			{% else %}
+				<div class="small-12 columns">	
+					<quote class="feature-block-case-study-quote">{{entry.quote}}</quote>
+				</div>
+			{% endif %}
+
+		</div>
+	</div>
+
+
+	<div class="feature-block-case-study-more-container">
+		<div class="row">
+		<div class="small-12 columns">
+
+		<a class="feature-block-case-study-link">{{entry.featureBlockCaseStudyLinkName}}</a>
+
+		<div class="feature-block-case-study-text">
+			<div class="content-block-sub-item feature-block-case-study-text-container two-columns">
+				{{entry.body}}
+			</div>
+		</div>
+	
+		</div>
+		</div>
+
+	</div>
+
+
+</div>

@@ -1,0 +1,91 @@
+.jwplayer {
+	
+	width: 100% !important;
+	
+	&__modal {
+		background: none;
+	    border: none;
+    	box-shadow: none;
+
+    	@media #{$medium-up}{
+	    	max-width: 768px !important;
+		}
+		
+		&:focus {
+			outline: none;
+		}
+
+		.jwplayer .jw-display-icon-container{
+
+			@media #{$medium-up}{
+				margin-top: 0 ;
+				top: 130px;
+			}
+		}
+
+	}
+
+ 	.jw-background-color {
+ 		background: rgba(0,0,0,0.6) !important;
+	}
+
+	.jw-display-icon-container {
+	    width: 140px;
+	    height: 140px;
+		border: none !important;
+		margin-top: -80px;
+		
+		@media #{$medium-up}{
+			margin-top: 0 ;
+			top: 205px;
+		}
+		
+
+
+		.jw-icon-display{
+			font-family: $symbol-font-family;
+			font-size: rem-calc(40);
+			text-align: center;
+
+			&:before{
+				// Slight adjustment to vertical center ss-font
+			    position: relative;
+				top: rem-calc(5);
+			}
+		}
+	}
+
+	&.jw-state-idle {
+		.jw-icon-display:before{
+				content: $symbol-video-play !important;
+		}
+	}
+
+	&.jw-state-complete {
+		.jw-icon-display:before{
+				content: $symbol-video-replay !important;
+		}
+
+	}
+	
+	&.jw-state-buffering {
+		.jw-icon-display:before{
+				content: $symbol-video-loading !important;
+		}
+
+	}
+}
+
+@each $theme-name, $theme-settings in $themes{
+	
+	$theme-color: #{map-get($theme-settings, 'color')};
+	$theme-background: #{map-get($theme-settings, 'background')};
+
+	.module-#{$theme-name}{
+
+		.jw-button-color:hover, 
+		.jw-toggle{
+			color: $theme-background !important;
+		}
+	}
+}

@@ -1,0 +1,79 @@
+{% set categoryName = entry.categorieslist.value %}
+{% set fieldName = entry.categorieslist.value %}
+
+{% if entry.hereFor == "other" %}
+	{% set fieldName = "hereForOther" ~ fieldName|capitalize %}
+{% endif %}
+
+
+<div id="feature-block-option-{{entry.slug}}" data-option-id="{{ entry.categorieslist.value }}" class="module-block module-block-themed feature-block-option" data-modules="feature-block-options,feature-block-save-profile-modal">
+
+	<div class="row">
+	<div class="small-12 columns">
+	
+	<h2 class="light-heading feature-block-option-heading">{{ entry.heading }}</h2>
+	{% if entry.contentBlockText %}
+		<span>{{ entry.contentBlockText }}</span>
+	{% endif %}
+	<form method="post" accept-charset="UTF-8">
+		{{ getCsrfInput() }}
+		<input type="hidden" name="action" value="users/saveUser">
+	    <input type="hidden" name="userId" value="{{ currentUser.id }}">
+	    {# Include options field so that option field is always sent with form even if no others are checked #}
+	    <input type="hidden" name="fields[{{ categoryName }}][]" value=" ">
+	    {% if entry.hereFor == "other" %}
+		    <input type="hidden" name="fields[userDefinedOptionsOther]" value="{{ currentUser.userDefinedOptionsOther }}">
+		{% else %}
+			<input type="hidden" name="fields[userDefinedOptions]" value="{{ currentUser.userDefinedOptions }}">
+		{% endif %}
+
+		<input id="featureBlockOptionHasProfile" type="hidden" name="fields[hasProfile]" value="{{ currentUser.hasProfile }}">
+
+		{% include "_partials/user-category-list.twig" %}
+
+		<noscript>
+		<button type="submit" class="button">{{ "Submit answers" | t}}</button>
+		</noscript>
+
+	</form>
+
+	</div>
+	</div>
+
+
+	<div class="row">
+	<div class="small-12 columns">
+
+		<div class="feature-block-option-mylist-container" data-user-type="{% if entry.hereFor == "other" %}other{% else %}self{% endif %}">
+			{% if categoryName != "" %}
+				{% set categoryList = craft.categories.group(categoryName) %}
+				{% if categoryList|length != 0 %}
+					<h3 class="feature-block-option-subheading">{{ "Anything not listed here?"|t }}</h3>
+				{% endif %}
+	
+				{% set userCatId = entry.categorieslist.value %}
+			{% else %}
+				{% set userCatId = entry.title %}
+			{% endif %}
+			{% if entry.hereFor=="other" %}
+				<ul id="{{ userCatId | kebab }}" data-json="{% if currentUser.userDefinedOptionsOther %}{{ currentUser.userDefinedOptionsOther }}{% else %}{}{% endif %}" class="hide feature-block-option-mylist"></ul>
+			{% else %}
+				<ul id="{{ userCatId | kebab }}" data-json="{% if currentUser.userDefinedOptions %}{{ currentUser.userDefinedOptions }}{% else %}{}{% endif %}" class="hide feature-block-option-mylist"></ul>
+			{% endif %}
+			<input class="feature-block-option-mylist-input" placeholder="{{ 'Item'|t }}"><!--
+			
+			{# if 1st category has URL then show URL field too #}
+			{% set catList = craft.categories.group(categoryName) %}
+			-->{% if catList and catList.first() and catList.first().urlAddress %}<!--
+				--><input class="feature-block-option-mylist-input feature-block-option-mylist-input-url" placeholder="{{ 'URL'|t }}">
+			{% endif %}
+			<button class="round feature-block-option-mylist-add">{{ "Add"|t }} {{ categoryName |t}}</button>
+		</div>
+	
+	</div>
+	</div>
+
+	{% if not currentUser.hasProfile %}
+		{% include "_partials/save-profile-overlay" %}
+	{% endif %}
+</div>

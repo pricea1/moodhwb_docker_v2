@@ -1,0 +1,66 @@
+@import "compass/css3/flexbox";
+@import "compass/css3/transition";
+@import "compass/css3/transform";
+@import "compass/css3/columns";
+@import "compass/css3/border-radius";
+@import "compass/utilities/sprites";
+@import "compass/css3/flexbox";
+@import "sprite/*.png";
+@include all-sprite-sprites;
+
+/* CSS structure based on ITCSS by Harry Roberts - itcss.io. NETMAG June 2015 */
+@import "settings";
+
+@import "normalize"; // Foundation normalize
+@import "generic.normalize"; // Foundation normalize
+
+@import "foundation";
+@import "elements/links";
+@import "elements/lists";
+@import "elements/input-box";
+@import "elements/radio-buttons";
+@import "elements/input_range";
+@import "elements/select";
+@import "elements/fonts";
+@import "elements/text";
+@import "elements/buttons";
+
+@import "objects/grid";
+@import "objects/header";
+@import "objects/footer";
+@import "objects/menu";
+@import "objects/columns";
+@import "objects/panel";
+@import "objects/slick-carousel";
+@import "objects/dot-breadcrumb";
+@import "objects/jwplayer";
+@import "objects/svg-icons";
+@import "objects/category-list";
+@import "objects/modal";
+@import "objects/custom_checkboxes";
+@import "objects/links";
+
+
+@import "components/login";
+@import "components/home";
+@import "components/module";
+@import "components/module-collapsible-content";
+@import "components/profile";
+@import "components/profile-goals";
+@import "components/profile-stuff-i-like";
+@import "components/dashboard";
+@import "components/mood-monitor";
+@import "components/content-block";
+@import "components/feature-block";
+@import "components/feature-block-quiz";
+@import "components/feature-block-case-study";
+@import "components/feature-block-options";
+@import "components/feature-block-fact";
+@import "components/feature-block-feedback";
+@import "components/feature-block-where-next";
+@import "components/layout/intro-content-block";
+@import "components/search";
+@import "components/my-answers";
+
+
+//@import "craft-default"; // Craft default styling until actual styling can be applied

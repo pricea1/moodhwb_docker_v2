@@ -1,0 +1,34 @@
+@mixin circle-icon($circleSize, $font-size){
+	font-size: rem-calc($font-size);
+ 	width: 1px * $circleSize;
+	height: 1px * $circleSize;
+	display: inline-block;
+	background-color: rgba(51,51,51,0.75);
+	color: $white;
+	line-height: 1px * $circleSize;
+	text-align: center;
+	vertical-align: middle;
+
+	@include border-radius(rem-calc($circleSize/2));
+
+}
+
+.ss-icon {
+	font-size: $symbol-font-default-size;
+    line-height:  $symbol-font-default-size;;
+    vertical-align: middle;
+
+    &:before{
+    	line-height: rem-calc(34);
+    }
+}
+
+.ss-icon-circle {
+    @include circle-icon(30, 16);
+	padding-top: 2px;
+
+}
+
+.icon-circle{
+    @include circle-icon(30, 16);
+}

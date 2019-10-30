@@ -1,0 +1,14 @@
+
+<div id="saveProfileOverlay" class="reveal-modal not-answered" data-reveal aria-hidden="true" role="dialog">
+	<h2 id="modalTitle" class="light-heading">Would you like to save these options to your profile?</h2>
+	
+	<div>
+		{{ "Any information you submit will be strictly confidential." |t }} 
+		<a href="{{ url('help/confidentiality') }}">{{ "Unsure about this?" |t}}</a>
+		
+		<div class="modal-button-container">
+			<button id="modalSaveProfileButtonYes" class="round modal-save-profile-button">{{ "Yes" | t}}</button>
+			<button id="modalSaveProfileButtonNo" class="round modal-save-profile-button">{{ "No thanks" | t}}</button>
+		</div>
+	</div>
+</div>
