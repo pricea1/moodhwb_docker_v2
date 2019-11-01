@@ -17,7 +17,7 @@
 					<input id="profileInput{{ fieldName | kebab }}{{ category.id }}-{{ inputSuffix }}" class="profile-dashboard__input profile-dashboard__input--autoupdate user-category-input" type="checkbox" name="fields[{{ fieldName }}][]" {% if hasCategory is not null %}checked{% endif %} value="{{ category.id }}">
 					<label for="profileInput{{ fieldName | kebab }}{{ category.id }}-{{ inputSuffix }}" class="profile-dashboard-category-label profile-dashboard-__{{ categoryName }}-{{ category.slug }}">{{ category.title }}</label>
 					{% if category.urlAddress %}
-							<a class="user-category-list__link" href="{{ category.urlAddress }}"> <img class="user-category-list__link-image" src="/images/externallink_icon.png"></a>
+							<a class="user-category-list__link" href="{{ category.urlAddress }}"> <img class="user-category-list__link-image" src="/resources/images/externallink_icon.png"></a>
 					{% endif %}
 					
 					{% if category.showAlertMessage %}

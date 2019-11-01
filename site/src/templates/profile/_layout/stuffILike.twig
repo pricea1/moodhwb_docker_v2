@@ -5,60 +5,48 @@
 <div id="profileDashboardContainer" class="profile-goals-container">
 
 	<div id="profileDashboardHeadingContainer" class="profile-dashboard-heading-container">
-	
+
 		<div class="row">
 
 			<div  class="small-12 column">
 
 				<div id="profileDashboardHeading" class="profile-dashboard-heading profile-dashboard--no-arrow">
 					<h2 class="profile-dashboard-heading__text">{{ entry.heading }}</h2>
-					<button class="button radius round profile-dashboard-show-button">
-						<span class="profile-dashboard-show-button--show">{{ "Add" | t}} <span class="show-for-medium-up">{{"stuff" | t }}</span></span>
-						<span class="profile-dashboard-show-button--cancel">{{ "Close" | t }}</span>
-					</button>
 				</div>
 			</div>
 		</div>
 
 		<div id="profileDashboardDetails" class="profile-dashboard-details ">
-			<div class="profile-dashboard__details-container profile-goal__details-container">
+			<div class="profile-goal__details-container">
 
 				<div class="row">
-			
+
 						<div class="profile-stuff-i-like__new-container">
 							<form id="profileStuffILikeForm" class="profile-goals-form" method="post" accept-charset="UTF-8">
 							{{ getCsrfInput() }}
 
 							    <input type="hidden" name="action" value="profiler/stuffILike/addStuffILike">
 
+									<div  class="small-12 medium-4 column">
+
+										<input id="profileStuffILikeUrl" name="url" class="radius profile-goals-input"  placeholder="{{ "Enter a URL"| t }}" type="text">
+
+									</div>
+
 								<div  class="small-12 medium-4 column">
 
-									 <select name="category" class="radius profile-goals-select">
-								    	{% nav category in craft.categories.group('stuffILikeType') %}
-								    		<option value="{{ category.id }}">{{ category.title }}</option>
-								    	{% endnav %}
-								    </select>
+								    <input id="profileGoalActivity" name="title" class="radius profile-goals-input" type="text" placeholder="{{ "Enter a name for this"|t }}" required>
 
 								</div>
 
-								<div  class="small-12 medium-4 column">
-									
-								    <input id="profileGoalActivity" name="title" class="radius profile-goals-input" type="text" placeholder="{{ "Enter a title"|t }}">
 
-								</div>
-								
 
-								<div  class="small-12 medium-4 column">
-									
-									<input id="profileStuffILikeUrl" name="url" class="radius profile-goals-input"  placeholder="{{ "Enter a URL"| t }}" type="text">
-									
-								</div>
 
-								<div class="small-12 column">
-									<button type="submit" class="button radius round profile-goals-add-button">{{ 'Add this'|t }}</button>
+								<div class="small-12 medium-4 column">
+									<button type="submit" class="button radius round profile-goals-add-button">{{ 'Add stuff'|t }}</button>
 								</div>
 						    </form>
-						
+
 					</div>
 				</div>
 
@@ -70,28 +58,57 @@
 
 
 
-
+{#
 	{% set stuffILikeList = craft.profiler.getAllStuffILike() %}
+#}
+{% set stuffILikeList = [] %}
 
-	<div class="row">
-		<div class="small-12 column">
-			<div class="text-center profile-stuff-i-like__welcome-msg {% if stuffILikeList | length != 0 %}hide{% endif %}">
-				<div class="light-heading profile-stuff-i-list__welcome-msg__heading">{{ "This is where you can add some stuff that makes you feel good."| t}}</div>
-				<p class="profile-stuff-i-list__welcome-msg__text">{{ "Add a website, image or video" | t}}</p>
-				
+	<div class="text-center profile-goals__welcome-msg {% if stuffILikeList | length != 0 %}hide{% endif %}">
 
-				<picture class="profile-stuff-i-list__welcome-msg__img">
-				  <!--[if IE 9]><video style="display: none;"><![endif]-->
-				  <source srcset="/images/stuff-i-like-large.jpg" media="(min-width: 1023px)">
-				  <!--[if IE 9]></video><![endif]-->
-				  <img class="profile-empty-list-image" srcset="/images/stuff-i-like-small.jpg" alt="Stuff I Like image">
-				</picture>
+		<div class="row">
+			<div class="small-12 column">
+					<div class="light-heading profile-goals__welcome-msg__heading">
+						<p>{{ "Add some stuff"| t}}</p>
+					</div>
 			</div>
 		</div>
+
+		<div class="row">
+			<div class="small-12 medium-4 column text-center">
+						<img class="profile-empty-list-image" srcset="/resources/images/stuff-i-like-1.png" alt="Enter activity image">
+						<div class="profile-empty-list__number">
+							1.
+						</div>
+						<div class="profile-empty-list__text">
+							{{ "stuffilike-step1" | t }}
+						</div>
+			</div>
+			<div class="small-12 medium-4 column text-center">
+						<img class="profile-empty-list-image" srcset="/resources/images/stuff-i-like-2.png" alt="Enter frequency of activity image">
+						<div class="profile-empty-list__number">
+							2.
+						</div>
+						<div class="profile-empty-list__text">
+							{{ "stuffilike-step2" | t }}
+						</div>
+			</div>
+			<div class="small-12 medium-4  end column text-center">
+						<img class="profile-empty-list-image" srcset="/resources/images/stuff-i-like-3.png" alt="Add activity to list image">
+						<div class="profile-empty-list__number">
+							3.
+						</div>
+						<div class="profile-empty-list__text">
+							{{ "stuffilike-step3" | t }}
+						</div>
+			</div>
+		</div>
+
 	</div>
 
+
+
 	<div class="profile-stuff-i-like__list-container {% if stuffILikeList | length == 0 %}hide{% endif %}">
-		
+
 
 		<div class="profile-stuff-i-lie__todo-list">
 			<ul class="profile-stuff-i-like__list ">
@@ -106,30 +123,25 @@
 						<a class="profile-stuff-i-like__user-link" href="{{ stuffILike.url }}">
 						{% endif %}
 
-							{% nav category in craft.categories.group('stuffILikeType').id(stuffILike.category) %}
-								<span class="ss-icon {{ category.cssClass }} profile-stuff-i-like-icon">
-								</span>
-							{% endnav %}
+						<span class="profile-stuff-i-like-icon">
+						</span><!--
+					--><span class="profile-stuff-i-like__title">{{ stuffILike.title}}</span>
 
-						
+						<a href="{{ actionUrl('profiler/stuffILike/deleteStuffILike', { stuffILikeId: stuffILike.id }) }}" class="profile-goal__action-link profile-stuff-i-like__action-link" data-stuff-i-like-action="delete"><span class="show-for-sr">{{ 'Delete'|t }}</span><span class="ss-icon ss-icon-circle ss-delete"></span></a>
 
-							<span class="profile-stuff-i-like__title">{{ stuffILike.title}}</span>
-							
-							<a href="{{ actionUrl('profiler/stuffILike/deleteStuffILike', { stuffILikeId: stuffILike.id }) }}" class="profile-goal__action-link profile-stuff-i-like__action-link" data-stuff-i-like-action="delete"><span class="show-for-sr">{{ 'Delete'|t }}</span><span class="ss-icon ss-icon-circle ss-delete"></span></a>
-						
 						{% if stuffILike.url %}
 							</a>
 						{% endif %}
-						
+
 						</div>
 						</div>
-			
+
 					</li>
 				{% endfor %}
 			</ul>
 		</div>
 	</div>
-</div>
+
 
 {% endblock %}
 

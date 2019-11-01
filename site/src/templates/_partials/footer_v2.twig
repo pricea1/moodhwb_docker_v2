@@ -7,7 +7,7 @@
 
 				<div class="small-12 medium-4 column ">
 					<div>
-			
+
 						<h4 class="profile-dashboard-module-heading invert-module-block-themed">
 
 						<a href="{{ item.linkTo.first().url }}">
@@ -17,17 +17,19 @@
 							   <img class="profile-dashboard-module-image" src="{{ image.url }}" alt="{{ item.imageAlt }}" />
 							{% endif %}
 							</div>
-	
+
 						{{ item.heading }}
 						</a>
 
 						</h4>
-					{{ item.text }}
+						<div class="profile-dashboard-module-description">
+							{{ item.text }}
+						</div>
 
 					</div>
-					
+
 				</div>
-			
+
 		{% endfor %}
 
 		{% if craft.locale == "en_gb" %}
@@ -38,22 +40,24 @@
 
 		<div class="small-12 medium-4 column ">
 			<div>
-	
+
 				<h4 class="profile-dashboard-module-heading invert-module-block-themed">
 
 				<a href="{{ localeUrl }}">
 					<div class="profile-dashboard-module-image-container">
-					   <img class="profile-dashboard-module-image" src="{{ "/images/footer-language-icon-" ~ craft.locale ~ ".png" }}" alt="*" />
+					   <img class="profile-dashboard-module-image" src="{{ "/resources/images/footer-language-icon-" ~ craft.locale ~ ".png" }}" alt="*" />
 					</div>
 
 				{{ "Yn Gymraeg" |t}}
 				</a>
 
 				</h4>
-				{{ "Gall y pecyn hwn hefyd yn cael ei ddefnyddio yn y Gymraeg" | t}}
-
+				<div class="profile-dashboard-module-description">
+					{{ "Gall y pecyn hwn hefyd yn cael ei ddefnyddio yn y Gymraeg" | t}}
+				</div>
+				
 			</div>
-			
+
 		</div>
 
 	</div>

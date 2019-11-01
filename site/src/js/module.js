@@ -68,7 +68,7 @@
 		}
 */
 		initModuleNav();
-		initCollapsibleContent();
+
 		initRecommendations();
 
 	}
@@ -93,15 +93,6 @@
 			})
 	}
 
-	function initCollapsibleContent(){
-
-		$('.module-collapsible__container').addClass('module-collapsible--close');
-
-		$('.module-collapsible__link').on('click', function(){
-			$(this).parents('.module-collapsible__container').toggleClass('module-collapsible--close');
-		});
-
-	}
 
 	function initRecommendations(){
 		var request = {

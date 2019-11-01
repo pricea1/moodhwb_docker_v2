@@ -46,6 +46,8 @@
 
 	&__header-image-container{
 		margin-top: rem-calc(10);
+		max-width: 669px;
+		margin: auto;
 
 		@media #{$medium-up}{
 			margin-top: rem-calc(40);
@@ -54,6 +56,9 @@
 
 	&__footer-image-container{
 		margin-top: rem-calc(80);
+
+		max-width: 483px;
+		margin: auto;
 	}
 
 }

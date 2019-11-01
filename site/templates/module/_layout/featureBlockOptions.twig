@@ -10,7 +10,7 @@
 
 	<div class="row">
 	<div class="small-12 columns">
-	
+
 	<h2 class="light-heading feature-block-option-heading">{{ entry.heading }}</h2>
 	{% if entry.contentBlockText %}
 		<span>{{ entry.contentBlockText }}</span>
@@ -50,7 +50,7 @@
 				{% if categoryList|length != 0 %}
 					<h3 class="feature-block-option-subheading">{{ "Anything not listed here?"|t }}</h3>
 				{% endif %}
-	
+
 				{% set userCatId = entry.categorieslist.value %}
 			{% else %}
 				{% set userCatId = entry.title %}
@@ -60,16 +60,16 @@
 			{% else %}
 				<ul id="{{ userCatId | kebab }}" data-json="{% if currentUser.userDefinedOptions %}{{ currentUser.userDefinedOptions }}{% else %}{}{% endif %}" class="hide feature-block-option-mylist"></ul>
 			{% endif %}
-			<input class="feature-block-option-mylist-input" placeholder="{{ 'Item'|t }}"><!--
-			
+			<input type="text" class="feature-block-option-mylist-input" placeholder="{{ 'Enter resource title'|t }}"><!--
+
 			{# if 1st category has URL then show URL field too #}
 			{% set catList = craft.categories.group(categoryName) %}
 			-->{% if catList and catList.first() and catList.first().urlAddress %}<!--
-				--><input class="feature-block-option-mylist-input feature-block-option-mylist-input-url" placeholder="{{ 'URL'|t }}">
+			--><input type="text" class="feature-block-option-mylist-input feature-block-option-mylist-input-url" placeholder="{{ 'URL'|t }} e.g. moodhwb.org.uk">
 			{% endif %}
 			<button class="round feature-block-option-mylist-add">{{ "Add"|t }} {{ categoryName |t}}</button>
 		</div>
-	
+
 	</div>
 	</div>
 

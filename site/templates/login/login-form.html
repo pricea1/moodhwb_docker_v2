@@ -44,7 +44,7 @@
 
     <div>
         <input id="loginName" class="radius login-input" type="text" name="loginName"
-        value="{{ craft.app.user.rememberedUsername }}" required aria-required="true" placeholder="{{ "Username" | t }}">
+            value="{{ craft.session.rememberedUsername }}" required aria-required="true" placeholder="{{ "Username" | t }}">
     </div>
 
     <div>
@@ -55,12 +55,12 @@
 
     <div class="text-left login-radio-row">
         <div class="input-custom-radio-container">
-            <input id="langEnglish"  class="login-radio" type="radio" value="en-GB" name="language" {% if craft.app.language == "en-GB" %}checked{% endif %}>
+            <input id="langEnglish"  class="login-radio" type="radio" value="en_gb" name="language" {% if craft.locale == "en_gb" %}checked{% endif %}>
             <label for="langEnglish">English</label>
         </div>
 
         <div class="input-custom-radio-container">
-            <input id="langWelsh"  class="login-radio" type="radio" value="cy-GB" name="language" {% if craft.app.language == "cy-GB" %}checked{% endif %}>
+            <input id="langWelsh"  class="login-radio" type="radio" value="cy_gb" name="language" {% if craft.locale == "cy_gb" %}checked{% endif %}>
             <label for="langWelsh">Cymraeg</label>
         </div>
 

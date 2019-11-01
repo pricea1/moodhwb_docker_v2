@@ -12,7 +12,7 @@
                     {{ error }}
                 </small>
                 </li>
-    
+
             {% endfor %}
         </ul>
     {% endif %}
@@ -22,7 +22,7 @@
 
 <div class="row">
 <div class="small-12 medium-4 medium-offset-4 column">
-    <h1 class="light-heading">{{ "My Account"|t}}</h1>
+    <h1 class="light-heading">{{ "Change your email"|t}}</h1>
 </div>
 </div>
 
@@ -40,13 +40,13 @@
         <input type="hidden" name="redirect" value="my-account?status=emailSent">
         <input type="hidden" name="userId" value="{{ currentUser.id }}">
 
-        <label for="email">Email</label>
+        <label class="left" for="email">Email</label>
         <input id="email"  class="radius login-input" type="text" name="email" value="{{ currentUser.email }}">
         {% if account is defined %}
             {{ errorList(account.getErrors('email')) }}
         {% endif %}
 
-        <label for="password">Current Password</label>
+        <label class="left"  for="password">Current Password</label>
         <input type="password"  class="radius login-input" id="currentPassword" name="password" />
         {% if account is defined %}
             {{ errorList(account.getErrors('currentPassword')) }}
@@ -61,7 +61,7 @@
 
 <div class="row">
 <div class="small-12 medium-4 medium-offset-4 column">
-<h2 class="light-heading">Password</h2>
+<h2 class="light-heading">{{ "Change your password"|t }}</h2>
 
 {% if craft.request.getQuery('status') == 'pwdChanged' %}
 {{ entry.passwordChangedText }}
