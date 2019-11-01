@@ -22,7 +22,6 @@
     "gulp-uglify": "^3.0.2",
     "gulp-usemin": "^0.3.30",
     "gulp-wrap": "^0.15.0",
-    "node-sass": "^4.13.0",
-    "wiredep": "^4.0.0"
+    "node-sass": "^4.13.0"
   }
 }
