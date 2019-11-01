@@ -51,7 +51,4 @@ input.login-radio{
 	margin: rem-calc(20) auto;
 	width: 100%;
 
-	@media #{$medium-up}{
-		line-height: rem-calc(40);
-	}
 }

@@ -1,9 +1,15 @@
-.footer-container{
-
+.footer-container,
+.primary-panel.footer-container{
 	padding-top: rem-calc(40);
 
 	@media #{$medium-up}{
 		padding-top: rem-calc(60);
+	}
+}
+
+.primary-panel.footer-container{
+	@media #{$medium-up}{
+		padding-bottom: rem-calc(60);
 	}
 }
 

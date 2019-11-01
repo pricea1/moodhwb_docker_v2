@@ -3,7 +3,7 @@
 	padding-bottom: rem-calc(34);
 
 	@media #{$medium-up}{
-		padding-bottom: rem-calc(87);
+		padding-bottom: rem-calc(60);
 	}
 
 	.profile-dashboard-here-for-other{
@@ -132,6 +132,9 @@
 }
 
 .profile-dashboard-radio-container{
+
+	margin-bottom: rem-calc(10);
+
 	@media #{$medium-up}{
 		display: inline-block;
 		margin-right: rem-calc(20);
@@ -478,7 +481,7 @@
 		    text-align: center;
 		    height: rem-calc(64);
 		    overflow-y: hidden;
-		    background: url(/images/module-hint-bg.png) no-repeat;
+		    background: url(/resources/images/module-hint-bg.png) no-repeat;
 		    color: $black;
 		    font-size: rem-calc(16);
 		    font-weight: bold;

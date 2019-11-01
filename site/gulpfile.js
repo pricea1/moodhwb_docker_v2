@@ -54,19 +54,19 @@ function moveImages () {
       progressive: true,
       interlaced: true
     }))
-    .pipe(gulp.dest('./web/images'));
+    .pipe(gulp.dest('./web/resources/images'));
 
 }
 
 function moveFonts() {
   return gulp.src('./src/fonts/**/*')
-    .pipe(gulp.dest('./web/fonts'));
+    .pipe(gulp.dest('./web/resources/fonts'));
 
 }
 
 function minify() {
 	gulp.src(['.src/js/feature-block/**'])
-	.pipe(gulp.dest('./web/js/feature-block/'));
+	.pipe(gulp.dest('./web/resources/js/feature-block/'));
 
 	return gulp.src(['./src/templates/_layout.html'])
 	.pipe(usemin({
@@ -74,7 +74,7 @@ function minify() {
 		js: [uglify()],
 		bower: [uglify()]
 	}))
-	.pipe(gulp.dest('./web'));
+	.pipe(gulp.dest('./web/'));
 }
 
 function moveIndexTemplate(){
@@ -91,7 +91,7 @@ function watch() {
 	gulp.watch('./src/css/**/*.css', { delay: 500 }).on('change', function(file) {
 
 		return gulp.src([file])
-		.pipe( gulp.dest("./web/css"))
+		.pipe( gulp.dest("./web/resources/css"))
 		.pipe(livereload());
 	});
 
@@ -116,5 +116,5 @@ console.log('move ' + file + " to " + destFolder);
 
 }
 
-gulp.task('build', gulp.series(moveTemplates, moveImages, moveFonts, hbtemplatesCompile, minify, moveIndexTemplate));
+gulp.task('build', gulp.series(compassCompile, moveTemplates, moveImages, moveFonts, hbtemplatesCompile, minify, moveIndexTemplate));
 gulp.task(watch);

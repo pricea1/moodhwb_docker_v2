@@ -1,6 +1,7 @@
 	{% if categoryName is defined and fieldName is defined and categoryName != "" %}
+
 		<ul class="user-category-list three-columns">
-			{% nav category in craft.categories.group(categoryName).all() %}
+			{% nav category in craft.categories.group(categoryName) %}
 				{% set hasCategory = null %}
 				{% if  currentUser[fieldName] is defined %}
 			        {% for myCategory in currentUser[fieldName] %}
@@ -17,7 +18,7 @@
 							<input id="profileInput{{ fieldName | kebab }}{{ category.id }}" class="profile-user-options__input user-category-input" type="checkbox" name="fields[{{ fieldName }}][]" {% if hasCategory is not null %}checked{% endif %} value="{{ category.id }}">
 							<label for="profileInput{{ fieldName | kebab }}{{ category.id }}" class="profile-user-options__label profile-user-options__{{ categoryName }} profile-user-options-__{{ categoryName }}-{{ category.slug }}">{{ category.title }}</label>
 							{% if category.urlAddress %}
-								<a class="user-category-list__link" href="{{ category.urlAddress }}"> <img class="user-category-list__link-image" src="/images/externallink_icon.png"></a>
+								<a class="user-category-list__link" href="{{ category.urlAddress }}"> <img class="user-category-list__link-image" src="/resources/images/externallink_icon.png"></a>
 							{% endif %}
 							{% if category.body %}
 								<div class="user-category-list__desc">{{ category.body}}

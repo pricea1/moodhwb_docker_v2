@@ -54,7 +54,7 @@
 						break;
 					}
 				}
-			}			
+			}
 		}
 
 		opad.globalInit();
@@ -100,10 +100,17 @@
 
 	function toggleSearch(){
 		$('#searchFormContainer').toggleClass('hide');
+		if ($('#searchFormContainer').hasClass('hide') ){
+			$(this).removeClass('show-search');
+			$('#searchFormInput').blur();
+		} else {
+			$('#searchFormInput').focus();
+			$(this).addClass('show-search');
+		}
 	}
 
 	$(document).ready(function(){
-		opad.init();		
+		opad.init();
 	});
 
 })(window, document, jQuery);

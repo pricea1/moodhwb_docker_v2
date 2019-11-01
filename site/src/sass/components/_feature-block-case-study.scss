@@ -47,7 +47,8 @@
 	&:before{
 		content: $symbol-module-arrow;
 		font-family: $symbol-font-family;
-
+		color: $white;
+		
 			position: absolute;
 			top: -20px;
 			left: 35px;

@@ -90,11 +90,11 @@ this["opad"]["templates"]["profileStuffILikeItem"] = Handlebars.template({"1":fu
     + alias2(alias1(((stack1 = (depth0 != null ? depth0.stuffILike : depth0)) != null ? stack1.id : stack1), depth0))
     + "\" class=\"profile-goals__list-item profile-stuff-i-like__list-item\">\n\n	<div class=\"row\">\n	<div class=\"small-12 column\">\n\n"
     + ((stack1 = helpers['if'].call(depth0,((stack1 = (depth0 != null ? depth0.stuffILike : depth0)) != null ? stack1.url : stack1),{"name":"if","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
-    + "\n		<span class=\"ss-icon profile-stuff-i-like-icon\"></span>\n\n		<span class=\"profile-stuff-i-like__title\">"
+    + "\n		<span class=\"profile-stuff-i-like-icon\"></span><!--\n\n		--><span class=\"profile-stuff-i-like__title\">"
     + alias2(alias1(((stack1 = (depth0 != null ? depth0.stuffILike : depth0)) != null ? stack1.title : stack1), depth0))
-    + "</span>\n		\n		<a href=\"/actions/profiler/stuffILike/deleteStuffILike?stuffILikeId="
+    + "</span>\n\n		<a href=\"/actions/profiler/stuffILike/deleteStuffILike?stuffILikeId="
     + alias2(alias1(((stack1 = (depth0 != null ? depth0.stuffILike : depth0)) != null ? stack1.id : stack1), depth0))
-    + "\" class=\"profile-goal__action-link profile-stuff-i-like__action-link\" data-stuff-i-like-action=\"delete\"><span class=\"show-for-sr\">Delete</span><span class=\"ss-icon ss-icon-circle ss-delete\"></span></a>\n	\n"
+    + "\" class=\"profile-goal__action-link profile-stuff-i-like__action-link\" data-stuff-i-like-action=\"delete\"><span class=\"show-for-sr\">Delete</span><span class=\"ss-icon ss-icon-circle ss-delete\"></span></a>\n\n"
     + ((stack1 = helpers['if'].call(depth0,((stack1 = (depth0 != null ? depth0.stuffILike : depth0)) != null ? stack1.url : stack1),{"name":"if","hash":{},"fn":this.program(3, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
-    + "	\n	</div>\n	</div>\n\n</li>\n\n\n";
+    + "\n	</div>\n	</div>\n\n</li>\n";
 },"useData":true});

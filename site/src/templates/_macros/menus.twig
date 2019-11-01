@@ -1,18 +1,30 @@
-{% macro generateMenu(entry) %}
-  {% import _self as menuMacros %}
-  {% if entry is defined %}
+{% cache %}
 
-    {% if entry.topMenu is defined %}
-      {% for navItem in entry.topMenu %}
-        <li class="off-canvas-list__item {% if navItem.id == entry.id %}off-canvas-list__item--current{% endif %}">{{ navItem.getLink() }}</li>
-      {% endfor %}
+{% macro generateMenu(entry, currentId) %}
+	{% import _self as menuMacros %}
+	{% if entry is defined %}
+								
+		{% if entry.topMenu is defined %}
+			{% for navItem in entry.topMenu %}
+				{% if navItem.id == currentId %}
+					<li class="off-canvas-list__item off-canvas-list__item--current">
+	            		{{ navItem.title }}
+	            	</li>
+            		
+				{% else %}
+	            	<li class="off-canvas-list__item">{{ navItem.getLink() }}</li>
+				{% endif %}
 
-      {% if entry.parent is defined %}
-        {{ menuMacros.generateMenu(entry.Parent) }}
-      {% endif %}
+        	{% endfor %}
 
-    {% endif %}
+        	{% if entry.parent is defined %}
+				{{ menuMacros.generateMenu(entry.Parent) }}
+        	{% endif %}
 
-  {% endif %}
+		{% endif %}
+       
+	{% endif %}
 
 {% endmacro %}
+
+{% endcache %}

@@ -34,9 +34,9 @@
 		<input id="profileQuestionRedirect" type="hidden" name="redirect" value="profile/dashboard" data-uri="{{ redirectUrl }}">
 		<div>
 
-		<div class="profile-question-container slick-carousel-container">	
-			
-			
+		<div class="profile-question-container slick-carousel-container">
+
+
 		{% for question in entry.profileQuestions %}
 
 			{% include "_partials/profile-" ~ question.type %}
@@ -52,11 +52,11 @@
 						<p>{{ "Is there anything about the last 7 days you'd like to add?"| t}}</p>
 					</div>
 
-					<textarea name="profileQuestionValue" class="profile-question-value profile-question--textarea" placeholder="{{"For example this could be a dairy entry over the last 7 days"|t}}"></textarea>
+					<textarea name="profileQuestionValue" class="radius profile-question-value profile-question--textarea" placeholder="{{"For example this could be a dairy entry over the last 7 days"|t}}"></textarea>
 				</div>
 
 			</div>
-			
+
 
 		</div>
 
@@ -70,8 +70,8 @@
 			</div>
 		</div>
 		</div>
-		
-		
+
+
 		<noscript>
 		<button type="submit" class="button">{{ "Submit answers" | t}}</button>
 		</noscript>

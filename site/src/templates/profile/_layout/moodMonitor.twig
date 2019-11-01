@@ -22,9 +22,9 @@ var monthNames = ["{{ "January"|t }}", "{{ "February"|t }}", "{{ "March"|t}}", "
 
 				<picture class="profile-stuff-i-list__welcome-msg__img">
 				  <!--[if IE 9]><video style="display: none;"><![endif]-->
-				  <source srcset="/images/moodmonitor-large.jpg" media="(min-width: 1023px)">
+				  <source srcset="/resources/images/moodmonitor-large.jpg" media="(min-width: 1023px)">
 				  <!--[if IE 9]></video><![endif]-->
-				  <img class="profile-empty-list-image" srcset="/images/moodmonitor-small.jpg" alt="Mood monitor image">
+				  <img class="profile-empty-list-image" srcset="/resources/images/moodmonitor-small.jpg" alt="Mood monitor image">
 				</picture>
 			</div>
 		</div>
@@ -39,10 +39,8 @@ var monthNames = ["{{ "January"|t }}", "{{ "February"|t }}", "{{ "March"|t}}", "
 
 				<div  class="small-12 column">
 
-					<div id="profileDashboardHeading" class="profile-dashboard-heading">
+					<div id="profileDashboardHeading" class="profile-dashboard-heading profile-dashboard--nav-arrow">
 						<h2 id="profileDashboardHeadingText" class="profile-dashboard-heading__text">{{ now|date("F") |t }} {{ now|date("Y") }}</h2>
-
-						<a class="button profile-dashboard-mood-button mood-monitor-mood-button" href="{{ url('profile/questions-' ~ currentUser.hereFor) }}" class="button">{{ "Update my mood" | t}}</a>
 					</div>
 				</div>
 			</div>
@@ -51,6 +49,7 @@ var monthNames = ["{{ "January"|t }}", "{{ "February"|t }}", "{{ "March"|t}}", "
 				<div class="profile-dashboard__details-container">
 
 				<div class="mood-monitor-date-container">
+				{#
 					{% set moodDateList = craft.profiler.getMoodDateList() %}
 					{% for moodYear, moodMonthList in moodDateList %}
 						{% set moodCurrentYear = loop.last %}
@@ -72,6 +71,7 @@ var monthNames = ["{{ "January"|t }}", "{{ "February"|t }}", "{{ "March"|t}}", "
 
 						</div>
 					{% endfor %}
+					#}
 				</div>
 				</div>
 			</div>
@@ -106,15 +106,7 @@ var monthNames = ["{{ "January"|t }}", "{{ "February"|t }}", "{{ "March"|t}}", "
 			{% endif %}
 		{% endfor %}
 
-		<div class="row">
-			<div class="small-12 column">
-				<h3 class="mood-monitor-chart-heading">{{ "Diary"|t }}</h3>
-				<div class="mood-monitor-diary-container-outer">
-					<div id="freetextContainer" class="mood-monitor-diary-container" data-mood-id="freetext" data-no-entry-msg="{{ "No diary entries"|t }}">
-					</div>
-				</div>
-			</div>
-		</div>
+
 
 	</div>
 {% endif %}

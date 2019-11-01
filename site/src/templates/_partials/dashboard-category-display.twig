@@ -5,14 +5,15 @@
 {% endif %}
 
 <div id="{{ categoryName }}" class="profile-dashboard__details__item-container profile-dashboard-here-for-{% if inputSuffix == "other" %}other{% else %}self{% endif %}">
-	<div class="row">
-	<div class="small-12 column">
-				<div class="profile-dashboard__details__item">
+	<div class="profile-dashboard__details__item">
+		<div class="row">
+		<div class="small-12 column">
+
 					<button class="round profile-dashboard__item-button-right profile-dashboard__submit-button" type="submit">{{ "Submit"|t }}</button>
 					<button class="non-js-hide round profile-dashboard__item-button-right profile-dashboard__edit-button" type="button"><span class="profile-dashboard__edit-button-edit-text">{{"Edit"|t}}</span><span class="profile-dashboard__edit-button-cancel-text">{{ "Close"|t }}</span></button>
 					<h4 class="profile-dashboard-subheading">{{ categoryTitle |t }}</h4>
 {% set cacheKey = 'dashboard-category-display-' ~ inputSuffix ~ categoryName %}
-{% cache using key cacheKey %}
+{% cache using key cacheKey if craft.config.cache %}
 					{% include "_partials/dashboard-category-list.twig" %}
 
 
@@ -32,23 +33,32 @@
 							</ul>
 						{% endif %}
 
-						<input class="feature-block-option-mylist-input" placeholder="{{ 'Item'|t }}"><!--
-						
-						{# if 1st category has URL then show URL field too #}
-						{% set catList = craft.categories.group(categoryName) %}
-						-->{% if catList and catList.first() and catList.first().urlAddress %}<!--
-							--><input class="feature-block-option-mylist-input feature-block-option-mylist-input-url" placeholder="{{ 'URL'|t }}">
-						{% endif %}
-						<button class="round feature-block-option-mylist-add">{{ "Add"|t }} {{ categoryName |t}}</button>
+
 
 					</div>
 {% endcache %}
 
 				</div>
+				</div>
+
+		<div class="row">
+			<div class="small-12 medium-4 column">
+				<input class=" radius feature-block-option-mylist-input" placeholder="{{ 'Item'|t }}">
+			</div>
+				{# if 1st category has URL then show URL field too #}
+				{% set catList = craft.categories.group(categoryName) %}
+				{% if catList and catList.first() and catList.first().urlAddress %}
+				<div class="small-12 medium-4 column">
+					<input class="feature-block-option-mylist-input feature-block-option-mylist-input-url" placeholder="{{ 'URL'|t }}">
+				</div>
+				{% endif %}
+				<div class="small-12 medium-4 column end">
+					<button class="round feature-block-option-mylist-add">{{ "Add"|t }} {{ categoryName |t}}</button>
+				</div>
+			</div>
 	</div>
-	</div>
-	
-	
+
+
 
 
 </div>

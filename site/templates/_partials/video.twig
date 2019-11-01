@@ -1,11 +1,11 @@
-{% if entry.video | length %} 
+{% if entry.video | length %}
 {% set video = entry.video | first %}
 
 
 <div id="videoModal" class="reveal-modal  jwplayer__modal" data-reveal aria-labelledby="Introduction video" aria-hidden="true" role="dialog">
 
 	<div class="intro-content-block-video-close">
-		<div class="close-reveal-modal intro-content-block-video-close__button">{{ "Close video" | t }}<span class="ss-icon ss-delete"></span>
+		<div class="close-reveal-modal intro-content-block-video-close__button"><span class="ss-icon ss-delete"></span>
 		</div>
 	</div>
 	<div class="intro-content-block-media-container">
@@ -24,10 +24,10 @@
 				var playerInstance = jwplayer(opadVideoEl);
 				playerInstance.setup({
 					aspectratio: '16:9',
-					width: '100%', 
+					width: '100%',
 
 					playlist: [{
-				        sources: [{ 
+				        sources: [{
 				            file: opadVideoUrl_hls
 				        },{
 				            file: opadVideoUrl_mp4
@@ -38,12 +38,12 @@
 				});
 
 		$(document).ready(
-			function(){		
+			function(){
 				$('#videoPlay').on('click', function(){
 					// Need to manually open modal to allow auto video play on mobile as it needs to be linked to click event
 						$('#videoModal').foundation('reveal', 'open');
 						playerInstance.play(true);
-				})				
+				})
 
 				$(document).on('close.fndtn.reveal', '[data-reveal]', function () {
 				  playerInstance.stop();

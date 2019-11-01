@@ -2153,7 +2153,7 @@ form .row textarea.columns {
 
 /* Label Styles */
 label {
-  color: #4d4d4d;
+  color: #333333;
   cursor: pointer;
   display: block;
   font-size: 1rem;
@@ -2172,7 +2172,7 @@ label.inline {
 }
 label small {
   text-transform: capitalize;
-  color: #676767;
+  color: #525252;
 }
 
 /* Attach elements to the beginning or end of an input */
@@ -2554,7 +2554,7 @@ span.error, small.error {
 }
 .error > label > small {
   background: transparent;
-  color: #676767;
+  color: #525252;
   display: inline;
   font-size: 60%;
   font-style: normal;
@@ -5405,7 +5405,7 @@ input[type="text"], input[type="password"] {
 }
 .input-custom-radio-container input[type="radio"]:checked + label:before {
   background: #fff;
-  border: 3px solid rgba(51, 51, 51, 0.5);
+  border: 3px solid #333333;
 }
 .input-custom-radio-container input[type="radio"] + label {
   cursor: pointer;
@@ -5418,7 +5418,7 @@ input[type="text"], input[type="password"] {
   top: 0.125rem;
   width: 1.25rem;
   height: 1.25rem;
-  background: rgba(51, 51, 51, 0.5);
+  background: #333333;
   border-radius: 1.25rem;
 }
 
@@ -5577,8 +5577,8 @@ button:focus {
 }
 
 .button, .js .profile-dashboard__details__item .profile-dashboard-category-label {
-  line-height: 1.25rem;
-  padding: 0.625rem 2.5rem;
+  line-height: 3.75rem;
+  padding: 0;
 }
 
 .button:hover, .js .profile-dashboard__details__item .profile-dashboard-category-label:hover {
@@ -5684,6 +5684,10 @@ button:focus {
   margin-left: 0.625rem;
 }
 
+.header-nav-link-list {
+  position: absolute;
+  right: 0;
+}
 .header-nav-link-list > li {
   margin-left: 1.25rem;
 }
@@ -5714,12 +5718,20 @@ button:focus {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-.footer-container {
+.footer-container,
+.primary-panel.footer-container {
   padding-top: 2.5rem;
 }
 @media only screen and (min-width: 64em) {
-  .footer-container {
+  .footer-container,
+  .primary-panel.footer-container {
     padding-top: 3.75rem;
+  }
+}
+
+@media only screen and (min-width: 64em) {
+  .primary-panel.footer-container {
+    padding-bottom: 3.75rem;
   }
 }
 
@@ -6399,11 +6411,6 @@ input.login-radio {
   margin: 1.25rem auto;
   width: 100%;
 }
-@media only screen and (min-width: 64em) {
-  .login-submit {
-    line-height: 2.5rem;
-  }
-}
 
 .home-container {
   padding-top: 0;
@@ -6414,7 +6421,7 @@ input.login-radio {
 }
 @media only screen and (min-width: 64em) {
   .home-top-section-container img {
-    width: 436px;
+    height: 436px;
     margin-top: 16px;
   }
 }
@@ -7374,26 +7381,6 @@ a.module-theme-6 {
   margin-bottom: 0;
 }
 
-.js .module-collapsible__link {
-  cursor: pointer;
-}
-.js .module-collapsible__link:after {
-  content: "";
-  font-family: "SSStandard";
-  margin-left: 0.625rem;
-  vertical-align: middle;
-}
-.js .module-collapsible__content {
-  height: auto;
-  overflow: hidden;
-}
-.js .module-collapsible--close .module-collapsible__link:after {
-  content: "▻";
-}
-.js .module-collapsible--close .module-collapsible__content {
-  height: 0;
-}
-
 .profile-question-heading p {
   font-size: 1rem;
   line-height: 1.5rem;
@@ -7467,9 +7454,6 @@ a.module-theme-6 {
   font-size: 1rem;
   margin-right: 0.625rem;
 }
-.profile-question__progress:hover .ss-icon {
-  background: #333;
-}
 
 .profile-question__icon {
   width: 5.0625rem;
@@ -7498,6 +7482,9 @@ a.module-theme-6 {
 }
 .profile-question__previous:hover, .profile-question__previous:focus {
   color: #333;
+}
+.profile-question__previous:hover .ss-icon, .profile-question__previous:focus .ss-icon {
+  background: #333;
 }
 
 .profile-range-slider {
@@ -7538,9 +7525,22 @@ a.module-theme-6 {
   max-width: 75%;
 }
 
+.profile-empty-list__number {
+  font-size: 2.25rem;
+  font-weight: bold;
+}
+
+.profile-empty-list__text {
+  margin-bottom: 3.75rem;
+}
+
 @media only screen and (min-width: 64em) {
   .profile-empty-list-image {
-    width: 308px;
+    height: 144px;
+  }
+
+  .profile-empty-list__text {
+    margin-bottom: 0;
   }
 }
 .profile-dashboard__details__item {
@@ -7588,6 +7588,7 @@ a.module-theme-6 {
 .profile-goals-add-button {
   width: 100%;
   margin-bottom: 1.25rem;
+  line-height: 2.5rem;
 }
 
 .profile-goals-container {
@@ -7702,7 +7703,7 @@ a.module-theme-6 {
 }
 @media only screen and (min-width: 64em) {
   .profile-dashboard-container {
-    padding-bottom: 5.4375rem;
+    padding-bottom: 3.75rem;
   }
 }
 .profile-dashboard-container .profile-dashboard-here-for-other {
@@ -7839,6 +7840,9 @@ a.module-theme-6 {
   }
 }
 
+.profile-dashboard-radio-container {
+  margin-bottom: 0.625rem;
+}
 @media only screen and (min-width: 64em) {
   .profile-dashboard-radio-container {
     display: inline-block;
@@ -8142,7 +8146,7 @@ a.module-theme-6 {
   text-align: center;
   height: 4rem;
   overflow-y: hidden;
-  background: url(/images/module-hint-bg.png) no-repeat;
+  background: url(/resources/images/module-hint-bg.png) no-repeat;
   color: #000000;
   font-size: 1rem;
   font-weight: bold;
@@ -8594,7 +8598,7 @@ a.module-theme-6 {
   font-weight: bold;
   min-width: 3.75rem;
   height: 1.875rem;
-  padding: 0.3125rem;
+  line-height: 1.875rem;
   margin-right: 0.625rem;
   margin-bottom: 0.625rem;
 }
@@ -8823,9 +8827,13 @@ a.module-theme-6 {
   }
 }
 
+.image-left-one-colContentBlock {
+  padding-bottom: 3.75rem;
+}
+
 .four-image-click-to-open-content-block .content-block-subheading {
   margin-top: 1.875rem;
-  line-height: 1.25rem;
+  line-height: 1.5rem;
 }
 
 .four-image-click-to-open-module-block {
@@ -9014,6 +9022,7 @@ a.module-theme-6 {
 .feature-block-case-study-more-container:before {
   content: "▴";
   font-family: "SSStandard";
+  color: #fff;
   position: absolute;
   top: -20px;
   left: 35px;
@@ -9330,6 +9339,16 @@ a.module-theme-6 {
   width: 100%;
 }
 
+.search-link .ss-delete {
+  display: none;
+}
+.search-link.show-search .ss-search {
+  display: none;
+}
+.search-link.show-search .ss-delete {
+  display: inline-block;
+}
+
 .search-form__container {
   background: #333333;
   padding: 1.25rem 0;
@@ -9337,8 +9356,8 @@ a.module-theme-6 {
 .search-form__input[type="search"] {
   display: inline-block;
   font-size: 1.125rem;
-  padding: 1.25rem;
-  line-height: 1.25rem;
+  padding: 0 1.25rem;
+  line-height: 3.75rem;
   height: 3.75rem;
   width: 100%;
   margin-bottom: 0;
@@ -9347,7 +9366,8 @@ a.module-theme-6 {
 .search-form__submit[type="submit"] {
   font-size: 1.5rem;
   font-weight: bold;
-  line-height: 1.25rem;
+  line-height: 3.75rem;
+  padding: 0;
   width: 100%;
   text-align: center;
   border-radius: 100px;
@@ -9411,6 +9431,8 @@ a.module-theme-6 {
 }
 .my-answers__header-image-container {
   margin-top: 0.625rem;
+  max-width: 669px;
+  margin: auto;
 }
 @media only screen and (min-width: 64em) {
   .my-answers__header-image-container {
@@ -9419,4 +9441,6 @@ a.module-theme-6 {
 }
 .my-answers__footer-image-container {
   margin-top: 5rem;
+  max-width: 483px;
+  margin: auto;
 }

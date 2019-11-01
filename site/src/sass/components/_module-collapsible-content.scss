@@ -14,36 +14,3 @@
 		}
 	}
 }
-.js {
-	.module-collapsible__link {
-		cursor: pointer;
-
-		&:after{
-			content: $symbol-chevron-up;
-			font-family: $symbol-font-family;
-			margin-left: rem-calc(10);
-			vertical-align: middle;
-		}
-	}
-
-	.module-collapsible {
-		
-		&__content {
-			height: auto;
-			overflow: hidden;
-		}
-
-		&--close {
-			.module-collapsible__link{
-				&:after {
-					content: $symbol-chevron-right;
-				}
-			}
-
-			.module-collapsible__content{
-				height:0;
-			}
-
-		}
-	}	
-}

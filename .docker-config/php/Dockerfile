@@ -29,6 +29,7 @@ RUN echo "upload_max_filesize = 10M" > /usr/local/etc/php/php.ini && \
 COPY --chown=www-data:www-data ./site/config /var/www/html/config
 COPY --chown=www-data:www-data ./site/modules /var/www/html/modules
 COPY --chown=www-data:www-data ./site/templates /var/www/html/templates
+COPY --chown=www-data:www-data ./site/translations /var/www/html/translations
 COPY --chown=www-data:www-data ./site/web /var/www/html/web
 COPY --chown=www-data:www-data ./site/composer.json /var/www/html/composer.json
 COPY --chown=www-data:www-data ./site/craft /var/www/html/craft
