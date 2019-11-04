@@ -4,9 +4,9 @@
 	<div class="row">
 	<div class="small-12 column">
 
-		{% set image = entry.image.first() %}
+		{% set image = entry.image.one() %}
 		{% if image %}
-			<img class="feature-block-fact-image" src="{{ image.imageFile.first().getUrl('small2medium') }}" alt="{{ image.imageAlt }}">
+			<img class="feature-block-fact-image" src="{{ image.imageFile.one().getUrl('small2medium') }}" alt="{{ image.imageAlt }}">
 		{% endif %}
 		
 		<div class="content-block-sub-item feature-block-fact-text">{{entry.body}}</div>

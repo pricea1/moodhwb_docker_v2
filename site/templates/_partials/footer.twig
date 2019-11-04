@@ -1,5 +1,5 @@
 	{% set footerEntryList = craft.entries.slug('footer') %}
-	{% set footerEntry = footerEntryList.first() %}
+	{% set footerEntry = footerEntryList.one() %}
 
 	<div class="row">
 	<div class="small-12 column text-center">
@@ -8,6 +8,6 @@
 		{{ footerEntry.footerText }}
 		</div>
 
-		<a class="button round home-footer-button" href="{{ footerEntry.footerButtonLink.first().url }}">{{ footerEntry.footerButtonText }}</a>
+		<a class="button round home-footer-button" href="{{ footerEntry.footerButtonLink.one().url }}">{{ footerEntry.footerButtonText }}</a>
 	</div>
 	</div>

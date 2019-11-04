@@ -13,12 +13,12 @@
 </div>
 </div>
 
-{% if craft.request.getQuery('status') %}
+{% if craft.app.request.getQueryParam('status') %}
 <div class="row">
 <div class="small-12 column">
 
 <p class="login-message">
-{% switch craft.request.getQuery('status') %}
+{% switch craft.app.request.getQueryParam('status') %}
 
     {% case "passwordsent" %}
         {{ "An email to reset your password has been sent"|t}}

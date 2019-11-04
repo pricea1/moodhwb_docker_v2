@@ -1,8 +1,8 @@
 {% extends "_layout" %}
 
 
-{% if craft.request.getQuery('id') and currentUser.admin %}
-	{% set profileUser =  craft.users.id( userId ).first() %}
+{% if craft.app.request.getQueryParam('id') and currentUser.admin %}
+	{% set profileUser =  craft.users.id( userId ).one() %}
 {% else %}
 	{% set profileUser = currentUser %}
 {% endif %}
@@ -128,7 +128,7 @@
 			{% for resource in resourceCategories %}
 					{% set resourceModules = resource.moduleList.ids() %}
 					{% for resourceModuleId in resourceModules %}
-						{% set resourceSubModule = craft.entries.id(resourceModuleId).first() %}
+						{% set resourceSubModule = craft.entries.id(resourceModuleId).one() %}
 						{% set resourceModule = resourceSubModule.getParent() %}
 						{% if resourceModule %}
 						== {{ resourceModule.title }}

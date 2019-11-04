@@ -14,10 +14,10 @@
 
 			<div class="content-block-sub-item-container">
 				{% for item in entry.contentBlockItems| slice(0,3) %}
-					{% if item.imageFile and item.imageFile.first() %}
+					{% if item.imageFile and item.imageFile.one() %}
 					<div class="small-12 medium-4 custom-grid__tablet-6 column">
 			
-						<img class="content-block-sub-item__image" src="{{ item.imageFile.first().getUrl('medium') }}" alt="{{ item.imageAlt }}">
+						<img class="content-block-sub-item__image" src="{{ item.imageFile.one().getUrl('medium') }}" alt="{{ item.imageAlt }}">
 
 
 					</div>

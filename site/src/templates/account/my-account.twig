@@ -28,7 +28,7 @@
 
 <div class="row">
 <div class="small-12 medium-4 medium-offset-4 column">
-{% if craft.request.getQuery('status') == 'emailSent' %}
+{% if craft.app.request.getQueryParam('status') == 'emailSent' %}
 {{ entry.emailSentText }}
 {% endif %}
 
@@ -63,7 +63,7 @@
 <div class="small-12 medium-4 medium-offset-4 column">
 <h2 class="light-heading">{{ "Change your password"|t }}</h2>
 
-{% if craft.request.getQuery('status') == 'pwdChanged' %}
+{% if craft.app.request.getQueryParam('status') == 'pwdChanged' %}
 {{ entry.passwordChangedText }}
 {% endif %}
 

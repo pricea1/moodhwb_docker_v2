@@ -19,8 +19,8 @@
 				<div class="small-12 medium-4 custom-grid__tablet-6 column {% if loop.last %}end{% endif %}">
 
 					<div class="content-block content-block-sub-item">
-						{% if item.imageFile and item.imageFile.first() %}
-						<img class="content-block-sub-item__image content-block-sub-item__image--above" src="{{ item.imageFile.first().getUrl('square4col') }}" alt="{{ item.imageAlt }}">
+						{% if item.imageFile and item.imageFile.one() %}
+						<img class="content-block-sub-item__image content-block-sub-item__image--above" src="{{ item.imageFile.one().getUrl('square4col') }}" alt="{{ item.imageAlt }}">
 						{% endif %}
 
 						{% if item.heading %}

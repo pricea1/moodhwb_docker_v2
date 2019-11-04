@@ -35,11 +35,11 @@
 		<div class="intro-content-block-media-container">
 			<div class="intro-content-block-image ">
 			 	{% if image %}
-					<img 	srcset="{{ image.imageFile.first().getUrl('fullWidthMedium') }} 768w,
-						{{ image.imageFile.first().getUrl('fullWidthLarge') }} 1024w"
+					<img 	srcset="{{ image.imageFile.one().getUrl('fullWidthMedium') }} 768w,
+						{{ image.imageFile.one().getUrl('fullWidthLarge') }} 1024w"
 						sizes="(min-width: 49em) 100vw, 100vw"
 						alt="{{image.imageAlt}}"
-						src="{{ image.imageFile.first().getUrl('fullWidthMedium') }}">
+						src="{{ image.imageFile.one().getUrl('fullWidthMedium') }}">
 			 	{% endif %}
 			</div>
 
@@ -51,7 +51,7 @@
 
 				<script type="text/javascript">
 				opadVideoEl = "videoElement-{{entry.slug}}";
-				opadVideoImage = "{{ image.imageFile.first().getUrl('fullWidthMedium') }}";
+				opadVideoImage = "{{ image.imageFile.one().getUrl('fullWidthMedium') }}";
 				opadVideoUrl_mp4 = "{{ video.url }}";
 				opadVideoUrl_hls = "{{ video.url | replace({
 					'.mp4':'.m3u8',

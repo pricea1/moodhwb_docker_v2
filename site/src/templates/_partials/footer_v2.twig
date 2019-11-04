@@ -1,16 +1,17 @@
 	{% set footerEntryList = craft.entries.slug('footer-v2') %}
-	{% set entry = footerEntryList.first() %}
+	{% set entry = footerEntryList.one() %}
 
 	<div class="row">
 
-		{% for item in entry.contentBlockItems %}
+		{% set contentBlockItems = entry.contentBlockItems.all() %}
+		{% for item in contentBlockItems %}
 
 				<div class="small-12 medium-4 column ">
 					<div>
 
 						<h4 class="profile-dashboard-module-heading invert-module-block-themed">
 
-						<a href="{{ item.linkTo.first().url }}">
+						<a href="{{ item.linkTo.one().url }}">
 							{% set image = item.imageFile|first %}
 							<div class="profile-dashboard-module-image-container">
 							{% if image %}
@@ -32,10 +33,10 @@
 
 		{% endfor %}
 
-		{% if craft.locale == "en_gb" %}
-			{% set localeUrl = craft.config.siteUrl['cy_gb'] %}
+		{% if craft.app.language == "en_gb" %}
+			{% set localeUrl = craft.app.config.general.siteUrl['cy_gb'] %}
 		{% else %}
-			{% set localeUrl = craft.config.siteUrl['en_gb'] %}
+			{% set localeUrl = craft.app.config.general.siteUrl['en_gb'] %}
 		{% endif %}
 
 		<div class="small-12 medium-4 column ">
@@ -45,7 +46,7 @@
 
 				<a href="{{ localeUrl }}">
 					<div class="profile-dashboard-module-image-container">
-					   <img class="profile-dashboard-module-image" src="{{ "/resources/images/footer-language-icon-" ~ craft.locale ~ ".png" }}" alt="*" />
+					   <img class="profile-dashboard-module-image" src="{{ "/resources/images/footer-language-icon-" ~ craft.app.language ~ ".png" }}" alt="*" />
 					</div>
 
 				{{ "Yn Gymraeg" |t}}

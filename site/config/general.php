@@ -25,7 +25,7 @@ return array(
         'useBugherd' => false,
         'verificationCodeDuration' => 'P4W',
         'omitScriptNameInUrls' => true,
-
+        'securityKey' => 'BztZemBp0C4y_mFeqavkvlfIemLaoVkaroot@a59da8de3e86'
     ),
     
     'moodhwb.dev' => array(
@@ -37,6 +37,8 @@ return array(
         ),
         'useBugherd' => true,
 //        'cacheMethod' => 'redis',
+        'securityKey' => 'BztZemBp0C4y_mFeqavkvlfIemLaoVkaroot@a59da8de3e86'
+
     ),
     'dev' => array(
      	'devMode' => true,
@@ -48,6 +50,8 @@ return array(
         'useBugherd' => true,
         'cache' => false,
 //        'cacheMethod' => 'redis',
+        'securityKey' => 'BztZemBp0C4y_mFeqavkvlfIemLaoVkaroot@a59da8de3e86'
+
     ),
     '192.168.0.24' => array(
 //      'devMode' => true,
@@ -60,6 +64,8 @@ return array(
         'omitScriptNameInUrls' => true,
         'useBugherd' => true,
 //        'cacheMethod' => 'redis',
+        'securityKey' => 'BztZemBp0C4y_mFeqavkvlfIemLaoVkaroot@a59da8de3e86'
+
     ),
     'stage' => array(
 //      'devMode' => true,
@@ -72,6 +78,7 @@ return array(
         'omitScriptNameInUrls' => true,
         'useBugherd' => true,
 //        'cacheMethod' => 'redis',
+        'securityKey' => 'BztZemBp0C4y_mFeqavkvlfIemLaoVkaroot@a59da8de3e86'
     ),
     'stage.madebymoon.com' =>array(
 //      'devMode' => true,
@@ -84,6 +91,8 @@ return array(
         'omitScriptNameInUrls' => true,
         'useBugherd' => true,
 //        'cacheMethod' => 'redis',
+        'securityKey' => 'BztZemBp0C4y_mFeqavkvlfIemLaoVkaroot@a59da8de3e86'
+
     ),
 
     'stage.moodhwb.org' => array(
@@ -95,8 +104,10 @@ return array(
         'useCompressedJs' => true,
         'omitScriptNameInUrls' => true,
         'useBugherd' => true,
-	'cacheDuration' => 'P1W',
-	'cacheMethod' => 'redis'
+        'cacheDuration' => 'P1W',
+        'cacheMethod' => 'redis',
+        'securityKey' => 'BztZemBp0C4y_mFeqavkvlfIemLaoVkaroot@a59da8de3e86'
+
     ),
 
 
@@ -108,7 +119,9 @@ return array(
         ),
         'useCompressedJs' => true,
         'omitScriptNameInUrls' => true,
-        'useBugherd' => true
+        'useBugherd' => true,
+        'securityKey' => 'BztZemBp0C4y_mFeqavkvlfIemLaoVkaroot@a59da8de3e86'
+
     ),
 
     'production' => array(
@@ -120,7 +133,9 @@ return array(
         'omitScriptNameInUrls' => true,
         'useBugherd' => true,
     'cacheDuration' => 'P1W',
-    'cacheMethod' => 'redis'
+    'cacheMethod' => 'redis',
+    'securityKey' => 'BztZemBp0C4y_mFeqavkvlfIemLaoVkaroot@a59da8de3e86'
+
     ),
 
 /*

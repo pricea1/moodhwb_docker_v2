@@ -64,7 +64,7 @@
 
 			{# if 1st category has URL then show URL field too #}
 			{% set catList = craft.categories.group(categoryName) %}
-			-->{% if catList and catList.first() and catList.first().urlAddress %}<!--
+			-->{% if catList and catList.one() and catList.one().urlAddress %}<!--
 			--><input type="text" class="feature-block-option-mylist-input feature-block-option-mylist-input-url" placeholder="{{ 'URL'|t }} e.g. moodhwb.org.uk">
 			{% endif %}
 			<button class="round feature-block-option-mylist-add">{{ "Add"|t }} {{ categoryName |t}}</button>

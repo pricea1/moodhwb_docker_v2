@@ -1,9 +1,9 @@
-{% if image.type == "image" and image.imageFile and image.imageFile.first() %}
-<img 	srcset="	{{ image.imageFile.first().getUrl('medium') }} 768w,
-		{{ image.imageFile.first().getUrl('large') }} 1024w"
+{% if image.type == "image" and image.imageFile and image.imageFile.one() %}
+<img 	srcset="	{{ image.imageFile.one().getUrl('medium') }} 768w,
+		{{ image.imageFile.one().getUrl('large') }} 1024w"
 		sizes="(min-width: 49em) 50vw, 100vw"
 		alt="{{image.imageAlt}}"
-		src="{{ image.imageFile.first().getUrl('medium') }}"
+		src="{{ image.imageFile.one().getUrl('medium') }}"
 >
 
 
