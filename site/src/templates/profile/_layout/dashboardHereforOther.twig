@@ -4,9 +4,9 @@
 {% block content %}
 OTHER
 
-{% set userId = craft.request.getQuery('id') %}
-{% if craft.request.getQuery('id') and currentUser.admin %}
-	{% set profileUser =  craft.users.id( userId ).first() %}
+{% set userId = craft.app.request.getQueryParam('id') %}
+{% if craft.app.request.getQueryParam('id') and currentUser.admin %}
+	{% set profileUser =  craft.users.id( userId ).one() %}
 {% else %}
 	{% set profileUser = currentUser %}
 {% endif %}
@@ -19,12 +19,12 @@ OTHER
 {% set moduleBookmark = craft.moduleActions.getMostRecentModuleBookmark() %}
 
 {% if moduleBookmark %}
-	{% set subModule = craft.entries.section('modules').id(moduleBookmark.submoduleId).first() %}
+	{% set subModule = craft.entries.section('modules').id(moduleBookmark.submoduleId).one() %}
 	{% set module = subModule.parent %}
 {% else %}
 	{# If no modules have been viewed then default to depression module #}
-	{% set module = craft.entries.section('modules').slug("what-is-depression").first() %}
-	{% set subModule = module.children.first() %}
+	{% set module = craft.entries.section('modules').slug("what-is-depression").one() %}
+	{% set subModule = module.children.one() %}
 {% endif %}
 
 
@@ -239,7 +239,7 @@ OTHER
 
 					<div class="profile-dashboard-module-image-container">
 					{% if image %}
-					   <img class="profile-dashboard-module-image" src="{{ image.imageFile.first().url }}" alt="{{ image.imageAlt }}" />
+					   <img class="profile-dashboard-module-image" src="{{ image.imageFile.one().url }}" alt="{{ image.imageAlt }}" />
 					{% endif %}
 					</div>
 

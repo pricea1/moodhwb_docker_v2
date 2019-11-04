@@ -34,10 +34,10 @@
 
 	<script type="text/javascript">
 	    window.craftSettings = {
-	    	csrfTokenName: "{{ craft.config.csrfTokenName|e('js') }}",
-	    	csrfTokenValue: "{{ craft.request.csrfToken|e('js') }}",
-	    	actionTrigger: "{{ craft.config.actionTrigger }}",
-	    	language: "{{ craft.locale }}",
+	    	csrfTokenName: "{{ craft.app.config.general.csrfTokenName|e('js') }}",
+	    	csrfTokenValue: "{{ craft.app.request.csrfToken|e('js') }}",
+	    	actionTrigger: "{{ craft.app.config.general.actionTrigger }}",
+	    	language: "{{ craft.app.language }}",
 	    	{%if currentUser %}
 	    	user: {
 		    	userId: "{{ currentUser.id }}",
@@ -71,7 +71,7 @@
 	<script src="/resources/js/app.min.js"></script>
 
 
-	{% if craft.config.useBugherd %}
+	{% if craft.app.config.general.useBugherd %}
 		<script type='text/javascript'>
 		(function (d, t) {
 		  var bh = d.createElement(t), s = d.getElementsByTagName(t)[0];
@@ -97,7 +97,7 @@
 											<a href="{{ siteUrl }}">
 												<span class="show-for-sr">{{ siteName }}"</span>
 												{# include logo inline so it can be changed with CSS and doesn't require additional network call #}
-												{% include "_images/logo_" ~ craft.locale ~ ".svg" %}
+												{% include "_images/logo_" ~ craft.app.language ~ ".svg" %}
 											</a>
 										</h1>
 									</section>
@@ -132,13 +132,13 @@
 
 								{% import "_macros/menus.twig" as menuMacros %}
 								{# Add menus of homepage #}
-								{{ menuMacros.generateMenu( craft.entries.id(2).first(), entry.id ) }}
+								{{ menuMacros.generateMenu( craft.entries.id(2).one(), entry.id ) }}
 
 
 								{% set classname = "off-canvas-list__item" %}
 								{% include "_partials/language-switcher.html" %}
 
-								{% if craft.session.isLoggedIn %}
+								{% if not craft.app.user.isGuest %}
 								    <li class="off-canvas-list__item">
 								    	<a href="{{ logoutUrl }}">{{ "Logout" | t}}</a>
 							    	</li>

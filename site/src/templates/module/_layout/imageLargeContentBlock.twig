@@ -13,13 +13,13 @@
 	<div class="row">
 		<div class="small-12 column">
 			<div class="content-block-image-container">
-				{% if entry.contentBlockImage.first() %}
-					{% set image = entry.contentBlockImage.first() %}
+				{% if entry.contentBlockImage.one() %}
+					{% set image = entry.contentBlockImage.one() %}
 					{% if image.type == "image" %}
 
 					<img class="image-large-content-block-image"
 							alt="{{image.imageAlt}}"
-							src="{{ image.imageFile.first().getUrl() }}"
+							src="{{ image.imageFile.one().getUrl() }}"
 					>
 
 					{% endif %}

@@ -16,8 +16,8 @@
 					<div class="small-12 medium-3 custom-grid__tablet-6 column">
 
 						<div class="content-block-sub-item four-image-click-to-open-sub-item  {% if loop.first %}four-image-click-to-open-sub-item__open{% endif %}" data-click-to-open-id="{{ item.id }}">
-							{% if item.imageFile and item.imageFile.first() %}
-								<img class="content-block-sub-item__image" src="{{ item.imageFile.first().getUrl('medium') }}" alt="{{ item.imageAlt }}">
+							{% if item.imageFile and item.imageFile.one() %}
+								<img class="content-block-sub-item__image" src="{{ item.imageFile.one().getUrl('medium') }}" alt="{{ item.imageAlt }}">
 							{% endif %}						
 							<h3 class="content-block-subheading">{{ item.heading }}</h3>
 							

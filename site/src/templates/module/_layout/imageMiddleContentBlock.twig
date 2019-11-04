@@ -27,8 +27,8 @@
 	</div>
 
 	<div class="small-12 medium-6 column">
-		{% if entry.contentBlockImage.first() %}
-			{% set image = entry.contentBlockImage.first() %}
+		{% if entry.contentBlockImage.one() %}
+			{% set image = entry.contentBlockImage.one() %}
 			{% include "_partials/responsive_image" %}
 		{% endif %}
 	</div>

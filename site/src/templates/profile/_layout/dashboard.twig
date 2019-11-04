@@ -2,7 +2,7 @@
 
 {% block content %}
 
-{% set userId = craft.request.getQuery('id') %}
+{% set userId = craft.app.request.getQueryParam('id') %}
 
 {#
 {% set moodAnswers = craft.profiler.getAllMoodScoresForUser( userId ) %}
@@ -15,21 +15,21 @@
 {#
 {% set moduleBookmark = craft.moduleActions.getMostRecentModuleBookmark() %}
 {% if moduleBookmark %}
-	{% set currentSubModule = craft.entries.section('modules').id(moduleBookmark.submoduleId).first() %}
+	{% set currentSubModule = craft.entries.section('modules').id(moduleBookmark.submoduleId).one() %}
 	{% set currentModule = currentSubModule.parent %}
 	{% set moduleMessage = "You last viewed" | t %}
 {% else %}
 #}
 	{# If no modules have been viewed then default to depression module #}
-	{% set currentModule = craft.entries.section('modules').slug("what-is-depression").first() %}
-	{% set currentSubModule = currentModule.children.first() %}
+	{% set currentModule = craft.entries.section('modules').slug("what-is-depression").one() %}
+	{% set currentSubModule = currentModule.children.one() %}
 	{% set moduleMessage = "Start your journey here" | t %}
 {#
 {% endif %}
 #}
 
 {% set showModuleSelf = currentModule %}
-{% set showModuleOther = craft.entries.section('modules').id(112).first() %} {# Family and friends module (ID:112) is treated differently on Here For Others #}
+{% set showModuleOther = craft.entries.section('modules').id(112).one() %} {# Family and friends module (ID:112) is treated differently on Here For Others #}
 
 
 {# list modules #}
@@ -105,7 +105,8 @@
 
 	<div class="profile-dashboard-here-for-self">
 		<div class="profile-dashboard-suggestions__container">
-		{% for suggestions in entry.answerResponse if suggestions.lastLoginTime == lastLoginTime %}
+		{% set answerSuggestions = entry.answerResponse.all() %}
+		{% for suggestions in answerSuggestions if suggestions.lastLoginTime == lastLoginTime %}
 			{#
 			{% if moodAnswers|length > 0 %}
 
@@ -151,7 +152,7 @@
 	</div>
 
 	<div class="profile-dashboard-here-for-other profile-dashboard-here-for-other-content">
-	{% for suggestions in entry.answerResponse if suggestions.type == "hereForOther" and suggestions.minScore <= totalMoodScore and suggestions.maxScore >= totalMoodScore %}
+	{% for suggestions in answerSuggestions if suggestions.type == "hereForOther" and suggestions.minScore <= totalMoodScore and suggestions.maxScore >= totalMoodScore %}
 		<div class="row">
 			<div class="column">
 				<h3 class="profile-dashboard-response-heading">{{ suggestions.greeting }}</h3>
@@ -180,7 +181,8 @@
 			<div class="row">
 		{%endif %}
 
-		{% for module in modules %}
+		{% set allModules = modules.all() %}
+		{% for module in allModules %}
 
 			{% if module.slug == "where-to-get-help" and module.id != showModuleSelf.id %}
 				{% set moduleMessage2 = "If you need to talk to someone" | t %}
@@ -211,7 +213,7 @@
 
 						<div class="profile-dashboard-module-image-container">
 						{% if image %}
-						   <img class="profile-dashboard-module-image" src="{{ image.imageFile.first().url }}" alt="{{ image.imageAlt }}" />
+						   <img class="profile-dashboard-module-image" src="{{ image.imageFile.one().url }}" alt="{{ image.imageAlt }}" />
 						{% endif %}
 						</div>
 

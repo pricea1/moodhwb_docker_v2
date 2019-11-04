@@ -11,7 +11,7 @@
 					<div class="feature-block-case-study-image-container">
 
 					{% if image and image.type == "image" %}
-						<img class="feature-block-case-study-image" src="{{ image.imageFile.first().getUrl('small') }}"
+						<img class="feature-block-case-study-image" src="{{ image.imageFile.one().getUrl('small') }}"
 						>
 					{% endif %}
 					</div>

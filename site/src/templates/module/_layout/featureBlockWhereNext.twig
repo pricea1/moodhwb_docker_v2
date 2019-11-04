@@ -13,7 +13,7 @@
 
 							<div class="profile-dashboard-module-image-container">
 							{% if image %}
-							   <img class="profile-dashboard-module-image" src="{{ image.imageFile.first().url }}" alt="{{ image.imageAlt }}" />
+							   <img class="profile-dashboard-module-image" src="{{ image.imageFile.one().url }}" alt="{{ image.imageAlt }}" />
 							{% endif %}
 							</div>
 							{{ nextModule.title }}

@@ -3,7 +3,7 @@
 {% block content %}
 	
 	{% set questionEntryList = craft.entries.slug('questions-' ~ currentUser.hereFor) %}
-	{% set questionEntry = questionEntryList.first() %}
+	{% set questionEntry = questionEntryList.one() %}
 
 	<div class="text-center mood-monitor-intro">
 		

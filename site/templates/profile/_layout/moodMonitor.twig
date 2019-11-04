@@ -1,7 +1,7 @@
 {% extends "_layout" %}
 
 {% set questionEntryList = craft.entries.slug('questions-self') %}
-{% set questionEntry = questionEntryList.first() %}
+{% set questionEntry = questionEntryList.one() %}
 
 {% block content %}
 

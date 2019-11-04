@@ -8,7 +8,7 @@
 {% block content %}
 
 	{# Redirect is user has already completed #}
-	{% if currentUser.hasProfile and not craft.request.getQuery('view') %}
+	{% if currentUser.hasProfile and not craft.app.request.getQueryParam('view') %}
 
 		{% redirect "profile/dashboard" %}
 
@@ -22,7 +22,7 @@
 			<div class="home-top-section-container">
 				<div class="show-for-medium-up">
 					{% for image in entry.image %}
-						<img alt="{{image.imageAlt}}" src="{{ image.imageFile.first().getUrl() }}">
+						<img alt="{{image.imageAlt}}" src="{{ image.imageFile.one().getUrl() }}">
 					{% endfor %}
 				</div>
 				<div class="text-center home-top-section">
@@ -69,7 +69,7 @@
 
 							<div class="profile-dashboard-module-image-container">
 							{% if image %}
-							   <img class="profile-dashboard-module-image" src="{{ image.imageFile.first().url }}" alt="{{ image.imageAlt }}" />
+							   <img class="profile-dashboard-module-image" src="{{ image.imageFile.one().url }}" alt="{{ image.imageAlt }}" />
 							{% endif %}
 							</div>
 	

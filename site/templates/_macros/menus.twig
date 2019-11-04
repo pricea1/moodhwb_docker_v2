@@ -5,7 +5,8 @@
 	{% if entry is defined %}
 								
 		{% if entry.topMenu is defined %}
-			{% for navItem in entry.topMenu %}
+		  {% set topMenuItems = entry.topMenu.all() %}
+			{% for navItem in topMenuItems %}
 				{% if navItem.id == currentId %}
 					<li class="off-canvas-list__item off-canvas-list__item--current">
 	            		{{ navItem.title }}

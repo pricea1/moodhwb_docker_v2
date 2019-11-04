@@ -4,7 +4,7 @@
   {# If viewing index page then get first child to view and get the pages to concatenate to the end #}
   {% set currentModule = entry %}
   {% set subModuleList = currentModule.getChildren() %}
-  {% set entry = entry.getChildren().first() %}
+  {% set entry = entry.getChildren().one() %}
 
   {% block jsBlock %}
 
@@ -116,9 +116,9 @@
       {% endfor %}
     </div>
 
-    {% set nextSibling = craft.entries.positionedAfter(entry).order('lft asc').first() %}
+    {% set nextSibling = craft.entries.positionedAfter(entry).order('lft asc').one() %}
     {% if not nextSibling %}
-      {% set nextSiblingModule = craft.entries.nextSiblingOf(entry.parent).first() %}
+      {% set nextSiblingModule = craft.entries.nextSiblingOf(entry.parent).one() %}
       {% if nextSiblingTest.type == "modules" %}
         {% set nextSibling = nextSiblingModule %}
       {% endif %}
