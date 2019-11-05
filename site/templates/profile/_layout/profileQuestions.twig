@@ -23,7 +23,7 @@
 
 
 	<form method="post" accept-charset="UTF-8">
-		{{ getCsrfInput() }}
+		{{ csrfInput() }}
 		{% if craft.request.urlReferrer == url('profile/mood-monitor') %}
 			{% set redirectUrl = craft.request.urlReferrer %}
 		{% else %}

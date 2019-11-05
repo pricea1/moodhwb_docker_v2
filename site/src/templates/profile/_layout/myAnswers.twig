@@ -35,7 +35,7 @@
 
 		<div class="feature-block-option">
 			<form id="profileDashboardForm" class="profile-dashboard__details-form" method="post" accept-charset="UTF-8">
-				{{ getCsrfInput() }}
+				{{ csrfInput() }}
 				<input type="hidden" name="action" value="users/saveUser">
 			    <input type="hidden" name="userId" value="{{ profileUser.id }}">
 					<input id="userDefinedOptionsField" type="hidden" name="fields[userDefinedOptions]" value="{% if profileUser.userDefinedOptions %}{{ profileUser.userDefinedOptions }}{% else %}{}{% endif %}">

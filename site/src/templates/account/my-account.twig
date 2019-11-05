@@ -35,7 +35,7 @@
 
 <form method="post" accept-charset="UTF-8">
 
-        {{ getCsrfInput() }}
+        {{ csrfInput() }}
         <input type="hidden" name="action" value="users/saveUser">
         <input type="hidden" name="redirect" value="my-account?status=emailSent">
         <input type="hidden" name="userId" value="{{ currentUser.id }}">
@@ -70,7 +70,7 @@
 
 <form method="post" accept-charset="UTF-8" data-abide>
 
-        {{ getCsrfInput() }}
+        {{ csrfInput() }}
         <input type="hidden" name="action" value="users/saveUser">
         <input type="hidden" name="redirect" value="my-account?status=pwdChanged">
         <input type="hidden" name="userId" value="{{ currentUser.id }}">

@@ -16,7 +16,7 @@
 		<span>{{ entry.contentBlockText }}</span>
 	{% endif %}
 	<form method="post" accept-charset="UTF-8">
-		{{ getCsrfInput() }}
+		{{ csrfInput() }}
 		<input type="hidden" name="action" value="users/saveUser">
 	    <input type="hidden" name="userId" value="{{ currentUser.id }}">
 	    {# Include options field so that option field is always sent with form even if no others are checked #}
