@@ -6,7 +6,7 @@
 	
 	<h2 class="light-heading feature-block-feedback-heading">{{"Your opinion is really valuable" | t}}</h2>
 	<form id="featureBlockFeebackForm" method="post" accept-charset="UTF-8">
-		{{ getCsrfInput() }}
+		{{ csrfInput() }}
 		<input type="hidden" name="action" value="contactForm/sendMessage">
 	    <input type="hidden" name="fromEmail" value="{{ currentUser.email }}">
 	    <input type="hidden" name="message[email]" value="{{ currentUser.email }}">

@@ -1,10 +1,12 @@
 	{% if categoryName is defined and fieldName is defined and categoryName != "" %}
 
 		<ul class="user-category-list three-columns">
-			{% nav category in craft.categories.group(categoryName) %}
+			{% set navCategories = craft.categories.group(categoryName).all() %}
+			{% nav category in navCategories %}
 				{% set hasCategory = null %}
 				{% if  currentUser[fieldName] is defined %}
-			        {% for myCategory in currentUser[fieldName] %}
+							{% set currentUserCategories = currentUser[fieldName].all() %}
+			        {% for myCategory in currentUserCategories %}
 						{% if myCategory.id == category.id %}
 							{% set hasCategory = 'true' %}
 						{% endif %}

@@ -13,7 +13,8 @@
 	<div class="row">
 
 			<div class="content-block-sub-item-container">
-				{% for item in entry.contentBlockItems| slice(0,3) %}
+				{% set contentBlockItems = entry.contentBlockItems.all() %}
+				{% for item in contentBlockItems | slice(0,3) %}
 					{% if item.imageFile and item.imageFile.one() %}
 					<div class="small-12 medium-4 custom-grid__tablet-6 column">
 			

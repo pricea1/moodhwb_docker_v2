@@ -11,7 +11,7 @@
 
 {% if	entry is not defined or entry.pagePermission is not defined or
 	entry.pagePermission is null or not
-	entry.pagePermission.find(['viewWhenLoggedOut']) %}
+	entry.pagePermission.title('viewWhenLoggedOut').all() %}
 		{% requireLogin %}
 {% endif %}
 

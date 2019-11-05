@@ -21,7 +21,7 @@
 		<div class="small-12 medium-6 column">
 
 			<div class="content-block-sub-item-container">
-			{% for itemRow in entry.contentBlockItems|batch(2) %}
+			{% for itemRow in entry.contentBlockItems.all()|batch(2) %}
 				<div class="row">
 					{% for item in itemRow %}
 						<div class="small-12 medium-6 column">

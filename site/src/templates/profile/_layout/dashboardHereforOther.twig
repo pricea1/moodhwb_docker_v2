@@ -60,7 +60,7 @@ OTHER
 			<div class="small-12 column">
 
 					<form id="profileImageForm" class="profile-dashboard-image-form" method="post" accept-charset="UTF-8" enctype="multipart/form-data">
-						{{ getCsrfInput() }}
+						{{ csrfInput() }}
 						<input type="hidden" name="action" value="users/saveUser">
 					    <input type="hidden" name="userId" value="{{ profileUser.id }}">
 						{# Show standard file upload for non JS browsers and JS enhanced upload to JS browsers} #}
@@ -83,7 +83,7 @@ OTHER
 			<div class="row">
 			<div class="small-12 column">	
 				<form class="profile-dashboard__details-form" method="post" accept-charset="UTF-8">
-					{{ getCsrfInput() }}
+					{{ csrfInput() }}
 					<input type="hidden" name="action" value="users/saveUser">
 				    <input type="hidden" name="userId" value="{{ profileUser.id }}">
 

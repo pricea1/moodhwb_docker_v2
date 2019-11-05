@@ -15,7 +15,8 @@
 
 
 			<div class="content-block-sub-item-container">
-				{% for item in entry.contentBlockItems %}
+				{% set contentBlockItems = entry.contentBlockItems.all() %}
+				{% for item in contentBlockItems %}
 					<div class="small-12 medium-3 column custom-grid__tablet-6 {% if loop.last %}end{% endif %}">
 
 						<div class="content-block-sub-item">

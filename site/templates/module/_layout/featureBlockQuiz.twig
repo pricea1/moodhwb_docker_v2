@@ -13,7 +13,8 @@
 
 		<div class="feature-block-quiz-container slick-carousel-container">	
 
-		{% for matrixItem in entry.featureBlockQuizQuestion %}
+		{% set featureBlockQuizQuestion = entry.featureBlockQuizQuestion.all() %}
+		{% for matrixItem in featureBlockQuizQuestion %}
 			<div class="feature-block-quiz-question-container">
 				<div class="feature-block-quiz-question">{{ matrixItem.question}}</div>
 				{% set itemCount = loop.length %}
