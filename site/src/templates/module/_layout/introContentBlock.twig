@@ -3,8 +3,8 @@
 	
 	<div class="row intro-video-row">
 	<div class="small-12 column intro-video-column">
-
-		{% set image = entry.introContentBlockImage|first %}	
+		
+		{% set image = entry.introContentBlockImage.all()|first %}	
 		<div class="intro-content-block-media-container">
 			<div class="intro-content-block-image ">
 			 	{% if image %}
@@ -18,7 +18,7 @@
 
 
 			{% if entry.video | length %}
-			{% set video = entry.video | first %}
+			{% set video = entry.video.all()|first %}
 			<div class="intro-content-block-video-container">
 				<div id="videoElement-{{entry.slug}}" class="intro-content-block-video">Loading the player...</div>
 

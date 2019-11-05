@@ -41,7 +41,8 @@
       <nav id="moduleNav" class="module-nav module-nav--closed">
 
         <div class="module-nav__list module-nav__list--level1">
-          {% for module in modules %}
+          {% set allModules = modules.all() %}
+          {% for module in allModules %}
             <div class="{{ module.moduleColour }}__element">
               {% if currentModule.id == module.id %}
                 <div class="row module-nav__row module-nav__row--current">
@@ -76,14 +77,16 @@
             <div class="module-nav__list module-nav__list--level2">
 
               {% set itemCount = 0 %}
-              {% for page in entry.parent.getChildren() %}
+              {% set childPages = entry.parent.getChildren().all() %}
+              {% for page in childPages %}
                 {% if page.showInNav %}
                   {% set itemCount = itemCount + 1 %}
                 {% endif %}
               {% endfor %}
               {% set navPercSteps = 100 / (itemCount-1) %}
               {% set itemIndex = 0 %}
-              {% for page in entry.parent.getChildren() %}
+
+              {% for page in childPages %}
                 <div class="module-nav__row {%if loop.first %}module-nav__row--current{% else %}module-nav__row--not-current{% endif %} {% if page.showInNav %}module-nav__row--not-hidden{% else %}module-nav__row--hidden{% endif %} {% if itemIndex == itemCount - 1%}module-nav__row-last{% endif %}" style="{% if not loop.last %}width: {{ navPercSteps }}%; {% endif %}left: {{ itemIndex * navPercSteps }}%" data-page-id="{{ page.id }}" data-page-uri="{{ page.uri }}">
 
                   <div class="module-nav__item">
@@ -111,15 +114,16 @@
 
       {% include "module/_layout/" ~ entry.type %}
 
-      {% for entry in entry.getChildren() %}
+      {% set entryChildren = entry.getChildren().all() %}
+      {% for entry in entryChildren %}
         {% include "module/_layout/" ~ entry.type %}
       {% endfor %}
     </div>
 
-    {% set nextSibling = craft.entries.positionedAfter(entry).order('lft asc').one() %}
+    {% set nextSibling = craft.entries.positionedAfter(entry).orderBy('lft asc').one() %}
     {% if not nextSibling %}
       {% set nextSiblingModule = craft.entries.nextSiblingOf(entry.parent).one() %}
-      {% if nextSiblingTest.type == "modules" %}
+      {% if nextSiblingModule and nextSiblingModule.type == "modules" %}
         {% set nextSibling = nextSiblingModule %}
       {% endif %}
     {% endif %}

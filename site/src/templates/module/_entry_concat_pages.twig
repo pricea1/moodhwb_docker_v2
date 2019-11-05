@@ -4,7 +4,9 @@
 
 		{# Append sub module content #}
 		{% set currentModule = entry %}
-		{% for entry in currentModule.getChildren() %}
+		{% set entryChildren = entry.getChildren().all() %}
+
+		{% for entry in entryChildren %}
 			{% if not loop.first %}
 				<a class="module-anchor" name="{{ entry.slug }}"></a>
 				<div data-uri="{{entry.uri}}" data-magellan-destination="{{ entry.slug }}">

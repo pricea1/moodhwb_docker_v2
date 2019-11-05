@@ -15,7 +15,7 @@
 
 
 		<div class="content-block-sub-item-container">
-			{% for item in entry.contentBlockItems| slice(0,2) %}
+			{% for item in entry.contentBlockItems.all()| slice(0,2) %}
 				<div class="small-12 medium-6 custom-grid__tablet-6 column">
 
 					<div class="content-block content-block-sub-item">

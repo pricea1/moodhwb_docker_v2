@@ -11,13 +11,14 @@
 </div>
 
 {% set subItemHalf = ceil(entry.contentBlockItems.total()/2) %}
+{% set contentBlockItems = entry.contentBlockItems.all() %}
 
 <div class="row">
 
 	<div class="small-12 medium-3 column">
 
 		<div class="content-block-sub-item-container">
-			{% for item in entry.contentBlockItems|slice(0, subItemHalf) %}
+			{% for item in contentBlockItems|slice(0, subItemHalf) %}
 				<div class="content-block-sub-item">
 					<h3 class="content-block-subheading">{{ item.heading }}</h3>
 					{{ item.text }}
@@ -36,7 +37,7 @@
 	<div class="small-12 medium-3 column">
 
 		<div class="content-block content-block-sub-item-container">
-			{% for item in entry.contentBlockItems|slice(subItemHalf, 20) %}
+			{% for item in contentBlockItems|slice(subItemHalf, 20) %}
 				<div class="content-block-sub-item">
 					<h3 class="content-block-subheading">{{ item.heading }}</h3>
 					{{ item.text }}

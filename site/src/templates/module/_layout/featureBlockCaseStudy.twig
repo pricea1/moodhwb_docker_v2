@@ -3,7 +3,7 @@
 	<div class="module-block-themed ">
 
 		<div class="row">
-		{% set image = entry.image|first %}
+		{% set image = entry.image.all()|first %}
 			{% if image %}
 				<div class="small-4 medium-2 columns">
 

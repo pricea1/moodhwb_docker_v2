@@ -1,4 +1,4 @@
-{% if "concat=true" in craft.request.queryString %}
+{% if "concat=true" in craft.app.request.queryString %}
 	{% include "module/_entry_concat_pages.twig" %}
 {% else %}
 	{% include "module/_entry_first_page.twig" %}
