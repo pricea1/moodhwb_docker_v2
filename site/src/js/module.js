@@ -96,9 +96,9 @@
 
 	function initRecommendations(){
 		var request = {
-			plugin: "moduleActions",
-			controller: "submoduleView",
-			action: "getRecommendedModules"
+			plugin: "moduleactions",
+			controller: "default",
+			action: "get-recommended-modules"
 		}
 
 		function success(res){
