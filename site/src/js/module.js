@@ -122,9 +122,9 @@
 	function doSaveModuleStatus(submoduleId, status, uri){
 
 		var request = {
-				plugin: "moduleActions",
-				controller: "submoduleView",
-				action: "saveModuleView"
+				plugin: "moduleactions",
+				controller: "default",
+				action: "save-module-view"
 			}
 
 		var data = {
