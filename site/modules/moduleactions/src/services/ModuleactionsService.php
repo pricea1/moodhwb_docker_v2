@@ -11,6 +11,8 @@
 namespace modules\moduleactions\services;
 
 use modules\moduleactions\Moduleactions;
+use modules\moduleactions\models\ModuleactionsModel;
+use modules\moduleactions\records\ModuleactionsRecord;
 
 use Craft;
 use craft\base\Component;
@@ -64,4 +66,32 @@ class ModuleactionsService extends Component
          return \yii\helpers\ArrayHelper::getColumn($entries, 'id');
 
     }   
+
+    public function getStatus($userId, $submoduleId)
+    {
+
+        $submoduleRecord = ModuleactionsRecord::find()
+                    ->where(['userId' => $userId, 'submoduleId' => $submoduleId])
+                    ->one();
+
+        return $submoduleRecord;
+
+    }
+    
+    public function saveStatus(ModuleactionsModel $submoduleModel)
+    {   
+
+        $submoduleRecord = $this->getStatus($submoduleModel->userId, $submoduleModel->submoduleId);
+
+        if (!$submoduleRecord){
+            $submoduleRecord = new ModuleactionsRecord();
+            $submoduleRecord->userId = $submoduleModel->userId;
+            $submoduleRecord->submoduleId = $submoduleModel->submoduleId;
+        }
+
+    	$submoduleRecord->status = $submoduleModel->status;
+    	        
+        $submoduleRecord->save();
+        return $submoduleRecord;
+    }
 }

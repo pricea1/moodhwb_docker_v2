@@ -11,6 +11,7 @@
 namespace modules\moduleactions\controllers;
 
 use modules\moduleactions\Moduleactions;
+use modules\moduleactions\models\ModuleactionsModel;
 
 use Craft;
 use craft\web\Controller;
@@ -57,11 +58,27 @@ class DefaultController extends Controller
      *
      * @return mixed
      */
-    public function actionIndex()
+    public function actionSaveModuleView()
     {
-        $result = 'Welcome to the DefaultController actionIndex() method';
+    	//$this->requireAjaxRequest();
 
-        return $result;
+    	$post = Craft::$app->getRequest()->getBodyParams();
+    	$currentUser = Craft::$app->getUser()->getIdentity();
+
+    	$model = new ModuleactionsModel();
+
+
+    	$model->userId = $currentUser->id;
+    	$model->submoduleId = $post['submoduleId'];
+    	$model->status = $post['status'];
+
+        $saveStatus = Moduleactions::$instance->moduleactionsService->saveStatus($model);
+        return $this->asJson($saveStatus);
+        
+        Craft::$app->session->setNotice(Craft::t('site','Module View saved.'));
+
+    	return $this->asJson($model);
+
     }
 
     /**

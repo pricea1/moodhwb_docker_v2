@@ -49,7 +49,8 @@ class ModuleactionsRecord extends ActiveRecord
      * @return string the table name
      */
     public static function tableName()
-    {
-        return '{{%moduleactions_moduleactionsrecord}}';
+    {   
+//       return 'moduleactions_moduleview';
+       return '{{%moduleactions_moduleview}}';
     }
 }
