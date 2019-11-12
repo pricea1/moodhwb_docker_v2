@@ -39,7 +39,6 @@
 
 		initMoodList();
 
-		initBookmarks();
 		initRecommendations();
 
 		showContinueModal();
@@ -56,13 +55,13 @@
 	}
 
 	function initMoodList(){
-		var moodListContainer = document.getElementById('profileDashboardMoodScrollContainer'),
-			moodListEl = document.getElementById('profileDashboardMoodList'),
-			moodItems = moodListEl.children;
+		var moodListContainer = document.getElementById('profileDashboardMoodScrollContainer');
+		var	moodListEl = document.getElementById('profileDashboardMoodList');
+		var moodItems = moodListEl.children;
 
 
 		//Initialise Mood list scroll so its full width and scrolled to the middle
-		moodItems = moodListEl.children;
+
 		var moodItemsWidth = 0;
 		for (var i=0; i < moodItems.length; i++){
 			moodItemsWidth += moodItems[i].clientWidth;
@@ -73,32 +72,6 @@ console.log(moodItems[i], moodItems[i].clientWidth);
 		moodListContainer.scrollLeft = (moodListEl.clientWidth - moodListContainer.clientWidth)/2;
 	}
 
-	
-
-	function initBookmarks(){
-		var request = {
-			plugin: "moduleActions",
-			controller: "submoduleView",
-			action: "getBookmarks"
-		}
-
-		function success(res){
-
-			for (var i=0; i < res.length; i++){
-
-				$('#submodule-' + res[i].submoduleId).addClass(res[i].status);
-
-			}				
-		
-
-		}
-
-		function error(err){
-
-		}
-
-		opad.postActionRequest(request, {}, success, error);
-	}
 
 	function initRecommendations(){
 		var request = {

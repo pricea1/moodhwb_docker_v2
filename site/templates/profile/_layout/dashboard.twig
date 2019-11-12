@@ -47,8 +47,9 @@
 						<div class="profile-dashboard-heading__light-text">{{ "Your current mood score"|t}}</div>
 					</div>
 					<div id="profileDashboardMoodScrollContainer" class="profile-dashboard-mood-scroll-container">
-						{#
+						
 						<ul id="profileDashboardMoodList" class="inline-list profile-dashboard-mood-list">
+						{#
 						{% for moodAnswer in moodAnswers.self %}
 							{% if moodAnswer.question.value > 0 %}
 								{% set moodValue = moodAnswer.question.value %}
@@ -71,9 +72,9 @@
 								{% set totalMoodScore = totalMoodScore + moodAnswer.score %}
 							{% endif %}
 						{% endfor %}
-
+	#}
 						</ul>
-						#}
+					
 
 			</div>
 			<div class="row">
