@@ -94,4 +94,5 @@ class ModuleactionsService extends Component
         $submoduleRecord->save();
         return $submoduleRecord;
     }
+
 }

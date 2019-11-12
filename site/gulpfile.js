@@ -13,6 +13,8 @@ var handlebars = require('gulp-handlebars');
 var wrap = require("gulp-wrap");
 var declare = require('gulp-declare');
 var concat = require('gulp-concat');
+var argv = require('yargs').argv;
+var gulpif = require('gulp-if');
 
 sass.compiler = require('node-sass');
  
@@ -71,8 +73,8 @@ function minify() {
 	return gulp.src(['./src/templates/_layout.html'])
 	.pipe(usemin({
 		assetsDir: 'src',
-		js: [uglify()],
-		bower: [uglify()]
+		js: [gulpif(argv.production, uglify())],
+		bower: [gulpif(argv.production, uglify())]
 	}))
 	.pipe(gulp.dest('./web/'));
 }
