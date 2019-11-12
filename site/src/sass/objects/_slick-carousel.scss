@@ -69,8 +69,14 @@
 
     &__container{
     	position: relative;
-    	text-align: center;
-    }
+			text-align: center;
+		}
+}
+
+.no-js {
+	.slick-next__container-js{
+		display: none;
+	}
 }
 
 .slick-prev.slick-disabled {

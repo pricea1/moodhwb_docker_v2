@@ -49,7 +49,6 @@ var monthNames = ["{{ "January"|t }}", "{{ "February"|t }}", "{{ "March"|t}}", "
 				<div class="profile-dashboard__details-container">
 
 				<div class="mood-monitor-date-container">
-				{#
 					{% set moodDateList = craft.profiler.getMoodDateList() %}
 					{% for moodYear, moodMonthList in moodDateList %}
 						{% set moodCurrentYear = loop.last %}
@@ -71,7 +70,6 @@ var monthNames = ["{{ "January"|t }}", "{{ "February"|t }}", "{{ "March"|t}}", "
 
 						</div>
 					{% endfor %}
-					#}
 				</div>
 				</div>
 			</div>

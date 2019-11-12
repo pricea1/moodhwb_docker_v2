@@ -35,6 +35,14 @@ return [
                 ],
             ],
         ],
+        'profiler' => [
+            'class' => \moodhwb\profiler\Profiler::class,
+            'components' => [
+                'profilerService' => [
+                    'class' => 'modules\profiler\services\ProfilerService',
+                ],
+            ],
+        ],
     ],
-    'bootstrap' => ['user-login-module','moduleactions'],
+    'bootstrap' => ['user-login-module','moduleactions','profiler'],
 ];

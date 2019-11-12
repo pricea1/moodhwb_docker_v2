@@ -1,0 +1,28 @@
+{% extends "_layouts/elementindex" %}
+{% set title = "Users"|t %}
+
+{% set elementType = 'craft\\elements\\User' %}
+{% set title = "User Profiles"|t %}
+
+{# User standard user list and then override with JS so link goes to user's dashboard #}
+{% block initJs %}
+	Craft.elementIndex = Craft.createElementIndex('{{ elementType|e("js") }}', $('#main'), {
+		context:        '{{ context }}',
+		showStatusMenu: {{ showStatusMenu is defined ? showStatusMenu|json_encode|raw : "'auto'" }},
+		showLocaleMenu: {{ showLocaleMenu is defined ? showLocaleMenu|json_encode|raw : "'auto'" }},
+		storageKey:     'elementindex.{{ elementType }}',
+		criteria:       { localeEnabled: null },
+		onUpdateElements: function(){
+			$('.element').each(function(index, el){
+				var $this = $(this);
+				var id = $(this).attr('data-id');
+
+				$this.find('a').attr('href', Craft.getSiteUrl('profile/dashboard?id='+id))
+					.attr('target', '_blank');
+
+			})
+
+		}
+	});
+
+{% endblock %}

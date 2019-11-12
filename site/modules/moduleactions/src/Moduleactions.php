@@ -138,15 +138,6 @@ class Moduleactions extends Module
             }
         );
 
-        // Register our CP routes
-        Event::on(
-            UrlManager::class,
-            UrlManager::EVENT_REGISTER_CP_URL_RULES,
-            function (RegisterUrlRulesEvent $event) {
-                $event->rules['cpActionTrigger1'] = 'modules/moduleactions/default/do-something';
-            }
-        );
-
         // Register our variables
         Event::on(
             CraftVariable::class,

@@ -118,7 +118,7 @@
 		request = {
 			plugin: "profiler",
 			controller: "question",
-			action: "saveQuestion"
+			action: "save-question"
 		}
 
 		data = {

@@ -1,0 +1,45 @@
+{
+    "name": "moodhwb/profiler",
+    "description": "MoodHwb Profiler",
+    "type": "craft-plugin",
+    "version": "2.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "profiler"
+    ],
+    "support": {
+        "docs": "https://github.com/pricea1/profiler/blob/master/README.md",
+        "issues": "https://github.com/pricea1/profiler/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andrew Price",
+            "homepage": "github.com/pricea1"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0-RC1"
+    },
+    "autoload": {
+        "psr-4": {
+          "moodhwb\\profiler\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Profiler",
+        "handle": "profiler",
+        "hasCpSettings": false,
+        "hasCpSection": true,
+        "changelogUrl": "https://raw.githubusercontent.com/pricea1/profiler/master/CHANGELOG.md",
+        "components": {
+            "question": "moodhwb\\profiler\\services\\Question",
+            "goal": "moodhwb\\profiler\\services\\Goal",
+            "stuffILike": "moodhwb\\profiler\\services\\StuffILike"
+        },
+        "class": "moodhwb\\profiler\\Profiler"
+    }
+}
