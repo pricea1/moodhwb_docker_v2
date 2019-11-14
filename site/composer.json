@@ -30,7 +30,8 @@
   "autoload": {
     "psr-4": {
       "modules\\moduleactions\\": "modules/moduleactions/",
-      "modules\\userloginmodule\\": "modules/userloginmodule/" 
+      "modules\\userloginmodule\\": "modules/userloginmodule/",
+      "moodhwb\\profiler\\": "modules/profiler/" 
     }
   },
   "config": {

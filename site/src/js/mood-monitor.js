@@ -37,7 +37,7 @@
 		var request = {
 			plugin: "profiler",
 			controller: "question",
-			action: "getMoodScores"
+			action: "get-mood-scores"
 		}
 
 		function success(res){
@@ -113,7 +113,7 @@
 		for (var i in moodDataFreetext){
 
 			if (moodDataFreetext[i].textValue){
-				parsedDate = parseDateString(moodDataFreetext[i].dateCreated.date);
+				parsedDate = parseDateString(moodDataFreetext[i].dateCreated);
 
 				if (parsedDate >= thisDate && parsedDate <= nextDate){
 
@@ -172,7 +172,8 @@
 	}
 
 	function parseDateString(dateStr) {
-	    var a=dateStr.split(" ");
+
+		var a=dateStr.split(" ");
 		var d=a[0].split("-");
 		var t=a[1].split(":");
 		var date = new Date(d[0],(d[1]-1),d[2],t[0],t[1],t[2]);
@@ -191,15 +192,14 @@
 			if (data[i].questionId !== "freetext" && typeof moodData[data[i].questionId] == 'undefined'){
 				moodData[data[i].questionId] = [];
 			}
-
-			moodDate = parseDateString(data[i].dateCreated.date);
+			moodDate = parseDateString(data[i].dateCreated);
 
 			moodPopup = "<div>" +moodDate.getDate() +" " + monthNames[moodDate.getMonth()] +"</div>"
 						+"<div>" + getDateRange(moodDate) + "</div>";
 
 			if (data[i].questionId === "freetext"){
 				moodDataFreetext.push(data[i]);
-				var freetextDate = parseDateString(data[i].dateCreated.date);
+				var freetextDate = parseDateString(data[i].dateCreated);
 				var freetextDateRef = freetextDate.toDateString();
 
 				freeTextMoodPopup = '<div class="google-visualization-tooltip__text">' + data[i].textValue +"</div>";
@@ -211,7 +211,7 @@
 
 			} else {
 				pointOptions = 'point { fill-color: ' + getFillColor(data[i].value) +' }';
-				moodDate = parseDateString(data[i].dateCreated.date);
+				moodDate = parseDateString(data[i].dateCreated);
 
 				moodData[data[i].questionId].push([
 					moodDate,
