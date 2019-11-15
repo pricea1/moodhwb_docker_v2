@@ -59,7 +59,7 @@ class ModuleactionsModel extends Model
         return [
             ['userId', 'number'],
             ['submoduleId', 'number'],
-            ['staus', ["unviewed","current","viewed"]]
+            ['status', ["unviewed","current","viewed"]]
         ];
     }
 

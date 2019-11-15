@@ -11,6 +11,7 @@
 namespace moodhwb\profiler\controllers;
 
 use moodhwb\profiler\Profiler;
+use moodhwb\profiler\models\Goal as GoalModel;
 
 use Craft;
 use craft\web\Controller;
@@ -31,7 +32,29 @@ class GoalController extends Controller
      *         The actions must be in 'kebab-case'
      * @access protected
      */
-    protected $allowAnonymous = ['index', 'do-something'];
+    protected $allowAnonymous = [];
+
+    private function getGoalModel($goalId)
+    {
+        $currentUser = Craft::$app->getUser()->getIdentity();
+
+        $model = new GoalModel();
+
+        $model->userId = $currentUser->id;
+        $model->id = $goalId;
+
+        return $model;
+    }
+
+    private function returnData($model)
+    {
+
+        if (Craft::$app->getRequest()->isAjax){
+            return $this->asJson($model);            
+        } else {
+            return $this->redirect('profile/goals');
+        }
+    }
 
     // Public Methods
     // =========================================================================
@@ -39,20 +62,51 @@ class GoalController extends Controller
     /**
      * @return mixed
      */
-    public function actionIndex()
+    public function actionAddGoal()
     {
-        $result = 'Welcome to the GoalController actionIndex() method';
+        $request = Craft::$app->getRequest();
+        $currentUser = Craft::$app->getUser()->getIdentity();
 
-        return $result;
+        $model = new GoalModel();
+
+        $model->userId = $currentUser->id;
+        $model->activity = $request->post('activity');
+        $model->timesPerWeek = $request->post('timesPerWeek');
+
+        $newGoal = Profiler::$plugin->goalService->addGoal($model);
+        Craft::$app->session->setNotice(Craft::t('site','Goal saved.'));
+
+        return $this->returnData($newGoal);
     }
 
-    /**
-     * @return mixed
-     */
-    public function actionDoSomething()
+    public function actionDeleteGoal()
     {
-        $result = 'Welcome to the GoalController actionDoSomething() method';
+        $goalId = Craft::$app->getRequest()->getQueryParam('goalId');
+        $model = $this->getGoalModel($goalId);
 
-        return $result;
+        $delGoal =  Profiler::$plugin->goalService->deleteGoal($model);
+ 
+        return $this->returnData($delGoal);
+    }
+
+    public function actionDoneActivity()
+    {
+       
+        $goalId = Craft::$app->getRequest()->getQueryParam('goalId');
+        $model = $this->getGoalModel($goalId);
+        
+        $savedGoal = Profiler::$plugin->goalService->doneActivity($model);
+
+        return $this->returnData($savedGoal);
+    }
+
+    public function actionResetActivity()
+    {
+        $goalId = Craft::$app->getRequest()->getQueryParam('goalId');
+        $model = $this->getGoalModel($goalId);
+
+        $goal = Profiler::$plugin->goalService->resetGoal($model);
+
+        return $this->returnData($goal);
     }
 }
