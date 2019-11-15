@@ -21,7 +21,7 @@ use craft\db\ActiveRecord;
  * @since     2.0.0
  */
 class StuffILike extends ActiveRecord
-{
+{    
     // Public Static Methods
     // =========================================================================
 
@@ -30,6 +30,6 @@ class StuffILike extends ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%profiler_stuffilike}}';
+        return '{{%profiler_stuff_i_like}}';
     }
 }

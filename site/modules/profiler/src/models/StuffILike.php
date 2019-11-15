@@ -28,7 +28,10 @@ class StuffILike extends Model
     /**
      * @var string
      */
-    public $someAttribute = 'Some Default';
+    public $id;
+    public $userId;
+    public $title;
+    public $url;
 
     // Public Methods
     // =========================================================================
@@ -39,8 +42,10 @@ class StuffILike extends Model
     public function rules()
     {
         return [
-            ['someAttribute', 'string'],
-            ['someAttribute', 'default', 'value' => 'Some Default'],
+            ['id', 'number'],
+            ['userId', 'number'],
+            ['title', 'string'],
+            ['url', 'string'],
         ];
     }
 }
