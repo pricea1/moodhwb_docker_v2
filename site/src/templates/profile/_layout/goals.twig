@@ -58,10 +58,8 @@
 		</div>
 	</div>
 
-{#
+
 	{% set goalList = craft.profiler.getAllGoals() %}
-#}
-	{% set goalList = [] %}
 
 	<div class="text-center profile-goals__welcome-msg {% if goalList | length != 0 %}hide{% endif %}">
 		<div class="row">

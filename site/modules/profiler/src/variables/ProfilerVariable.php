@@ -53,4 +53,10 @@ class ProfilerVariable
 
         return $dateList;
     }
+
+    public function getAllGoals(){
+
+        $currentUser = Craft::$app->getUser()->getIdentity();
+        return Profiler::$plugin->goalService->getAllGoalsForWeek($currentUser->id);
+    }
 }
