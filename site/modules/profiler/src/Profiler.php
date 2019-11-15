@@ -126,7 +126,8 @@ class Profiler extends Plugin
         // Register service
         $this->setComponents([
             'questionService' => QuestionService::class,
-            'goalService' => GoalService::class
+            'goalService' => GoalService::class,
+            'stuffILikeService' => StuffILikeService::class
         ]);
 
         Craft::info(

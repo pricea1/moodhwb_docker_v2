@@ -25,7 +25,7 @@
 							<form id="profileStuffILikeForm" class="profile-goals-form" method="post" accept-charset="UTF-8">
 							{{ csrfInput() }}
 
-							    <input type="hidden" name="action" value="profiler/stuffILike/addStuffILike">
+							    <input type="hidden" name="action" value="profiler/stuff-i-like/add-stuff-i-like">
 
 									<div  class="small-12 medium-4 column">
 
@@ -58,10 +58,7 @@
 
 
 
-{#
-	{% set stuffILikeList = craft.profiler.getAllStuffILike() %}
-#}
-{% set stuffILikeList = [] %}
+{% set stuffILikeList = craft.profiler.getAllStuffILike() %}
 
 	<div class="text-center profile-goals__welcome-msg {% if stuffILikeList | length != 0 %}hide{% endif %}">
 
@@ -127,7 +124,7 @@
 						</span><!--
 					--><span class="profile-stuff-i-like__title">{{ stuffILike.title}}</span>
 
-						<a href="{{ actionUrl('profiler/stuffILike/deleteStuffILike', { stuffILikeId: stuffILike.id }) }}" class="profile-goal__action-link profile-stuff-i-like__action-link" data-stuff-i-like-action="delete"><span class="show-for-sr">{{ 'Delete'|t }}</span><span class="ss-icon ss-icon-circle ss-delete"></span></a>
+						<a href="{{ actionUrl('profiler/stuff-i-like/delete-stuff-i-like', { stuffILikeId: stuffILike.id }) }}" class="profile-goal__action-link profile-stuff-i-like__action-link" data-stuff-i-like-action="delete"><span class="show-for-sr">{{ 'Delete'|t }}</span><span class="ss-icon ss-icon-circle ss-delete"></span></a>
 
 						{% if stuffILike.url %}
 							</a>

@@ -11,6 +11,8 @@
 namespace moodhwb\profiler\services;
 
 use moodhwb\profiler\Profiler;
+use moodhwb\profiler\records\StuffILike as StuffILikeRecord;
+use moodhwb\profiler\models\StuffILike as StuffILikeModel;
 
 use Craft;
 use craft\base\Component;
@@ -28,10 +30,35 @@ class StuffILike extends Component
     /*
      * @return mixed
      */
-    public function exampleService()
-    {
-        $result = 'something';
+    function getAllStuffILike($userId){
 
-        return $result;
+        return StuffILikeRecord::find()
+                    ->where(['userId' => $userId])
+                    ->all();
+    }
+
+    public function addStuffILike(StuffILikeModel $stuffILikeModel)
+    {
+
+        $stuffILikeRecord = new StuffILikeRecord();
+
+        $stuffILikeRecord->userId = $stuffILikeModel->userId;
+        $stuffILikeRecord->title = $stuffILikeModel->title;
+        $stuffILikeRecord->url = $stuffILikeModel->url;
+
+        $stuffILikeRecord->save();
+
+        return $stuffILikeRecord;
+    }
+
+    public function deleteStuffILike(StuffILikeModel $stuffILikeModel)
+    {  
+        $goal = StuffILikeRecord::find()
+                    ->where(['userId' => $stuffILikeModel->userId, 'id' => $stuffILikeModel->id])
+                    ->one();
+
+        $goal->delete();
+
+        return $goal;
     }
 }

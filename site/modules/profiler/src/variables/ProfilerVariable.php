@@ -59,4 +59,9 @@ class ProfilerVariable
         $currentUser = Craft::$app->getUser()->getIdentity();
         return Profiler::$plugin->goalService->getAllGoalsForWeek($currentUser->id);
     }
+    
+    public function getAllStuffILike(){
+        $currentUser = Craft::$app->getUser()->getIdentity();
+        return Profiler::$plugin->stuffILikeService->getAllStuffILike($currentUser->id);
+    }
 }

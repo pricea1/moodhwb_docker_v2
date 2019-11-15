@@ -11,6 +11,7 @@
 namespace moodhwb\profiler\controllers;
 
 use moodhwb\profiler\Profiler;
+use moodhwb\profiler\models\StuffILike as StuffILikeModel;
 
 use Craft;
 use craft\web\Controller;
@@ -31,7 +32,17 @@ class StuffILikeController extends Controller
      *         The actions must be in 'kebab-case'
      * @access protected
      */
-    protected $allowAnonymous = ['index', 'do-something'];
+    protected $allowAnonymous = [];
+
+    private function returnData($model)
+    {
+
+        if (Craft::$app->getRequest()->isAjax){
+            return $this->asJson($model);            
+        } else {
+            return $this->redirect('profile/stuff-i-like');
+        }
+    }
 
     // Public Methods
     // =========================================================================
@@ -39,20 +50,47 @@ class StuffILikeController extends Controller
     /**
      * @return mixed
      */
-    public function actionIndex()
+    public function actionAddStuffILike()
     {
-        $result = 'Welcome to the StuffILikeController actionIndex() method';
 
-        return $result;
+    	$currentUser = Craft::$app->getUser()->getIdentity();
+        $request = Craft::$app->getRequest();
+
+        $model = new StuffILikeModel();
+
+        $model->userId = $currentUser->id;
+        $model->title = $request->post('title');
+        $model->url = $request->post('url');
+
+        // Add http if not included
+        if ($model->url && preg_match("#https?://#",  $model->url) === 0) {
+             $model->url = 'http://'. $model->url;
+        }
+
+        $newStuffILike = Profiler::$plugin->stuffILikeService->addStuffILike($model);
+
+        $model->id = $newStuffILike->id;
+
+        Craft::$app->session->setNotice(Craft::t('site','Stuff I Like saved.'));
+
+        return $this->returnData($model);
     }
 
-    /**
-     * @return mixed
-     */
-    public function actionDoSomething()
+    public function actionDeleteStuffILike()
     {
-        $result = 'Welcome to the StuffILikeController actionDoSomething() method';
 
-        return $result;
+    	$currentUser = Craft::$app->getUser()->getIdentity();
+        $request = Craft::$app->getRequest();
+
+        $stuffILikeId = $request->getQueryParam('stuffILikeId');
+
+        $model = new StuffILikeModel();
+        $model->userId = $currentUser->id;
+        $model->id = $stuffILikeId;
+
+        $delStuffILike = Profiler::$plugin->stuffILikeService->deleteStuffILike($model);
+
+        return $this->returnData($delStuffILike);
+
     }
 }
