@@ -28,7 +28,13 @@ class Goal extends Model
     /**
      * @var string
      */
-    public $someAttribute = 'Some Default';
+    public $id;
+    public $userId;
+    public $activity;
+    public $timesPerWeek;
+    public $timesCompleted;
+    public $status;
+    public $weekId;
 
     // Public Methods
     // =========================================================================
@@ -39,8 +45,13 @@ class Goal extends Model
     public function rules()
     {
         return [
-            ['someAttribute', 'string'],
-            ['someAttribute', 'default', 'value' => 'Some Default'],
+            ['id','number'],
+			['userId', 'number'],
+			['activity', 'string'],
+            ['timesPerWeek', 'number'],
+            ['timesCompleted', 'number'],
+            ['weekId', 'number'],
+            ['status', ["unviewed","current","viewed"]]
         ];
     }
 }
