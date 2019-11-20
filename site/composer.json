@@ -31,7 +31,8 @@
     "psr-4": {
       "modules\\moduleactions\\": "modules/moduleactions/",
       "modules\\userloginmodule\\": "modules/userloginmodule/",
-      "moodhwb\\profiler\\": "modules/profiler/" 
+      "moodhwb\\profiler\\": "modules/profiler/" ,
+      "moodhwb\\mobileapp\\": "modules/mobileapp/"
     }
   },
   "config": {
