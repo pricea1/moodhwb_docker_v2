@@ -43,6 +43,9 @@ return [
                 ],
             ],
         ],
+        'mobileapp' => [
+            'class' => \moodhwb\mobileapp\MobileApp::class,
+        ],
     ],
-    'bootstrap' => ['user-login-module','moduleactions','profiler'],
+    'bootstrap' => ['user-login-module','moduleactions','profiler','mobileapp'],
 ];

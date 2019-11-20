@@ -1,0 +1,40 @@
+{
+    "name": "moodhwb/mobileapp",
+    "description": "Interface for MoodHwb App",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "mobileapp"
+    ],
+    "support": {
+        "docs": "https://github.com/pricea1/mobileapp/blob/master/README.md",
+        "issues": "https://github.com/pricea1/mobileapp/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andrew Price",
+            "homepage": "www.github.com/pricea1"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0-RC1"
+    },
+    "autoload": {
+        "psr-4": {
+          "moodhwb\\mobileapp\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "MobileApp",
+        "handle": "mobileapp",
+        "hasCpSettings": false,
+        "hasCpSection": false,
+        "changelogUrl": "https://raw.githubusercontent.com/pricea1/mobileapp/master/CHANGELOG.md",
+        "class": "moodhwb\\mobileapp\\MobileApp"
+    }
+}
