@@ -1,0 +1,71 @@
+<header id="header">
+						<nav class="tab-bar">
+								<div class="row">
+								<div class="small-12 columns">
+									<section class="left">
+										<h1 class="header-title">
+											<a href="{{ siteUrl }}">
+												<span class="show-for-sr">{{ siteName }}"</span>
+												{# include logo inline so it can be changed with CSS and doesn't require additional network call #}
+												{% include "_images/logo_" ~ craft.app.language ~ ".svg" %}
+											</a>
+										</h1>
+									</section>
+
+									<ul class="header-nav-link-list right inline-list">
+										{% if hideMainMenu is not defined %}
+											<li class="show-for-medium-up">
+												<a id="hideThisLink" class="header-nav-link">{{"Hide this"|t}}
+												<span class="ss-icon ss-view header-nav-link-icon"></span>
+												</a>
+											</li>
+											<li>
+												<a id="searchIcon" class="header-nav-link"><span class="show-for-medium-up">{{"Search"|t}}</span>
+													<span class="ss-icon ss-search header-nav-link-icon"></span>
+												</a>
+											</li>
+											<li>
+									        	<a class="right-off-canvas-toggle header-nav-link" href="#"><span class="show-for-medium-up">{{ "Show menu"|t}}</span><span aria-hidden="true" class="ss-icon">&#xE9A1;</span><span class="show-for-sr">{{ "Main menu"|t }}</span></a>
+											</li>
+										{% endif %}
+							      	</ul>
+
+								</div>
+								</div>
+				    	</nav>
+
+					    <aside class="right-off-canvas-menu">
+							<ul class="off-canvas-list">
+								 <li class="off-canvas-list__item">
+									 	<a class="right-off-canvas-toggle text-right header-nav-link header-nav-link-icon header-nav-link__close" href="#"><span class="show-for-medium-up">{{ "Close menu"|t}}</span><span aria-hidden="true" class="ss-icon">&#x2421;</span><span class="show-for-sr">{{ "Close menu"|t }}</span></a>
+								</li>
+
+								{% import "_macros/menus.twig" as menuMacros %}
+								{# Add menus of homepage #}
+								{{ menuMacros.generateMenu( craft.entries.id(2).one(), entry.id ) }}
+
+
+								{% set classname = "off-canvas-list__item" %}
+								{% include "_partials/language-switcher.html" %}
+
+								{% if not craft.app.user.isGuest %}
+								    <li class="off-canvas-list__item">
+								    	<a href="{{ logoutUrl }}">{{ "Logout" | t}}</a>
+							    	</li>
+								{% endif %}
+							</ul>
+				    	</aside>
+				<div id="searchFormContainer" class="search-form__container hide">
+						<form action="{{ url('search/results') }}">
+							<div class="row">
+								<div class="small-12 medium-8 column">
+								    <input class="search-form__input" type="search" name="q" placeholder="| {{ "Type something" |t }}">
+								</div>
+								<div class="small-12 medium-4 column text-center">
+									<input class="button full-width search-form__submit" type="submit" value="Search">
+								</div>
+							</div>
+
+						</form>
+				</div>
+			</header>
