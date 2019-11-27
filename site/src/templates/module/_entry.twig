@@ -1,3 +1,6 @@
+{% set headers = craft.app.request.getHeaders() %} 
+{% set isAppRequest = headers['moodhwbapp'] is defined %}
+
 {% if "concat=true" in craft.app.request.queryString %}
 	{% include "module/_entry_concat_pages.twig" %}
 {% else %}
