@@ -29,7 +29,8 @@
 
 
 {% block content %}
-  {% cache using key currentModule.uri %}
+  {% cache using key currentModule.uri ~ isAppRequest %}
+
   <div
     class="{{ moduleColourClass }}" data-modules="module">
     {#
@@ -38,34 +39,36 @@
     {% set modules = craft.entries.section('modules').level(1) %}
 
     <div class="module-nav-container">
-      <nav id="moduleNav" class="module-nav module-nav--closed">
+      {% if not isAppRequest %}
+        <nav id="moduleNav" class="module-nav module-nav--closed">
 
-        <div class="module-nav__list module-nav__list--level1">
-          {% set allModules = modules.all() %}
-          {% for module in allModules %}
-            <div class="{{ module.moduleColour }}__element">
-              {% if currentModule.id == module.id %}
-                <div class="row module-nav__row module-nav__row--current">
-                  <div class="small-12 columns ">
-                    <div class="module-nav__item module-nav__item--current {{ module.moduleColour }}__element module-nav__link">
-                      {{ module.title }}
-                      <a href="#submodules" class="show-for-sr">{{ "List submodules"|t }}</a>
+          <div class="module-nav__list module-nav__list--level1">
+            {% set allModules = modules.all() %}
+            {% for module in allModules %}
+              <div class="{{ module.moduleColour }}__element">
+                {% if currentModule.id == module.id %}
+                  <div class="row module-nav__row module-nav__row--current">
+                    <div class="small-12 columns ">
+                      <div class="module-nav__item module-nav__item--current {{ module.moduleColour }}__element module-nav__link">
+                        {{ module.title }}
+                        <a href="#submodules" class="show-for-sr">{{ "List submodules"|t }}</a>
+                      </div>
                     </div>
                   </div>
-                </div>
-              {% else %}
-                <div class="row module-nav__row module-nav__row--not-current {{ module.moduleColour }}__element">
-                  <div class="small-12 columns">
-                    <div class="module-nav__item ">
-                      <a class="module-nav__link" href="{{ module.url }}">{{ module.title }}</a>
+                {% else %}
+                  <div class="row module-nav__row module-nav__row--not-current {{ module.moduleColour }}__element">
+                    <div class="small-12 columns">
+                      <div class="module-nav__item ">
+                        <a class="module-nav__link" href="{{ module.url }}">{{ module.title }}</a>
+                      </div>
                     </div>
                   </div>
-                </div>
-              {% endif %}
-            </div>
-          {% endfor %}
-        </div>
-      </nav>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+        </nav>
+        {% endif %}
 
       {#
             			Create nav of current sub modules
