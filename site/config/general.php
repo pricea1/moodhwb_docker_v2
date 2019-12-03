@@ -44,8 +44,8 @@ return array(
      	'devMode' => true,
 	    'useCompressedJs' => false,
         'siteUrl' => array(
-	        'en_gb' => 'http://localhost/en/',
-	        'cy_gb' => 'http://localhost/cy/',
+	        'en_gb' => 'http://192.168.1.112/en/',
+	        'cy_gb' => 'http://192.168.1.112/cy/',
     	),
         'useBugherd' => true,
         'cache' => false,
