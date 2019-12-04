@@ -19,12 +19,14 @@
     "gulp-if": "^3.0.0",
     "gulp-imagemin": "^6.1.1",
     "gulp-livereload": "^4.0.2",
+    "gulp-rev": "^9.0.0",
     "gulp-sass": "^4.0.2",
     "gulp-uglify": "^3.0.2",
     "gulp-usemin": "^0.3.30",
     "gulp-wrap": "^0.15.0",
     "jshint": "^2.10.3",
     "node-sass": "^4.13.0",
+    "rev-del": "^2.0.0",
     "yargs": "^14.2.0"
   }
 }

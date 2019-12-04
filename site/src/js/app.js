@@ -1,116 +1,114 @@
-'use strict';
-(function(window, document, $){
-	window.opad = window.opad || {};
+"use strict";
+(function(window, document, $) {
+  window.opad = window.opad || {};
 
-	var initQ = [];
-	var jsModules = [];
+  var initQ = [];
+  var jsModules = [];
 
-	opad.init = function(){
+  opad.init = function() {
+    // Initialise components
+    for (var i = 0; i < initQ.length; i++) {
+      if (typeof initQ[i] === "function") {
+        initQ[i]();
+      }
+    }
+    $("#hideThisLink").on("click", hideThis);
 
-		// Initialise components
-		for (var i = 0; i < initQ.length; i++){
-			if (typeof initQ[i] === 'function'){
-				initQ[i]();
-			}
-		}
-		$('#hideThisLink').on('click', hideThis);
+    $("#searchIcon").on("click", toggleSearch);
+  };
 
-		$('#searchIcon').on('click', toggleSearch);
-	};
+  opad.addToInitQueue = function(callback) {
+    initQ.push(callback);
+  };
 
+  opad.addToJsModules = function(module) {
+    jsModules.push(module);
+  };
 
-	opad.addToInitQueue = function(callback){
-		initQ.push(callback);
-	};
+  opad.initJsModule = function(modulesList) {
+    var modulesToInitEl = $(".module-block[data-modules]");
+    var modulesList = modulesList || ["module"];
+    var localModules = "";
 
-	opad.addToJsModules = function(module){
-		jsModules.push(module);
-	};
+    for (var m = 0; m < modulesToInitEl.length; m++) {
+      localModules = $(modulesToInitEl[m])
+        .attr("data-modules")
+        .split(",");
 
-	opad.initJsModule = function(modulesList){
+      for (var l = 0; l < localModules.length; l++) {
+        if (modulesList.indexOf(localModules[l]) == -1) {
+          modulesList.push(localModules[l]);
+        }
+      }
+    }
 
-		var modulesToInitEl = $('.module-block[data-modules]');
-		var modulesList = modulesList || ['module'];
-		var localModules = "";
+    for (var j = 0; j < modulesList.length; j++) {
+      for (var i = 0; i < jsModules.length; i++) {
+        if (jsModules[i].name === modulesList[j]) {
+          if (typeof jsModules[i].fn === "function") {
+            jsModules[i].fn();
+            break;
+          }
+        }
+      }
+    }
 
-		for (var m=0; m < modulesToInitEl.length; m++){
+    opad.globalInit();
+  };
 
-			localModules = $(modulesToInitEl[m]).attr('data-modules').split(',');
+  opad.globalInit = function() {
+    $("a[data-js-url]").each(function() {
+      var $this = $(this);
+      $this.attr("href", $this.attr("data-js-url"));
+    });
+  };
 
-			for (var l=0; l < localModules.length; l++){
+  opad.postActionRequest = function(req, data, cbSuccess, cbError) {
+    // Add csrf token
+    data[craftSettings.csrfTokenName] = craftSettings.csrfTokenValue;
 
-				if (modulesList.indexOf(localModules[l]) == -1){
-					modulesList.push(localModules[l]);
-				}
-			}
-		}
+    var url =
+      "/" +
+      craftSettings.actionTrigger +
+      "/" +
+      req.plugin +
+      "/" +
+      req.controller +
+      "/" +
+      req.action;
 
+    $.post(url, data)
+      .done(function(res) {
+        if (typeof cbSuccess === "function") {
+          cbSuccess(res);
+        }
+      })
+      .error(function(err) {
+        if (typeof cbError === "function") {
+          cbError(err);
+        }
+      });
+  };
 
-		for (var j =0; j < modulesList.length; j++){
-			for (var i = 0; i < jsModules.length; i++){
-				if (jsModules[i].name === modulesList[j]){
-					if (typeof jsModules[i].fn === 'function'){
-						jsModules[i].fn();
-						break;
-					}
-				}
-			}
-		}
+  opad.skipMoodSave = false;
 
-		opad.globalInit();
+  function hideThis() {
+    $("body").html("");
+    window.location = "http://www.google.com";
+  }
 
-	};
+  function toggleSearch() {
+    $("#searchFormContainer").toggleClass("hide");
+    if ($("#searchFormContainer").hasClass("hide")) {
+      $(this).removeClass("show-search");
+      $("#searchFormInput").blur();
+    } else {
+      $("#searchFormInput").focus();
+      $(this).addClass("show-search");
+    }
+  }
 
-
-	opad.globalInit = function(){
-		$('a[data-js-url]').each(function(){
-			var $this = $(this);
-			$this.attr('href', $this.attr('data-js-url'));
-		});
-	}
-
-	opad.postActionRequest = function(req, data, cbSuccess, cbError){
-		// Add csrf token
-		data[craftSettings.csrfTokenName] = craftSettings.csrfTokenValue;
-
-		var url = 	"/" + craftSettings.actionTrigger
-					+ "/" + req.plugin
-					+ "/" + req.controller
-					+ "/" + req.action;
-
-		$.post(url, data)
-			.done(function( res ){
-				if (typeof cbSuccess === 'function'){
-					cbSuccess(res);
-				}
-			})
-			.error(function(err){
-				if (typeof cbError === 'function'){
-					cbError(err);
-				}
-			})
-	};
-
-	opad.skipMoodSave = false;
-
-	function hideThis(){
-		$('body').html('');
-		window.location = "http://www.google.com";
-	}
-
-	function toggleSearch(){
-		$('#searchFormContainer').toggleClass('hide');
-		if ($('#searchFormContainer').hasClass('hide') ){
-			$(this).removeClass('show-search');
-			$('#searchFormInput').blur();
-		} else {
-			$('#searchFormInput').focus();
-			$(this).addClass('show-search');
-		}
-	}
-
-	$(document).ready(function(){
-		opad.init();
-	});
-
+  $(document).ready(function() {
+    opad.init();
+  });
 })(window, document, jQuery);
