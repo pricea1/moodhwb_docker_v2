@@ -10,11 +10,14 @@
 
 namespace moodhwb\mobileapp;
 
+use moodhwb\mobileapp\services\AuthService as AuthService;
+use edenspiekermann\craftjwtauth\CraftJwtAuth;
 
 use Craft;
 use craft\base\Plugin;
 use craft\services\Plugins;
 use craft\events\PluginEvent;
+use craft\web\Application;
 use craft\web\UrlManager;
 use craft\events\RegisterUrlRulesEvent;
 
@@ -73,6 +76,32 @@ class MobileApp extends Plugin
                 }
             }
         );
+
+        Craft::$app->on(Application::EVENT_INIT, function (Event $event) {
+
+            $token = self::$plugin->authService->parseAndVerifyJWT(self::$plugin->authService->getJWTFromRequest());
+
+       
+            // If the token passes verification...
+            if ($token) {
+                // Look for the user
+                   
+                $user = self::$plugin->authService->getUserByJWT($token);
+ 
+                // Attempt to login as the user we have found or created
+                if ($user->id) {
+                    Craft::$app->user->loginByUserId($user->id);
+                }
+       
+            }
+            
+
+        });
+
+        // Register service
+        $this->setComponents([
+            'authService' => AuthService::class,
+        ]);
 
         Craft::info(
             Craft::t(

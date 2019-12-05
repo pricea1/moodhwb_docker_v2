@@ -34,8 +34,19 @@ class AuthController extends UsersController
      */
     protected $allowAnonymous = ['get-csrf','login','logout'];
 
+
     // Public Methods
     // =========================================================================
+
+    public function actionLogin(){
+        $userLogin = parent::actionLogin();
+        
+        $currentUser =  Craft::$app->getUser()->getIdentity();
+
+        $userLogin->data["jwtToken"] = MobileApp::$plugin->authService->getJwtToken($currentUser);
+        
+        return $userLogin;
+    }
 
     /**
      * @return mixed
