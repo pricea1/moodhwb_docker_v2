@@ -33,7 +33,8 @@ class Question extends Model
     public $value;
     public $textValue;
     public $hereFor;
-    
+    public $period;
+    public $dateAnswered;
 
     // Public Methods
     // =========================================================================
@@ -48,7 +49,9 @@ class Question extends Model
             ['questionId' => 'String'],
             ['value' => 'number'],
             ['textValue' => 'string'],
-            ['hereFor' => 'string']
+            ['hereFor' => 'string'],
+            ['period', [1,2,3]],
+            ['dateAnswered' => 'date']
         ];
     }
 }

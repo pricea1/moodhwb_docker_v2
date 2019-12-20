@@ -56,7 +56,7 @@ class Profiler extends Plugin
     /**
      * @var string
      */
-    public $schemaVersion = '2.0.0';
+    public $schemaVersion = '2.0.1';
     public $hasCpSection = true;
 
     // Public Methods

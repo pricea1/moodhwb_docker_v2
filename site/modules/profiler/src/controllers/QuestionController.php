@@ -66,6 +66,22 @@ class QuestionController extends Controller
             $hereFor = $currentUser->hereFor->value;
         }
 
+        if (array_key_exists('profileQuestionTimestamp', $question)){
+            $questionHour = date('G', $question['profileQuestionTimestamp']);
+            $questionDate = date('Y-m-d',  $question['profileQuestionTimestamp']);
+        }else {
+            $questionHour = date('G');
+            $questionDate = date('Y-m-d');
+        }
+
+        $period = 1;
+        if ($questionHour >= 12){
+            $period = 2;
+        }
+        if ($questionHour >= 17){
+            $period = 3;
+        }
+
         switch ($question['profileQuestionType']){
 
             case "question":
@@ -75,6 +91,8 @@ class QuestionController extends Controller
                 $model->questionId = $question['profileQuestionId'];
                 $model->value = $question['profileQuestionAnswer'];
                 $model->hereFor = $hereFor;
+                $model->period = $period;
+                $model->dateAnswered = $questionDate;
 
                 Profiler::$plugin->questionService->saveQuestion($model);
                 Craft::$app->session->setNotice(Craft::t('site','Question results saved.'));
