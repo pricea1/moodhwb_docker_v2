@@ -100,12 +100,12 @@ class Question extends Component
             $nextMonth = new \DateTime($month);
             $nextMonth->add(new \DateInterval('P1M'));
 
-            $moodScoreRecord->andWhere(['>=', 'dateCreated', $month .'-01']);
-            $moodScoreRecord->andWhere(['<', 'dateCreated', $nextMonth->format('Y-m-d')]);
+            $moodScoreRecord->andWhere(['>=', 'dateAnswered', $month .'-01']);
+            $moodScoreRecord->andWhere(['<', 'dateAnswered', $nextMonth->format('Y-m-d')]);
         }
 
         $moodScoreRecord->andWhere(['<>', 'value', '0']);
-
+        $moodScoreRecord->orderBy('dateAnswered, period');
         return $moodScoreRecord->all();
     }
 
