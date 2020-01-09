@@ -163,7 +163,32 @@ class QuestionController extends Controller
         }
     }
 
-    public function actionSaveAllQuestions()
+    public function actionSaveAllQuestions() {
+        $request = Craft::$app->getRequest();
+
+        $moodAnswers =$request->post("moodAnswers");
+        
+        foreach ( $moodAnswers as $encodedMoodAnswer) {
+
+            $moodAnswer = json_decode($encodedMoodAnswer);
+
+            $answerArray = array(
+                "profileQuestionId" => $moodAnswer->id,
+                "profileQuestionType" => $moodAnswer->type,
+            );
+
+            if ($moodAnswer->type === "question") {
+                $answerArray["profileQuestionAnswer"] = $moodAnswer->value;
+
+                $this->actionSaveQuestion($answerArray, false);
+            }
+        }
+
+        return $this->asJson($moodAnswers);
+
+    }
+
+    public function actionSaveAllQuestionsOLD()
     {
 
         /* TODO Make sure this works with both question and category question types */
@@ -200,7 +225,7 @@ class QuestionController extends Controller
 
             $this->actionSaveQuestion($answerArray, false);
         }
-
+return $this->asJson($request->post());
         return $this->redirect($request->post('redirect'));
 
     }
