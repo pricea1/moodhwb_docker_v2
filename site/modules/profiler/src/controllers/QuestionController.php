@@ -65,7 +65,7 @@ class QuestionController extends Controller
         } else {
             $hereFor = $currentUser->hereFor->value;
         }
-
+        
         if (array_key_exists('profileQuestionTimestamp', $question)){
             $questionHour = date('G', $question['profileQuestionTimestamp']);
             $questionDate = date('Y-m-d',  $question['profileQuestionTimestamp']);
@@ -75,12 +75,18 @@ class QuestionController extends Controller
         }
 
         $period = 1;
-        if ($questionHour >= 12){
-            $period = 2;
+
+        if (array_key_exists("profileQuestionPeriod", $question)){
+            $period = $question['profileQuestionPeriod'];
+        } else {
+            if ($questionHour >= 12){
+                $period = 2;
+            }
+            if ($questionHour >= 17){
+                $period = 3;
+            }
         }
-        if ($questionHour >= 17){
-            $period = 3;
-        }
+
 
         switch ($question['profileQuestionType']){
 
@@ -179,6 +185,8 @@ class QuestionController extends Controller
 
             if ($moodAnswer->type === "question") {
                 $answerArray["profileQuestionAnswer"] = $moodAnswer->value;
+                $test = $moodAnswer->period;
+         //       $answerArray["profileQuestionPeriod"] = $moodAnswer->period;
 
                 $this->actionSaveQuestion($answerArray, false);
             }
