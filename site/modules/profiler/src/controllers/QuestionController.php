@@ -65,7 +65,7 @@ class QuestionController extends Controller
         } else {
             $hereFor = $currentUser->hereFor->value;
         }
-
+        
         if (array_key_exists('profileQuestionTimestamp', $question)){
             $questionHour = date('G', $question['profileQuestionTimestamp']);
             $questionDate = date('Y-m-d',  $question['profileQuestionTimestamp']);
@@ -75,12 +75,18 @@ class QuestionController extends Controller
         }
 
         $period = 1;
-        if ($questionHour >= 12){
-            $period = 2;
+
+        if (array_key_exists("profileQuestionPeriod", $question)){
+            $period = $question['profileQuestionPeriod'];
+        } else {
+            if ($questionHour >= 12){
+                $period = 2;
+            }
+            if ($questionHour >= 17){
+                $period = 3;
+            }
         }
-        if ($questionHour >= 17){
-            $period = 3;
-        }
+
 
         switch ($question['profileQuestionType']){
 
@@ -163,7 +169,34 @@ class QuestionController extends Controller
         }
     }
 
-    public function actionSaveAllQuestions()
+    public function actionSaveAllQuestions() {
+        $request = Craft::$app->getRequest();
+
+        $moodAnswers =$request->post("moodAnswers");
+        
+        foreach ( $moodAnswers as $encodedMoodAnswer) {
+
+            $moodAnswer = json_decode($encodedMoodAnswer);
+
+            $answerArray = array(
+                "profileQuestionId" => $moodAnswer->id,
+                "profileQuestionType" => $moodAnswer->type,
+            );
+
+            if ($moodAnswer->type === "question") {
+                $answerArray["profileQuestionAnswer"] = $moodAnswer->value;
+                $test = $moodAnswer->period;
+         //       $answerArray["profileQuestionPeriod"] = $moodAnswer->period;
+
+                $this->actionSaveQuestion($answerArray, false);
+            }
+        }
+
+        return $this->asJson($moodAnswers);
+
+    }
+
+    public function actionSaveAllQuestionsOLD()
     {
 
         /* TODO Make sure this works with both question and category question types */
@@ -200,7 +233,7 @@ class QuestionController extends Controller
 
             $this->actionSaveQuestion($answerArray, false);
         }
-
+return $this->asJson($request->post());
         return $this->redirect($request->post('redirect'));
 
     }
