@@ -39,12 +39,16 @@ class AuthController extends UsersController
     // =========================================================================
 
     public function actionLogin(){
+
         $userLogin = parent::actionLogin();
-        
+        if (array_key_exists("error", $userLogin->data)){
+            return $userLogin;
+        }
+
         $currentUser =  Craft::$app->getUser()->getIdentity();
 
         $userLogin->data["jwtToken"] = MobileApp::$plugin->authService->getJwtToken($currentUser);
-        
+
         return $userLogin;
     }
 
@@ -52,6 +56,8 @@ class AuthController extends UsersController
      * @return mixed
      */
     public function actionGetCsrf(){
+        // Logout if still logged in from previous session
+        Craft::$app->getUser()->logout(false);
 
         if (Craft::$app->config->general->enableCsrfProtection)
         {
