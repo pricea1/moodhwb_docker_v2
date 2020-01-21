@@ -275,6 +275,7 @@ return $this->asJson($request->post());
             if ( isset($question->categoryType)){
 
                 $categories = Category::find()
+                                ->siteId("*")
                                 ->group($question->categoryType)
                                 ->all();
 
@@ -296,7 +297,8 @@ return $this->asJson($request->post());
                     array_push($retCat, Array(
                         'title' => $category->title,
                         'categoryId' => $category->id,
-                        'isChecked' => in_array($category->id, $userCatIds)
+                        'isChecked' => in_array($category->id, $userCatIds),
+                        'siteId' => $category->siteId
                     ));
                 }
 
