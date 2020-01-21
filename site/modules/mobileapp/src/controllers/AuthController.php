@@ -57,7 +57,7 @@ class AuthController extends UsersController
      */
     public function actionGetCsrf(){
         // Logout if still logged in from previous session
-        Craft::$app->getUser()->logout(false);
+     //   Craft::$app->getUser()->logout(false);
 
         if (Craft::$app->config->general->enableCsrfProtection)
         {
