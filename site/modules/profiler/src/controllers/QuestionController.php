@@ -50,8 +50,8 @@ class QuestionController extends Controller
      */
     public function actionSaveQuestion( $question = null, $returnJson = true )
     {
-    	//$this->requireAjaxRequest();
-
+        //$this->requireAjaxRequest();
+        
         if (!is_array($question)){
             $question = Craft::$app->getRequest()->post();
         }
@@ -103,9 +103,9 @@ class QuestionController extends Controller
                 Profiler::$plugin->questionService->saveQuestion($model);
                 Craft::$app->session->setNotice(Craft::t('site','Question results saved.'));
 
-                if ($returnJson){
+   //             if ($returnJson){
                     $returnVal = $model;            
-                }
+     //           }
 
             break;
             
@@ -133,9 +133,9 @@ class QuestionController extends Controller
 
                 Craft::$app->relations->saveRelations($field , $currentUser, $relations);
 
-                if ($returnJson){
+//                if ($returnJson){
                     $returnVal = ["relations" => $relations];            
-                }
+  //              }
             break;
 
             
@@ -151,9 +151,9 @@ class QuestionController extends Controller
                 Profiler::$plugin->questionService->saveQuestion($model);
                 Craft::$app->session->setNotice(Craft::t('site','Question results saved.'));
 
-                if ($returnJson){
+      //          if ($returnJson){
                     $returnVal = $model;            
-                }
+      //          }
 
             break;
             
@@ -166,11 +166,14 @@ class QuestionController extends Controller
 */
         if ($returnJson && $returnVal){
             return $this->asJson($returnVal);   
+        } else {
+            return $returnVal;
         }
     }
 
     public function actionSaveAllQuestions() {
         $request = Craft::$app->getRequest();
+        $response = [];
 
         $moodAnswers =$request->post("moodAnswers");
         
@@ -185,14 +188,16 @@ class QuestionController extends Controller
 
             if ($moodAnswer->type === "question") {
                 $answerArray["profileQuestionAnswer"] = $moodAnswer->value;
-                $test = $moodAnswer->period;
-         //       $answerArray["profileQuestionPeriod"] = $moodAnswer->period;
-
-                $this->actionSaveQuestion($answerArray, false);
             }
+
+            if ($moodAnswer->type === "category") {
+                $answerArray["profileQuestionCategories"] = $moodAnswer->value;
+            }
+
+            $response[$moodAnswer->id] = $this->actionSaveQuestion($answerArray, false);
         }
 
-        return $this->asJson($moodAnswers);
+        return $this->asJson($response);
 
     }
 
