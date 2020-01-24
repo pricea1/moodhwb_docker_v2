@@ -66,18 +66,23 @@ class QuestionController extends Controller
             $hereFor = $currentUser->hereFor->value;
         }
         
-        if (array_key_exists('profileQuestionTimestamp', $question)){
-            $questionHour = date('G', $question['profileQuestionTimestamp']);
-            $questionDate = date('Y-m-d',  $question['profileQuestionTimestamp']);
-        }else {
-            $questionHour = date('G');
-            $questionDate = date('Y-m-d');
+        if (array_key_exists('dateAnswered', $question)){
+            $questionDate = $question['dateAnswered'];
+        } else {
+            if (array_key_exists('profileQuestionTimestamp', $question)){
+                $questionHour = date('G', $question['profileQuestionTimestamp']);
+                $questionDate = date('Y-m-d',  $question['profileQuestionTimestamp']);
+            }else {
+                $questionHour = date('G');
+                $questionDate = date('Y-m-d');
+            }
         }
+
 
         $period = 1;
 
-        if (array_key_exists("profileQuestionPeriod", $question)){
-            $period = $question['profileQuestionPeriod'];
+        if (array_key_exists("period", $question)){
+            $period = $question['period'];
         } else {
             if ($questionHour >= 12){
                 $period = 2;
@@ -147,7 +152,9 @@ class QuestionController extends Controller
                 $model->textValue = $question['profileQuestionValue'];
                 $model->value = -1;
                 $model->hereFor = $hereFor;
-
+                $model->period = $period;
+                $model->dateAnswered = $questionDate;
+                
                 Profiler::$plugin->questionService->saveQuestion($model);
                 Craft::$app->session->setNotice(Craft::t('site','Question results saved.'));
 
@@ -192,6 +199,10 @@ class QuestionController extends Controller
 
             if ($moodAnswer->type === "category") {
                 $answerArray["profileQuestionCategories"] = $moodAnswer->value;
+            }
+
+            if ($moodAnswer->type === "generic") {
+                $answerArray["profileQuestionValue"] =$moodAnswer->value;
             }
 
             $response[$moodAnswer->id] = $this->actionSaveQuestion($answerArray, false);
