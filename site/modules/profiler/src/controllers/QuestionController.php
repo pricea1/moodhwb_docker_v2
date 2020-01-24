@@ -332,7 +332,14 @@ return $this->asJson($request->post());
                 array_push($return, $catQuestion);
 
             } else {
-                array_push($return, $question);
+                $questionReturn = Array(
+                    'id' => $question->id,
+                    'questionId' => $question->questionId,
+                    'positiveDesc' => $question->positiveDesc,
+                    'negativeDesc' => $question->negativeDesc,
+                );
+
+                array_push($return, $questionReturn);
             }
         }
 
