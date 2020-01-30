@@ -52,6 +52,34 @@ class AuthController extends UsersController
         return $userLogin;
     }
 
+    public function actionChangePassword(){
+    
+        $currentUser =  Craft::$app->getUser()->getIdentity();
+        $request = Craft::$app->getRequest();
+
+        $currentPassword = $request->post('currentPassword');
+        $newPassword = $request->post('newPassword');
+
+        $currentUserVerified = parent::actionVerifyPassword($currentPassword);
+
+        
+        if (array_key_exists("error", $currentUserVerified->data)){
+            return $currentUserVerified->data;
+        }
+
+        $currentUser->newPassword = $newPassword;
+        $currentUser->setScenario(User::SCENARIO_PASSWORD);
+        
+        if (!Craft::$app->getElements()->saveElement($currentUser)) {
+            $errors = $currentUser->getErrors('newPassword');
+            return $this->asErrorJson(implode(', ', $errors));
+        }
+        
+        return $this->asJson(['success' => true]);
+        
+        
+    }
+
     /**
      * @return mixed
      */
