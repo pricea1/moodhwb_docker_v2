@@ -138,6 +138,21 @@ class QuestionController extends Controller
 
                 Craft::$app->relations->saveRelations($field , $currentUser, $relations);
 
+                // Save results for historic reference on mood diary
+                $model = new QuestionModel();
+    
+                $model->userId = $currentUser->id;
+                $model->questionId = $question['profileQuestionId'];
+                $model->textValue = json_encode($question['profileQuestionCategories']);
+                $model->value = -1;
+                $model->hereFor = $hereFor;
+                $model->period = $period;
+                $model->dateAnswered = $questionDate;
+                
+                Profiler::$plugin->questionService->saveQuestion($model);
+                Craft::$app->session->setNotice(Craft::t('site','Question results saved.'));
+
+
 //                if ($returnJson){
                     $returnVal = ["relations" => $relations];            
   //              }
