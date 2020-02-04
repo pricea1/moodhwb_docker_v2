@@ -97,16 +97,47 @@ class Question extends Component
                             ->where(['userId' => $userId]);
 
         if ($month){
-            $nextMonth = new \DateTime($month);
-            $nextMonth->add(new \DateInterval('P1M'));
+            $nextMonth = new \DateTime($month .'-01');
+            $nextMonth->add(new \DateInterval('P2M'));
 
-            $moodScoreRecord->andWhere(['>=', 'dateAnswered', $month .'-01']);
+            $prevMonth = new \DateTime($month .'-01');
+            $prevMonth->sub(new \DateInterval('P1M'));
+
+            $moodScoreRecord->andWhere(['>=', 'dateAnswered',$prevMonth->format('Y-m-d')]);
             $moodScoreRecord->andWhere(['<', 'dateAnswered', $nextMonth->format('Y-m-d')]);
         }
 
         $moodScoreRecord->andWhere(['<>', 'value', '0']);
         $moodScoreRecord->orderBy('dateAnswered, period');
-        return $moodScoreRecord->all();
+
+        $monthScores = $moodScoreRecord->all();
+
+        // Get next available scores
+        $moodScoreNextMonth = QuestionRecord::find()->where(['userId' => $userId]);
+        $moodScoreNextMonth->andWhere(['>=', 'dateAnswered', $nextMonth->format('Y-m-d')]);
+        $moodScoreNextMonth->orderBy('dateAnswered');
+        $nextDate = $moodScoreNextMonth->one();
+
+        // Add next score so connecting line can be drawn in app
+        if ($nextDate){
+            $nextMoodScores = QuestionRecord::find()->where(['userId' => $userId, 'dateAnswered' => $nextDate->dateAnswered])->orderBy('period')->all();
+            $monthScores = array_merge($monthScores, $nextMoodScores);
+        }
+        
+         // Get previous available scores
+         $moodScorePreviousMonth = QuestionRecord::find()->where(['userId' => $userId]);
+         $moodScorePreviousMonth->andWhere(['<', 'dateAnswered', $month .'-01']);
+         $moodScorePreviousMonth->orderBy('dateAnswered DESC');
+         $previousDate = $moodScorePreviousMonth->one();
+
+          
+         // Add previous score so connecting line can be drawn in app
+         if ($previousDate){
+             $previousMoodScores = QuestionRecord::find()->where(['userId' => $userId, 'dateAnswered' => $previousDate->dateAnswered])->orderBy('period DESC')->all();
+             $monthScores = array_merge($previousMoodScores, $monthScores);
+         }
+
+        return $monthScores;
     }
 
     public function getMoodQuestions(){
