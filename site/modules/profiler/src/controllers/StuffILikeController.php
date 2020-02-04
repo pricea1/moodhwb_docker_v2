@@ -15,6 +15,9 @@ use moodhwb\profiler\models\StuffILike as StuffILikeModel;
 
 use Craft;
 use craft\web\Controller;
+use craft\elements\Category;
+
+use yii\helpers\ArrayHelper;
 
 /**
  * @author    Andrew Price
@@ -33,6 +36,15 @@ class StuffILikeController extends Controller
      * @access protected
      */
     protected $allowAnonymous = [];
+
+    private function groupedLinks()
+    {
+        $currentUser = Craft::$app->getUser()->getIdentity();
+        
+        $stuffILike = Profiler::$plugin->stuffILikeService->getAllStuffILike($currentUser->id);
+        $returnStuffILike = ArrayHelper::index($stuffILike, null, 'category');
+        return $returnStuffILike;
+    }
 
     private function returnData($model)
     {
@@ -59,11 +71,27 @@ class StuffILikeController extends Controller
         $model = new StuffILikeModel();
 
         $model->userId = $currentUser->id;
+
+        $id = $request->post('id');
+        if (isset($id)){
+           $model->id = $id;
+        }
         $model->title = $request->post('title');
         $model->url = $request->post('url');
 
+        $category = $request->post('category');
+        if (isset($category)){
+            $model->category = $category;
+        }
+
+        $userCategory = $request->post('userCategory');
+        if (isset($userCategory)){
+            $model->category = 0;
+            $model->userCategory = $userCategory;
+        }
+
         // Add http if not included
-        if ($model->url && preg_match("#https?://#",  $model->url) === 0) {
+        if (!is_numeric(str_replace([' ','(',')','-'], "", $model->url)) && $model->url && preg_match("#https?://#",  $model->url) === 0) {
              $model->url = 'http://'. $model->url;
         }
 
@@ -73,7 +101,8 @@ class StuffILikeController extends Controller
 
         Craft::$app->session->setNotice(Craft::t('site','Stuff I Like saved.'));
 
-        return $this->returnData($model);
+        $stuffILike = $this->groupedLinks();
+        return $this->returnData($stuffILike);
     }
 
     public function actionDeleteStuffILike()
@@ -90,7 +119,39 @@ class StuffILikeController extends Controller
 
         $delStuffILike = Profiler::$plugin->stuffILikeService->deleteStuffILike($model);
 
-        return $this->returnData($delStuffILike);
+        $stuffILike = $this->groupedLinks();
+        return $this->returnData($stuffILike);
 
     }
+
+    public function actionGetStuffILike()
+    {
+        $currentUser = Craft::$app->getUser()->getIdentity();
+        $returnStuffILike = $this->groupedLinks();
+
+        $categories = Category::find()
+                                ->siteId("*")
+                                ->group('stuffILikeType')
+                                ->orderBy('lft')
+                                ->all();
+
+
+
+        $returnCats = array();
+
+        foreach( $categories as $key => $category){
+            $catDetails = array(
+                "id" => $category->id,
+                "siteId" => $category->siteId,
+                "title" => $category->title
+            );
+            $returnCats[] = $category;
+        }
+        
+
+        $stuffILikeData = array('userStuffILike' => $returnStuffILike, 'categories' => $returnCats);
+
+        return $this->returnData($stuffILikeData);
+    }
+
 }
