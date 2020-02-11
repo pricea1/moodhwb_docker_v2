@@ -32,19 +32,26 @@ class StuffILike extends Component
      */
     function getAllStuffILike($userId){
 
-        return StuffILikeRecord::find()
+        $usersStuffILike = StuffILikeRecord::find()
                     ->where(['userId' => $userId])
                     ->all();
+        
+        return $usersStuffILike;
     }
 
     public function addStuffILike(StuffILikeModel $stuffILikeModel)
     {
+        if ($stuffILikeModel->id){
+            $stuffILikeRecord = StuffILikeRecord::findOne(['id' => $stuffILikeModel->id, 'userId' => $stuffILikeModel->userId]);
+        } else {
+            $stuffILikeRecord = new StuffILikeRecord();
+            $stuffILikeRecord->userId = $stuffILikeModel->userId;
+        }
 
-        $stuffILikeRecord = new StuffILikeRecord();
-
-        $stuffILikeRecord->userId = $stuffILikeModel->userId;
         $stuffILikeRecord->title = $stuffILikeModel->title;
         $stuffILikeRecord->url = $stuffILikeModel->url;
+        $stuffILikeRecord->category = $stuffILikeModel->category;
+        $stuffILikeRecord->userCategory = $stuffILikeModel->userCategory;
 
         $stuffILikeRecord->save();
 
