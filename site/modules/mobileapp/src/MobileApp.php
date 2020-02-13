@@ -60,6 +60,8 @@ class MobileApp extends Plugin
         parent::init();
         self::$plugin = $this;
 
+        Craft::setAlias('@moodhwb/mobileapp', $this->getBasePath());
+
         Event::on(
             UrlManager::class,
             UrlManager::EVENT_REGISTER_SITE_URL_RULES,
