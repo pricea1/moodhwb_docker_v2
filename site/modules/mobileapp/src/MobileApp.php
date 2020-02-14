@@ -78,7 +78,7 @@ class MobileApp extends Plugin
                 }
             }
         );
-/*
+
         Craft::$app->on(Application::EVENT_INIT, function (Event $event) {
 
             $token = self::$plugin->authService->parseAndVerifyJWT(self::$plugin->authService->getJWTFromRequest());
@@ -96,7 +96,7 @@ class MobileApp extends Plugin
                 }
             }
         });
-*/
+
         // Register service
         $this->setComponents([
             'authService' => AuthService::class,

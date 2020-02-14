@@ -18,8 +18,4 @@ RUN crontab /etc/cron.d/cron-moodhwb
 RUN touch /var/log/cron.log
 
 RUN service cron start
-# Run the command on container startup
-#CMD cron && tail -f /var/log/cron.log
-
-
-
+RUN update-rc.d cron defaults

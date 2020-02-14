@@ -58,6 +58,7 @@ class StuffILikeController extends Controller
 
     public function actionSendNotifications()
     {
+        /*
         $channelName = 'moodhwb_goals';
         $recipient = 'ExponentPushToken[HCRvUrORBk_0Jhv3TXKsSt]';
         // You can quickly bootup an expo instance
@@ -67,11 +68,12 @@ class StuffILikeController extends Controller
         $expo->subscribe($channelName, $recipient);
         
         // Build the notification data
-        $notification = ['title'=> 'MoodHwb push', 'body' => 'Hello World!', 'channelId' => 'moodhwb_goals'];
+        $notification = ['title'=> 'MoodHwb push', 'body' => 'Hello World2!', 'channelId' => 'moodhwb_goals'];
         
         // Notify an interest with a notification
         $expo->notify($channelName, $notification);
-        return $this->asJson(array());
+        return $this->asJson(array($recipient, $notification));
+        */
     }
 
     // Public Methods
@@ -143,8 +145,6 @@ class StuffILikeController extends Controller
 
     public function actionGetStuffILike()
     {   
-        $this->testNotifications();
-        
         $currentUser = Craft::$app->getUser()->getIdentity();
         $returnStuffILike = $this->groupedLinks();
 
