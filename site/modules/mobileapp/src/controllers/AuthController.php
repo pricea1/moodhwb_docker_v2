@@ -10,11 +10,12 @@
 
 namespace moodhwb\mobileapp\controllers;
 
-use moodhwb\mobileapp\MobileApp;
-
 use Craft;
 use craft\controllers\UsersController;
 use craft\elements\User;
+
+use moodhwb\mobileapp\MobileApp;
+use moodhwb\mobileapp\models\UserNotificationTokensModel;
 
 /**
  * @author    Andrew Price
@@ -35,6 +36,23 @@ class AuthController extends UsersController
     protected $allowAnonymous = ['get-csrf','login','logout'];
 
 
+    private function setNotificationToken($remove = false) {
+        $request = Craft::$app->getRequest();
+        $currentUser =  Craft::$app->getUser()->getIdentity();
+
+        $model = new UserNotificationTokensModel();
+        $model->userId = $currentUser->id;
+        $model->notificationTokens = $request->post('notificationToken');
+
+        if ($remove){
+            return MobileApp::$plugin->authService->removeUserNotificationTokens($model);
+        } else {
+            return MobileApp::$plugin->authService->addUserNotificationTokens($model);
+        }
+
+    }
+
+
     // Public Methods
     // =========================================================================
 
@@ -50,21 +68,7 @@ class AuthController extends UsersController
 
         $userLogin->data["jwtToken"] = MobileApp::$plugin->authService->getJwtToken($currentUser);
         
-        $notificationTokens = json_decode($currentUser->getFieldValue('notificationTokens'));
-        
-        if (!isset($notificationTokens)) {
-            $notificationTokens = array();
-        }
-
-        $deviceNotificationToken = $request->post('notificationToken');
-return array('error' => $notificationTokens);
-        if (!array_key_exists($deviceNotificationToken, $notificationTokens)){
-            $notificationTokens[]= $$deviceNotificationToken;
-//            array_push($notificationTokens, $deviceNotificationToken);
-            $currentUser->setFieldValue("notificationTokens", json_encode($notificationTokens));
-            Craft::$app->getElements()->saveElement($currentUser);
-
-        }
+        $this->setNotificationToken();
 
         return $userLogin;
     }
@@ -72,21 +76,11 @@ return array('error' => $notificationTokens);
     public function actionSignout() {
         
         $request = Craft::$app->getRequest();
-        $deviceNotificationToken = $request->post('notificationToken');
 
-        $currentUser =  Craft::$app->getUser()->getIdentity();
-
-        $notificationTokens = json_decode($currentUser->getFieldValue('notificationTokens'));
-        // TODO Test that notification tokens are being removed
-        // Remove device from user notifications
-        if (($key = array_search($deviceNotificationToken, $notificationTokens)) !== false) {
-            unset($notificationTokens[$key]);
-            $currentUser->setFieldValue("notificationTokens", json_encode($notificationTokens));
-            Craft::$app->getElements()->saveElement($currentUser);
-        }
+        $this->setNotificationToken(true);
 
         $userLogin = parent::actionLogout();
-        return $currentUser->getFieldValue("notificationTokens");
+        return $userLogin;
     }
 
     public function actionChangePassword(){

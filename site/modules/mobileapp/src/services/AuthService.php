@@ -11,6 +11,8 @@
 namespace moodhwb\mobileapp\services;
 
 use moodhwb\mobileapp\MobileApp;
+use moodhwb\mobileapp\models\UserNotificationTokensModel;
+use moodhwb\mobileapp\records\UserNotificationTokensRecord;
 
 use Craft;
 use craft\base\Component;
@@ -138,5 +140,51 @@ class AuthService extends Component
             return $user;
         }
         return null;
+    }
+
+    public function addUserNotificationTokens(UserNotificationTokensModel $notificationTokenModel)
+    {
+        $userNotificationTokensRecord = UserNotificationTokensRecord::find()
+            ->where(['userId' => $notificationTokenModel->userId])
+            ->one();
+
+        if (!$userNotificationTokensRecord) {
+            $userNotificationTokensRecord = new UserNotificationTokensRecord();
+            $userNotificationTokensRecord->userId = $notificationTokenModel->userId;
+            $userNotificationTokensRecord->notificationTokens = Array($notificationTokenModel->notificationTokens);
+        } else {
+            $notificationTokens = json_decode($userNotificationTokensRecord->notificationTokens);
+            
+            if (!is_array($notificationTokens)) {
+                $notificationTokens = array();
+            }
+
+            if (in_array($notificationTokenModel->notificationTokens, $notificationTokens)) {
+                return;
+            }
+            
+            $notificationTokens[] = $notificationTokenModel->notificationTokens;
+            $userNotificationTokensRecord->notificationTokens = json_encode($notificationTokens);
+        }
+
+        return $userNotificationTokensRecord->save();
+    }
+
+    public function removeUserNotificationTokens(UserNotificationTokensModel $notificationTokenModel)
+    {
+        $userNotificationTokensRecord = UserNotificationTokensRecord::find()
+            ->where(['userId' => $notificationTokenModel->userId])
+            ->one();
+
+        if ($userNotificationTokensRecord) {
+            $notificationTokens = json_decode($userNotificationTokensRecord->notificationTokens);
+            if (($key = array_search($notificationTokenModel->notificationTokens, $notificationTokens)) !== false) {
+                unset($notificationTokens[$key]);
+            }
+            $userNotificationTokensRecord->notificationTokens = $notificationTokens;
+        }
+
+        return $userNotificationTokensRecord->save();
+
     }
 }
