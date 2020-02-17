@@ -10,11 +10,12 @@
 
 namespace moodhwb\mobileapp\controllers;
 
-use moodhwb\mobileapp\MobileApp;
-
 use Craft;
 use craft\controllers\UsersController;
 use craft\elements\User;
+
+use moodhwb\mobileapp\MobileApp;
+use moodhwb\mobileapp\models\UserNotificationTokensModel;
 
 /**
  * @author    Andrew Price
@@ -35,10 +36,28 @@ class AuthController extends UsersController
     protected $allowAnonymous = ['get-csrf','login','logout'];
 
 
+    private function setNotificationToken($remove = false) {
+        $request = Craft::$app->getRequest();
+        $currentUser =  Craft::$app->getUser()->getIdentity();
+
+        $model = new UserNotificationTokensModel();
+        $model->userId = $currentUser->id;
+        $model->notificationTokens = $request->post('notificationToken');
+
+        if ($remove){
+            return MobileApp::$plugin->authService->removeUserNotificationTokens($model);
+        } else {
+            return MobileApp::$plugin->authService->addUserNotificationTokens($model);
+        }
+
+    }
+
+
     // Public Methods
     // =========================================================================
 
     public function actionLogin(){
+        $request = Craft::$app->getRequest();
 
         $userLogin = parent::actionLogin();
         if (array_key_exists("error", $userLogin->data)){
@@ -48,7 +67,19 @@ class AuthController extends UsersController
         $currentUser =  Craft::$app->getUser()->getIdentity();
 
         $userLogin->data["jwtToken"] = MobileApp::$plugin->authService->getJwtToken($currentUser);
+        
+        $this->setNotificationToken();
 
+        return $userLogin;
+    }
+
+    public function actionSignout() {
+        
+        $request = Craft::$app->getRequest();
+
+        $this->setNotificationToken(true);
+
+        $userLogin = parent::actionLogout();
         return $userLogin;
     }
 

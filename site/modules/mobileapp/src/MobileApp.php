@@ -60,6 +60,8 @@ class MobileApp extends Plugin
         parent::init();
         self::$plugin = $this;
 
+        Craft::setAlias('@moodhwb/mobileapp', $this->getBasePath());
+
         Event::on(
             UrlManager::class,
             UrlManager::EVENT_REGISTER_SITE_URL_RULES,
@@ -76,7 +78,7 @@ class MobileApp extends Plugin
                 }
             }
         );
-/*
+
         Craft::$app->on(Application::EVENT_INIT, function (Event $event) {
 
             $token = self::$plugin->authService->parseAndVerifyJWT(self::$plugin->authService->getJWTFromRequest());
@@ -94,7 +96,7 @@ class MobileApp extends Plugin
                 }
             }
         });
-*/
+
         // Register service
         $this->setComponents([
             'authService' => AuthService::class,

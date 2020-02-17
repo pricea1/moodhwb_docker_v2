@@ -35,7 +35,7 @@ class StuffILikeController extends Controller
      *         The actions must be in 'kebab-case'
      * @access protected
      */
-    protected $allowAnonymous = [];
+    protected $allowAnonymous = ['send-notifications'];
 
     private function groupedLinks()
     {
@@ -56,6 +56,26 @@ class StuffILikeController extends Controller
         }
     }
 
+    public function actionSendNotifications()
+    {
+        /*
+        $channelName = 'moodhwb_goals';
+        $recipient = 'ExponentPushToken[HCRvUrORBk_0Jhv3TXKsSt]';
+        // You can quickly bootup an expo instance
+        $expo = \ExponentPhpSDK\Expo::normalSetup();
+        
+        // Subscribe the recipient to the server
+        $expo->subscribe($channelName, $recipient);
+        
+        // Build the notification data
+        $notification = ['title'=> 'MoodHwb push', 'body' => 'Hello World2!', 'channelId' => 'moodhwb_goals'];
+        
+        // Notify an interest with a notification
+        $expo->notify($channelName, $notification);
+        return $this->asJson(array($recipient, $notification));
+        */
+    }
+
     // Public Methods
     // =========================================================================
 
@@ -64,7 +84,6 @@ class StuffILikeController extends Controller
      */
     public function actionAddStuffILike()
     {
-
     	$currentUser = Craft::$app->getUser()->getIdentity();
         $request = Craft::$app->getRequest();
 
@@ -125,7 +144,7 @@ class StuffILikeController extends Controller
     }
 
     public function actionGetStuffILike()
-    {
+    {   
         $currentUser = Craft::$app->getUser()->getIdentity();
         $returnStuffILike = $this->groupedLinks();
 
