@@ -58,10 +58,18 @@ class Goal extends Component
         $goalRecord = new GoalRecord();
 
         $goalRecord->userId = $goalModel->userId;
-        $goalRecord->activity = $goalModel->activity;
-    	$goalRecord->timesPerWeek = $goalModel->timesPerWeek;
+        $goalRecord->title = $goalModel->title;
+        $goalRecord->setReminder = $goalModel->setReminder;
+        $goalRecord->type = $goalModel->type;
+
+        if ($goalModel->type === "weekly") {
+            $goalRecord->weeklyDays = $goalModel->weeklyDays;
+        } else {
+            $goalRecord->onceRepeatWeekly = $goalModel->onceRepeatWeekly;
+            $goalRecord->onceDate = $goalModel->onceDate;
+        }
         
-        return $this->resetGoalAndSave($goalRecord);
+        return $goalRecord->save();
 
     }
 
@@ -80,18 +88,12 @@ class Goal extends Component
 
     public function getAllGoalsForWeek($userId){
 
-        $weekId = $this->getWeekId();
+        $startDate = "2020-02-20";
+        $endDate = "2020-02-26";
 
         $goalList = GoalRecord::find()
                     ->where(['userId' => $userId])
                     ->all();
-        
-        foreach ($goalList as &$goal){
-            // Check if new week
-            if ($goal->weekId != $weekId){
-                $this->resetGoalAndSave($goal);
-            }
-        }       
 
         return $goalList;
     }

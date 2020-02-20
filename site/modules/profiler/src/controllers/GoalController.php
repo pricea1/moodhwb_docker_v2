@@ -59,24 +59,44 @@ class GoalController extends Controller
     // Public Methods
     // =========================================================================
 
+    public function actionGetGoalsForWeek()
+    {
+        $currentUser = Craft::$app->getUser()->getIdentity();
+        $goals = Profiler::$plugin->goalService->getAllGoalsForWeek($currentUser->id);
+
+        return $this->returnData($goals);
+    }
+
     /**
      * @return mixed
      */
     public function actionAddGoal()
     {
+
         $request = Craft::$app->getRequest();
         $currentUser = Craft::$app->getUser()->getIdentity();
 
         $model = new GoalModel();
 
         $model->userId = $currentUser->id;
-        $model->activity = $request->post('activity');
-        $model->timesPerWeek = $request->post('timesPerWeek');
+        $model->title = $request->post('title');
+        $model->setReminder = $request->post('setReminder');
+        
+        $model->type = $request->post('type');
 
+        if ($model->type === "weekly") {
+            $model->weeklyDays = $request->post('weeklyDays');
+        } else {
+            $model->onceRepeatWeekly = $request->post('onceRepeatWeekly');
+            $model->onceDate = $request->post('onceDate');
+        }
+  
         $newGoal = Profiler::$plugin->goalService->addGoal($model);
         Craft::$app->session->setNotice(Craft::t('site','Goal saved.'));
+        
+        $goals = Profiler::$plugin->goalService->getAllGoalsForWeek($currentUser->id);
 
-        return $this->returnData($newGoal);
+        return $this->returnData($goals);
     }
 
     public function actionDeleteGoal()

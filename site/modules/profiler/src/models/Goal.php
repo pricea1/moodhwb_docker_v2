@@ -30,11 +30,12 @@ class Goal extends Model
      */
     public $id;
     public $userId;
-    public $activity;
-    public $timesPerWeek;
-    public $timesCompleted;
-    public $status;
-    public $weekId;
+    public $title;
+    public $type;
+    public $setReminder;
+    public $onceRepeatWeekly;
+    public $onceDate;
+    public $weeklyDays;
 
     // Public Methods
     // =========================================================================
@@ -47,11 +48,12 @@ class Goal extends Model
         return [
             ['id','number'],
 			['userId', 'number'],
-			['activity', 'string'],
-            ['timesPerWeek', 'number'],
-            ['timesCompleted', 'number'],
-            ['weekId', 'number'],
-            ['status', ["unviewed","current","viewed"]]
+			['title', 'string'],
+            ['type', ['once','weekly']],
+            ['setReminder', 'boolean'],
+            ['onceRepeatWeekly', 'boolean'],
+            ['onceDate', 'date'],
+            ['weeklyDays', 'string']
         ];
     }
 }
