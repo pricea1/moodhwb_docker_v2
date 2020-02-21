@@ -20,7 +20,7 @@ use craft\base\Model;
  * @package   Profiler
  * @since     2.0.0
  */
-class Goal extends Model
+class GoalTracker extends Model
 {
     // Public Properties
     // =========================================================================
@@ -30,12 +30,11 @@ class Goal extends Model
      */
     public $id;
     public $userId;
-    public $title;
-    public $type;
-    public $setReminder;
-    public $repeatWeekly;
-    public $onceDate;
-    public $weeklyDays;
+    public $goalId;
+    public $weekId;
+    public $date;
+    public $status;
+
 
     // Public Methods
     // =========================================================================
@@ -47,13 +46,11 @@ class Goal extends Model
     {
         return [
             ['id','number'],
-			['userId', 'number'],
-			['title', 'string'],
-            ['type', ['once','weekly']],
-            ['setReminder', 'boolean'],
-            ['repeatWeekly', 'boolean'],
-            ['onceDate', 'string'],
-            ['weeklyDays', 'string']
+            ['userId', 'number'],
+            ['goalId', 'number'],
+            ['weekId', 'number'],
+            ['date', 'date'],
+            ['status', ['todo','done','skipped']]
         ];
     }
 }

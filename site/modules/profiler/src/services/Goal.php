@@ -13,9 +13,12 @@ namespace moodhwb\profiler\services;
 use moodhwb\profiler\Profiler;
 use moodhwb\profiler\records\Goal as GoalRecord;
 use moodhwb\profiler\models\Goal as GoalModel;
+use moodhwb\profiler\records\GoalTracker as GoalTrackerRecord;
+use moodhwb\profiler\models\GoalTracker as GoalTrackerModel;
 
 use Craft;
 use craft\base\Component;
+use yii\helpers\ArrayHelper;
 
 /**
  * @author    Andrew Price
@@ -24,25 +27,20 @@ use craft\base\Component;
  */
 class Goal extends Component
 {
-    /*
-    * Helper to format weekId: Yr-weekNo e.g 201532
-    */
-    private function getWeekId(){
-
-        $now = new \DateTime('now');
-        return $now->format('YW');
-
-    }
-
-    private function resetGoalAndSave(GoalRecord $goalRecord){
-
-        $goalRecord->timesCompleted = 0;
-        $goalRecord->status = 'todo';
-        $goalRecord->weekId = $this->getWeekId();
-
-        $goalRecord->save();
     
-        return $goalRecord;
+    public function createGoalInstance(GoalTrackerModel $goalTrackerModel){
+
+        $goalTrackerRecord = new GoalTrackerRecord();
+        $goalTrackerRecord->userId = $goalTrackerModel->userId;
+        $goalTrackerRecord->goalId = $goalTrackerModel->goalId;
+        $goalTrackerRecord->weekId = $goalTrackerModel->weekId;
+        $goalTrackerRecord->date = $goalTrackerModel->date;
+
+        //nb default status defined in DB
+
+        $goalTrackerRecord->save();
+    
+        return $goalTrackerRecord;
     }
 
     // Public Methods
@@ -55,25 +53,30 @@ class Goal extends Component
     public function addGoal(GoalModel $goalModel)
     {
 
-        $goalRecord = new GoalRecord();
+        if ($goalModel->id){
+            $goalRecord = GoalRecord::findOne(['id' => $goalModel->id, 'userId' => $goalModel->userId]);
+        } else {
+            $goalRecord = new GoalRecord();
+            $goalRecord->userId = $goalModel->userId;
+        }
 
-        $goalRecord->userId = $goalModel->userId;
         $goalRecord->title = $goalModel->title;
         $goalRecord->setReminder = $goalModel->setReminder;
         $goalRecord->type = $goalModel->type;
+        $goalRecord->repeatWeekly = $goalModel->repeatWeekly;
 
         if ($goalModel->type === "weekly") {
             $goalRecord->weeklyDays = $goalModel->weeklyDays;
         } else {
-            $goalRecord->onceRepeatWeekly = $goalModel->onceRepeatWeekly;
+
             $goalRecord->onceDate = $goalModel->onceDate;
         }
         
-        return $goalRecord->save();
-
+        $goalRecord->save();
+        return $goalRecord;
     }
 
-    public function deleteGoal($goalModel)
+    public function deleteGoal($goalModel, $weekId)
     {  
         $goal = GoalRecord::find()
                     ->where(['userId' => $goalModel->userId, 'id' => $goalModel->id])
@@ -81,34 +84,47 @@ class Goal extends Component
 
         $goal->delete();
 
-        $goal->status = "deleted";
+        GoalTrackerRecord::deleteAll(['userId' => $goalModel->userId, 'goalId' => $goalModel->id]);
+
+    //    $goal->status = "deleted";
+
+        return $this->getAllGoalsForWeek($goalModel->userId, $weekId);
+    }
+
+    public function getGoal($userId, $goalId){
+        $goal = GoalRecord::find()
+                ->where(['userId' => $userId, 'id' => $goalId])
+                ->one();
 
         return $goal;
     }
 
-    public function getAllGoalsForWeek($userId){
+    public function getAllGoalsForWeek($userId, $weekId){
+        $goalTablename = GoalRecord::tableName();
+        $goalTrackerTablename = GoalTrackerRecord::tableName();
 
-        $startDate = "2020-02-20";
-        $endDate = "2020-02-26";
+        $joinCondition = $goalTrackerTablename .'.goalId=' .$goalTablename .'.id';
 
-        $goalList = GoalRecord::find()
-                    ->where(['userId' => $userId])
+        $goalList = GoalTrackerRecord::find()
+                    ->select([$goalTrackerTablename.'.*', $goalTablename.'.type',$goalTablename.'.title',  ])
+                    ->innerJoin($goalTablename, $joinCondition)
+                    ->where([$goalTrackerTablename.'.userId' => $userId, 'weekId' => $weekId])
+                    ->andWhere(['!=', 'status', 'skipped'])
+                    ->asArray()
                     ->all();
 
-        return $goalList;
+        $groupedGoals = ArrayHelper::index($goalList, null, 'date');
+    
+        return $groupedGoals;
     }
 
-    public function doneActivity($goalModel)
+    public function updateGoalStatus($goalModel)
     {  
-        $goal = GoalRecord::find()
+        $goal = GoalTrackerRecord::find()
                     ->where(['userId' => $goalModel->userId, 'id' => $goalModel->id])
                     ->one();
 
-        $goal->timesCompleted = $goal->timesCompleted + 1;
-
-        if ($goal->timesCompleted >= $goal->timesPerWeek){
-            $goal->status = 'completed';
-        }
+        $goal->status = $goalModel->status;
 
         $goal->save();
 

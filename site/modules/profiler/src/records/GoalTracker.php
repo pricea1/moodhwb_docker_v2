@@ -30,6 +30,6 @@ class GoalTracker extends ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%profiler_goaltracker}}';
+        return '{{%profiler_goals_tracker}}';
     }
 }
