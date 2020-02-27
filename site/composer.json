@@ -28,7 +28,8 @@
     "craftcms/aws-s3": "1.2.5",
     "lcobucci/jwt": "^3.3",
     "alymosul/exponent-server-sdk-php": "^1.2",
-    "panlatent/schedule": "0.2.2"
+    "panlatent/schedule": "0.2.2",
+    "rlanvin/php-rrule": "^2.2"
   },
   "autoload": {
     "psr-4": {

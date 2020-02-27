@@ -85,7 +85,7 @@ class MobileApp extends Plugin
             $currentUser =  Craft::$app->getUser();
 
             // If the token passes verification...
-            if (!$currentUser && $token) {
+            if (!$currentUser->id && $token) {
                 // Look for the user
                    
                 $user = self::$plugin->authService->getUserByJWT($token);
