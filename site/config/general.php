@@ -40,6 +40,19 @@ return array(
         'securityKey' => 'BztZemBp0C4y_mFeqavkvlfIemLaoVkaroot@a59da8de3e86'
 
     ),
+    '165.22.117.164' => array(
+        'devMode' => true,
+       'useCompressedJs' => false,
+       'siteUrl' => array(
+           'en_gb' => 'http://165.22.117.164/en/',
+           'cy_gb' => 'http://165.22.117.164/cy/',
+       ),
+       'useBugherd' => false,
+       'cache' => false,
+//        'cacheMethod' => 'redis',
+       'securityKey' => 'BztZemBp0C4y_mFeqavkvlfIemLaoVkaroot@a59da8de3e86'
+
+   ),
     'dev' => array(
      	'devMode' => true,
 	    'useCompressedJs' => false,
