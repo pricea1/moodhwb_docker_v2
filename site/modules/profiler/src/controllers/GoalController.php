@@ -60,6 +60,7 @@ class GoalController extends Controller
             $goalInstance->goalId = $goal->id;
             $goalInstance->weekId = $weekId;
             $goalInstance->date = $occurrence->format('Y-m-d');
+            $goalInstance->thumbnailUri = $goal->thumbnailUri;
 
             $newGoalInstance = Profiler::$plugin->goalService->createGoalInstance($goalInstance);            
             $goalInstances[] = $newGoalInstance;
@@ -90,7 +91,8 @@ class GoalController extends Controller
                 $goalInstance->goalId = $goal->id;
                 $goalInstance->date = $occurrence->format('Y-m-d');
                 $goalInstance->weekId = $this->getWeekId($goalInstance->date);
-    
+                $goalInstance->thumbnailUri = $goal->thumbnailUri;
+                
                 $newGoalInstance = Profiler::$plugin->goalService->createGoalInstance($goalInstance);            
                 $goalInstances[] = $newGoalInstance;
             }
@@ -103,7 +105,8 @@ class GoalController extends Controller
 
             $goalInstance->date = $goal->onceDate;
             $goalInstance->weekId = $this->getWeekId($goal->onceDate);
-
+            $goalInstance->thumbnailUri = $goal->thumbnailUri;
+            
             $newGoalInstance = Profiler::$plugin->goalService->createGoalInstance($goalInstance);            
             return array($newGoalInstance);
     
@@ -205,6 +208,8 @@ class GoalController extends Controller
         } else {
             $model->onceDate = $request->post('onceDate');
         }
+
+        $model->thumbnailUri = $request->post('thumbnailUri');
 
         $newGoal = Profiler::$plugin->goalService->addGoal($model);
         Craft::$app->session->setNotice(Craft::t('site','Goal saved.'));

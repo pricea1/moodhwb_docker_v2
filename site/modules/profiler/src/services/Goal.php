@@ -35,7 +35,8 @@ class Goal extends Component
         $goalTrackerRecord->goalId = $goalTrackerModel->goalId;
         $goalTrackerRecord->weekId = $goalTrackerModel->weekId;
         $goalTrackerRecord->date = $goalTrackerModel->date;
-
+        $goalTrackerRecord->thumbnailUri = $goalTrackerModel->thumbnailUri;
+        
         //nb default status defined in DB
 
         $goalTrackerRecord->save();
@@ -64,6 +65,7 @@ class Goal extends Component
         $goalRecord->setReminder = $goalModel->setReminder;
         $goalRecord->type = $goalModel->type;
         $goalRecord->repeatWeekly = $goalModel->repeatWeekly;
+        $goalRecord->thumbnailUri = $goalModel->thumbnailUri;
 
         if ($goalModel->type === "weekly") {
             $goalRecord->weeklyDays = $goalModel->weeklyDays;
