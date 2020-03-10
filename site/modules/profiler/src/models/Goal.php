@@ -36,6 +36,7 @@ class Goal extends Model
     public $repeatWeekly;
     public $onceDate;
     public $weeklyDays;
+    public $thumbnailUri;
 
     // Public Methods
     // =========================================================================
@@ -53,7 +54,8 @@ class Goal extends Model
             ['setReminder', 'boolean'],
             ['repeatWeekly', 'boolean'],
             ['onceDate', 'string'],
-            ['weeklyDays', 'string']
+            ['weeklyDays', 'string'],
+            ['thumbnailUri', 'string']
         ];
     }
 }

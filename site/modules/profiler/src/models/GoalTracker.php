@@ -34,6 +34,7 @@ class GoalTracker extends Model
     public $weekId;
     public $date;
     public $status;
+    public $thumbnailUri;
 
 
     // Public Methods
@@ -50,7 +51,8 @@ class GoalTracker extends Model
             ['goalId', 'number'],
             ['weekId', 'number'],
             ['date', 'date'],
-            ['status', ['todo','done','skipped']]
+            ['status', ['todo','done','skipped']],
+            ['thumbnailUri', 'string']
         ];
     }
 }
