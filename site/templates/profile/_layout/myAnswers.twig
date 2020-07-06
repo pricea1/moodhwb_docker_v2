@@ -40,11 +40,10 @@
 			    <input type="hidden" name="userId" value="{{ profileUser.id }}">
 					<input id="userDefinedOptionsField" type="hidden" name="fields[userDefinedOptions]" value="{% if profileUser.userDefinedOptions %}{{ profileUser.userDefinedOptions }}{% else %}{}{% endif %}">
 				<input id="userDefinedOptionsOtherField" type="hidden" name="fields[userDefinedOptionsOther]" value="{% if profileUser.userDefinedOptionsOther %}{{ profileUser.userDefinedOptionsOther }}{% else %}{}{% endif %}">
+
 				<div class="profile-dashboard__details__item-container">
 					<div class="row">
 					<div class="small-12 column">	
-
-					
 						<div class="profile-dashboard__details">
 							<div class="profile-dashboard__details__item profile-dashboard__details__item--edit">
 								<h4 class="profile-dashboard-subheading">{{ "Why am I here?"|t }}</h4>
@@ -137,6 +136,8 @@
 					
 			{% endfor %}
 			#}
+
+			{#
 			{% set inputSuffix = "other" %}
 
 			{% set categoryTitle = "Their difficulties" %}				
@@ -173,7 +174,7 @@
 
 
 			
-
+			#}
 			
 
 			</form>
