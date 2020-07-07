@@ -38,7 +38,7 @@
 		if (!correctAnswer){
 			setTimeout(function(){
 				questionChosen($quizContainer.find('.feature-block-quiz-answer-correct .feature-block-button'), true );
-			}, 2000);
+			}, 700);
 
 		} else {
 			setTimeout(function(){
@@ -47,7 +47,7 @@
 					.parents('.slick-carousel-container').slick('slickNext');
 				
 				questionAnswered = false;
-			}, 2000);
+			}, 1500);
 
 			}
 	}
