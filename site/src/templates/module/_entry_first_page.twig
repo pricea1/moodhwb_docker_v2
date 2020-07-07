@@ -1,5 +1,6 @@
 {% extends "_layout" %}
 
+
 {% if entry.type == "modules" %}
   {# If viewing index page then get first child to view and get the pages to concatenate to the end #}
   {% set currentModule = entry %}
@@ -19,6 +20,7 @@
 {% else %}
   {% set currentModule = entry.parent %}
 {% endif %}
+{% set currentPage = entry %}
 
 
 {% if currentModule.moduleColour != '' %}
@@ -90,7 +92,8 @@
               {% set itemIndex = 0 %}
 
               {% for page in childPages %}
-                <div class="module-nav__row {%if loop.first %}module-nav__row--current{% else %}module-nav__row--not-current{% endif %} {% if page.showInNav %}module-nav__row--not-hidden{% else %}module-nav__row--hidden{% endif %} {% if itemIndex == itemCount - 1%}module-nav__row-last{% endif %}" style="{% if not loop.last %}width: {{ navPercSteps }}%; {% endif %}left: {{ itemIndex * navPercSteps }}%" data-page-id="{{ page.id }}" data-page-uri="{{ page.uri }}">
+  
+                <div class="module-nav__row {%if page.id == currentPage.id %}module-nav__row--current{% else %}module-nav__row--not-current{% endif %} {% if page.showInNav %}module-nav__row--not-hidden{% else %}module-nav__row--hidden{% endif %} {% if itemIndex == itemCount - 1%}module-nav__row-last{% endif %}" style="{% if not loop.last %}width: {{ navPercSteps }}%; {% endif %}left: {{ itemIndex * navPercSteps }}%" data-page-id="{{ page.id }}" data-page-uri="{{ page.uri }}">
 
                   <div class="module-nav__item">
                     <a class="module-nav__link" href="{{ page.url }}">

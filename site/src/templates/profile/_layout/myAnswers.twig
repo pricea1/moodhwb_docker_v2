@@ -36,35 +36,12 @@
 		<div class="feature-block-option">
 			<form id="profileDashboardForm" class="profile-dashboard__details-form" method="post" accept-charset="UTF-8">
 				{{ csrfInput() }}
-				<input type="hidden" name="action" value="users/saveUser">
+				<input type="hidden" name="action" value="users/save-user">
 			    <input type="hidden" name="userId" value="{{ profileUser.id }}">
 					<input id="userDefinedOptionsField" type="hidden" name="fields[userDefinedOptions]" value="{% if profileUser.userDefinedOptions %}{{ profileUser.userDefinedOptions }}{% else %}{}{% endif %}">
 				<input id="userDefinedOptionsOtherField" type="hidden" name="fields[userDefinedOptionsOther]" value="{% if profileUser.userDefinedOptionsOther %}{{ profileUser.userDefinedOptionsOther }}{% else %}{}{% endif %}">
 
-				<div class="profile-dashboard__details__item-container">
-					<div class="row">
-					<div class="small-12 column">	
-						<div class="profile-dashboard__details">
-							<div class="profile-dashboard__details__item profile-dashboard__details__item--edit">
-								<h4 class="profile-dashboard-subheading">{{ "Why am I here?"|t }}</h4>
-								{% set hereForSettings = craft.fields.getFieldByHandle('hereFor').settings %}
-									{% for hereFor in hereForSettings['options']  %}
-										       
-									    <div class="input-custom-radio-container profile-dashboard-radio-container">
 
-											<input id="profileInputHereFor{{ hereFor.value | kebab }}" class="profile-dashboard__input profile-dashboard__input--herefor profile-dashboard__input--autoupdate" type="radio" name="fields[hereFor]" {% if hereFor.value == profileUser.hereFor %}checked{% endif %} value="{{ hereFor.value }}">
-											<label for="profileInputHereFor{{ hereFor.value | kebab }}" class="">{{ hereFor.label|t }}</label>
-										</div>
-									{% endfor %}
-									<noscript>
-										<button class="round profile-dashboard__submit-button" type="submit">{{ "Submit"|t }}</button>
-									</noscript>
-							</div>
-						</div>
-
-					</div>
-					</div>
-				</div>
 			{% set inputSuffix = "" %}
 
 			{% set categoryTitle = "My difficulties" %}				
