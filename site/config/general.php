@@ -66,6 +66,19 @@ return array(
    'securityKey' => 'BztZemBp0C4y_mFeqavkvlfIemLaoVkaroot@a59da8de3e86'
 
 ),
+    'moodhwb.lemoncog.com' => array(
+        'devMode' => true,
+    'useCompressedJs' => false,
+    'siteUrl' => array(
+        'en_gb' => 'http://moodhwb.lemoncog.com/en/',
+        'cy_gb' => 'http://moodhwb.lemoncog.com/cy/',
+    ),
+    'useBugherd' => false,
+    'cache' => false,
+    //        'cacheMethod' => 'redis',
+    'securityKey' => 'BztZemBp0C4y_mFeqavkvlfIemLaoVkaroot@a59da8de3e86'
+
+    ),
     'dev' => array(
      	'devMode' => true,
 	    'useCompressedJs' => false,
