@@ -53,6 +53,19 @@ return array(
        'securityKey' => 'BztZemBp0C4y_mFeqavkvlfIemLaoVkaroot@a59da8de3e86'
 
    ),
+   '167.172.51.199' => array(
+    'devMode' => true,
+   'useCompressedJs' => false,
+   'siteUrl' => array(
+       'en_gb' => 'http://167.172.51.199/en/',
+       'cy_gb' => 'http://167.172.51.199/cy/',
+   ),
+   'useBugherd' => false,
+   'cache' => false,
+//        'cacheMethod' => 'redis',
+   'securityKey' => 'BztZemBp0C4y_mFeqavkvlfIemLaoVkaroot@a59da8de3e86'
+
+),
     'dev' => array(
      	'devMode' => true,
 	    'useCompressedJs' => false,
