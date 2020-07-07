@@ -101,7 +101,7 @@ class Goal extends Component
         return $goal;
     }
 
-    public function getAllGoalsForWeek($userId, $weekId){
+    public function getAllGoalsForWeek($userId, $weekId = ''){
         $goalTablename = GoalRecord::tableName();
         $goalTrackerTablename = GoalTrackerRecord::tableName();
 
