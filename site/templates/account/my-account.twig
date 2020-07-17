@@ -40,13 +40,13 @@
         <input type="hidden" name="redirect" value="my-account?status=emailSent">
         <input type="hidden" name="userId" value="{{ currentUser.id }}">
 
-        <label class="left" for="email">Email</label>
+        <label class="left" for="email">{{"Email"|t}}</label>
         <input id="email"  class="radius login-input" type="text" name="email" value="{{ currentUser.email }}">
         {% if account is defined %}
             {{ errorList(account.getErrors('email')) }}
         {% endif %}
 
-        <label class="left"  for="password">Current Password</label>
+        <label class="left"  for="password">{{"Current password"|t}}</label>
         <input type="password"  class="radius login-input" id="currentPassword" name="password" />
         {% if account is defined %}
             {{ errorList(account.getErrors('currentPassword')) }}

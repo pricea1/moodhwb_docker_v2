@@ -11,6 +11,8 @@ return array(
 	"Javascript is required to interact with this section" => "Mae angen ‘javascript' i ryngweithio gyda'r adran yma",
 	"Hide this" => "Cuddio hwn",
 	"Main menu" => "Prif ddewislen",
+	"Show menu" => "Dewislen",
+	"Close menu" => "Cau'r ddewislen",
 	"Where to go next?" => "Ble i fynd nesaf?",
 	"Next" => "Nesaf",
 	"Previous" => "Blaenorol",
@@ -52,14 +54,14 @@ return array(
 	"I'm here for someone else" => "Rwyf yma ar gyfer rhywun arall",
 	"Or just let me browse the topics" => "Neu gadewch i mi ond bori'r adrannau",
 	"Welcome" => "Croeso",
-	"Play introduction video" => "Play introduction video (Welsh)",
+	"Play introduction video" => "Chwarae'r fideo cyflwyno",
 	/* End Welcome page */
 
 	/* Module pages */
 	"Submodules in this module" => "Isfodiwlau yn y modiwl yma", // Note - used in non javascript version
 	"List submodules" =>  "Rhestru isfodiwlau",
 	"Skip submodules navigation" => "Sgipio mordwyo isfodiwlau",
-	"You last viewed" => "You last viewed (Welsh)",
+	"You last viewed" => "Roeddech yma dro diwethaf",
 	"Start your journey here" => "Start your journey here (Welsh)",
 	"Highlighted for you" => "Highlighted for you (Welsh)",
 	/* End Module pages */
@@ -84,9 +86,16 @@ return array(
 
 	"Enter your symptom" => "Cofnodwch eich symptom",
 	"Anything not listed here?" => "Unrhywbeth heb ei restru yma?",
-	"Enter resource title" => "Enter resource title (WELSH)",
+	"Enter resource title" => "Cofnodwch yma",
 	
 	/* End Feature block options */
+
+	/* Dashboard */
+	"Hello there!" => "Helo yna!",
+	"Your current mood score" => "Eich sgorau hwyliau presennol",
+	"Within each topic we've highlighted" => "O fewn pob adran rydyn ni wedi rhoi",
+	" areas that might be useful based on your answers" => " wrth y pynciau gall fod o help, yn seiliedig ar eich atebion",
+	/* End Dashboard */
 
 	/* Feature block feedback */
 	"Thank you for your feedback" => "Diolch am eich adborth",
@@ -109,7 +118,7 @@ return array(
 	"Delete activity" => "Dileu gweithgaredd",
 	"Completed activity" => "Gweithgaredd wedi'i gwblhau",
 	"Reset activity" => "Ailosod gweithgaredd",
-	"Update my mood" => "Diweddaru fy hwyliau",
+	"Update my 	" => "Diweddaru fy hwyliau",
 	"Monitor your mood with the mobile application" => "Monitro'ch hwyliau gyda'r ‘app' symudol",
 	"Get the mobile app" => "Cael yr ‘app' symudol",
 	"Their ability to cope" => "Eu gallu i ymdopi",
@@ -120,37 +129,39 @@ return array(
 	"Effects on life" => "Effaith ar fywyd",
 	"My contacts" => "Fy ngysylltiadau",
 	"We recommend you speak to someone about this" => "Ry'n ni'n cynghori chi i siarad a rhywun am hyn",
-	"If you need to talk to someone" => "If you need to talk to someone (Cymru)",
-	"Would you like to continue where you left off?" => "Would you like to continue where you left off? (Welsh)",
-	"Or from the beginning?" => "Or from the beginning? (welsh)",
+	"If you need to talk to someone" => "Os ydych angen siarad â rhywun",
+	"Would you like to continue where you left off?" => "Hoffech barhau o ble wnaethoch adael y tro diwethaf?",
+	"Or from the beginning?" => "Neu o'r dechrau?",
 	"Introduction" => "Introduction (Welsh)",
-	"My mood diary" => "My mood diary (Welsh)",
-	"My answers" => "My answers (Welsh)",
+	"My mood diary" => "Fy nyddiadur hwyliau",
+	"My answers" => "Fy atebion",
+	"My Answers" => "Fy Atebion",
 	/* Profile goals */
 	"Enter a title" => "Cofnodwch deitl",
 	"How many times per week" => "Faint o weithiau bob wythnos",
 	"Add this" => "Adio hwn",
-	"Step" => "Step[welsh]", // -> Profile questions: Step 1 out of 10
-	"out of" => "out of[welsh]",
-	"Save and continue" => "Save and continue (Welsh)",
-	"Save and finish" => "Save and finish (welsh)",
-	"Skip this step" => "Skip this step (Welsh)",
+	"Step" => "Cam", // -> Profile questions: Step 1 out of 10
+	"out of" => "mas o",
+	"Save and continue" => "Arbed a pharhau",
+	"Save and finish" => "Arbed a gorffen",
+	"Skip this step" => "Sgipio'r cam yma",
 	"Drag the slider" => "Drag the slider (Welsh)",
-	"No data" => "No data (welsh)",
-	"Is there anything about the last 7 days you'd like to add?" => "Is there anything about the last 7 days you'd like to add? (welsh)",
-	"weeklygoals-step1" => "Enter what type of activity or achievement you’d like to do. (welsh)",
-	"weeklygoals-step2" => "Then enter how frequently you’d like to do this over a week. (welsh)",
-	"weeklygoals-step3" => "Add it and then when it’s done you can tick it off the list. (welsh)",
+	"No data" => "Dim data",
+	"Is there anything about the last 7 days you'd like to add?" => "Oes yna unrhyw beth am y 7 diwrnod diwethaf yr hoffech ychwanegu?",
+	"For example this could be a diary entry over the last 7 days" => "Er enghraifft gall hwn fod yn gofnod dyddiadur dros y 7 diwrnod",
+	"weeklygoals-step1" => "Cofnodwch y gweithgaredd hoffech ei wneud",
+	"weeklygoals-step2" => "Cofnodwch pa mor aml hoffech ei wneud bob wythnos",
+	"weeklygoals-step3" => "Ychwanegwch ef, a phan y'ch chi wedi'i wneud, ticiwch ef o'r rhestr",
 	/* Profile Stuff I Like */
 	"This is where you can add some stuff that makes you feel good." => "Dyma ble ry'ch chi'n gallu adio pethau sy'n gwneud i chi deimlo'n dda",
 	"Add a website, image or video" => "Adio gwefan, llun neu fideo",
 	"stuff" => "pethe",
-	"Add stuff" => "Add stuff (welsh)",
-	"Add some stuff" => "Add some stuff (welsh)",
-	"Enter a name for this" => "Enter a name for this (Welsh)",
+	"Add stuff" => "Adio stwff",
+	"Add some stuff" => "Ychwanegwch bethau yma",
+	"Enter a name for this" => "Cofnodwch enw am hyn",
 
-	"stuffilike-step1" => "Enter a URL of your favourite website, game, video or photo (welsh)",
-	"stuffilike-step2" => "Enter a title for to help you organise the thing you’ve added (welsh)",
+	"stuffilike-step1" => "Cofnodwch URL o'ch hoff wefan, fideo neu ffoto",
+	"stuffilike-step2" => "Cofnodwch enw am hyn",
 	"stuffilike-step3" => "Then when you are feeling a little low remind your self of some good stuff (welsh)",
 
 
@@ -161,7 +172,10 @@ return array(
 	"Confirm new password" => "Cadarnhewch eich allweddair newydd",
 	"The passwords you entered did not match. Please try again" => "Nid yw'r allweddeiriau ry'ch chi wedi cofnodi yn cydfynd",
 	"Change password" => "Newid allweddair",
+	"Change your password" => "Newid eich allweddair",
 	"Change email" => "Newid ebost",
+	"Change your email" => "Newid eich ebost",
+	"Email" => "Ebost",
 
 	/* End Account */
 
@@ -181,7 +195,7 @@ return array(
 	"Your comments" => "Eich sylwadau",
 	"Send comments" => "Gyrru sylwadau",
 	"Your opinion is really valuable" => "Mae eich barn yn werthfawr iawn",
-	"Add goal" => "Add goal (welsh)",
+	"Add goal" => "Adio targed",
 	/* Moods */
 	"mood" => "hwyliau",
 	"enjoyment" => "mwynhad",
@@ -190,13 +204,16 @@ return array(
 	"coping" => "ymdopi",
 
 	/* Mood monitor */
-	"Mood monitor" => "Monitor hwyliau",
+	"Mood monitor" => "Dyddiadur hwyliau",
 	"This is where the young person can view what they have recorded about their mood and other issues. This is not available when viewing for someone else." => "Dyma ble mae'r person ifanc yn gallu gweld beth yr ydyn nhw wedi nodi am eu hwyliau ag ati. Nid yw ar gael ar gyfer person sy'n defnyddio'r pecyn er mwyn helpu'r person ifanc.",
 	"No diary entries" => "No diary entries (welsh)",
 
 	/* Search */
+	"Search" => "Chwilio",
 	"Search results for" => "Search results for (welsh)",
 	"No search results found for" => "No search results found for (welsh)",
-	"Type something" => "Type something (welsh)"
+	"Type something" => "Teipiwch rywbeth fan hyn",
+
+	"Yn Gymraeg" => "Yn Saesneg"
 
 );
