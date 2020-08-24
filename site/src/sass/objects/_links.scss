@@ -24,6 +24,14 @@
 
 	}
 
+	&__forward-arrow {
+		&:after{
+			content: $symbol-arrow-right;
+			font-family: $symbol-font-family;
+			margin-left: rem-calc(6);
+			vertical-align: middle;
+		}
+	}
 
 	&__video{
 		font-weight: bold;

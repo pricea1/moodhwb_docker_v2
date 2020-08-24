@@ -144,7 +144,7 @@ return array(
 	"out of" => "mas o",
 	"Save and continue" => "Arbed a pharhau",
 	"Save and finish" => "Arbed a gorffen",
-	"Skip this step" => "Sgipio'r cam yma",
+	"Skip question" => "Sgipio'r cam yma",
 	"Drag the slider" => "Drag the slider (Welsh)",
 	"No data" => "Dim data",
 	"Is there anything about the last 7 days you'd like to add?" => "Oes yna unrhyw beth am y 7 diwrnod diwethaf yr hoffech ychwanegu?",

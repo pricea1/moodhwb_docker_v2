@@ -29,17 +29,12 @@
 
 
 .slick-list {
-	margin-bottom: rem-calc(4);
-
-	@media #{$medium-up}{
-		margin-bottom: rem-calc(20);
-	}
+	margin-bottom: 0;
 
 }
 
 .slick-prev,
 .slick-next{
-	@extend .round;
 
 	font-size: rem-calc(18);
 	padding: 0 rem-calc(30);
@@ -85,16 +80,18 @@
 
 .slick-skip{
 		 @extend .link--dark;
-    line-height: rem-calc(63);
-    font-size: rem-calc(18);
-    font-weight: bold;
-
+    line-height: rem-calc(60);
+    font-size: rem-calc(20);
+		text-decoration: none;
 
 	@media #{$medium-up}{
 		position: absolute;
 	    top: 3px; //to align with button font
 	    right: 0;
-	    font-size: rem-calc(24);
+	}
+
+	&:hover{
+		text-decoration: none;
 	}
 
 }

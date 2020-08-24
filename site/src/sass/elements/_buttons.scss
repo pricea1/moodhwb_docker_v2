@@ -5,6 +5,7 @@ button:focus{
 .button {
 	line-height: rem-calc(60);
 	padding: 0;
+	border-radius: $global-radius;
 }
 
 .button:hover{

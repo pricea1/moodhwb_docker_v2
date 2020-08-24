@@ -26,11 +26,10 @@
 
 	height: initial; // Adjusts height accoring to slide being shown
 	padding-bottom: rem-calc(18);
-	padding-top: rem-calc(8);
+	padding-top: 0;
 
 	@media #{$medium-up}{
 		padding-bottom: rem-calc(56);
-		padding-top: rem-calc(12);
 
 		p{
 			margin-bottom: rem-calc(16);

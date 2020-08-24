@@ -11,32 +11,39 @@
 		</div>
 -->
 		<div class="svg-container profile-question__icon" data-mood-value="4">
+		<div>
 			{% include '_partials/mood-icons' %}
 		</div>
+		</div>
 		
 	</div>
 	
+</div>
+<div class="profile-question-lower">
+	<div class="profile-question--inner">
 
 
-	<div class="profile-question__description-block">
-		<div class="profile-question__description-block--negative">
-		{{ question.negativeDesc}}
+		<div class="profile-question__description-block">
+			<div class="profile-question__description-block--negative">
+			{{ question.negativeDesc}}
+			</div>
+			<div id="rangeSliderValue" class="profile-question__description-block-value">4</div>
+			<div class="profile-question__description-block--positive">
+			{{ question.positiveDesc}}
+			</div>
 		</div>
-		<div class="profile-question__description-block--positive">
-		{{ question.positiveDesc}}
-		</div>
-	</div>
-	
-	<div class="non-js-hide range-slider profile-range-slider round" data-slider data-initial="449" data-options="start: 100; end: 799;">
 		
+		<div class="non-js-hide range-slider profile-range-slider round" data-slider data-initial="449" data-options="start: 100; end: 799;">
+			
 
-		<span class="range-slider-handle" role="slider" tabindex="0" data-content="4"></span>
-		
-	  <span class="range-slider-active-segment"></span>
-	  <input type="hidden">
+			<span class="range-slider-handle" role="slider" tabindex="0" data-value="4"></span>
+			
+			<span class="range-slider-active-segment"></span>
+			<input type="hidden">
 
-		<div class="range-slider-handle--hint-container hide">
-			  <span class="range-slider-handle--hint ">{{ "Drag the slider" | t }}</span>
+			<div class="range-slider-handle--hint-container hide">
+					<span class="range-slider-handle--hint ">{{ "Drag the slider" | t }}</span>
+			</div>
 		</div>
 	</div>
 	<input name="profileQuestionId[{{ question.questionId }}]" class="profile-question-questionid" type="hidden" value="{{ question.questionId }}" />

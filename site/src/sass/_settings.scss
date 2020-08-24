@@ -3,16 +3,16 @@ $primary-color: rgb(52, 102, 136);
 $dark-primary-color: rgb(61, 148, 144);
 $menu-background-current: rgb(60, 134, 131);
 $highlight-colour: rgb(133, 133, 133);
-$mood-monitor-colour: rgb(232,232,212);
+$mood-monitor-colour: #76D0CA;
 $profile-colour: $mood-monitor-colour;
-$range-slider-bg: rgb(202, 194, 182);
+$range-slider-bg: rgba(51, 51, 51, 0.5);
 $range-slider-border: rgba(0, 0, 0, 0);
 
 $link-color: #346688;
 $link-color-hover: #333;
-$mood-color-positive: rgb(84, 183, 110);
-$mood-color-neutral: rgb(252, 193, 71);
-$mood-color-negative: rgb(246, 118, 123);
+$mood-color-positive: #50A667;
+$mood-color-neutral: #FEC236;
+$mood-color-negative: #FD4048;
 
 @import "foundation-settings";
 

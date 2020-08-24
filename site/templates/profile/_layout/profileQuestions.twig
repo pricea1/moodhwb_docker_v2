@@ -2,23 +2,24 @@
 
 {% block content %}
 
-<div class="row">
-	<div class="column">
-		<div class="profile-question__progress">
-			<a id="prevArrowButton" class="profile-question__previous" href="{{ craft.request.urlReferrer }}">
-				<div class="show-for-medium-up">
-					<span class="ss-icon ss-navigateleft"></span>{{ "Previous" | t }}
-				</div>
-				<div class="hide-for-medium-up">
-					<span class="ss-icon ss-navigateleft"></span>
-				</div>
-				</a>
-			{{ "Step"|t }} <span class="profile-question_progress-indicator">1</span> {{ "out of"|t }} {{ entry.profileQuestions|length + 1}}
-		</div>
+<div class="profile-question-banner">
+	<div class="row">
+		<div class="column">
+			<div class="profile-question__progress">
+				<a id="prevArrowButton" class="profile-question__previous" href="{{ craft.request.urlReferrer }}">
+					<div class="show-for-medium-up">
+						<span class="ss-icon ss-navigateleft"></span>{{ "Previous" | t }}
+					</div>
+					<div class="hide-for-medium-up">
+						<span class="ss-icon ss-navigateleft"></span>
+					</div>
+					</a>
+				{{ "Step"|t }} <span class="profile-question_progress-indicator">1</span> {{ "out of"|t }} {{ entry.profileQuestions|length + 1}}
+			</div>
 
+		</div>
 	</div>
 </div>
-
 <div class="primary-panel mood-monitor-panel mood-questions-panel">
 
 
@@ -66,8 +67,8 @@
 		<div class="column">
 			<div class="slick-next__container">
 				<div class="slick-next__container-js">
-					<button id="nextArrowButton" type="button" class="slick-next" data-endtext="{{ "Save and finish"|t}}">{{ "Save and continue" | t }}</button>
-					<a id="skipStep" class="slick-skip">{{ "Skip this step" | t}}</a>
+					<button id="nextArrowButton" type="button" class="button slick-next" data-endtext="{{ "Save and finish"|t}}">{{ "Save and continue" | t }}</button>
+					<a id="skipStep" class="slick-skip link__forward-arrow">{{ "Skip question" | t}}</a>
 				</div>
 				<noscript>
 						<button type="submit" class="slick-next">{{ "Submit answers" | t}}</button>

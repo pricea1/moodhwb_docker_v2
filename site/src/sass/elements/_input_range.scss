@@ -1,41 +1,37 @@
 .range-slider {
 
 	margin-top: rem-calc(8);
+	height: 8px;
 
 	&-active-segment{
-		display: none;
+		background: #fff;
+		height: 8px;
 	}
 }
 
 .range-slider-handle {
 
-	height: 40px;
-	width: 40px;
-	top: -18px;
+	height: 32px;
+	width: 32px;
+	top: -12px;
+	border: 4px solid #333;
 
-	@media #{$medium-up}{
-		height: 58px;
-		width: 58px;
-		top: -27px;
-	}
-
-	&[data-content="1"],
-	&[data-content="2"]{
+	&[data-value="1"],
+	&[data-value="2"]{
 		background: $mood-color-negative !important;
 	}
 
-	&[data-content="3"],
-	&[data-content="4"],
-	&[data-content="5"]{
+	&[data-value="3"],
+	&[data-value="4"],
+	&[data-value="5"]{
 		background: $mood-color-neutral !important;
 	}
 
-	&[data-content="6"],
-	&[data-content="7"]{
+	&[data-value="6"],
+	&[data-value="7"]{
 		background: $mood-color-positive !important;
 	}
 
-	filter: drop-shadow(0px 2px 2px rgba(0,0,0,0.5) );
 
 	&--hint{
 		&-container{
@@ -58,20 +54,5 @@
 	    background: url(/resources/images/range-slider-hint-bg.svg);
         filter: drop-shadow(0px 2px 2px rgba(0,0,0,0.5) );
         z-index:20;
-	}
-
-
-	&:after {
-		content: attr(data-content);
-		font-size: rem-calc(18);
-	    display: block;
-	    text-align: center;
-	    height: $range-slider-handle-height-px;
-	    line-height: 40px;
-
-			@media #{$medium-up}{
-				font-size: rem-calc(24);
-				line-height: 58px;
-			}
 	}
 }
