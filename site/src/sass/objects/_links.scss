@@ -24,12 +24,27 @@
 
 	}
 
+	&__back-arrow {
+		font-weight: bold;
+		
+		&:before{
+			content: $symbol-arrow-left;
+			font-family: $symbol-font-family;
+			font-size: rem-calc(20);
+			margin-right: 10px;
+			vertical-align: bottom;
+		}
+	}
+
 	&__forward-arrow {
+		font-weight: bold;
+
 		&:after{
 			content: $symbol-arrow-right;
 			font-family: $symbol-font-family;
-			margin-left: rem-calc(6);
-			vertical-align: middle;
+			font-size: rem-calc(20);
+			margin-left: 10px;
+			vertical-align: bottom;
 		}
 	}
 

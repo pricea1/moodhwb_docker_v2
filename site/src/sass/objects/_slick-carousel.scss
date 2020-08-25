@@ -52,20 +52,49 @@
 	}
 }
 
+
+.slick-skip{
+	@extend .link--dark;
+ line-height: rem-calc(60);
+ font-size: rem-calc(20);
+ text-decoration: none;
+ width: 20%;
+ text-align: left;
+
+	&:hover{
+	text-decoration: none;
+	}
+
+	&--right{
+		text-align: right;
+	}
+
+	&.hidden{
+		visibility: hidden;
+	}
+}
+
+
 .slick-prev{
 	@extend .button--invert;
-	float: left;
+
 }
 
 .slick-next{
     margin: 0 auto;
-    display: inherit;
-    background-color: $primary-color;
-
+    display: inline-block;
+		background-color: $primary-color;
+	
     &__container{
     	position: relative;
 			text-align: center;
 		}
+}
+
+.slick-next__container-js{
+	@media #{$medium-up}{
+		display: flex;
+	}
 }
 
 .no-js {
@@ -76,24 +105,6 @@
 
 .slick-prev.slick-disabled {
 	display: none;
-}
-
-.slick-skip{
-		 @extend .link--dark;
-    line-height: rem-calc(60);
-    font-size: rem-calc(20);
-		text-decoration: none;
-
-	@media #{$medium-up}{
-		position: absolute;
-	    top: 3px; //to align with button font
-	    right: 0;
-	}
-
-	&:hover{
-		text-decoration: none;
-	}
-
 }
 
 .slick-dots{

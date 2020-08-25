@@ -1,7 +1,10 @@
 {% set categoryName = question.categoryType.value %}
 {% set fieldName = question.categoryId %}
 
-<div class="profile-question">
+<div class="profile-question profile-question-category">
+			<div class="profile-question__progress">
+				{{ "Question"|t }} <span class="profile-question_progress-indicator">{{ loop.index }}</span> {{ "out of"|t }} {{ entry.profileQuestions|length + 1}}
+			</div>
 <div class="profile-question--inner">
 	<input name="profileQuestionType[{{ question.categoryId }}]" class="profile-question-type" type="hidden" value="{{ question.type }}" />
 	<input name="profileQuestionId[{{ question.categoryId }}]" class="profile-question-questionid" type="hidden" value="{{ fieldName }}" />

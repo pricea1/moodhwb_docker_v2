@@ -140,7 +140,7 @@ return array(
 	"Enter a title" => "Cofnodwch deitl",
 	"How many times per week" => "Faint o weithiau bob wythnos",
 	"Add this" => "Adio hwn",
-	"Step" => "Cam", // -> Profile questions: Step 1 out of 10
+	"Question" => "Cam", // -> Profile questions: Question 1 out of 10
 	"out of" => "mas o",
 	"Save and continue" => "Arbed a pharhau",
 	"Save and finish" => "Arbed a gorffen",

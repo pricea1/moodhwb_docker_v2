@@ -22,20 +22,15 @@ $white: #fff;
 $dark: #3f3d32;
 
 /* Symbol font settings */
-$symbol-font-family: 'SSStandard';
+$symbol-font-family: 'Material Icons';
 $symbol-font-default-size: rem-calc(24);
-$symbol-circle-fill: '\f111';
-$symbol-circle-nofill: '\f10c';
-$symbol-circle-checked: '\f058';
-$symbol-chevron-down: '\f501';
-$symbol-chevron-up: '\f500';
-$symbol-chevron-left: '\25C5';
-$symbol-chevron-right: '\25BB';
-$symbol-arrow-right: '\27A1';
+$symbol-chevron-up: 'expand_less';
+$symbol-arrow-right: 'arrow_forward';
+$symbol-arrow-left: 'arrow_back';
 $symbol-video-play: '\25B6';
 $symbol-video-replay: '\21BA';
 $symbol-video-loading: '\EB83';
-$symbol-checked: '\2713';
+$symbol-checked: 'done';
 $symbol-module-arrow: '\25B4';
 $symbol-section-pointer: '\25BE';
 $symbol-tick: '\2713';

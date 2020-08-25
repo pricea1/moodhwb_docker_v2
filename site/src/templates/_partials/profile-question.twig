@@ -1,61 +1,66 @@
 <div class="profile-question">
-<div class="profile-question--inner">
-	<input name="profileQuestionType[{{ question.questionId }}]" class="profile-question-type" type="hidden" value="{{ question.type }}" />
-	
-	<div>
-		<div class="text-center profile-question-heading">
-		{{ question.text}}
-		</div>
-<!--
-		<div id="profileQuestionIcon" class="profile-question__icon svg-icon svg-face-4">
-		</div>
--->
-		<div class="svg-container profile-question__icon" data-mood-value="4">
-		<div>
-			{% include '_partials/mood-icons' %}
-		</div>
-		</div>
-		
-	</div>
-	
-</div>
-<div class="profile-question-lower">
+<div class="profile-question-slider">
+			<div class="profile-question__progress">
+				{{ "Question"|t }} <span class="profile-question_progress-indicator">{{ loop.index }}</span> {{ "out of"|t }} {{ entry.profileQuestions|length + 1}}
+			</div>
 	<div class="profile-question--inner">
-
-
-		<div class="profile-question__description-block">
-			<div class="profile-question__description-block--negative">
-			{{ question.negativeDesc}}
+		<input name="profileQuestionType[{{ question.questionId }}]" class="profile-question-type" type="hidden" value="{{ question.type }}" />
+		
+		<div>
+			<div class="text-center profile-question-heading">
+			{{ question.text}}
 			</div>
-			<div id="rangeSliderValue" class="profile-question__description-block-value">4</div>
-			<div class="profile-question__description-block--positive">
-			{{ question.positiveDesc}}
+	<!--
+			<div id="profileQuestionIcon" class="profile-question__icon svg-icon svg-face-4">
 			</div>
+	-->
+			<div class="svg-container profile-question__icon" data-mood-value="4">
+			<div>
+				{% include '_partials/mood-icons' %}
+			</div>
+			</div>
+			
 		</div>
 		
-		<div class="non-js-hide range-slider profile-range-slider round" data-slider data-initial="449" data-options="start: 100; end: 799;">
-			
+	</div>
+	</div>
+	<div class="profile-question-lower">
+		<div class="profile-question--inner">
 
-			<span class="range-slider-handle" role="slider" tabindex="0" data-value="4"></span>
-			
-			<span class="range-slider-active-segment"></span>
-			<input type="hidden">
 
-			<div class="range-slider-handle--hint-container hide">
-					<span class="range-slider-handle--hint ">{{ "Drag the slider" | t }}</span>
+			<div class="profile-question__description-block">
+				<div class="profile-question__description-block--negative">
+				{{ question.negativeDesc}}
+				</div>
+				<div id="rangeSliderValue" class="profile-question__description-block-value">4</div>
+				<div class="profile-question__description-block--positive">
+				{{ question.positiveDesc}}
+				</div>
+			</div>
+			
+			<div class="non-js-hide range-slider profile-range-slider round" data-slider data-initial="449" data-options="start: 100; end: 799;">
+				
+
+				<span class="range-slider-handle" role="slider" tabindex="0" data-value="4"></span>
+				
+				<span class="range-slider-active-segment"></span>
+				<input type="hidden">
+
+				<div class="range-slider-handle--hint-container hide">
+						<span class="range-slider-handle--hint ">{{ "Drag the slider" | t }}</span>
+				</div>
 			</div>
 		</div>
+		<input name="profileQuestionId[{{ question.questionId }}]" class="profile-question-questionid" type="hidden" value="{{ question.questionId }}" />
+
+
+		<noscript>
+		<div class="profile-question-range-container">				
+			<input name="profileQuestionAnswer[{{ question.questionId }}]" class="profile-question__range" type="range" min=
+			1 max=7 />
+		</div>
+		</noscript>
+
+
 	</div>
-	<input name="profileQuestionId[{{ question.questionId }}]" class="profile-question-questionid" type="hidden" value="{{ question.questionId }}" />
-
-
-	<noscript>
-	<div class="profile-question-range-container">				
-		<input name="profileQuestionAnswer[{{ question.questionId }}]" class="profile-question__range" type="range" min=
-		1 max=7 />
-	</div>
-	</noscript>
-
-
-</div>
 </div>

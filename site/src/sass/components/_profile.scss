@@ -1,13 +1,9 @@
-.profile-question-banner {
-	background-color: #F6F6F6;	
-}
 
 .profile-question-container {
-	padding-top:  rem-calc(8);
+	padding-top:  0;
 	padding-bottom: 30px;
 
 	@media #{$medium-up}{
-		padding-top: rem-calc(12);
 		padding-bottom: 60px;
 	}
 }
@@ -158,6 +154,10 @@
 
 .profile-question{
 
+	&-slider {
+		background: #F6F6F6;
+	}
+
 	&-heading {
 		min-height: 80px; 
 	}
@@ -195,7 +195,7 @@
 	border-top: 1px solid $primary-text-color;
 	border-left: 2px solid $primary-text-color;
 	border-right: 2px solid $primary-text-color;
-	height: 50px;
+	min-height: 50px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
