@@ -7255,6 +7255,7 @@ a.module-theme-6 {
   bottom: 0;
   line-height: 80px;
   font-size: 1.125rem;
+  width: 30%;
 }
 
 .profile-question__description-block-value {
@@ -7269,6 +7270,8 @@ a.module-theme-6 {
   bottom: 0;
   line-height: 80px;
   font-size: 1.125rem;
+  width: 30%;
+  text-align: right;
 }
 
 .profile-question__description-block--neutral {
