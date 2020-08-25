@@ -39,6 +39,10 @@
 	&:checked {
 		& ~ .user-category-alert-message {
 			display: block;
+			position: absolute;
+    	top: 40px;
+  	  left: 10px;
+	    z-index: 999;
 		}
 	}
 }

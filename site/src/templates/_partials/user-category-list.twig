@@ -2,8 +2,14 @@
 
 		<ul class="user-category-list three-columns">
 			{% set navCategories = craft.categories.group(categoryName).all() %}
+			{% set itemsPerColumn = navCategories|length/3 %}
+			{% set maxItemsPerColumn = itemsPerColumn|round(0,'ceil') %}
+
 			{% nav category in navCategories %}
 				{% set hasCategory = null %}
+				{% set isStartOfColumn = loop.index % maxItemsPerColumn == 1 %}
+				{% set isEndOfColumn = loop.index % maxItemsPerColumn == 0 %}
+
 				{% if  currentUser[fieldName] is defined %}
 							{% set currentUserCategories = currentUser[fieldName].all() %}
 			        {% for myCategory in currentUserCategories %}
@@ -14,9 +20,8 @@
 				{% endif %}
 
 				{% set categoryMatchesModule =  category.moduleList.ids() | indexOf(entry.id) %}
-
 				{% if showAllCats is defined or category.moduleList is not defined or category.moduleList |length == 0 or categoryMatchesModule != -1 %}
-				        <li class="user-options-category__item profile-user-options__category {% if hasCategory is not null %}profile-user-options__mycategory{% else %}profile-user-options__notmycategory{% endif %} input-custom-checkbox-container">				        	
+						<li class="user-options-category__item profile-user-options__category {% if loop.first %}profile-user-options__category--first {% endif %} {% if loop.last %}profile-user-options__category--last {% endif %} {% if isStartOfColumn %}profile-user-options__category--column-start{% endif %} {% if isEndOfColumn %}profile-user-options__category--column-end{% endif %} {% if hasCategory is not null %}profile-user-options__mycategory{% else %}profile-user-options__notmycategory{% endif %} input-custom-checkbox-container">				        	
 							<input id="profileInput{{ fieldName | kebab }}{{ category.id }}" class="profile-user-options__input user-category-input" type="checkbox" name="fields[{{ fieldName }}][]" {% if hasCategory is not null %}checked{% endif %} value="{{ category.id }}">
 							<label for="profileInput{{ fieldName | kebab }}{{ category.id }}" class="profile-user-options__label profile-user-options__{{ categoryName }} profile-user-options-__{{ categoryName }}-{{ category.slug }}">{{ category.title }}</label>
 							{% if category.urlAddress %}

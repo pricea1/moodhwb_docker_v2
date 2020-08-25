@@ -4,11 +4,12 @@
 
 .profile-question-container {
 	padding-top:  rem-calc(8);
+	padding-bottom: 30px;
+
 	@media #{$medium-up}{
 		padding-top: rem-calc(12);
+		padding-bottom: 60px;
 	}
-
-	background-color: #F6F6F6;	
 }
 
 .profile-question-heading{
@@ -26,7 +27,7 @@
 }
 
 .profile-question-lower {
-	padding-bottom: 40px;	
+	padding-bottom: 0;	
 	background: $mood-monitor-colour;
 }
 
@@ -182,6 +183,46 @@
 			&:before {
 				color: $oil;
 			}
+		}
+	}
+}
+
+.profile-user-options__category{
+	background: #fff;
+	border-top: 1px solid $primary-text-color;
+	border-left: 2px solid $primary-text-color;
+	border-right: 2px solid $primary-text-color;
+	height: 50px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	
+	margin: 0;
+	&--first {
+		border-top: 2px solid $primary-text-color;
+		border-top-right-radius: 6px;
+		border-top-left-radius: 6px;	
+	}
+
+	&--last {
+		border-bottom: 2px solid $primary-text-color;
+		border-bottom-right-radius: 6px;
+		border-bottom-left-radius: 6px;
+	}
+
+	&--column-start{
+		@media #{$medium-up}{
+			border-top: 2px solid $primary-text-color;
+			border-top-right-radius: 6px;
+			border-top-left-radius: 6px;
+		}
+	}
+
+	&--column-end{
+		@media #{$medium-up}{
+			border-bottom: 2px solid $primary-text-color;
+			border-bottom-right-radius: 6px;
+			border-bottom-left-radius: 6px;
 		}
 	}
 }
