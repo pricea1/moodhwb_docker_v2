@@ -64,4 +64,11 @@ class ProfilerVariable
         $currentUser = Craft::$app->getUser()->getIdentity();
         return Profiler::$plugin->stuffILikeService->getAllStuffILike($currentUser->id);
     }
+
+    public function getSummaryMoodScore(){
+        $currentUser = Craft::$app->getUser()->getIdentity();
+        $summary = Profiler::$plugin->questionService->getSummaryOfMoodScores($currentUser->id);
+
+        return $summary;
+    }
 }
