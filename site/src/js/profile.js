@@ -13,7 +13,8 @@
           var $this = $(this);
           var value = Math.floor($this.attr("data-slider") / 100);
           var $questionContainer = $this.parents(".slick-active");
-          document.getElementById('rangeSliderValue').innerText = value;
+          
+          $questionContainer.find('#rangeSliderValue').text(value);
           $this.find(".range-slider-handle").attr("data-value", value);
 
           // Change icon
