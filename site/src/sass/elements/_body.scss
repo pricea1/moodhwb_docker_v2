@@ -1,0 +1,7 @@
+body {
+  color: $primary-text-color;
+  
+  @media #{$medium-up}{
+    font-size: rem-calc(18);
+  }
+}

@@ -2,7 +2,7 @@
 	padding-top: rem-calc(20);
 	padding-bottom: rem-calc(30);
 	background: $mood-monitor-colour;
-	color: $black;
+	color: $primary-text-color;
 
 	@media #{$medium-up}{
 		padding-top: rem-calc(40);

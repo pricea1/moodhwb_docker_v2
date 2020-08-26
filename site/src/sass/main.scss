@@ -13,8 +13,9 @@
 
 @import "normalize"; // Foundation normalize
 @import "generic.normalize"; // Foundation normalize
-
+@import "font_styles";
 @import "foundation";
+@import "elements/body";
 @import "elements/links";
 @import "elements/lists";
 @import "elements/input-box";

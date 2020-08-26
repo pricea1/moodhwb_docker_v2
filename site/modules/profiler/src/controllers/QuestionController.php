@@ -186,6 +186,12 @@ class QuestionController extends Controller
             craft()->users->saveUser($currentUser);            
         }
 */
+
+        if(!array_key_exists('hasAnsweredQuestions', $currentUser)){
+            $currentUser->setFieldValue("hasAnsweredQuestions", 'true' );
+            Craft::$app->getElements()->saveElement($currentUser, false);    
+        }
+
         if ($returnJson && $returnVal){
             return $this->asJson($returnVal);   
         } else {

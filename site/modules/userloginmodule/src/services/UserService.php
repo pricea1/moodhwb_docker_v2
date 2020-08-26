@@ -49,4 +49,5 @@ class UserService extends Component
         return $dashboardLastViewed->getTimestamp();
 
     }
+
 }

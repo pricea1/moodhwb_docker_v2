@@ -54,7 +54,12 @@ return array(
 	"I'm here for someone else" => "Rwyf yma ar gyfer rhywun arall",
 	"Or just let me browse the topics" => "Neu gadewch i mi ond bori'r adrannau",
 	"Welcome" => "Croeso",
+	"Welcome back" => "Welcome back (cy)",
+	"Hello again" => "Hello again (cy)",
+	"Perhaps you’d like to answer some questions to see how things are?" => "Perhaps you’d like to answer some questions to see how things are? (CY)",
+	"welcome-message" => "Why not personalise MoodHwb by telling us how you feel? (CY)",
 	"Play introduction video" => "Chwarae'r fideo cyflwyno",
+	"Get started here" => "Get started here (CY)",
 	/* End Welcome page */
 
 	/* Module pages */
@@ -118,7 +123,7 @@ return array(
 	"Delete activity" => "Dileu gweithgaredd",
 	"Completed activity" => "Gweithgaredd wedi'i gwblhau",
 	"Reset activity" => "Ailosod gweithgaredd",
-	"Update my 	" => "Diweddaru fy hwyliau",
+	"Update mood" => "Diweddaru fy hwyliau",
 	"Monitor your mood with the mobile application" => "Monitro'ch hwyliau gyda'r ‘app' symudol",
 	"Get the mobile app" => "Cael yr ‘app' symudol",
 	"Their ability to cope" => "Eu gallu i ymdopi",

@@ -1,5 +1,10 @@
 .home-container {
 	padding-top: 0;
+	text-align: center;
+
+	@media #{$medium-up}{
+		text-align: left;
+	}
 }
 
 .home-top-section-container{
@@ -7,17 +12,19 @@
 
 	@media #{$medium-up}{
 		img{
-			height: 436px;
-			margin-top: 16px;
+			height: 360px;
+			margin-top: 20px;
 		}
 	}
 }
 
 .home-top-section{
 	margin: auto;
+	padding-top: rem-calc(20);
 
 	@media #{$medium-up}{
 		position: absolute;
+		padding-top: rem-calc(50);
 		right: 0;
 		top: 0;
 		width: 50%;
@@ -46,14 +53,17 @@
 }
 
 .home-heading{
+	margin-top: rem-calc(15);
+	margin-bottom: rem-calc(10);
+	@extend .font-style-xl-device-lg;
 
-	margin-bottom: rem-calc(30);
-	margin-top: rem-calc(20);
+	&-subtext{
+		margin-bottom: rem-calc(40);
 
-	@media #{$medium-up}{
-		font-size: rem-calc(36);
-		line-height: rem-calc(52);
-		margin-bottom: rem-calc(20);
+		@media #{$medium-up}{
+			font-size: rem-calc(22);
+			margin-bottom: rem-calc(40);	
+		}
 	}
 }
 
@@ -83,14 +93,13 @@
 }
 
 .home-button {
+	display: block;
+	width: inherit;
+	max-width: rem-calc(300);
+	padding: 0 20px;
+	line-height: rem-calc(50);
 	margin-bottom: rem-calc(20);
-	font-size: rem-calc(18);
-	width: 100%;
-	max-height: rem-calc(60);
 
-	@media #{$medium-up}{
-		font-size: rem-calc(24);
-	}
 }
 
 .home-footer-heading{

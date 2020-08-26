@@ -18,4 +18,6 @@ return array(
 	
 	"Enter a URL" => "Enter a URL e.g. www.moodhwb.org",
 
+	"welcome-message" => "Why not personalise MoodHwb by telling us how you feel?",
+
 );

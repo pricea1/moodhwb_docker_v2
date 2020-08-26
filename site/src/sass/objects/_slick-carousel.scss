@@ -33,29 +33,9 @@
 
 }
 
-.slick-prev,
-.slick-next{
-
-	font-size: rem-calc(18);
-	padding: 0 rem-calc(30);
-	line-height: rem-calc(50);
-	min-width: rem-calc(130);
-	width: 100%;
-	font-weight: bold;
-
-	@media #{$medium-up}{
-		min-width: rem-calc(140);
-		max-width: rem-calc(308);
-		font-size: rem-calc(24);
-		line-height: rem-calc(60);
-
-	}
-}
-
-
 .slick-skip{
 	@extend .link--dark;
- line-height: rem-calc(60);
+ line-height: rem-calc(50);
  font-size: rem-calc(20);
  text-decoration: none;
  width: 20%;

@@ -53,4 +53,30 @@ class UserLoginModuleVariable
         return UserLoginModule::getInstance()->userLoginService->updateLastViewed( );
     }
 
+    public function getUserStatus() {
+        $currentUser = Craft::$app->getUser()->getIdentity();
+        if (!$currentUser){
+            return;
+        }
+
+        $now = new \DateTime('NOW');
+
+        $timeSinceLastLogin = date_diff($now, $currentUser->lastLoginDate);
+        $hasAnsweredQuestions = $currentUser->getFieldValue('hasAnsweredQuestions') == "true";
+
+        if(!$hasAnsweredQuestions){
+            return "unansweredQuestions";
+        }
+
+        if ($timeSinceLastLogin->days == 0 && $timeSinceLastLogin->h < 12 ){
+            return 'lessThan12Hours';
+        }
+
+        if ($timeSinceLastLogin->days < 7 ){
+            return 'within1Week';
+        }
+
+        return 'moreThan1Week';
+
+    }
 }

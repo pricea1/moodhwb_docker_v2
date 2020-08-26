@@ -1,0 +1,44 @@
+.font-style{
+  
+  &-xl-device-lg {
+    font-size: rem-calc(24);
+    font-weight: bold;
+    line-height: rem-calc(34);
+
+    @media #{$medium-up}{
+      font-size: rem-calc(36);
+      line-height: rem-calc(50);  
+    }
+  }
+
+  &-lg-device-lg {
+    font-size: rem-calc(32);
+    font-weight: normal;
+    line-height: rem-calc(45);
+  }
+
+  &-md-device-lg {
+    font-size: rem-calc(28);
+    font-weight: normal;
+    line-height: rem-calc(40);
+  }
+
+  &-normal {
+    font-size: rem-calc(18);
+    font-weight: normal;
+    line-height: rem-calc(27);
+  }
+
+  &-promo-link {
+    font-size: rem-calc(18);
+    font-weight: bold;
+    line-height: rem-calc(27);
+  }
+
+  &-style-small {
+    font-size: rem-calc(16);
+    font-weight: normal;
+    line-height: rem-calc(22);
+  }
+}
+
