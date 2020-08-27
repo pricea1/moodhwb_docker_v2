@@ -1,20 +1,39 @@
-{% set aboutPage = craft.entries.slug("about-this").one() %}
-{% set summaryScore = craft.profiler.getSummaryMoodScore() %}
+
+{% set helpPage = craft.entries.slug("where-to-get-help").one() %}
+{% set selfHelpPage = craft.entries.slug("self-help").one() %}
+{% set depressionPage = craft.entries.slug("what-is-depression").one() %}
+
+		{% if summaryScore > 5 %}
+			{% set welcomeTitle = 'welcome-summary-good' %}
+		{% elseif summaryScore >= -5 %}
+			{% set welcomeTitle = 'welcome-summary-normal' %}
+		{% else %}
+			{% set welcomeTitle = 'welcome-summary-bad' %}
+		{% endif %}
 
 		<div class="hide-for-medium-up">
 			<img class="" src="/resources/images/homepage-small.png" />
 		</div>
 
 		<h1 class="home-heading">
-		{% if summaryScore > 5 %}
-				{{ 'welcome-summary-good' | t}}
-		{% elseif summaryScore >= -5 %}
-				{{ "welcome-summary-normal" | t}}
-		{% else %}
-				{{ "welcome-summary-bad" | t}}
-		{% endif %}
+			{{ welcomeTitle | t}}
 		</h1>
-		<p class="home-heading-subtext">{{"You might want to look at "|t}} <a class="link link__promo" href="{{ aboutPage.url }}">{{ aboutPage.title}}</a></p>
+
+		{% if lastViewedModule is defined %}
+			{% if summaryScore < -5 %}
+				<p class="home-heading-subtext">{{"You should talk to somebody as soon as possible, see"|t}} <a class="link link__promo" href="{{ helpPage.url }}">{{ helpPage.title}}</a></p>
+			{% elseif summaryScore >= -5 %}
+				<p class="home-heading-subtext">{{"You last visited "|t}} <a class="link link__promo" href="{{ lastViewedModule.url }}">{{ lastViewedModule.parent.title }}</a></p>
+			{% endif %}
+		{% else %}
+			{% if summaryScore > 5 %}
+					<p class="home-heading-subtext">{{"Why not start with"|t}} <a class="link link__promo" href="{{ depressionPage.url }}">{{ depressionPage.title}}</a></p>
+			{% elseif summaryScore >= -5 %}
+					<p class="home-heading-subtext">{{"To prevent things getting worse you might like to look at"|t}} <a class="link link__promo" href="{{ selfHelpPage.url }}">{{ selfHelpPage.title}}</a></p>
+			{% else %}
+					<p class="home-heading-subtext">{{"You should talk to somebody as soon as possible, see"|t}} <a class="link link__promo" href="{{ helpPage.url }}">{{ helpPage.title}}</a></p>
+			{% endif %}
+		{% endif %}
 
     <div class="button-container">
       <a class="button home-button" href="{{ url('profile/questions-self') }}" class="button">{{ "Update mood" | t}}</a>

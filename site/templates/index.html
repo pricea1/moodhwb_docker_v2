@@ -2,7 +2,13 @@
  # Homepage template
  # ---------------
  #}
- {% set userStatus = craft.userLogin.getUserStatus() %}
+{% set userStatus = craft.userLogin.getUserStatus() %}
+{% set summaryScore = craft.profiler.getSummaryMoodScore() %}
+{% set lastViewedModuleId = craft.moduleactions.getLastViewedModuleId() %}
+{% if lastViewedModuleId %}
+	{% set lastViewedModule = craft.entries.id(lastViewedModuleId).first() %}
+	{% set parentTitle = lastViewedModule.parent.title %}
+{% endif %}
 
 {% extends "_layout" %}
 

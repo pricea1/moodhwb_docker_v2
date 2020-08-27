@@ -6234,6 +6234,7 @@ ul.off-canvas-list .off-canvas-list__item a {
 .link__promo {
   font-size: 1.125rem;
   font-weight: bold;
+  display: inline-block;
 }
 .link__back-arrow {
   font-weight: bold;
@@ -6400,6 +6401,9 @@ input.login-radio {
     font-size: 1.375rem;
     margin-bottom: 2.5rem;
   }
+}
+.home-heading-subtext .link__promo {
+  font-size: 1.375rem;
 }
 
 .home-browse {

@@ -153,6 +153,11 @@ class Moduleactions extends Module
         $this->setComponents([
             'moduleactionsService' => ModuleactionsService::class,
         ]);
+        
+        // Register hook
+        Craft::$app->view->hook('moduleActions_moduleViewed', function(array &$context) {
+            return Moduleactions::getInstance()->moduleactionsService->saveModuleViewed($context['entry']->id, $context['currentUser']->id);
+        });
 
 /**
  * Logging in Craft involves using one of the following methods:

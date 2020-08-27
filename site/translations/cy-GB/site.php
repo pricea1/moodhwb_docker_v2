@@ -58,11 +58,15 @@ return array(
 	"Hello again" => "Hello again (cy)",
 	"Perhaps you’d like to answer some questions to see how things are?" => "Perhaps you’d like to answer some questions to see how things are? (CY)",
 	"welcome-message" => "Why not personalise MoodHwb by telling us how you feel? (CY)",
-	"welcome-summary-normal" => "Things Things look like they could be better (cy)",
-	"welcome-summary-good" => "Things look pretty good at the moment however this might not always be the case (cy)",
+	"welcome-summary-normal" => "Things could be better (cy)",
+	"welcome-summary-good" => "Things look pretty good (cy)",
 	"welcome-summary-bad" => "Things don't look very good (cy)",
 	"Play introduction video" => "Chwarae'r fideo cyflwyno",
 	"Get started here" => "Get started here (CY)",
+	"You should talk to somebody as soon as possible, see" => "You should talk to somebody as soon as possible, see (CY)",
+	"Why not start with" => "Why not start with (CY)",
+	"To prevent things getting worse you might like to look at" => "To prevent things getting worse you might like to look at (CY)",
+	"You should talk to somebody as soon as possible, see" => "You should talk to somebody as soon as possible, see (CY)",
 	/* End Welcome page */
 
 	/* Module pages */

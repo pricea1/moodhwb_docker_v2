@@ -46,11 +46,6 @@ class ModuleactionsVariable
      * @return string
      */
 
-
-    $currentUser = Craft::$app->getUser()->getIdentity();
-        
-    return ModueleActions::getInstance()->userLoginService->updateLastViewed( );
-
     public function getModuleBookmarks()
     {
 
@@ -70,5 +65,14 @@ class ModuleactionsVariable
     {
         $currentUser = Craft::$app->getUser()->getIdentity();
         return Modueleactions::getInstance()->getAllStatus($currentUser->id);
+    }
+
+    public function getLastViewedModuleId() {
+        
+        $currentUser = Craft::$app->getUser()->getIdentity();
+        $lastViewedModulePage = Moduleactions::getInstance()->moduleactionsService->getLastViewedModule($currentUser->id);
+        if ($lastViewedModulePage){
+            return $lastViewedModulePage->submoduleId;
+        }
     }
 }
