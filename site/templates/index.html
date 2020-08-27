@@ -7,6 +7,7 @@
 {% extends "_layout" %}
 
 {% block content %}
+
 	<div class="primary-panel home-container">
 		
 		<div class="row"><!--
@@ -18,8 +19,9 @@
 					{% endfor %}
 				</div>
 				<div class="home-top-section">
-				{% if currentUser.hasProfile %}
 					{% switch userStatus %}
+						{% case "newUser" %}
+								{% include "./_partials/homepage-new-user-header.twig" %}
 						{% case "unansweredQuestions"%}
 							{% include "./_partials/homepage-user-unanswered.twig" %}
 
@@ -32,12 +34,7 @@
 						{% case "moreThan1Week" %}
 							{% include "./_partials/homepage-user-more-than-1week.twig" %}
 
-					{% endswitch %}
-				{% else %}
-					{% include "./_partials/homepage-new-user-header.twig" %}
-				{% endif %}
-
-					
+					{% endswitch %}				
 
 				</div>
 			</div>

@@ -46,10 +46,12 @@ class UserLoginModuleVariable
      * @return string
      */
 
-    public function getLastViewedDate()
+    public function updateLastViewed()
     {
-        $currentUser = Craft::$app->getUser()->getIdentity();
-        
+        $currentUser = Craft::$app->getUser()->getIdentity();  
+        if (!$currentUser) {
+            return;
+        }
         return UserLoginModule::getInstance()->userLoginService->updateLastViewed( );
     }
 
@@ -59,9 +61,13 @@ class UserLoginModuleVariable
             return;
         }
 
+        if (!$currentUser->dashboardLastViewed) {
+            return "newUser";
+        }
+
         $now = new \DateTime('NOW');
 
-        $timeSinceLastLogin = date_diff($now, $currentUser->lastLoginDate);
+        $timeSinceLastLogin = date_diff($now, $currentUser->dashboardLastViewed);
         $hasAnsweredQuestions = $currentUser->getFieldValue('hasAnsweredQuestions') == "true";
 
         if(!$hasAnsweredQuestions){

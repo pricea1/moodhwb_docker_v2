@@ -45,8 +45,12 @@ class UserService extends Component
         
         $user->setFieldValue("dashboardLastViewed", DateTimeHelper::currentTimestamp() );
         Craft::$app->getElements()->saveElement($user, false);
-   
-        return $dashboardLastViewed->getTimestamp();
+        
+        if ($dashboardLastViewed){
+            return $dashboardLastViewed->getTimestamp();
+        } else {
+            return;
+        }
 
     }
 
