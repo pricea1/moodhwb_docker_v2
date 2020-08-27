@@ -75,14 +75,14 @@ class UserLoginModuleVariable
         }
 
         if ($timeSinceLastLogin->days == 0 && $timeSinceLastLogin->h < 12 ){
-            return 'lessThan12Hours';
+            return 'returnShort';
         }
 
         if ($timeSinceLastLogin->days < 7 ){
-            return 'within1Week';
+            return 'returnMedium';
         }
 
-        return 'moreThan1Week';
+        return 'returnLong';
 
     }
 }

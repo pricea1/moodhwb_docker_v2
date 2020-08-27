@@ -25,14 +25,14 @@
 						{% case "unansweredQuestions"%}
 							{% include "./_partials/homepage-user-unanswered.twig" %}
 
-						{% case "lessThan12Hours" %}
-							{% include "./_partials/homepage-user-within-12hrs.twig" %}
+						{% case "returnShort" %}
+							{% include "./_partials/homepage-user-return-short.twig" %}
 
-						{% case "within1Week" %}
-							{% include "./_partials/homepage-user-less-than-1week.twig" %}
+						{% case "returnMedium" %}
+							{% include "./_partials/homepage-user-return-medium.twig" %}
 
-						{% case "moreThan1Week" %}
-							{% include "./_partials/homepage-user-more-than-1week.twig" %}
+						{% case "returnLong" %}
+							{% include "./_partials/homepage-user-return-long.twig" %}
 
 					{% endswitch %}				
 
