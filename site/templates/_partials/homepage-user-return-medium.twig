@@ -1,0 +1,19 @@
+{% set depressionPage = craft.entries.slug("what-is-depression").one() %}
+
+		<div class="hide-for-medium-up">
+			<img class="" src="/resources/images/homepage-small.png" />
+		</div>
+
+		<h1 class="home-heading">
+		{{ "Hello again" | t }}
+		</h1>
+		{% if lastViewedModule is defined %}
+					<p class="home-heading-subtext">{{"You last visited "|t}} <a class="link link__promo" href="{{ lastViewedModule.url }}">{{ lastViewedModule.parent.title }}</a></p>
+		{% else %}
+					<p class="home-heading-subtext">{{"Why not start with"|t}} <a class="link link__promo" href="{{ depressionPage.url }}">{{ depressionPage.title}}</a></p>
+		{% endif %}
+
+    <div class="button-container">
+      <a class="button home-button" href="{{ url('profile/questions-self') }}" class="button">{{ "Update mood" | t}}</a>
+      <a class="button home-button" href="{{ url('profile/goals') }}" class="button">{{ "Set goals" | t}}</a>
+    </div>

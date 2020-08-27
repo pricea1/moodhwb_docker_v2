@@ -2,18 +2,17 @@
  # Homepage template
  # ---------------
  #}
+{% set userStatus = craft.userLogin.getUserStatus() %}
+{% set summaryScore = craft.profiler.getSummaryMoodScore() %}
+{% set lastViewedModuleId = craft.moduleactions.getLastViewedModuleId() %}
+{% if lastViewedModuleId %}
+	{% set lastViewedModule = craft.entries.id(lastViewedModuleId).first() %}
+	{% set parentTitle = lastViewedModule.parent.title %}
+{% endif %}
 
 {% extends "_layout" %}
 
 {% block content %}
-
-	{# Redirect is user has already completed #}
-	{% if currentUser.hasProfile and not craft.app.request.getQueryParam('view') %}
-
-		{% redirect "profile/dashboard" %}
-
-	{% else %}
-
 
 	<div class="primary-panel home-container">
 		
@@ -25,24 +24,23 @@
 						<img alt="{{image.imageAlt}}" src="{{ image.imageFile.one().getUrl() }}">
 					{% endfor %}
 				</div>
-				<div class="text-center home-top-section">
-					<h1 class="light-heading home-heading">
-					{{ entry.heading }}
-					</h1>
-					<span class="link link__video"><span class="ss-icon ss-play link--dark__icon"></span><a id="videoPlay" href="#" class="link--dark">{{ "Play introduction video" | t }}</a></span>
+				<div class="home-top-section">
+					{% switch userStatus %}
+						{% case "newUser" %}
+								{% include "./_partials/homepage-new-user-header.twig" %}
+						{% case "unansweredQuestions"%}
+							{% include "./_partials/homepage-user-unanswered.twig" %}
 
-					<ul class="home-button-list">
-						<li>
+						{% case "returnShort" %}
+							{% include "./_partials/homepage-user-return-short.twig" %}
 
-							<a href="{{ url('profile/dashboard') }}" class="button round home-button">{{ "I'm here for myself" | t}}</a>
-						</li>
+						{% case "returnMedium" %}
+							{% include "./_partials/homepage-user-return-medium.twig" %}
 
-						<li>
-							<a href="{{ url('profile/dashboard') }}" class="button round home-button">{{ "I'm here for someone else" | t}}</a>
-						</li>
+						{% case "returnLong" %}
+							{% include "./_partials/homepage-user-return-long.twig" %}
 
-					</ul>
-					
+					{% endswitch %}				
 
 				</div>
 			</div>
@@ -104,6 +102,6 @@
 	</div>
 	{% include '_partials/strapline' %}
 
-	{% endif %}
+
 
 {% endblock %}

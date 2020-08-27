@@ -24,6 +24,12 @@
 
 	}
 
+	&__promo {
+		font-size: rem-calc(18);
+		font-weight: bold;
+		display: inline-block;
+	}
+
 	&__back-arrow {
 		font-weight: bold;
 		
@@ -50,10 +56,6 @@
 
 	&__video{
 		font-weight: bold;
-	}
-
-	@media #{$medium-up}{
-		font-size: rem-calc(24);
 	}
 
 	.ss-icon{

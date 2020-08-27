@@ -77,7 +77,6 @@ class Question extends Component
                     ->one();
 
         return $moodScoreRecord;
-
     }
 
     
@@ -89,6 +88,22 @@ class Question extends Component
 
         return $moodScoreRecord;
 
+    }
+
+    public function getSummaryOfMoodScores($userId){
+        $moodScoreRecords = MoodScoreRecord::find()
+            ->where(['userId' => $userId])
+            ->groupBy('questionId')
+            ->all();
+
+        $summaryScore = 0;
+
+        foreach($moodScoreRecords as $moodScoreRecord){
+            if ($moodScoreRecord->value > -1){
+                $summaryScore = $summaryScore + $moodScoreRecord->value - 4;
+            }
+        }
+        return $summaryScore;
     }
 
     public function getAllMoodScores($userId, $hereFor, $month){

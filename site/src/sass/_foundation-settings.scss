@@ -250,7 +250,7 @@ $small-only: "#{$screen} and (max-width: #{upper-bound($small-range)})";
 // We use these to style paragraphs
 // $paragraph-font-family: inherit;
 // $paragraph-font-weight: $font-weight-normal;
-// $paragraph-font-size: 1rem;
+$paragraph-font-size: rem-calc(18);
 $paragraph-line-height: rem-calc(24);
 $paragraph-margin-bottom: rem-calc(30);
 // $paragraph-aside-font-size: rem-calc(14);
@@ -465,8 +465,8 @@ $button-font-med: rem-calc(18);
 // We use these to control button border styles.
 // $button-border-width: 0;
 // $button-border-style: solid;
-$button-bg-color: rgba(52, 102, 136, 0.6);
-$button-bg-hover: rgb(52, 102, 136);
+// $button-bg-color: $button-bg-color;
+// $button-bg-hover: $button-bg-hover;
 // $button-border-color: $button-bg-hover;
 // $secondary-button-bg-hover: scale-color($secondary-color, $lightness: $button-function-factor);
 // $secondary-button-border-color: $secondary-button-bg-hover;

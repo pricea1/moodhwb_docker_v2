@@ -2,9 +2,26 @@ button:focus{
 	outline: 0;
 }
 
+.button-container {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	
+	@media #{$medium-up}{
+
+		flex-direction: inherit;
+
+		.button {
+			margin-right: rem-calc(20);
+		}
+	}
+}
+
 .button {
-	line-height: rem-calc(60);
-	padding: 0;
+	line-height: rem-calc(50);
+	font-size: rem-calc(20);
+	font-weight: bold;
+	padding: 0 rem-calc(20);
 	border-radius: $global-radius;
 }
 

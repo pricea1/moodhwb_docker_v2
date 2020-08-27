@@ -1,0 +1,15 @@
+{% set aboutPage = craft.entries.slug("about-this").one() %}
+
+		<div class="hide-for-medium-up">
+			<img class="" src="/resources/images/homepage-small.png" />
+		</div>
+
+		<h1 class="home-heading">
+		{{ "How are you?" | t }}
+		</h1>
+		<p class="home-heading-subtext">{{"Perhaps you’d like to answer some questions to see how things are?"|t}}
+		
+    <div class="button-container">
+      <a class="button home-button" href="{{ url('profile/questions-self') }}" class="button">{{ "Update mood" | t}}</a>
+      <a class="button home-button" href="{{ url('profile/goals') }}" class="button">{{ "Set goals" | t}}</a>
+    </div>

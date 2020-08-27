@@ -10,7 +10,7 @@
 
 {% set totalMoodScore = 0 %}
 
-{% set lastViewedDate = craft.userLogin.getLastViewedDate() %}
+{% set lastViewedDate = craft.userLogin.updateLastViewed() %}
 
 {#
 {% set moduleBookmark = craft.moduleActions.getMostRecentModuleBookmark() %}
@@ -80,7 +80,7 @@
 			<div class="row">
 				<div class="small-12 medium-4 column profile-dashboard-mood-button-container">
 
-					<a class="button profile-dashboard-mood-button profile-dashboard-mood-button--invert" href="{{ url('profile/questions-' ~ currentUser.hereFor) }}" class="button">{{ "Update my mood" | t}}</a>
+					<a class="button profile-dashboard-mood-button profile-dashboard-mood-button--invert" href="{{ url('profile/questions-self') }}" class="button">{{ "Update my mood" | t}}</a>
 
 				</div>
 				<div class="small-12 medium-4 column profile-dashboard-mood-button-container">

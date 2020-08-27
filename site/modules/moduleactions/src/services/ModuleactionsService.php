@@ -89,10 +89,58 @@ class ModuleactionsService extends Component
             $submoduleRecord->submoduleId = $submoduleModel->submoduleId;
         }
 
+        $submoduleRecord->dateUpdated = '';
     	$submoduleRecord->status = $submoduleModel->status;
     	        
         $submoduleRecord->save();
         return $submoduleRecord;
     }
+    
+    public function saveModuleViewed($moduleId, $userId) {
+        
+    	$model = new ModuleactionsModel();
 
+
+    	$model->userId = $userId;
+    	$model->submoduleId = $moduleId;
+    	$model->status = 'viewed';
+
+        $saveStatus = $this->saveStatus($model);
+    }
+
+    public function getLastViewedModule($userId) {
+        $submoduleRecord = new  ModuleactionsRecord();
+
+        $lastViewed = $submoduleRecord->find()
+                ->where(['userId' => $userId, 'status'=>'viewed'])
+                ->orderBy('dateUpdated DESC')
+                ->one();
+        
+        return $lastViewed;
+    }
+
+/*
+    public function getAllBookmarks($userId){
+        $submoduleRecord = new ModuleActions_SubmoduleViewRecord();
+
+        $criteria = $submoduleRecord->dbCriteria;
+        $criteria->addCondition("userId = " . $userId);
+        $criteria->addCondition("status = 'current'");
+
+        return $submoduleRecord->findAll($criteria);        
+    }
+
+    public function getMostRecentBookmark($userId){
+
+        $submoduleRecord = new ModuleActions_SubmoduleViewRecord();
+
+        $criteria = $submoduleRecord->dbCriteria;
+        $criteria->addCondition("userId = " . $userId);
+        $criteria->addCondition("status = 'viewed'");
+        $criteria->order = "dateUpdated DESC";
+
+        return $submoduleRecord->find($criteria);        
+
+    }
+*/
 }

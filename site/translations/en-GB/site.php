@@ -18,4 +18,8 @@ return array(
 	
 	"Enter a URL" => "Enter a URL e.g. www.moodhwb.org",
 
+	"welcome-message" => "Why not personalise MoodHwb by telling us how you feel?",
+	"welcome-summary-normal" => "Things could be better",
+	"welcome-summary-good" => "Things look pretty good",
+	"welcome-summary-bad" => "Things don't look very good",
 );

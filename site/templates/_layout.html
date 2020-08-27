@@ -9,11 +9,15 @@
  # http://twig.sensiolabs.org/doc/templates.html#template-inheritance
  #}
 
-{% if	entry is not defined or entry.pagePermission is not defined or
-	entry.pagePermission is null or not
-	entry.pagePermission.title('viewWhenLoggedOut').all() %}
-		{% requireLogin %}
+{% if allowNoLogin is not defined  %}
+	{% if entry is not defined or entry.pagePermission is not defined or
+		entry.pagePermission is null or not
+		entry.pagePermission.title('viewWhenLoggedOut').all()  %}
+			{% requireLogin %}
+	{% endif %}
 {% endif %}
+
+{% set lastViewed = craft.userLogin.updateLastViewed() %}
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" class="no-js">
@@ -68,7 +72,7 @@
       };
     </script>
 
-	<script src="/resources/js/app-0c2c768599.min.js"></script>
+	<script src="/resources/js/app-14ee233a1a.min.js"></script>
 
 
 	{% if craft.app.config.general.useBugherd %}
