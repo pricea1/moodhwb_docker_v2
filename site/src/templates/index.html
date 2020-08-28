@@ -41,50 +41,40 @@
 		</div>
 
 		<div class="home-second-section">
-			<div class="home-browse">
-				{{ "Or just let me browse the topics"| t}}
-			</div>
-
-		{% set modules = craft.entries.section('modules').level('1') %}
-
 			<div class="row">
-			{% for module in modules %}	
+			<div class="small-12 column">
+				<div class="home-browse">
+					{{ "Browse the topics"| t}}
+				</div>
 
-				<div class="small-12 medium-4 column ">
-					<div class="{{ module.moduleColour }}">
-			
-						<h4 class="profile-dashboard-module-heading invert-module-block-themed">
+				{% set modules = craft.entries.section('modules').level('1') %}
+					<div class="home-module-container">
+					{% for module in modules %}	
+							{% set image = module.image|first %}
 
-						<a href="{{ module.url }}">
-						{% set image = module.image|first %}
+							<div class="home-module-container-item {{ module.moduleColour }}">
+								{% if image %}
+									<div class="home-module-image-container">
+										<img class="home-module-image-container-item" src="{{ image.imageFile.one().url }}" alt="{{ image.imageAlt }}" />
+									</div>
+								{% endif %}
+								<div>
+								<h4 class="home-module-heading">
+								<a class="link" href="{{ module.url }}">
+								{{ module.title }}
+								</a>
 
-							<div class="profile-dashboard-module-image-container">
-							{% if image %}
-							   <img class="profile-dashboard-module-image" src="{{ image.imageFile.one().url }}" alt="{{ image.imageAlt }}" />
-							{% endif %}
+								</h4>
+							{{ module.body }}
 							</div>
-	
-						{{ module.title }}
-						</a>
+							</div>
 
-						</h4>
-					{{ module.body }}
-
+					{% endfor %}
 					</div>
-					
-				</div>
-
-				{% if loop.index is divisible by(3) %}
-				</div>
-				
-				<div class="row">
-				{% endif %}
-
-
-			{% endfor %}
+			</div>
 			</div>
 		</div>
-	
+
 		<div class="home-third-section">
 			{% include '_partials/footer_v2' %}
 		</div>

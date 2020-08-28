@@ -52,7 +52,7 @@ return array(
 	/* Welcome page */
 	"I'm here for myself" => "Rwyf yma ar gyfer fy hun",
 	"I'm here for someone else" => "Rwyf yma ar gyfer rhywun arall",
-	"Or just let me browse the topics" => "Neu gadewch i mi ond bori'r adrannau",
+	"Browse the topics" => "Browse the topics (CY)",
 	"Welcome" => "Croeso",
 	"Welcome back" => "Welcome back (cy)",
 	"Hello again" => "Hello again (cy)",
