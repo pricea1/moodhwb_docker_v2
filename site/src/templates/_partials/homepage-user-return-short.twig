@@ -4,15 +4,25 @@
 {% set depressionPage = craft.entries.slug("what-is-depression").one() %}
 
 		{% if summaryScore > 5 %}
+			{% set welcomeImage = "welcome-image-good" %}
 			{% set welcomeTitle = 'welcome-summary-good' %}
 		{% elseif summaryScore >= -5 %}
+			{% set welcomeImage = "welcome-image-normal" %}
 			{% set welcomeTitle = 'welcome-summary-normal' %}
 		{% else %}
+			{% set welcomeImage = "welcome-image-bad" %}
 			{% set welcomeTitle = 'welcome-summary-bad' %}
 		{% endif %}
 
+<div class="show-for-medium-up">
+	{% for image in entry.image %}
+		<img src="/resources/images/{{ welcomeImage }}.png">
+	{% endfor %}
+</div>
+<div class="home-top-section">
+
 		<div class="hide-for-medium-up">
-			<img class="" src="/resources/images/homepage-small.png" />
+			<img class="" src="/resources/images/{{ welcomeImage }}-small.png" />
 		</div>
 
 		<h1 class="home-heading">
@@ -39,3 +49,4 @@
       <a class="button home-button" href="{{ url('profile/questions-self') }}" class="button">{{ "Update mood" | t}}</a>
       <a class="button home-button" href="{{ url('profile/goals') }}" class="button">{{ "Set goals" | t}}</a>
     </div>
+</div>

@@ -19,12 +19,6 @@
 		<div class="row"><!--
 		--><div class="small-12 column">
 			<div class="home-top-section-container">
-				<div class="show-for-medium-up">
-					{% for image in entry.image %}
-						<img alt="{{image.imageAlt}}" src="{{ image.imageFile.one().getUrl() }}">
-					{% endfor %}
-				</div>
-				<div class="home-top-section">
 					{% switch userStatus %}
 						{% case "newUser" %}
 								{% include "./_partials/homepage-new-user-header.twig" %}
@@ -44,7 +38,6 @@
 
 				</div>
 			</div>
-		</div>
 		</div>
 
 		<div class="home-second-section">
