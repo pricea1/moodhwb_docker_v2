@@ -67,6 +67,7 @@ return array(
 	"Why not start with" => "Why not start with (CY)",
 	"To prevent things getting worse you might like to look at" => "To prevent things getting worse you might like to look at (CY)",
 	"You should talk to somebody as soon as possible, see" => "You should talk to somebody as soon as possible, see (CY)",
+	"You last visited" => "You last visited (cy)",
 	/* End Welcome page */
 
 	/* Module pages */
@@ -76,6 +77,8 @@ return array(
 	"You last viewed" => "Roeddech yma dro diwethaf",
 	"Start your journey here" => "Start your journey here (Welsh)",
 	"Highlighted for you" => "Highlighted for you (Welsh)",
+	"Learn about goal setting" => "Learn about goal setting (CY)",
+	"If you need to talk to someone" => "If you need to talk to someone (CY)",
 	/* End Module pages */
 
 	/* Feature block quiz */

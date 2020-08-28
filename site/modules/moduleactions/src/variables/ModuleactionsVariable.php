@@ -70,6 +70,7 @@ class ModuleactionsVariable
     public function getLastViewedModuleId() {
         
         $currentUser = Craft::$app->getUser()->getIdentity();
+        if (!$currentUser){ return; }
         $lastViewedModulePage = Moduleactions::getInstance()->moduleactionsService->getLastViewedModule($currentUser->id);
         if ($lastViewedModulePage){
             return $lastViewedModulePage->submoduleId;

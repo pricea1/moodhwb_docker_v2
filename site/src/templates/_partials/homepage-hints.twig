@@ -1,0 +1,29 @@
+  {% if module.slug == "where-to-get-help" %}
+    {% if lastViewedModule is not defined or lastViewedModule.parent.slug != "where-to-get-help" %}
+      <div class="home-module-hint ">
+        {{ "If you need to talk to someone" | t}}
+      </div>
+    {% endif %}
+  {% endif %}
+
+  {% if lastViewedModule is defined %}
+    {% if module.id == lastViewedModule.parent.id%}
+      <div class="home-module-hint ">
+        {{ "You last visited"  | t}}
+      </div>
+    {% endif %}
+  
+  {% else %}
+    {% switch module.slug %}
+      {% case "what-is-depression" %}
+        <div class="home-module-hint ">
+          {{ "Start your journey here" | t}}
+        </div>
+
+      {% case "self-help" %}
+        <div class="home-module-hint ">
+          {{ "Learn about goal setting" | t}}
+        </div>
+
+    {% endswitch%}
+  {% endif %}

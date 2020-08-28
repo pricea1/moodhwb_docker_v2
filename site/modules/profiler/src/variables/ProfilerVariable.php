@@ -67,6 +67,10 @@ class ProfilerVariable
 
     public function getSummaryMoodScore(){
         $currentUser = Craft::$app->getUser()->getIdentity();
+        if (!$currentUser){
+            return;
+        }
+        
         $summary = Profiler::$plugin->questionService->getSummaryOfMoodScores($currentUser->id);
 
         return $summary;

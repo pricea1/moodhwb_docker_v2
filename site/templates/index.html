@@ -7,7 +7,6 @@
 {% set lastViewedModuleId = craft.moduleactions.getLastViewedModuleId() %}
 {% if lastViewedModuleId %}
 	{% set lastViewedModule = craft.entries.id(lastViewedModuleId).first() %}
-	{% set parentTitle = lastViewedModule.parent.title %}
 {% endif %}
 
 {% extends "_layout" %}
@@ -44,7 +43,11 @@
 			<div class="row">
 			<div class="small-12 column">
 				<div class="home-browse">
-					{{ "Browse the topics"| t}}
+					{% if lastViewedModule is not defined %}
+						{{ "Browse the topics"| t}}
+					{% else %}
+						{{ "Within each topic we’ve highlighted"|t }} <span class="material-icons home-highlight-star">star</span> {{ " areas that might be useful based on your answers"|t }}
+					{% endif %}
 				</div>
 
 				{% set modules = craft.entries.section('modules').level('1') %}
@@ -53,6 +56,10 @@
 							{% set image = module.image|first %}
 
 							<div class="home-module-container-item {{ module.moduleColour }}">
+								{% if userStatus != "newUser" %}
+									{% include "./_partials/homepage-hints.twig" %}
+								{% endif %}
+
 								{% if image %}
 									<div class="home-module-image-container">
 										<img class="home-module-image-container-item" src="{{ image.imageFile.one().url }}" alt="{{ image.imageAlt }}" />
