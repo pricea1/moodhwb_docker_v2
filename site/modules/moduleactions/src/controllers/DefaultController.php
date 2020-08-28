@@ -91,21 +91,44 @@ class DefaultController extends Controller
     {
         $categories = ['difficulty', 'reason', 'symptom','strengths','help'];
         $userSelectedIds = array();
-        $otherSelectedIds = array();
 
         $currentUser =  Craft::$app->getUser()->getIdentity();
 
         foreach ($categories as $cat){
             $userSelectedIds = array_merge($userSelectedIds, $currentUser[$cat]->ids() );
-            $hereForCat = "hereForOther" .$cat;
+        }
+        
+        $submodules =  Moduleactions::$instance->moduleactionsService->getSubmodulesByCatId($currentUser->id, $userSelectedIds );
+
+        $recommendedIds["hereForSelf"] = \yii\helpers\ArrayHelper::getColumn($submodules, 'id');
+        return $this->asJson($recommendedIds);
+    }
+
+    public function actionGetRecommendedModulesSummary()
+    {
+        $categories = ['difficulty', 'reason', 'symptom','strengths','help'];
+        $userSelectedIds = array();
+
+        $currentUser =  Craft::$app->getUser()->getIdentity();
+
+        foreach ($categories as $cat){
+            $userSelectedIds = array_merge($userSelectedIds, $currentUser[$cat]->ids() );
+        }
+        
+        $submodules =  Moduleactions::$instance->moduleactionsService->getSubmodulesByCatId($currentUser->id, $userSelectedIds );
+
+        $summary = array();
+
+        foreach ($submodules as $submodule){
+            if ($submodule->parent->type == "modules") {
+                if (!array_key_exists($submodule->parent->id, $summary)){
+                    $summary[$submodule->parent->id] = []; 
+                }
+                $summary[$submodule->parent->id][] = $submodule->id;
+            }
         }
 
-        
-        $recommendedIds["hereForSelf"] =  Moduleactions::$instance->moduleactionsService->getSubmodulesByCatId($currentUser->id, $userSelectedIds );
-        $recommendedIds["hereForOther"] = Moduleactions::$instance->moduleactionsService->getSubmodulesByCatId($currentUser->id, $otherSelectedIds );
-
-        return $this->asJson($recommendedIds);
-
+        return $this->asJson($summary);
     }
 
 }

@@ -63,8 +63,7 @@ class ModuleactionsService extends Component
                     ->relatedTo($cats)
                     ->all();
 
-         return \yii\helpers\ArrayHelper::getColumn($entries, 'id');
-
+        return $entries;
     }   
 
     public function getStatus($userId, $submoduleId)
