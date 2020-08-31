@@ -1,6 +1,7 @@
 .link{
 
 	font-size: rem-calc(18);
+	cursor: pointer;
 
 	&--dark{
 		color: $link-color;
@@ -8,9 +9,13 @@
 		&__icon{
 			background: $link-color;
 		}
+
+		&:visited, &:hover, &:focus{
+			color: $link-color-hover;
+		}
 	}
 
-	&:hover, &:focus{
+	&:visited, &:hover, &:focus{
 		 cursor: pointer;
 
 		.link--dark{

@@ -129,19 +129,6 @@
   }
 
   function doSaveModuleStatus(submoduleId, status, uri) {
-    var request = {
-      plugin: "moduleactions",
-      controller: "default",
-      action: "save-module-view"
-    };
-
-    var data = {
-      submoduleId: submoduleId,
-      status: status
-    };
-
-    opad.postActionRequest(request, data);
-
     // Register event on bespoke analytics
     craftEventTracker.sendEvent({
       interactionId: "sub-module-view",

@@ -14,7 +14,9 @@
     }
     $("#hideThisLink").on("click", hideThis);
 
-    $("#searchIcon").on("click", toggleSearch);
+    $(".search-toggle").on("click", toggleSearch);
+
+    $("#menuToggle").on('click', toggleMenu);
   };
 
   opad.addToInitQueue = function(callback) {
@@ -106,6 +108,11 @@
       $("#searchFormInput").focus();
       $(this).addClass("show-search");
     }
+  }
+
+  function toggleMenu() {
+    $(this).toggleClass('active');
+    $("#menuList").toggleClass('active');
   }
 
   $(document).ready(function() {

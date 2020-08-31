@@ -10,9 +10,6 @@ return array(
 	/* General mapping */
 	"Javascript is required to interact with this section" => "Mae angen ‘javascript' i ryngweithio gyda'r adran yma",
 	"Hide this" => "Cuddio hwn",
-	"Main menu" => "Prif ddewislen",
-	"Show menu" => "Dewislen",
-	"Close menu" => "Cau'r ddewislen",
 	"Where to go next?" => "Ble i fynd nesaf?",
 	"Next" => "Nesaf",
 	"Previous" => "Blaenorol",
@@ -223,6 +220,18 @@ return array(
 	"This is where the young person can view what they have recorded about their mood and other issues. This is not available when viewing for someone else." => "Dyma ble mae'r person ifanc yn gallu gweld beth yr ydyn nhw wedi nodi am eu hwyliau ag ati. Nid yw ar gael ar gyfer person sy'n defnyddio'r pecyn er mwyn helpu'r person ifanc.",
 	"No diary entries" => "No diary entries (welsh)",
 
+	/* Main menu */
+	"Main menu" => "Prif ddewislen",
+	"Menu" => "Dewislen",
+	"Close menu" => "Cau'r ddewislen",
+	"Home" => "Home (CY)",
+	"About Moodhwb" => "About Moodhwb (CY)",
+	"Links to urgent help" => "Links to urgent help (CY)",
+	"Download the app" => "Download the app (CY)",
+	"Mood diary" => "Mood diary (CY)",
+	"Goals" => "Goals (CY)",
+	"Useful links" => "Useful links (CY)",
+	
 	/* Search */
 	"Search" => "Chwilio",
 	"Search results for" => "Search results for (welsh)",

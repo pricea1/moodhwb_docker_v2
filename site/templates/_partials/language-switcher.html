@@ -17,8 +17,8 @@
          {% if site.id is not same as(entry.siteId) %}
            {# if it's not the current site, get the entry for this site #}
            {% set entryForOtherSite = craft.entries.id(entry.id).site(site).one() %}
-           <li class="off-canvas-list__item ">
-             <a href="{{ entryForOtherSite.getUrl() }}">{{ site.handle | t }}</a>
+           <li class="menu-item ">
+             <a class="menu-item-link" href="{{ entryForOtherSite.getUrl() }}">{{ site.handle | t }}</a>
            </li>
          {% endif %}
        {% endfor %}

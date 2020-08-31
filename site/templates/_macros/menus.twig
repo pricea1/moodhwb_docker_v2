@@ -2,25 +2,26 @@
 
 {% macro generateMenu(entry, currentId) %}
 	{% import _self as menuMacros %}
+	{% set firstItem = true %}
 	{% if entry is defined %}
 								
 		{% if entry.topMenu is defined %}
 		  {% set topMenuItems = entry.topMenu.all() %}
 			{% for navItem in topMenuItems %}
 				{% if navItem.id == currentId %}
-					<li class="off-canvas-list__item off-canvas-list__item--current">
-	            		{{ navItem.title }}
-	            	</li>
-            		
+					<li class="menu-item menu-item--current {% if firstItem %} menu-item--first {% endif %}">
+						{{ navItem.title }}
+					</li>
 				{% else %}
-	            	<li class="off-canvas-list__item">{{ navItem.getLink() }}</li>
+						<li class="menu-item {% if firstItem %} menu-item--first {% endif %}"><a href="{{ navItem.url }}" class="menu-item-link">{{ navItem.title }}</a></li>
 				{% endif %}
 
-        	{% endfor %}
+				{% set firstItem = false %}
+			{% endfor %}
 
-        	{% if entry.parent is defined %}
+			{% if entry.parent is defined %}
 				{{ menuMacros.generateMenu(entry.Parent) }}
-        	{% endif %}
+			{% endif %}
 
 		{% endif %}
        

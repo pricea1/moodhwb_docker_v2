@@ -6,8 +6,8 @@
     {% endif %}
   {% endif %}
 
-  {% if lastViewedModule is defined %}
-    {% if module.id == lastViewedModule.parent.id%}
+  {% if lastViewedModule is defined and lastViewedModule.parent is defined and module is defined %}
+    {% if module.id == lastViewedModule.parent.id %}
       <div class="home-module-hint ">
         {{ "You last visited"  | t}}
       </div>

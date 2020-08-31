@@ -1,0 +1,36 @@
+{% cache %}
+
+{% set aboutPage = craft.entries.slug("about-this").one() %}
+{% set urgentHelpPage = craft.entries.slug("urgent-help").one() %}
+{% set moodDiaryPage = craft.entries.slug("mood-monitor").one() %}
+{% set goalsPage = craft.entries.slug("goals").one() %}
+{% set depressionPage = craft.entries.slug("what-is-depression").one() %}
+{% set possibleReasonsPage = craft.entries.slug("possible-reasons").one() %}
+{% set otherHealthPage = craft.entries.slug("other-health-issues").one() %}
+{% set selfHelpPage = craft.entries.slug("self-help").one() %}
+{% set whereToGetHelpPage = craft.entries.slug("where-to-get-help").one() %}
+{% set familyPage = craft.entries.slug("families-friends-and-carers").one() %}
+{% set changePasswordPage = craft.entries.slug("forgotten-password").one() %}
+
+
+  <li class="menu-item"><a href="/" class="menu-item-link">{{ "Home" | t }}</a></li>
+  <li class="menu-item"><a href="{{ aboutPage.url }}" class="menu-item-link">{{ "About Moodhwb" | t }}</a></li>
+  <li class="menu-item"><a href="{{ urgentHelpPage.url }}" class="menu-item-link">{{ "Links to urgent help" | t }}</a></li>
+  <li class="menu-item"><a href="#" class="menu-item-link">{{ "Download the app" | t }}</a></li>
+
+  <li class="menu-item menu-item--separator"><a href="{{ moodDiaryPage.url }}" class="menu-item-link">{{ "Mood diary" | t }}</a></li>
+  <li class="menu-item"><a href="{{ goalsPage.url }}" class="menu-item-link">{{ "Goals" | t }}</a></li>
+  <li class="menu-item"><a href="" class="menu-item-link">{{ "Useful links" | t }}</a></li>
+
+  <li class="menu-item menu-item--separator"><a href="{{ depressionPage.url }}" class="menu-item-link">{{ depressionPage.title }}</a></li>
+  <li class="menu-item"><a href="{{ possibleReasonsPage.url }}" class="menu-item-link">{{ possibleReasonsPage.title}}</a></li>
+  <li class="menu-item"><a href="{{ otherHealthPage.url }}" class="menu-item-link">{{ otherHealthPage.title}}</a></li>
+  <li class="menu-item"><a href="{{ selfHelpPage.url }}" class="menu-item-link">{{ selfHelpPage.title}}</a></li>
+  <li class="menu-item"><a href="{{ whereToGetHelpPage.url }}" class="menu-item-link">{{ whereToGetHelpPage.title}}</a></li>
+  <li class="menu-item"><a href="{{ familyPage.url }}" class="menu-item-link">{{ familyPage.title}}</a></li>
+
+
+  <li class="menu-item menu-item--separator"><a href="" class="menu-item-link">{{ "Language settings" | t }}</a></li>
+  <li class="menu-item"><a href="{{ changePasswordPage.url }}" class="menu-item-link">{{ "Change password" | t }}</a></li>
+  
+{% endcache %}
