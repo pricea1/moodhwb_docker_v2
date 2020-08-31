@@ -46,11 +46,6 @@
       });
     }
 
-    doSaveModuleStatus(
-      window.craftSettings.entry.id,
-      "viewed",
-      window.craftSettings.entry.uri
-    );
     ga("send", "pageview", window.craftSettings.entry.uri);
     craftEventTracker.sendEvent({
       interactionId: "view",
@@ -126,15 +121,6 @@
     function error(err) {}
 
     opad.postActionRequest(request, {}, success, error);
-  }
-
-  function doSaveModuleStatus(submoduleId, status, uri) {
-    // Register event on bespoke analytics
-    craftEventTracker.sendEvent({
-      interactionId: "sub-module-view",
-      interactionCategory: "module",
-      parameter1: uri
-    });
   }
 
   opad.addToJsModules({

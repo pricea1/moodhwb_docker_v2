@@ -7,7 +7,7 @@
 
 
 	{% set query = craft.request.getParam('q') %}
-	{% set entries = craft.entries.search(query).section('Modules').level([1,2]).order('score') %}
+	{% set entries = craft.entries.search(query).orderBy('score').all() %}
 
 
 
@@ -18,18 +18,24 @@
 	    <ul class="search-results__list">
 	        {% for entry in entries %}
 	            <li class="search-results__list__entry">
-	            {% if entry.level == 2 %}
-	            	{% set parentEntry = entry.parent %}
-	            	<a href="{{ parentEntry.url }}">{{ parentEntry.title }}</a> > 
-	            {% endif %}
-	            <a href="{{ entry.url }}">{{ entry.title }}</a>
-	            {% if entry.contentBlockText %}
-		            {{ entry.contentBlockText }}
-	            {% else %}
-	            	{% if entry.level == 1 %}	            	
-	            		{{ entry.body}}
-	            	{% endif %}
-	            {% endif %}
+							{% if entry.level == 3 %}
+								{% set parentEntry = entry.parent %}
+								<a href="{{ parentEntry.parent.url }}">{{ parentEntry.parent.title }}</a> > <a href="{{ parentEntry.url }}">{{ parentEntry.title }}</a> > <span> {{ entry.title }}</span>
+							{% else %}
+
+								{% if entry.level == 2 %}
+									{% set parentEntry = entry.parent %}
+									<a href="{{ parentEntry.url }}">{{ parentEntry.title }}</a> > 
+								{% endif %}
+								<a href="{{ entry.url }}">{{ entry.title }}</a>
+							{% endif %}
+								{% if entry.contentBlockText %}
+									{{ entry.contentBlockText }}
+								{% else %}
+									{% if entry.level == 1 %}	            	
+										{{ entry.body}}
+									{% endif %}
+								{% endif %}
 	            </li>
 	        {% endfor %}
 	    </ul>

@@ -42,17 +42,6 @@
 	    	csrfTokenValue: "{{ craft.app.request.csrfToken|e('js') }}",
 	    	actionTrigger: "{{ craft.app.config.general.actionTrigger }}",
 	    	language: "{{ craft.app.language }}",
-	    	{%if currentUser %}
-	    	user: {
-		    	userId: "{{ currentUser.id }}",
-		    	programmeUserId: "{{ currentUser.userId }}",
-		    	hereFor: "{{ currentUser.hereFor }}"
-	    	},
-        entry: {
-          id: "{{ entry.id }}",
-          uri: "{{ entry.uri }}"
-        }
-	    	{%endif %}
 	    }
 
 	</script>
@@ -72,7 +61,7 @@
       };
     </script>
 
-	<script src="/resources/js/app-ed3537b350.min.js"></script>
+	<script src="/resources/js/app-80c248f218.min.js"></script>
 
 
 	{% if craft.app.config.general.useBugherd %}
