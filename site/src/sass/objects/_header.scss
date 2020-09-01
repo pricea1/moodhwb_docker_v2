@@ -68,8 +68,8 @@
         }
     }
 
-    .ss-icon{
-        margin-left: rem-calc(10);
+    &.active {
+        color: $menu-color-highlight;
     }
 }
 

@@ -99,23 +99,39 @@
     window.location = "http://www.google.com";
   }
 
+  function closeSearch() {
+    if (!$("#searchFormContainer").hasClass('hide') ){
+      toggleSearch();
+    }
+  }
+
   function toggleSearch() {
     $("#searchFormContainer").toggleClass("hide");
     if ($("#searchFormContainer").hasClass("hide")) {
-      $(this).removeClass("show-search");
+      $(".search-toggle").removeClass("active");
       $("#searchFormInput").blur();
     } else {
       $("#searchFormInput").focus();
-      $(this).addClass("show-search");
+      $(".search-toggle").addClass("active");
+      closeMenu();
+    }
+  }
+
+  function closeMenu() {
+    if ($("#menuToggle").hasClass('active') ){
+      toggleMenu();
     }
   }
 
   function toggleMenu() {
-    $(this).toggleClass('active');
+    $("#menuToggle").toggleClass('active');
     $("#menuList").toggleClass('active');
+    if ($("#menuToggle").hasClass('active') ){
+      closeSearch();
+    }
   }
 
   $(document).ready(function() {
-    opad.init();
+    opad.init();a
   });
 })(window, document, jQuery);

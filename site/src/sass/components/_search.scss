@@ -1,20 +1,3 @@
-.search-link{
-
-	.ss-delete{
-		display: none;
-	}
-
-	&.show-search{
-		.ss-search{
-			display: none;
-		}
-
-		.ss-delete{
-			display: inline-block;
-		}
-	}
-
-}
 
 .search-input-container {
 	display: flex;

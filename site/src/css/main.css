@@ -5615,11 +5615,11 @@ button:focus {
 .header-nav-link:focus.header-nav-link__close:hover {
   background: initial;
 }
-.header-nav-link .ss-icon,
-.header-nav-link:visited .ss-icon,
-.header-nav-link:hover .ss-icon,
-.header-nav-link:focus .ss-icon {
-  margin-left: 0.625rem;
+.header-nav-link.active,
+.header-nav-link:visited.active,
+.header-nav-link:hover.active,
+.header-nav-link:focus.active {
+  color: #F7C53E;
 }
 
 .header-nav-link-menu-icon {
@@ -9620,16 +9620,6 @@ a.module-theme-6 {
 }
 .intro-content-block-image img {
   width: 100%;
-}
-
-.search-link .ss-delete {
-  display: none;
-}
-.search-link.show-search .ss-search {
-  display: none;
-}
-.search-link.show-search .ss-delete {
-  display: inline-block;
 }
 
 .search-input-container {
