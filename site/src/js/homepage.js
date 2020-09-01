@@ -27,7 +27,6 @@
 
 			for (var i=0; i < recommendations.length; i++){
 				if(recommendations[i][1].length){
-					console.log("#moduleRecommendedCounter-" + recommendations[i][0],recommendations[i][1].length );
 					$("#moduleRecommendedCounter-" + recommendations[i][0]).text(recommendations[i][1].length);
 					$("#moduleRecommendedCounterContainer-" + recommendations[i][0]).addClass('show');
 

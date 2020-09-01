@@ -132,6 +132,6 @@
   }
 
   $(document).ready(function() {
-    opad.init();a
+    opad.init();
   });
 })(window, document, jQuery);

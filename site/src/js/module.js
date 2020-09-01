@@ -46,11 +46,11 @@
       });
     }
 
-    ga("send", "pageview", window.craftSettings.entry.uri);
+    ga("send", "pageview", window.location.href);
     craftEventTracker.sendEvent({
       interactionId: "view",
       interactionCategory: "module",
-      parameter1: window.craftSettings.entry.uri
+      parameter1: window.location.href
     });
 
     picturefill();
@@ -103,11 +103,8 @@
     };
 
     function success(res) {
-      console.log(res);
-      var highlightList =
-        window.craftSettings.user.hereFor == "self"
-          ? res.hereForSelf
-          : res.hereForOther;
+
+      var highlightList = res.hereForSelf;
 
       for (var i = 0; i < highlightList.length; i++) {
         $(
