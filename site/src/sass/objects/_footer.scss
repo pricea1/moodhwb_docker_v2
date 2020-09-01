@@ -77,7 +77,32 @@
 .footer{
 
 	&-bottom__container{
-		margin-top: rem-calc(25);
-		background: $footer-dark;
+		margin-top: rem-calc(50);
+		background: $oil;
+	}
+
+	&-links-list {
+		padding-top: 20px;
+
+		@media #{$medium-up}{
+			padding-top: 0;
+			margin-bottom: 0;
+		}
+
+		&-item {
+			@media #{$medium-up}{
+				display: inline-block;
+				margin-right: 30px;
+			}
+		}
+	}
+
+	&-nav-link {
+		@extend .header-nav-link;
+		line-height: 40px;
+
+		@media #{$medium-up}{
+			line-height: 60px;
+		}
 	}
 }

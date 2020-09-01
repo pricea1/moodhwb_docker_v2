@@ -22,6 +22,8 @@ return array(
 	"Funded by the Welsh Government through Health and Care Research Wales" => "Ariannwyd gan Lywodraeth Cymru drwy Ymchwil Iechyd a Gofal Cymru",
 	"Also supported by" => "Cefnogaeth hefyd gan",
 	"MoodHwb_Strapline" => "Mood: (noun, English) A state of mind or feeling. Hwb: (noun, Welsh) 1) hub; 2) boost, lift, fillip. [WELSH]",
+	"Privacy policy" => "Privacy policy (CY)",
+	"Cookies" => "Cookies (CY)",
 	/* End general mapping */
 
 
