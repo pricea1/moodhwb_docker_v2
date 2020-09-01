@@ -6223,7 +6223,7 @@ ul.off-canvas-list .off-canvas-list__item a {
   content: "replay" !important;
 }
 .jwplayer.jw-state-buffering .jw-icon-display:before {
-  content: "loop" !important;
+  content: "autorenew" !important;
 }
 
 .module-theme-1 .jw-button-color:hover,
