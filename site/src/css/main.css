@@ -6210,21 +6210,20 @@ ul.off-canvas-list .off-canvas-list__item a {
 }
 .jwplayer .jw-display-icon-container .jw-icon-display {
   font-family: "Material Icons";
-  font-size: 2.5rem;
+  font-size: 3.125rem;
   text-align: center;
 }
 .jwplayer .jw-display-icon-container .jw-icon-display:before {
   position: relative;
-  top: 0.3125rem;
 }
 .jwplayer.jw-state-idle .jw-icon-display:before {
-  content: "▶" !important;
+  content: "play_arrow" !important;
 }
 .jwplayer.jw-state-complete .jw-icon-display:before {
-  content: "↺" !important;
+  content: "replay" !important;
 }
 .jwplayer.jw-state-buffering .jw-icon-display:before {
-  content: "" !important;
+  content: "loop" !important;
 }
 
 .module-theme-1 .jw-button-color:hover,

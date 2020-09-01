@@ -44,13 +44,11 @@
 
 		.jw-icon-display{
 			font-family: $symbol-font-family;
-			font-size: rem-calc(40);
+			font-size: rem-calc(50);
 			text-align: center;
 
 			&:before{
-				// Slight adjustment to vertical center ss-font
-			    position: relative;
-				top: rem-calc(5);
+				position: relative;
 			}
 		}
 	}
