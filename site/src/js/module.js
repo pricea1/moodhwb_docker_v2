@@ -87,10 +87,12 @@
       if ($navRow.hasClass("module-nav__row--current")) {
         isPrevious = false;
         $navRow.attr("data-status", "current");
+        $navRow.prev().attr("data-next-status", "current");
       }
 
       if (isPrevious) {
         $navRow.attr("data-status", "viewed");
+        $navRow.prev().attr("data-next-status", "viewed");
       }
     });
   }

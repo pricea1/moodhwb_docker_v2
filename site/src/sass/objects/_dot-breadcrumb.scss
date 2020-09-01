@@ -108,8 +108,12 @@
 			background-color: $iron;
 			z-index: 10;
 			@include border-radius(50px);
+			height: 10px;
+			width: 10px;
 
-
+			@media #{$medium-up}{
+				top: rem-calc(-2);
+			}
 
 		}
 
@@ -117,14 +121,19 @@
 	}
 
 	.#{$list-item}{
-		&[data-status="viewed"],
 		&[data-status="current"]{
 			.#{$dot-item} {
 				&:before{
-					background-color: $oil;
+					height: 16px;
+					width: 16px;
+					
+					@media #{$medium-up}{
+						top: rem-calc(-5);
+					}
 				}
 			}
 		}
+		
 	}
 
 	.#{$list-item}[data-status="current"]{

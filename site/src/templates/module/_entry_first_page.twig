@@ -42,40 +42,10 @@
     {% set modules = craft.entries.section('modules').level(1) %}
 
     <div class="module-nav-container">
-      {% if not isAppRequest %}
-        <nav id="moduleNav" class="module-nav module-nav--closed">
-
-          <div class="module-nav__list module-nav__list--level1">
-            {% set allModules = modules.all() %}
-            {% for module in allModules %}
-              <div class="{{ module.moduleColour }}__element">
-                {% if currentModule.id == module.id %}
-                  <div class="row module-nav__row module-nav__row--current">
-                    <div class="small-12 columns ">
-                      <div class="module-nav__item module-nav__item--current {{ module.moduleColour }}__element module-nav__link">
-                        {{ module.title }}
-                        <a href="#submodules" class="show-for-sr">{{ "List submodules"|t }}</a>
-                      </div>
-                    </div>
-                  </div>
-                {% else %}
-                  <div class="row module-nav__row module-nav__row--not-current {{ module.moduleColour }}__element">
-                    <div class="small-12 columns">
-                      <div class="module-nav__item ">
-                        <a class="module-nav__link" href="{{ module.url }}">{{ module.title }}</a>
-                      </div>
-                    </div>
-                  </div>
-                {% endif %}
-              </div>
-            {% endfor %}
-          </div>
-        </nav>
-
-
+      {% if not isAppRequest %}      
       {#
-            			Create nav of current sub modules
-            			#}
+          Create nav of current sub modules
+      #}
       <a id="submodules" href="#skip-submodules" class="show-for-sr">{{ "Skip submodules navigation"|t}}</a>
       <nav id="submoduleNav" class="module-nav module-nav--closed module-theme-invert-text">
         <div class="row">
@@ -93,7 +63,7 @@
               {% set itemIndex = 0 %}
 
               {% for page in childPages %}
-  
+
                 <div class="module-nav__row {%if page.id == currentPage.id %}module-nav__row--current{% else %}module-nav__row--not-current{% endif %} {% if page.showInNav %}module-nav__row--not-hidden{% else %}module-nav__row--hidden{% endif %} {% if itemIndex == itemCount - 1%}module-nav__row-last{% endif %}" style="{% if not loop.last %}width: {{ navPercSteps }}%; {% endif %}left: {{ itemIndex * navPercSteps }}%" data-page-id="{{ page.id }}" data-page-uri="{{ page.uri }}">
 
                   <div class="module-nav__item">
