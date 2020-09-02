@@ -9,6 +9,11 @@
 
 .header-bar {
     background: $oil;
+    padding: 0 20px;
+
+    @media #{$medium-up}{
+        padding: 0 32px;
+    }
 
     &-column {
         display: flex;

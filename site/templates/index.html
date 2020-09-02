@@ -46,7 +46,7 @@
 					{% if lastViewedModule is not defined %}
 						{{ "Browse the topics"| t}}
 					{% else %}
-						{{ "Within each topic we’ve highlighted"|t }} <span class="material-icons home-highlight-star">star</span> {{ " areas that might be useful based on your answers"|t }}
+						{{ "Within each topic we’ve highlighted"|t }} <span class="material-icons home-highlight-star">star</span> {{ " the number of areas that might be helpful based on your answers"|t }}
 					{% endif %}
 				</div>
 
@@ -83,10 +83,6 @@
 					</div>
 			</div>
 			</div>
-		</div>
-
-		<div class="home-third-section">
-			{% include '_partials/footer_v2' %}
 		</div>
 
 		{% if entry.video %}

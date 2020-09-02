@@ -1,8 +1,7 @@
 <header id="header">
 	
 	<nav class="header-bar">
-		<div class="row">
-		<div class="small-12 column header-bar-column">
+		<div class="header-bar-column">
 			{% if hideMainMenu is not defined %}
 				<section>
 					<ul class="menu-inline-list">
@@ -45,7 +44,7 @@
 						</a>
 					</li>
 					{% endif %}
-					<li class="header-bar-menu-item-left hide-for-medium-up">
+					<li class="header-bar-menu-item-right hide-for-medium-up">
 						<a class="search-toggle header-nav-link" href="#">
 							<span class="header-nav-link-menu-icon">search</span>
 						</a>
@@ -53,7 +52,6 @@
 				</ul>
 				</div>
 				{% endif %}
-		</div>
 		</div>
 	</nav>
 	<div class="menu-container">
@@ -70,7 +68,8 @@
 			<form action="{{ url('search/results') }}">
 				<div class="row">
 					<div class="small-12 column search-input-container">
-							<input class="search-form__input" type="search" name="q" placeholder="| {{ "Search" |t }}">
+							<label for="searchInput" class="show-for-sr">{{ "Search" |t}}</label>
+							<input id="searchInput" class="search-form__input" type="search" name="q">
 							<a class="link--dark search-toggle search-form-close-button" href="#">
 								<span class="header-nav-link-menu-icon" aria-hidden="true">close</span>
 							</a>

@@ -113,6 +113,7 @@
     } else {
       $("#searchFormInput").focus();
       $(".search-toggle").addClass("active");
+      $("#searchInput").focus();
       closeMenu();
     }
   }

@@ -5549,6 +5549,12 @@ button:focus {
 
 .header-bar {
   background: #333333;
+  padding: 0 20px;
+}
+@media only screen and (min-width: 64em) {
+  .header-bar {
+    padding: 0 32px;
+  }
 }
 .header-bar-column {
   display: -webkit-box;
@@ -5685,12 +5691,12 @@ button:focus {
 
 .footer-container,
 .primary-panel.footer-container {
-  padding-top: 2.5rem;
+  padding-top: 1.25rem;
 }
 @media only screen and (min-width: 64em) {
   .footer-container,
   .primary-panel.footer-container {
-    padding-top: 3.75rem;
+    padding-top: 2.5rem;
   }
 }
 
@@ -5724,7 +5730,7 @@ button:focus {
 }
 
 .footer-text-first {
-  font-weight: bold;
+  color: #104949;
 }
 @media only screen and (min-width: 64em) {
   .footer-text-first {
@@ -5744,19 +5750,17 @@ button:focus {
 
 .footer-strapline {
   text-align: center;
-  margin-top: 1.875rem;
-  font-size: 1.5rem;
-  color: #333333;
+  font-size: 1rem;
+}
+.footer-strapline-container {
+  padding: 1.875rem 0;
+  border-top: 2px solid #ccc;
+  border-bottom: 2px solid #ccc;
 }
 @media only screen and (min-width: 64em) {
   .footer-strapline {
-    margin-top: 2.1875rem;
-    margin-bottom: 0;
+    font-size: 1.125rem;
   }
-}
-.footer-strapline-rule {
-  margin-top: 1.875rem;
-  margin-bottom: 0;
 }
 
 .footer-bottom__container {
@@ -5993,7 +5997,6 @@ ul.off-canvas-list .off-canvas-list__item a {
 }
 .primary-panel {
   padding-top: 1.25rem;
-  padding-bottom: 1.875rem;
   background: #76D0CA;
   color: #333;
 }
@@ -6729,7 +6732,6 @@ input.login-radio {
 .home-browse {
   color: #333333;
   font-size: 1.5rem;
-  font-weight: 300;
   padding-bottom: 1.875rem;
 }
 @media only screen and (min-width: 64em) {

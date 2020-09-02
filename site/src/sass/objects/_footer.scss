@@ -1,9 +1,9 @@
 .footer-container,
 .primary-panel.footer-container{
-	padding-top: rem-calc(40);
+	padding-top: rem-calc(20);
 
 	@media #{$medium-up}{
-		padding-top: rem-calc(60);
+		padding-top: rem-calc(40);
 	}
 }
 
@@ -37,8 +37,7 @@
 
 
 .footer-text-first{
-//	margin-top: rem-calc(60);
-	font-weight: bold;
+	color: #104949;
 
 	@media #{$medium-up}{
 		font-weight: normal;
@@ -58,18 +57,17 @@
 
 .footer-strapline{
 	text-align: center;
-	margin-top: rem-calc(30);
-	font-size: rem-calc(24);
-	color: $oil;
+	font-size: rem-calc(16);
 
-	@media #{$medium-up}{
-		margin-top: rem-calc(35);
-		margin-bottom: 0;
+	&-container {
+		padding: rem-calc(30) 0;
+		border-top: 2px solid #ccc;
+		border-bottom: 2px solid #ccc;
 	}
 
-	&-rule{
-		margin-top: rem-calc(30);
-		margin-bottom: 0;
+	
+	@media #{$medium-up}{
+		font-size: rem-calc(18);
 	}
 
 }
