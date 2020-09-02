@@ -1,10 +1,8 @@
-<div id="feature-block-quiz-{{entry.title}}" class="module-block module-block-themed feature-block-quiz" data-modules="slick-carousel,feature-block-quiz">
+<div id="feature-block-quiz-{{entry.title}}" class="module-block feature-block-quiz" data-modules="slick-carousel,feature-block-quiz">
 
 
 	<div class="row">
 	<div class="small-12 columns">
-
-		<h3 class="feature-block-heading">{{ entry.featureBlockQuizHeading }}</h3>
 
 		<noscript>
 			{{ "Javascript is required to interact with this section" | t }}
@@ -16,7 +14,6 @@
 		{% set featureBlockQuizQuestion = entry.featureBlockQuizQuestion.all() %}
 		{% for matrixItem in featureBlockQuizQuestion %}
 			<div class="feature-block-quiz-question-container">
-				<div class="feature-block-quiz-question">{{ matrixItem.question}}</div>
 				{% set itemCount = loop.length %}
 				{% set currentItem = loop.index %}
 				<ul class="slick-dots">
@@ -25,11 +22,12 @@
 					-->{% endfor %}
 				</ul>
 
+				<div class="feature-block-quiz-question">{{ matrixItem.question}}</div>
 
 				<ul class="feature-block-quiz-answer-list">
-					<li class="feature-block-quiz-answer-item {% if matrixItem.correctAnswer == 'answer1' %}feature-block-quiz-answer-correct{% endif %}"><button class="feature-block-button">{{ matrixItem.answer1 }}</button></li>
-					<li class="feature-block-quiz-answer-item {% if matrixItem.correctAnswer == 'answer2' %}feature-block-quiz-answer-correct{% endif %}"><button class="feature-block-button">{{ matrixItem.answer2 }}</button></li>
-					<li class="feature-block-quiz-answer-item {% if matrixItem.correctAnswer == 'answer3' %}feature-block-quiz-answer-correct{% endif %}"><button class="feature-block-button">{{ matrixItem.answer3 }}</button></li>
+					<li class="feature-block-quiz-answer-item {% if matrixItem.correctAnswer == 'answer1' %}feature-block-quiz-answer-correct{% endif %}"><button class="feature-block-quiz-button">{{ matrixItem.answer1 }}</button></li>
+					<li class="feature-block-quiz-answer-item {% if matrixItem.correctAnswer == 'answer2' %}feature-block-quiz-answer-correct{% endif %}"><button class="feature-block-quiz-button">{{ matrixItem.answer2 }}</button></li>
+					<li class="feature-block-quiz-answer-item {% if matrixItem.correctAnswer == 'answer3' %}feature-block-quiz-answer-correct{% endif %}"><button class="feature-block-quiz-button">{{ matrixItem.answer3 }}</button></li>
 				</ul>
 			</div>
 		{% endfor %}

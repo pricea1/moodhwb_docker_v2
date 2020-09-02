@@ -13,7 +13,7 @@
 		
 		$('.slick-carousel-container').slick('slickSetOption', 'arrows', false, true);
 
-		$('.feature-block-button').on('click', function(){
+		$('.feature-block-quiz-button').on('click', function(){
 			questionChosen(this);
 		});
 
@@ -30,14 +30,13 @@
 			questionAnswered = true;
 
 			$quizContainer.addClass('feature-block-quiz-answered')
-				.find('.feature-block-quiz-chosen-answer')
-				.removeClass('feature-block-quiz-chosen-answer');
+				.find('.feature-block-quiz-chosen-answer');
 
 			$this.addClass('feature-block-quiz-chosen-answer');
 
 		if (!correctAnswer){
 			setTimeout(function(){
-				questionChosen($quizContainer.find('.feature-block-quiz-answer-correct .feature-block-button'), true );
+				questionChosen($quizContainer.find('.feature-block-quiz-answer-correct .feature-block-quiz-button'), true );
 			}, 700);
 
 		} else {
@@ -45,7 +44,6 @@
 				// go to next slide
 				$quizContainer.removeClass('.feature-block-quiz-answered')
 					.parents('.slick-carousel-container').slick('slickNext');
-				
 				questionAnswered = false;
 			}, 1500);
 
