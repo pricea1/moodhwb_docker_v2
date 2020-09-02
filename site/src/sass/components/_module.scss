@@ -470,6 +470,11 @@
 			}
 		}
 
+		.module-collapsible__container {
+			.content-block-sub-item {
+				border-color: $theme-background;
+			}
+		}
 
 	}
 }

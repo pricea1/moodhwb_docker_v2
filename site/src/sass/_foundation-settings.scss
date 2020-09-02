@@ -256,7 +256,7 @@ $medium-only: "#{$screen} and (min-width:#{lower-bound($medium-range)}) and (max
 // We use these to style paragraphs
 // $paragraph-font-family: inherit;
 // $paragraph-font-weight: $font-weight-normal;
-$paragraph-font-size: rem-calc(18);
+$paragraph-font-size: rem-calc(16);
 $paragraph-line-height: rem-calc(24);
 $paragraph-margin-bottom: rem-calc(30);
 // $paragraph-aside-font-size: rem-calc(14);

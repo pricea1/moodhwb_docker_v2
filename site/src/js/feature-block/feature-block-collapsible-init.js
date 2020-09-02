@@ -1,0 +1,1 @@
+opad.initJsModule(['feature-block-collapsible']);

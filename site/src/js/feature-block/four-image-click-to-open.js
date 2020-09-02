@@ -1,7 +1,7 @@
 'use strict';
 (function(window, document, $){
 	function init(){
-console.log('init');
+
 		$('.four-image-click-to-open-sub-item').on('click', function(){
 			var $this = $(this);
 

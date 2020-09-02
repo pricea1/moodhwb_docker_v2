@@ -51,11 +51,11 @@
 	position: relative;
 	height: 9/16 * 100vw; // Keep ratio of video image
 	overflow: hidden;
-    margin-bottom: rem-calc(30);
+  margin-bottom: rem-calc(20);
 
 	@media #{$medium-up}{
 		height: 550px;
-		margin-bottom: rem-calc(60);
+		margin-bottom: rem-calc(30);
 	}
 
 	.jwplayer{

@@ -3316,14 +3316,14 @@ a img {
 /* Default paragraph styles */
 p {
   font-family: inherit;
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: normal;
   line-height: 1.5rem;
   margin-bottom: 1.875rem;
   text-rendering: optimizeLegibility;
 }
 p.lead {
-  font-size: 1.34375rem;
+  font-size: 1.21875rem;
   line-height: 1.6;
 }
 p aside {
@@ -3423,7 +3423,7 @@ ul,
 ol,
 dl {
   font-family: inherit;
-  font-size: 1.125rem;
+  font-size: 1rem;
   line-height: 1.5rem;
   list-style-position: outside;
   margin-bottom: 1.875rem;
@@ -5416,6 +5416,11 @@ h2 {
 }
 
 @media only screen and (min-width: 48em) {
+  p {
+    font-size: 1.125rem;
+  }
+}
+@media only screen and (min-width: 48em) {
   .large-heading {
     font-size: 2.5rem;
   }
@@ -7253,6 +7258,9 @@ a.module-theme-1 {
 .module-theme-1 .slick-dots .slick-active button {
   background: #fff;
 }
+.module-theme-1 .module-collapsible__container .content-block-sub-item {
+  border-color: #4589b6;
+}
 
 a.module-theme-2 {
   color: #42b389;
@@ -7343,6 +7351,9 @@ a.module-theme-2 {
 }
 .module-theme-2 .slick-dots .slick-active button {
   background: #fff;
+}
+.module-theme-2 .module-collapsible__container .content-block-sub-item {
+  border-color: #42b389;
 }
 
 a.module-theme-3 {
@@ -7435,6 +7446,9 @@ a.module-theme-3 {
 .module-theme-3 .slick-dots .slick-active button {
   background: #3f3d32;
 }
+.module-theme-3 .module-collapsible__container .content-block-sub-item {
+  border-color: #f7c53e;
+}
 
 a.module-theme-4 {
   color: #f9a73c;
@@ -7525,6 +7539,9 @@ a.module-theme-4 {
 }
 .module-theme-4 .slick-dots .slick-active button {
   background: #3f3d32;
+}
+.module-theme-4 .module-collapsible__container .content-block-sub-item {
+  border-color: #f9a73c;
 }
 
 a.module-theme-5 {
@@ -7617,6 +7634,9 @@ a.module-theme-5 {
 .module-theme-5 .slick-dots .slick-active button {
   background: #3f3d32;
 }
+.module-theme-5 .module-collapsible__container .content-block-sub-item {
+  border-color: #75d3ca;
+}
 
 a.module-theme-6 {
   color: #f7737c;
@@ -7708,12 +7728,46 @@ a.module-theme-6 {
 .module-theme-6 .slick-dots .slick-active button {
   background: #3f3d32;
 }
+.module-theme-6 .module-collapsible__container .content-block-sub-item {
+  border-color: #f7737c;
+}
 
 .module-collapsible__container {
   margin-top: 1.25rem;
+  margin-bottom: 32px;
+}
+.module-collapsible__container .content-block-sub-item {
+  padding-left: 15px;
+  border-left: 5px solid #ccc;
+  margin: 6px 0 0 8px;
+}
+.module-collapsible__container.hide-collapsible .content-block-sub-item {
+  display: none;
+}
+.module-collapsible__container.hide-collapsible .module-collapsible__link:before {
+  -webkit-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+          transform: rotate(-90deg);
 }
 .module-collapsible__link {
-  font-weight: bold;
+  background: none;
+  color: #2D5976;
+  text-decoration: underline;
+  padding-left: 1.875rem;
+  position: relative;
+}
+.module-collapsible__link:before {
+  content: "expand_more";
+  font-family: "Material Icons";
+  font-size: 24px;
+  position: absolute;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  line-height: 28px;
+}
+.module-collapsible__link:visited, .module-collapsible__link:hover, .module-collapsible__link:focus {
+  color: #2D5976;
 }
 .module-collapsible__content p:last-of-type {
   margin-bottom: 0;
@@ -9114,8 +9168,15 @@ a.module-theme-6 {
 }
 
 .content-block-large-paragraph p:first-of-type {
-  font-size: 1.375rem;
-  line-height: 2rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  line-height: 1.75rem;
+}
+@media only screen and (min-width: 48em) {
+  .content-block-large-paragraph p:first-of-type {
+    font-size: 1.75rem;
+    line-height: 2.5rem;
+  }
 }
 
 @media only screen and (max-width: 47.9375em) {
@@ -9640,12 +9701,12 @@ a.module-theme-6 {
   position: relative;
   height: 56.25vw;
   overflow: hidden;
-  margin-bottom: 1.875rem;
+  margin-bottom: 1.25rem;
 }
 @media only screen and (min-width: 48em) {
   .intro-content-block-media-container {
     height: 550px;
-    margin-bottom: 3.75rem;
+    margin-bottom: 1.875rem;
   }
 }
 .intro-content-block-media-container .jwplayer {

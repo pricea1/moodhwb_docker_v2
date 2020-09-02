@@ -1,13 +1,15 @@
 {% if entry.collapsibleContent %}
+	<div class="module-block" data-modules="feature-block-collapsible">
 	{% set collapsibleContent = entry.collapsibleContent.all() %}
 	{% for item in collapsibleContent %}
 		<div class="row">
 			<div class="small-12 columns">
 				<div class="module-collapsible__container">
-					<div class="module-collapsible__link">{{ item.linkTitle | default("More information") |t }}</div>
+					<a class="link module-collapsible__link">{{ item.linkTitle | default("More information") |t }}</a>
 					<div class="content-block-sub-item ">{{ item.text}}</div>
 				</div>
 			</div>
 		</div>
 	{% endfor %}
+	</div>
 {% endif %}
