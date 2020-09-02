@@ -25,7 +25,12 @@
 				<div class="feature-block-quiz-question">{{ matrixItem.question}}</div>
 
 				<ul class="feature-block-quiz-answer-list">
-					<li class="feature-block-quiz-answer-item {% if matrixItem.correctAnswer == 'answer1' %}feature-block-quiz-answer-correct{% endif %}"><button class="feature-block-quiz-button">{{ matrixItem.answer1 }}</button></li>
+					<li class="feature-block-quiz-answer-item {% if matrixItem.correctAnswer == 'answer1' %}feature-block-quiz-answer-correct{% endif %}">
+						{% if matrixItem.answer1Image %}
+							<img src="{{matrixItem.answer1Image}}" />
+						{% endif %}
+						<button class="feature-block-quiz-button">{{ matrixItem.answer1 }}</button>
+					</li>
 					<li class="feature-block-quiz-answer-item {% if matrixItem.correctAnswer == 'answer2' %}feature-block-quiz-answer-correct{% endif %}"><button class="feature-block-quiz-button">{{ matrixItem.answer2 }}</button></li>
 					<li class="feature-block-quiz-answer-item {% if matrixItem.correctAnswer == 'answer3' %}feature-block-quiz-answer-correct{% endif %}"><button class="feature-block-quiz-button">{{ matrixItem.answer3 }}</button></li>
 				</ul>
