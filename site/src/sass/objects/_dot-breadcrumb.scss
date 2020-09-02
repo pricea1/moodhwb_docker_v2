@@ -35,10 +35,11 @@
 		    position: absolute;
 		    border-top: 5px solid $oil;
 		    top: 0;
-
+			/*
 			@include transition-property(max-width);
 			@include transition-duration(0.5s); // Same speed as slider
 			@include transition-timing-function(linear);
+			*/
 		}
 
 		&:last-of-type:before,

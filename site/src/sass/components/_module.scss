@@ -9,9 +9,6 @@
 			position: absolute;
 			top: 0;
 			right: 0;
-			@include transition-property(transform);
-			@include transition-duration(0.1s);
-			@include transition-timing-function(linear);
 		}
 
 
@@ -79,6 +76,11 @@
 
 }
 
+@media #{$small-only}{
+	.module-block {
+		padding-top: rem-calc(10);
+	}
+}
 
 .module-block-themed{
 	padding-top: rem-calc(40);
@@ -131,22 +133,34 @@
 
 
 	&__list--level1 {
-		.module-nav__item--current{
 			@include nav-arrow();
-		}
 	}
 
 	@media #{$small-only}{
-		.module-nav__row--current {
+		.module-nav__row:first-child {
+
 			.module-nav__item{
 				@include nav-arrow();
+				&:after{
+					right: rem-calc(20); // To compensate on breaking out of row to allow border between items to go full screen
+				}
 			}
+		}	
+
+		&--closed {
+			.module-nav__row--current {
+
+				.module-nav__item{
+					@include nav-arrow();
+				}
+			}	
 		}
 
 		&__list--level2 {
 
-		    margin-left: rem-calc(-20); // to break out of grid and bring list item to full width of screen
-		    margin-right: rem-calc(-20);
+			margin-left: rem-calc(-20); // to break out of grid and bring list item to full width of screen
+			margin-right: rem-calc(-20);
+			border-bottom: 2px solid $primary-text-color;
 
 			.module-nav__row{
 
@@ -163,6 +177,7 @@
 		}
 
 		&.module-nav--closed{
+
 			.module-nav__list--level2 {
 				.module-nav__row{
 					border: none;
@@ -354,7 +369,7 @@
 			&:after {
 				border-color: $theme-background;
 			}
-
+/*
 			.module-nav__link{
 				&:before{
 					content: ' ';
@@ -362,9 +377,8 @@
 					@include transition-duration(0.1s); // Same speed as slider
 					@include transition-timing-function(linear);
 				}
-
 			}
-
+*/
 			&.module-nav__row--highlight {
 				
 				.module-nav__link {

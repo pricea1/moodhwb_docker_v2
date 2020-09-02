@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="small-12 columns">
 
-			<h2 class="large-heading">{{ entry.contentBlockHeading }}</h2>
+			<h2 class="large-heading show-for-medium-up">{{ entry.contentBlockHeading }}</h2>
 			<div class="content-block content-block-large-paragraph ">
 				{{ entry.contentBlockText }}
 			</div>
@@ -21,18 +21,13 @@
 		<div class="small-12 medium-6 column">
 
 			<div class="content-block-sub-item-container">
-				<div class="row">
 					{% set contentBlockItems = entry.contentBlockItems.all() %}
 					{% for item in contentBlockItems %}
-						<div class="small-12 column">
 							<div class="content-block content-block-sub-item">
 								<h3 class="content-block-subheading">{{ item.heading }}</h3>
 								{{ item.text }}
 							</div>
-						</div>
 					{% endfor %}
-				</div>
-
 			</div>
 		</div>
 	</div>
