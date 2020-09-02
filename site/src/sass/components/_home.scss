@@ -16,6 +16,13 @@
 			margin-top: 20px;
 		}
 	}
+
+	@media #{$tablet-only}{
+		img{
+			height: 310px;
+		}
+	}
+
 }
 
 .home-module-container {
@@ -33,6 +40,10 @@
 
 		@media #{$medium-up}{
 			flex: 0 472px;
+		}
+
+		@media #{$tablet-only}{
+			flex: inherit;
 		}
 	}
 }
@@ -223,7 +234,9 @@
 		margin-bottom: rem-calc(40);
 	}
 
-
+	@media #{$tablet-only}{
+		font-size: rem-calc(24);
+	}
 
 }
 

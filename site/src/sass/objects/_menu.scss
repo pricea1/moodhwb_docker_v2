@@ -47,7 +47,8 @@
 .menu-item {
 
 	line-height: rem-calc(50);
-
+	padding: 0 $column-gutter;
+	
 	@media #{$medium-up}{
 		min-width: 240px;
 		padding: 0 rem-calc(32);
