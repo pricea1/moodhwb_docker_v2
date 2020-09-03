@@ -12,23 +12,25 @@
 
 	<div class="row">
 
-
+		<div class="small-12 column">
 
 			<div class="content-block-sub-item-container">
 				{% set contentBlockItems = entry.contentBlockItems.all() %}
 				{% for item in contentBlockItems %}
-					<div class="small-12 medium-3 column custom-grid__tablet-6 {% if loop.last %}end{% endif %}">
+					<div class="small-12 {% if loop.last %}end{% endif %}">
 
 						<div class="content-block-sub-item">
 							
 							{% if item.imageFile and item.imageFile.one() %}
-							<img class="content-block-sub-item__image content-block-sub-item__image--above" src="{{ item.imageFile.one().getUrl('square3col') }}" alt="{{ item.imageAlt }}">
+							<img class="content-block-sub-item__image" src="{{ item.imageFile.one().getUrl('square3col') }}" alt="{{ item.imageAlt }}">
 							{% endif %}
 							
 							{% if item.heading %}						
 								<h3 class="content-block-subheading">{{ item.heading }}</h3>
 							{% endif %}
-							{{ item.text }}
+							<div class="content-block-subtext-container">
+								{{ item.text }}
+							</div>
 						</div>
 
 
@@ -36,12 +38,14 @@
 				{% endfor %}
 			</div>
 
+		</div>
+
 	</div>
 	
 	{% if entry.contentBlockText2 %}
 	<div class="row">
-		<div class="small-12 columns">
-			<div class="content-block-sub-item content-block-text-container content-block-text-container--2">
+		<div class="small-12 column">
+			<div class="content-block-text-container content-block-text-container--2">
 				{{ entry.contentBlockText2 }}
 			</div>
 		</div>
