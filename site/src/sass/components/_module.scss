@@ -84,7 +84,11 @@
 
 .module-block-themed{
 	padding-top: rem-calc(40);
-	padding-bottom: rem-calc(60);
+	padding-bottom: rem-calc(20);
+
+	@media #{$medium-up}{
+		padding-bottom: rem-calc(60);
+	}
 }
 
 
