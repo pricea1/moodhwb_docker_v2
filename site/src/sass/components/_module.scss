@@ -295,7 +295,7 @@
 
 
 
-	&__link {
+	&__link, &_link:focus, &_link:hover, &_link:visited {
 		display: block;
 		width: 100%;
 		height: 100%;
@@ -304,20 +304,70 @@
 	}
 
 	&__next-container{
-		margin-top: rem-calc(42);
+		margin-top: rem-calc(10);
+		display: flex;
+		justify-content: space-between;
+
+		@media #{$medium-up} {
+			margin-top: rem-calc(20);
+		}
+
+		&-item {
+			width: 45%;
+		}
 	}
 
-	&__next-header{
-		font-size: rem-calc(24);
-		line-height: rem-calc(24);
+	&__next-link {
+		font-size: rem-calc(22);
+		line-height: rem-calc(30);
 		font-weight: bold;
-		margin-bottom: rem-calc(14);
+		margin-bottom: rem-calc(18);
+		text-decoration: none;
+		display: block;
+
+		&:focus,&:hover, &:visited {
+			text-decoration: none;
+			color: $link-color;
+		}
+
+		@media #{$medium-up}{
+			font-size: rem-calc(20);
+			margin-bottom: rem-calc(14);
+		} 
+
+		&--previous {
+			padding-left: 26px;
+			position: relative;
+
+			&:before {
+				content: $symbol-arrow-left;
+				font-family: $symbol-font-family;
+				position: absolute;
+				left: 0;
+				width: 16px;
+				height: 16px;
+			}
+		}
+
+		&--next {
+			padding-right: 26px;
+			position: relative;
+
+			&:before {
+				content: $symbol-arrow-right;
+				font-family: $symbol-font-family;
+				position: absolute;
+				right: 0;
+				width: 16px;
+				height: 16px;
+			}
+		}
 	}
 
-	&__next-link{
-		font-size: rem-calc(24);
-		line-height: rem-calc(24);
-		font-weight: bold;
+	&__next-link-title{
+		@media #{$medium-up}{
+			font-size: rem-calc(18);
+		}
 	}
 
 }

@@ -115,19 +115,33 @@
       {% endif %}
     {% endif %}
 
-    {% if nextSibling %}
-      <div class="module-nav__next-container text-center">
-        <div class="module-nav__next-header">{{"Next"|t}}</div>
+    <div class="row">
+      <div class="small-12 column">
+        <div class="module-nav__next-container">
+          <div class="module-nav__next-container-item">
+            {% if previousSibling %}
+                <a class="module-nav__next-link module-nav__next-link--previous" href="{{ previousSibling.url }}">
+                  {{"Previous"|t}} <span class="show-for-sr"> {{ previousSibling.title }}</span>
+                </a>
+                <a class="module-nav__next-link-title hide-from-sr" href="{{ previousSibling.url }}">
+                  {{ previousSibling.title }}
+                </a>
+            {% endif %}
+          </div>
 
-        <a class="button profile-dashboard-mood-button profile-dashboard-mood-button--invert profile-dashboard-mood-button--not-wide" href="{{ nextSibling.url }}">{{ nextSibling.title }}</a>
+          <div class="module-nav__next-container-item text-right">
+            {% if nextSibling %}
+              <a class="module-nav__next-link module-nav__next-link--next" href="{{ nextSibling.url }}">
+                {{"Next"|t}} <span class="show-for-sr"> {{ nextSibling.title }}</span>
+              </a>
+              <a class="module-nav__next-link-title hide-from-sr" href="{{ nextSibling.url }}">
+                {{ nextSibling.title }}
+              </a>
+            {% endif %}
+          </div>
+        </div>
       </div>
-    {% endif %}
-    {% if previousSibling %}
-      <div class="module-nav__next-container text-center">
-        <div class="module-nav__next-header">{{"Previous"|t}}</div>
-        <a class="module-nav__next-link" href="{{ previousSibling.url }}">{{ previousSibling.title }}</a>
-      </div>
-    {% endif %}
+    </div>
 
     <div id="moduleEnd"></div>
 
