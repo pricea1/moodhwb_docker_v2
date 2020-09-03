@@ -292,28 +292,28 @@ meta.foundation-mq-medium {
 }
 
 meta.foundation-mq-medium-only {
-  font-family: "/only screen and (min-width:48em) and (max-width:125.75em)/";
+  font-family: "/only screen and (min-width:48em) and (max-width:63.9375em)/";
   width: 48em;
 }
 
 meta.foundation-mq-large {
+  font-family: "/only screen and (min-width:64em)/";
+  width: 64em;
+}
+
+meta.foundation-mq-large-only {
+  font-family: "/only screen and (min-width:64em) and (max-width:125.75em)/";
+  width: 64em;
+}
+
+meta.foundation-mq-xlarge {
   font-family: "/only screen and (min-width:125.8125em)/";
   width: 125.8125em;
 }
 
-meta.foundation-mq-large-only {
-  font-family: "/only screen and (min-width:125.8125em) and (max-width:90em)/";
-  width: 125.8125em;
-}
-
-meta.foundation-mq-xlarge {
-  font-family: "/only screen and (min-width:90.0625em)/";
-  width: 90.0625em;
-}
-
 meta.foundation-mq-xlarge-only {
-  font-family: "/only screen and (min-width:90.0625em) and (max-width:120em)/";
-  width: 90.0625em;
+  font-family: "/only screen and (min-width:125.8125em) and (max-width:120em)/";
+  width: 125.8125em;
 }
 
 meta.foundation-mq-xxlarge {
@@ -1239,7 +1239,7 @@ select {
     left: auto;
   }
 }
-@media only screen and (min-width: 125.8125em) {
+@media only screen and (min-width: 64em) {
   .large-push-0 {
     position: relative;
     left: 0;
@@ -3140,7 +3140,7 @@ meta.foundation-mq-topbar {
     text-align: justify !important;
   }
 }
-@media only screen and (min-width: 48em) and (max-width: 125.75em) {
+@media only screen and (min-width: 48em) and (max-width: 63.9375em) {
   .medium-only-text-left {
     text-align: left !important;
   }
@@ -3174,7 +3174,7 @@ meta.foundation-mq-topbar {
     text-align: justify !important;
   }
 }
-@media only screen and (min-width: 125.8125em) and (max-width: 90em) {
+@media only screen and (min-width: 64em) and (max-width: 125.75em) {
   .large-only-text-left {
     text-align: left !important;
   }
@@ -3191,7 +3191,7 @@ meta.foundation-mq-topbar {
     text-align: justify !important;
   }
 }
-@media only screen and (min-width: 125.8125em) {
+@media only screen and (min-width: 64em) {
   .large-text-left {
     text-align: left !important;
   }
@@ -3208,7 +3208,7 @@ meta.foundation-mq-topbar {
     text-align: justify !important;
   }
 }
-@media only screen and (min-width: 90.0625em) and (max-width: 120em) {
+@media only screen and (min-width: 125.8125em) and (max-width: 120em) {
   .xlarge-only-text-left {
     text-align: left !important;
   }
@@ -3225,7 +3225,7 @@ meta.foundation-mq-topbar {
     text-align: justify !important;
   }
 }
-@media only screen and (min-width: 90.0625em) {
+@media only screen and (min-width: 125.8125em) {
   .xlarge-text-left {
     text-align: left !important;
   }
@@ -3316,14 +3316,14 @@ a img {
 /* Default paragraph styles */
 p {
   font-family: inherit;
-  font-size: 1rem;
+  font-size: 1.125rem;
   font-weight: normal;
   line-height: 1.5rem;
   margin-bottom: 1.875rem;
   text-rendering: optimizeLegibility;
 }
 p.lead {
-  font-size: 1.21875rem;
+  font-size: 1.34375rem;
   line-height: 1.6;
 }
 p aside {
@@ -3423,7 +3423,7 @@ ul,
 ol,
 dl {
   font-family: inherit;
-  font-size: 1rem;
+  font-size: 1.125rem;
   line-height: 1.5rem;
   list-style-position: outside;
   margin-bottom: 1.875rem;
@@ -4627,7 +4627,7 @@ input.range-slider[type="password"] .range-slider-handle:hover {
   }
 }
 /* large displays */
-@media only screen and (min-width: 125.8125em) {
+@media only screen and (min-width: 64em) {
   .hide-for-small-only, .show-for-small-up, .hide-for-small, .hide-for-small-down, .hide-for-medium-only, .show-for-medium-up, .hide-for-medium, .hide-for-medium-down, .show-for-large-only, .show-for-large-up, .show-for-large, .show-for-large-down, .hide-for-xlarge-only, .hide-for-xlarge-up, .hide-for-xlarge, .show-for-xlarge-down, .hide-for-xxlarge-only, .hide-for-xxlarge-up, .hide-for-xxlarge, .show-for-xxlarge-down {
     display: inherit !important;
   }
@@ -4673,7 +4673,7 @@ input.range-slider[type="password"] .range-slider-handle:hover {
   }
 }
 /* xlarge displays */
-@media only screen and (min-width: 90.0625em) {
+@media only screen and (min-width: 125.8125em) {
   .hide-for-small-only, .show-for-small-up, .hide-for-small, .hide-for-small-down, .hide-for-medium-only, .show-for-medium-up, .hide-for-medium, .hide-for-medium-down, .hide-for-large-only, .show-for-large-up, .hide-for-large, .hide-for-large-down, .show-for-xlarge-only, .show-for-xlarge-up, .show-for-xlarge, .show-for-xlarge-down, .hide-for-xxlarge-only, .hide-for-xxlarge-up, .hide-for-xxlarge, .show-for-xxlarge-down {
     display: inherit !important;
   }
@@ -5531,7 +5531,7 @@ button:focus {
 
 .layout-main-container {
   margin: 0 auto;
-  max-width: 125.75em;
+  max-width: 63.9375em;
 }
 
 @media (min-width: 763px) {
@@ -6536,13 +6536,13 @@ input.login-radio {
 }
 @media only screen and (min-width: 48em) {
   .home-top-section-container img {
-    height: 360px;
-    margin-top: 20px;
+    height: 310px;
   }
 }
-@media only screen and (min-width: 48em) and (max-width: 63.9375em) {
+@media only screen and (min-width: 64em) {
   .home-top-section-container img {
-    height: 310px;
+    height: 360px;
+    margin-top: 20px;
   }
 }
 
@@ -6565,16 +6565,16 @@ input.login-radio {
 }
 @media only screen and (min-width: 48em) {
   .home-module-container-item {
-    -webkit-box-flex: 0;
-        -ms-flex: 0 472px;
-            flex: 0 472px;
-  }
-}
-@media only screen and (min-width: 48em) and (max-width: 63.9375em) {
-  .home-module-container-item {
     -webkit-box-flex: inherit;
         -ms-flex: inherit;
             flex: inherit;
+  }
+}
+@media only screen and (min-width: 64em) {
+  .home-module-container-item {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 472px;
+            flex: 0 472px;
   }
 }
 
@@ -6752,15 +6752,10 @@ input.login-radio {
   font-size: 1.5rem;
   padding-bottom: 1.875rem;
 }
-@media only screen and (min-width: 48em) {
+@media only screen and (min-width: 64em) {
   .home-browse {
     font-size: 2.25rem;
     margin-bottom: 2.5rem;
-  }
-}
-@media only screen and (min-width: 48em) and (max-width: 63.9375em) {
-  .home-browse {
-    font-size: 1.5rem;
   }
 }
 

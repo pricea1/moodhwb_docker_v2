@@ -12,17 +12,16 @@
 
 	@media #{$medium-up}{
 		img{
-			height: 360px;
-			margin-top: 20px;
-		}
-	}
-
-	@media #{$tablet-only}{
-		img{
 			height: 310px;
 		}
 	}
 
+	@media #{$large-up}{
+		img{
+			height: 360px;
+			margin-top: 20px;
+		}
+	}
 }
 
 .home-module-container {
@@ -39,11 +38,11 @@
 		margin-bottom: 30px;
 
 		@media #{$medium-up}{
-			flex: 0 472px;
+			flex: inherit;
 		}
 
-		@media #{$tablet-only}{
-			flex: inherit;
+		@media #{$large-up}{
+			flex: 0 472px;
 		}
 	}
 }
@@ -229,13 +228,9 @@
 	font-size: rem-calc(24);
 	padding-bottom: rem-calc(30);
 
-	@media #{$medium-up}{
+	@media #{$large-up}{
 		font-size: rem-calc(36);
 		margin-bottom: rem-calc(40);
-	}
-
-	@media #{$tablet-only}{
-		font-size: rem-calc(24);
 	}
 
 }
