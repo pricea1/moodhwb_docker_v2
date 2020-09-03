@@ -29,6 +29,7 @@
 
 		<input id="featureBlockOptionHasProfile" type="hidden" name="fields[hasProfile]" value="{{ currentUser.hasProfile }}">
 
+		{% set showAllCats = true %}
 		{% include "_partials/user-category-list.twig" %}
 
 		<noscript>
@@ -60,14 +61,17 @@
 			{% else %}
 				<ul id="{{ userCatId | kebab }}" data-json="{% if currentUser.userDefinedOptions %}{{ currentUser.userDefinedOptions }}{% else %}{}{% endif %}" class="hide feature-block-option-mylist"></ul>
 			{% endif %}
-			<input type="text" class="feature-block-option-mylist-input" placeholder="{{ 'Enter resource title'|t }}"><!--
+			<div class="feature-block-option-mylist-input-container">
+				<label for="enterCategory" class="feature-block-option-mylist-input-label">{{ "Enter"|t }} {{ categoryName |t}}</label>
+				<input id="enterCategory" type="text" class="feature-block-option-mylist-input"><!--
 
-			{# if 1st category has URL then show URL field too #}
-			{% set catList = craft.categories.group(categoryName) %}
-			-->{% if catList and catList.one() and catList.one().urlAddress %}<!--
-			--><input type="text" class="feature-block-option-mylist-input feature-block-option-mylist-input-url" placeholder="{{ 'URL'|t }} e.g. moodhwb.org.uk">
-			{% endif %}
-			<button class="round feature-block-option-mylist-add">{{ "Add"|t }} {{ categoryName |t}}</button>
+				{# if 1st category has URL then show URL field too #}
+				{% set catList = craft.categories.group(categoryName) %}
+				-->{% if catList and catList.one() and catList.one().urlAddress %}<!--
+				--><input type="text" class="feature-block-option-mylist-input feature-block-option-mylist-input-url" placeholder="{{ 'URL'|t }} e.g. moodhwb.org.uk">
+				{% endif %}
+				<button class="button feature-block-option-mylist-input-button">{{ "Add"|t }} {{ categoryName |t}}</button>
+			<div>
 		</div>
 
 	</div>

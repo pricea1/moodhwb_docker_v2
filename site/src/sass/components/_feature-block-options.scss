@@ -49,11 +49,33 @@
 }
 
 
+.feature-block-option-mylist-input-label{
+	line-height: rem-calc(30);
+	margin-bottom: rem-calc(5);	
+}
+
+.feature-block-option-mylist-input-container{
+	@media #{$medium-up}{
+		width: rem-calc(314);
+	}
+}
 
 .feature-block-option-mylist-input{
 	margin-top: rem-calc(10);
 	margin-right: rem-calc(20);
 	min-width: rem-calc(300);
+	line-height: rem-calc(52);
+	height: rem-calc(52) !important;
+	border: 2px solid $primary-text-color !important;
+	border-radius: $global-radius;
+}
+
+.feature-block-option-mylist-input-button{
+	width: 100%;
+
+	@media #{$medium-up}{
+		width: auto;
+	}
 }
 
 .feature-block-option-mylist-input-url{

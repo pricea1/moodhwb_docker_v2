@@ -1,6 +1,7 @@
 	{% if categoryName is defined and fieldName is defined and categoryName != "" %}
 
 		<ul class="user-category-list three-columns">
+		
 			{% set navCategories = craft.categories.group(categoryName).all() %}
 			{% set itemsPerColumn = navCategories|length/3 %}
 			{% set maxItemsPerColumn = itemsPerColumn|round(0,'ceil') %}
