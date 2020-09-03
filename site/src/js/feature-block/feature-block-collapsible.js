@@ -6,7 +6,7 @@
 		$container.addClass('hide-collapsible');
 
 		$container.find('.module-collapsible__link').on('click', function(){
-			$container.toggleClass('hide-collapsible');
+			$(this).parents('.module-collapsible__container').toggleClass('hide-collapsible');
 		});
 
 	}
