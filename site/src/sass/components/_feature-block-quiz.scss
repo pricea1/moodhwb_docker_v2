@@ -82,7 +82,7 @@
 
 		.feature-block-quiz-answer-item {
 			@include flex(1);
-			margin: 0 5px;
+			margin: 0 10px;
 		}
 
 		.feature-block-button{
@@ -114,7 +114,7 @@
 	padding-bottom: 10px;
 	
 	@media #{$medium-up}{
-		padding-bottom: 20px;
+		padding-bottom: 30px;
 	}
 
 	.slick-dots {
@@ -156,6 +156,24 @@
 .feature-block-quiz-container{
 	.slick-list {
 		margin-bottom: 0;
+	}
+}
+
+.feature-block-quiz-answer-image{
+	margin: auto;
+	padding-bottom: 18px;
+	padding-top: 18px;
+
+	@media #{$medium-up}{
+		padding-top: initial;
+	}
+}
+
+.feature-block-quiz-answer-list {
+	.feature-block-quiz-answer-item:first-child {
+		.feature-block-quiz-answer-image{
+			padding-top: initial;
+		}
 	}
 }
 

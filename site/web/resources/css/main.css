@@ -9396,7 +9396,7 @@ a.module-theme-6 {
     -webkit-box-flex: 1;
         -ms-flex: 1;
             flex: 1;
-    margin: 0 5px;
+    margin: 0 10px;
   }
   .feature-block-quiz-answer-list .feature-block-button {
     margin-bottom: 0;
@@ -9420,7 +9420,7 @@ a.module-theme-6 {
 }
 @media only screen and (min-width: 48em) {
   .feature-block-quiz-question-container {
-    padding-bottom: 20px;
+    padding-bottom: 30px;
   }
 }
 .feature-block-quiz-question-container .slick-dots {
@@ -9459,6 +9459,21 @@ a.module-theme-6 {
 
 .feature-block-quiz-container .slick-list {
   margin-bottom: 0;
+}
+
+.feature-block-quiz-answer-image {
+  margin: auto;
+  padding-bottom: 18px;
+  padding-top: 18px;
+}
+@media only screen and (min-width: 48em) {
+  .feature-block-quiz-answer-image {
+    padding-top: initial;
+  }
+}
+
+.feature-block-quiz-answer-list .feature-block-quiz-answer-item:first-child .feature-block-quiz-answer-image {
+  padding-top: initial;
 }
 
 .feature-block-case-study-container {

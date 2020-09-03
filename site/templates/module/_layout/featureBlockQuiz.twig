@@ -26,13 +26,26 @@
 
 				<ul class="feature-block-quiz-answer-list">
 					<li class="feature-block-quiz-answer-item {% if matrixItem.correctAnswer == 'answer1' %}feature-block-quiz-answer-correct{% endif %}">
-						{% if matrixItem.answer1Image %}
-							<img src="{{matrixItem.answer1Image}}" />
+						{% set answer1Image = matrixItem.answer1Image.first() %}
+						{% if answer1Image %}
+							<img class="feature-block-quiz-answer-image" src="{{answer1Image.url}}" />
 						{% endif %}
 						<button class="feature-block-quiz-button">{{ matrixItem.answer1 }}</button>
 					</li>
-					<li class="feature-block-quiz-answer-item {% if matrixItem.correctAnswer == 'answer2' %}feature-block-quiz-answer-correct{% endif %}"><button class="feature-block-quiz-button">{{ matrixItem.answer2 }}</button></li>
-					<li class="feature-block-quiz-answer-item {% if matrixItem.correctAnswer == 'answer3' %}feature-block-quiz-answer-correct{% endif %}"><button class="feature-block-quiz-button">{{ matrixItem.answer3 }}</button></li>
+					<li class="feature-block-quiz-answer-item {% if matrixItem.correctAnswer == 'answer2' %}feature-block-quiz-answer-correct{% endif %}">
+						{% set answer2Image = matrixItem.answer2Image.first() %}
+						{% if answer2Image %}
+							<img class="feature-block-quiz-answer-image" src="{{answer2Image.url}}" />
+						{% endif %}
+						<button class="feature-block-quiz-button">{{ matrixItem.answer2 }}</button>
+					</li>
+					<li class="feature-block-quiz-answer-item {% if matrixItem.correctAnswer == 'answer3' %}feature-block-quiz-answer-correct{% endif %}">
+						{% set answer3Image = matrixItem.answer3Image.first() %}
+						{% if answer3Image %}
+							<img class="feature-block-quiz-answer-image" src="{{answer3Image.url}}" />
+						{% endif %}
+						<button class="feature-block-quiz-button">{{ matrixItem.answer3 }}</button>
+					</li>
 				</ul>
 			</div>
 		{% endfor %}
