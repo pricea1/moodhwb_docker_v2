@@ -7305,9 +7305,6 @@ a.module-theme-1 {
 .module-theme-1 .slick-dots .slick-active button {
   background: #fff;
 }
-.module-theme-1 .module-collapsible__container .content-block-sub-item {
-  border-color: #4589b6;
-}
 
 a.module-theme-2 {
   color: #42b389;
@@ -7395,9 +7392,6 @@ a.module-theme-2 {
 }
 .module-theme-2 .slick-dots .slick-active button {
   background: #fff;
-}
-.module-theme-2 .module-collapsible__container .content-block-sub-item {
-  border-color: #42b389;
 }
 
 a.module-theme-3 {
@@ -7487,9 +7481,6 @@ a.module-theme-3 {
 .module-theme-3 .slick-dots .slick-active button {
   background: #3f3d32;
 }
-.module-theme-3 .module-collapsible__container .content-block-sub-item {
-  border-color: #f7c53e;
-}
 
 a.module-theme-4 {
   color: #f9a73c;
@@ -7577,9 +7568,6 @@ a.module-theme-4 {
 }
 .module-theme-4 .slick-dots .slick-active button {
   background: #3f3d32;
-}
-.module-theme-4 .module-collapsible__container .content-block-sub-item {
-  border-color: #f9a73c;
 }
 
 a.module-theme-5 {
@@ -7669,9 +7657,6 @@ a.module-theme-5 {
 .module-theme-5 .slick-dots .slick-active button {
   background: #3f3d32;
 }
-.module-theme-5 .module-collapsible__container .content-block-sub-item {
-  border-color: #75d3ca;
-}
 
 a.module-theme-6 {
   color: #f7737c;
@@ -7760,9 +7745,6 @@ a.module-theme-6 {
 .module-theme-6 .slick-dots .slick-active button {
   background: #3f3d32;
 }
-.module-theme-6 .module-collapsible__container .content-block-sub-item {
-  border-color: #f7737c;
-}
 
 .module-collapsible__container {
   margin-top: 1.25rem;
@@ -7771,7 +7753,12 @@ a.module-theme-6 {
 .module-collapsible__container .content-block-sub-item {
   padding-left: 15px;
   border-left: 5px solid #ccc;
+  border-color: #76D0CA;
+  border-top: none;
   margin: 6px 0 0 8px;
+}
+.module-collapsible__container .content-block-sub-item p:last-of-type {
+  margin-bottom: revert;
 }
 .module-collapsible__container.hide-collapsible .content-block-sub-item {
   display: none;
