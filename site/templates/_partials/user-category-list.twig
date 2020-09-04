@@ -14,7 +14,8 @@
 
 			{% set itemsPerColumn = itemCount/3 %}
 			{% set maxItemsPerColumn = itemsPerColumn|round(0,'ceil') %}
-			
+			{% set middleColumnNotMax = itemCount % 3 == 1 %}
+
 			{% set loopCount = 0 %}
 			{% nav category in navCategories %}
 				{% set hasCategory = null %}
@@ -30,9 +31,25 @@
 
 				{% set categoryMatchesModule =  category.moduleList.ids() | indexOf(entry.id) %}
 				{% if showAllCats is defined or category.moduleList is not defined or category.moduleList |length == 0 or categoryMatchesModule != -1 %}
+						{% if loopCount > maxItemsPerColumn and middleColumnNotMax %}
+							{% set maxItemsPerColumn = maxItemsPerColumn - 1 %}
+							{% set middleColumnNotMax = false %}
+							{% set loopCount = loopCount + 1 %}
+							{% set itemCount = itemCount + 1 %}
+						{% endif %}
+
 						{% set loopCount = loopCount + 1 %}
+
 						{% set isStartOfColumn = loopCount % maxItemsPerColumn == 1 %}
 						{% set isEndOfColumn = loopCount % maxItemsPerColumn == 0 %}
+
+						{% if itemCount < 3 %}
+							{% set isStartOfColumn = true %}
+							{% set isEndOfColumn = true %}
+						{% endif %}
+
+	
+
 						<li class="user-options-category__item profile-user-options__category {% if loopCount == 1 %}profile-user-options__category--first {% endif %} {% if loopCount == itemCount %}profile-user-options__category--last {% endif %} {% if isStartOfColumn %}profile-user-options__category--column-start{% endif %} {% if isEndOfColumn %}profile-user-options__category--column-end{% endif %} {% if hasCategory is not null %}profile-user-options__mycategory{% else %}profile-user-options__notmycategory{% endif %} input-custom-checkbox-container">				        	
 							<input id="profileInput{{ fieldName | kebab }}{{ category.id }}" class="profile-user-options__input user-category-input" type="checkbox" name="fields[{{ fieldName }}][]" {% if hasCategory is not null %}checked{% endif %} value="{{ category.id }}">
 							<label for="profileInput{{ fieldName | kebab }}{{ category.id }}" class="profile-user-options__label profile-user-options__{{ categoryName }} profile-user-options-__{{ categoryName }}-{{ category.slug }}">{{ category.title }}</label>
@@ -52,7 +69,7 @@
 									{{ "We recommend you speak to someone about this" | t }}
 								</div>
 							{% endif %}
-				        </li>
+							</li>
 			    {% else %}
 					{% if hasCategory %}
 						<li style="display:none">
