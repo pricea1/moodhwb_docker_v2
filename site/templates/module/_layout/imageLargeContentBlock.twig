@@ -11,7 +11,7 @@
 	</div>
 
 	<div class="row">
-		<div class="small-12 column">
+		<div class="small-12 medium-6 column">
 			<div class="content-block-image-container">
 				{% if entry.contentBlockImage.one() %}
 					{% set image = entry.contentBlockImage.one() %}
@@ -27,14 +27,12 @@
 			</div>
 		</div>
 
-	</div>
-
-	<div class="row">
-		<div class="small-12 column">
-			<div class="two-columns content-block content-block-main-text">
+		<div class="small-12 medium-6 column">
+			<div class="content-block content-block-main-text">
 				{{ entry.body }}
 			</div>
 		</div>
+
 	</div>
 
 	{% include "_partials/collapsible-content" %}

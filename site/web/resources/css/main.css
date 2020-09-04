@@ -9194,29 +9194,30 @@ a.module-theme-6 {
   }
 }
 
-.content-block-sub-item {
-  padding-top: 20px;
+.content-block-sub-item p:last-of-type {
+  margin-bottom: 0;
+}
+
+.four-image-content-block .content-block-sub-item {
   width: 100%;
+  padding-top: 20px;
   border-top: 2px solid #ccc;
 }
 @media only screen and (min-width: 48em) {
-  .content-block-sub-item {
+  .four-image-content-block .content-block-sub-item {
     min-height: 265px;
   }
 }
-.content-block-sub-item__image {
+.four-image-content-block .content-block-sub-item__image {
   width: 46%;
   border-radius: 500px;
   float: left;
   margin-right: 20px;
 }
 @media only screen and (min-width: 48em) {
-  .content-block-sub-item__image {
+  .four-image-content-block .content-block-sub-item__image {
     width: 225px;
   }
-}
-.content-block-sub-item p:last-of-type {
-  margin-bottom: 0;
 }
 
 .content-block-large-paragraph p:first-of-type {

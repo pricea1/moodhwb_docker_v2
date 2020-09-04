@@ -63,28 +63,34 @@
 
 
 .content-block-sub-item{
-
-	padding-top: 20px;
-	width: 100%;
-	border-top: 2px solid #ccc;
-
-	@media #{$medium-up}{
-		min-height: 265px;
-	}
-
-	&__image{
-		width: 46%;
-		border-radius: 500px;
-		float: left;
-		margin-right: 20px;
-
-		@media #{$medium-up}{
-			width: 225px;
-		}
-	}
-
+	
 	p:last-of-type {
 		margin-bottom: 0;
+	}
+
+}
+
+.four-image-content-block {
+
+	.content-block-sub-item {
+		width: 100%;
+		padding-top: 20px;
+		border-top: 2px solid #ccc;
+
+		@media #{$medium-up}{
+			min-height: 265px;
+		}
+
+		&__image{
+			width: 46%;
+			border-radius: 500px;
+			float: left;
+			margin-right: 20px;
+	
+			@media #{$medium-up}{
+				width: 225px;
+			}
+		}
 	}
 
 }
