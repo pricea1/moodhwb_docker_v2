@@ -24,7 +24,9 @@
 					{% set contentBlockItems = entry.contentBlockItems.all() %}
 					{% for item in contentBlockItems %}
 							<div class="content-block content-block-sub-item">
-								<h3 class="content-block-subheading">{{ item.heading }}</h3>
+								{% if item.heading %}
+									<h3 class="content-block-subheading">{{ item.heading }}</h3>
+								{% endif %}
 								{{ item.text }}
 							</div>
 					{% endfor %}
