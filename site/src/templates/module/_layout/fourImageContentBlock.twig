@@ -1,4 +1,4 @@
-<div class="module-block four-image-content-block">
+<div class="module-block four-image-content-block {% if entry.alternateImageBlocks %}alternate-image-content-block{% endif %}">
 	<div class="row">
 		<div class="small-12 columns">
 
@@ -17,23 +17,18 @@
 			<div class="content-block-sub-item-container">
 				{% set contentBlockItems = entry.contentBlockItems.all() %}
 				{% for item in contentBlockItems %}
-					<div class="small-12 {% if loop.last %}end{% endif %}">
-
-						<div class="content-block-sub-item">
-							
-							{% if item.imageFile and item.imageFile.one() %}
-							<img class="content-block-sub-item__image" src="{{ item.imageFile.one().getUrl('square3col') }}" alt="{{ item.imageAlt }}">
-							{% endif %}
-							
-							{% if item.heading %}						
-								<h3 class="content-block-subheading">{{ item.heading }}</h3>
-							{% endif %}
-							<div class="content-block-subtext-container">
-								{{ item.text }}
-							</div>
+					<div class="content-block-sub-item">
+						
+						{% if item.imageFile and item.imageFile.one() %}
+						<img class="content-block-sub-item__image" src="{{ item.imageFile.one().getUrl('square3col') }}" alt="{{ item.imageAlt }}">
+						{% endif %}
+						
+						{% if item.heading %}						
+							<h3 class="content-block-subheading">{{ item.heading }}</h3>
+						{% endif %}
+						<div class="content-block-subtext-container">
+							{{ item.text }}
 						</div>
-
-
 					</div>
 				{% endfor %}
 			</div>

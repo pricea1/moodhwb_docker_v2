@@ -221,3 +221,62 @@
 
 
 }
+
+.alternate-image-content-block {
+
+	.content-block-sub-item-container {
+		text-align: center;
+		@media #{$medium-up}{
+			text-align: left;
+		}
+	}
+
+	.content-block-sub-item {
+		border-top: none;
+		padding-top: rem-calc(30);
+
+		@media #{$medium-up}{
+			display: inline;
+		}
+
+		&__image {
+			float: initial;
+		}
+
+		@media #{$medium-up}{
+			.content-block-subtext-container{
+				margin-bottom: 40px;
+				margin-left: 0;
+				padding-top: 0;
+			}
+
+			.content-block-sub-item__image {
+				margin-bottom: 40px;
+			}
+
+			&:nth-child(odd){
+				.content-block-sub-item__image {
+					float: left;
+				}
+				.content-block-subtext-container{
+					clear: right;
+				}
+			}
+			&:nth-child(even){
+				.content-block-sub-item__image {
+					float: right;
+				}
+				.content-block-subtext-container{
+					clear: left;
+				}
+			}
+		}
+
+	}
+
+	.content-block-subtext-container {
+		padding-top: rem-calc(30);
+	}
+
+
+}

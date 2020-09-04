@@ -1,4 +1,9 @@
 DB Update
+
+2020-09-04
+1. Add alternateImagesField
+2. Add alternateImagesField to fourImagesContentBlock
+
 2020-09-02
 1. Add answer image fiels to quiz answer matrix field type
 
