@@ -9220,6 +9220,35 @@ a.module-theme-6 {
   }
 }
 
+.content-block-aside-image {
+  border-radius: 100px;
+}
+.content-block-aside-quote {
+  border: none;
+  margin: 20px 0;
+  padding: 0;
+  font-size: 1.375rem;
+  font-weight: bold;
+  line-height: 1.5em;
+}
+.content-block-aside-quote:after {
+  content: attr(cite);
+  font-size: 1.125rem;
+  font-weight: normal;
+  display: block;
+  margin-top: 0.625rem;
+}
+@media only screen and (min-width: 48em) {
+  .content-block-aside-quote:after {
+    margin-top: 1.25rem;
+  }
+}
+@media only screen and (min-width: 48em) {
+  .content-block-aside-quote {
+    font-size: 1.5rem;
+  }
+}
+
 .content-block-large-paragraph p:first-of-type {
   font-size: 1.25rem;
   font-weight: bold;

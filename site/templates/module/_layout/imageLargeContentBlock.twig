@@ -30,10 +30,18 @@
 	</div>
 	
 	<div class="row">
-		{% if entry.secondaryImage or entry.quote %}
+		{% if entry.secondaryImage.one() or entry.quote %}
 			<div class="small-12 medium-4 column">
 				<div class="content-block-aside">
-					{% if entry.secondaryImage %}
+					{% set secondaryImage = entry.secondaryImage.one() %}
+					{% if secondaryImage %}
+						<img class="content-block-aside-image"
+							alt="{{secondaryImage.imageAlt}}"
+							src="{{ secondaryImage.url }}"
+						>	
+					{% endif %}
+					{% if entry.quote %}
+						<blockquote  class="content-block-aside-quote" cite="{{entry.quoteSource}}">{{ entry.quote}}</blockquote>
 					{% endif %}
 				</div>
 			</div>
