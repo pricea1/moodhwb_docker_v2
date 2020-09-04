@@ -9561,28 +9561,45 @@ a.module-theme-6 {
 .feature-block-case-study-quote {
   font-size: 1.5rem;
   line-height: 2.25rem;
-  font-weight: 300;
+  font-weight: bold;
   position: relative;
   display: block;
-  margin-top: 1.5rem;
 }
 @media only screen and (min-width: 48em) {
   .feature-block-case-study-quote {
-    margin-top: 0;
-    margin-bottom: 0;
-    font-size: 2rem;
-    line-height: 2.75rem;
+    font-size: 1.75rem;
+    line-height: 2.5rem;
   }
 }
-.feature-block-case-study-quote:before {
-  content: '“';
-  font-family: Times;
-  font-size: 6rem;
-  display: block;
-  height: 3rem;
-  line-height: 3rem;
-  position: relative;
-  top: 1rem;
+
+.feature-block-case-study-sub-item-container {
+  margin-top: 30px;
+}
+@media only screen and (min-width: 48em) {
+  .feature-block-case-study-sub-item-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    margin: 30px -10px -30px -10px;
+  }
+}
+
+.feature-block-case-study-sub-item {
+  margin-bottom: 1.875rem;
+}
+@media only screen and (min-width: 48em) {
+  .feature-block-case-study-sub-item {
+    width: 306px;
+    margin: 0 10px 80px 10px;
+  }
+}
+.feature-block-case-study-sub-item .feature-block-case-study-sub-item__image {
+  margin-bottom: 20px;
 }
 
 .feature-block-case-study-image {

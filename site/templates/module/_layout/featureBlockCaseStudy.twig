@@ -17,7 +17,7 @@
 					</div>
 				</div>
 
-				<div class="small-12 medium-10 columns">
+				<div class="small-8 medium-10 columns">
 					<quote class="feature-block-case-study-quote">{{entry.quote}}</quote>
 				</div>
 			{% else %}
@@ -29,23 +29,43 @@
 		</div>
 
 
-
-		<div class="row">
-			<div class="small-12 columns">
-				<div class="feature-block-case-study-more-container">
-					<a class="feature-block-case-study-link">{{entry.featureBlockCaseStudyLinkName}}</a>
-
-					<div class="feature-block-case-study-text">
-						<div class="content-block-sub-item feature-block-case-study-text-container two-columns">
-							{{entry.body}}
+		{% set contentBlockItems = entry.contentBlockItems.all() %}
+			<div class="row">
+			<div class="small-12 column">
+			{% if contentBlockItems|length > 0 %}
+				<div class="feature-block-case-study-sub-item-container">
+				{% for item in contentBlockItems %}
+					
+						<div class="feature-block-case-study-sub-item">
+							
+							{% if item.imageFile and item.imageFile.one() %}
+							<img class="feature-block-case-study-sub-item__image" src="{{ item.imageFile.one().getUrl('square3col') }}" alt="{{ item.imageAlt }}">
+							{% endif %}
+							
+							{% if item.heading %}						
+								<h3 class="feature-block-case-study-sub-item-subheading">{{ item.heading }}</h3>
+							{% endif %}
+							<div class="feature-block-case-study-sub-item-subtext-container">
+								{{ item.text }}
+							</div>
 						</div>
-					</div>
-
+				{% endfor %}
 				</div>
-			</div>
+		{% else %}
+					<div class="feature-block-case-study-more-container">
+						<a class="feature-block-case-study-link">{{entry.featureBlockCaseStudyLinkName}}</a>
+
+						<div class="feature-block-case-study-text">
+							<div class="content-block-sub-item feature-block-case-study-text-container two-columns">
+								{{entry.body}}
+							</div>
+						</div>
+
+					</div>
+		{% endif %}
 
 		</div>
-
+		</div>
 	</div>
 
 </div>
