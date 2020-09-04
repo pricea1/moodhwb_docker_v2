@@ -6298,16 +6298,21 @@ ul.off-canvas-list .off-canvas-list__item a {
   margin-bottom: 0.625rem;
 }
 
+.user-category-list__label {
+  margin-bottom: 6px;
+}
+
+.user-category-list__desc {
+  margin-top: 10px;
+}
 .user-category-list__desc p {
   margin-bottom: 0.625rem;
 }
 
 .user-category-list__link {
-  width: 0.875rem;
-  line-height: 1.1875rem;
-  display: inline-block;
-  vertical-align: text-top;
-  width: 1rem;
+  margin-top: 10px;
+  font-weight: bold;
+  display: block;
 }
 
 .user-category-alert-message {
@@ -7975,6 +7980,7 @@ a.module-theme-6 {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  padding: 12px;
   margin: 0;
 }
 .profile-user-options__category--first {
@@ -8000,6 +8006,9 @@ a.module-theme-6 {
     border-bottom-right-radius: 6px;
     border-bottom-left-radius: 6px;
   }
+}
+.profile-user-options__category .profile-user-options__label {
+  font-weight: bold;
 }
 
 .profile-user-options__resource {
