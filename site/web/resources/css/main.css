@@ -5431,15 +5431,16 @@ h2 {
 }
 
 .light-heading, .profile-goals__welcome-msg p, .profile-dashboard-subheading {
-  font-weight: 300;
-  font-size: 1.5rem;
-  line-height: 2rem;
-  margin-bottom: 1.25rem;
+  font-weight: bold;
+  font-size: 1.375rem;
+  line-height: 1.875rem;
+  margin-bottom: 0.625rem;
 }
 @media only screen and (min-width: 48em) {
   .light-heading, .profile-goals__welcome-msg p, .profile-dashboard-subheading {
-    font-size: 2.25rem;
-    line-height: 3.125rem;
+    font-size: 1.75rem;
+    line-height: 2.5rem;
+    margin-bottom: 1.25rem;
   }
 }
 
