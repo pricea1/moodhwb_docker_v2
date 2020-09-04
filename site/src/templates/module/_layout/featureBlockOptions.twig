@@ -9,71 +9,71 @@
 <div id="feature-block-option-{{entry.slug}}" data-option-id="{{ entry.categorieslist.value }}" class="module-block module-block-themed feature-block-option" data-modules="feature-block-options,feature-block-save-profile-modal">
 
 	<div class="row">
-	<div class="small-12 columns">
+		<div class="small-12 columns">
 
-	<h2 class="light-heading feature-block-option-heading">{{ entry.heading }}</h2>
-	{% if entry.contentBlockText %}
-		<span>{{ entry.contentBlockText }}</span>
-	{% endif %}
-	<form method="post" accept-charset="UTF-8">
-		{{ csrfInput() }}
-		<input type="hidden" name="action" value="users/saveUser">
-	    <input type="hidden" name="userId" value="{{ currentUser.id }}">
-	    {# Include options field so that option field is always sent with form even if no others are checked #}
-	    <input type="hidden" name="fields[{{ categoryName }}][]" value=" ">
-	    {% if entry.hereFor == "other" %}
-		    <input type="hidden" name="fields[userDefinedOptionsOther]" value="{{ currentUser.userDefinedOptionsOther }}">
-		{% else %}
-			<input type="hidden" name="fields[userDefinedOptions]" value="{{ currentUser.userDefinedOptions }}">
-		{% endif %}
+			<h2 class="light-heading feature-block-option-heading">{{ entry.heading }}</h2>
+			{% if entry.contentBlockText %}
+				<span>{{ entry.contentBlockText }}</span>
+			{% endif %}
+			<form method="post" accept-charset="UTF-8">
+				{{ csrfInput() }}
+				<input type="hidden" name="action" value="users/saveUser">
+					<input type="hidden" name="userId" value="{{ currentUser.id }}">
+					{# Include options field so that option field is always sent with form even if no others are checked #}
+					<input type="hidden" name="fields[{{ categoryName }}][]" value=" ">
+					{% if entry.hereFor == "other" %}
+						<input type="hidden" name="fields[userDefinedOptionsOther]" value="{{ currentUser.userDefinedOptionsOther }}">
+				{% else %}
+					<input type="hidden" name="fields[userDefinedOptions]" value="{{ currentUser.userDefinedOptions }}">
+				{% endif %}
 
-		<input id="featureBlockOptionHasProfile" type="hidden" name="fields[hasProfile]" value="{{ currentUser.hasProfile }}">
+				<input id="featureBlockOptionHasProfile" type="hidden" name="fields[hasProfile]" value="{{ currentUser.hasProfile }}">
 
-		{% include "_partials/user-category-list.twig" %}
+				{% include "_partials/user-category-list.twig" %}
 
-		<noscript>
-		<button type="submit" class="button">{{ "Submit answers" | t}}</button>
-		</noscript>
+				<noscript>
+				<button type="submit" class="button">{{ "Submit answers" | t}}</button>
+				</noscript>
 
-	</form>
+			</form>
 
-	</div>
+		</div>
 	</div>
 
 
 	<div class="row">
-	<div class="small-12 columns">
+		<div class="small-12 columns">
 
-		<div class="feature-block-option-mylist-container" data-user-type="{% if entry.hereFor == "other" %}other{% else %}self{% endif %}">
-			{% if categoryName != "" %}
-				{% set categoryList = craft.categories.group(categoryName) %}
-				{% if categoryList|length != 0 %}
-					<h3 class="feature-block-option-subheading">{{ "Anything not listed here?"|t }}</h3>
+			<div class="feature-block-option-mylist-container" data-user-type="{% if entry.hereFor == "other" %}other{% else %}self{% endif %}">
+				{% if categoryName != "" %}
+					{% set categoryList = craft.categories.group(categoryName) %}
+					{% if categoryList|length != 0 %}
+						<h3 class="feature-block-option-subheading">{{ "Anything not listed here?"|t }}</h3>
+					{% endif %}
+
+					{% set userCatId = entry.categorieslist.value %}
+				{% else %}
+					{% set userCatId = entry.title %}
 				{% endif %}
-
-				{% set userCatId = entry.categorieslist.value %}
-			{% else %}
-				{% set userCatId = entry.title %}
-			{% endif %}
-			{% if entry.hereFor=="other" %}
-				<ul id="{{ userCatId | kebab }}" data-json="{% if currentUser.userDefinedOptionsOther %}{{ currentUser.userDefinedOptionsOther }}{% else %}{}{% endif %}" class="hide feature-block-option-mylist"></ul>
-			{% else %}
-				<ul id="{{ userCatId | kebab }}" data-json="{% if currentUser.userDefinedOptions %}{{ currentUser.userDefinedOptions }}{% else %}{}{% endif %}" class="hide feature-block-option-mylist"></ul>
-			{% endif %}
-			<div class="feature-block-option-mylist-input-container">
-				<label for="enterCategory" class="feature-block-option-mylist-input-label">{{ "Enter"|t }} {{ categoryName |t}}</label>
-				<input id="enterCategory" type="text" class="feature-block-option-mylist-input"><!--
-
-				{# if 1st category has URL then show URL field too #}
-				{% set catList = craft.categories.group(categoryName) %}
-				-->{% if catList and catList.one() and catList.one().urlAddress %}<!--
-				--><input type="text" class="feature-block-option-mylist-input feature-block-option-mylist-input-url" placeholder="{{ 'URL'|t }} e.g. moodhwb.org.uk">
+				{% if entry.hereFor=="other" %}
+					<ul id="{{ userCatId | kebab }}" data-json="{% if currentUser.userDefinedOptionsOther %}{{ currentUser.userDefinedOptionsOther }}{% else %}{}{% endif %}" class="hide feature-block-option-mylist"></ul>
+				{% else %}
+					<ul id="{{ userCatId | kebab }}" data-json="{% if currentUser.userDefinedOptions %}{{ currentUser.userDefinedOptions }}{% else %}{}{% endif %}" class="hide feature-block-option-mylist"></ul>
 				{% endif %}
-				<button class="button feature-block-option-mylist-input-button">{{ "Add"|t }} {{ categoryName |t}}</button>
-			<div>
+				<div class="feature-block-option-mylist-input-container">
+					<label for="enterCategory" class="feature-block-option-mylist-input-label">{{ "Enter"|t }} {{ categoryName |t}}</label>
+					<input id="enterCategory" type="text" class="feature-block-option-mylist-input"><!--
+
+					{# if 1st category has URL then show URL field too #}
+					{% set catList = craft.categories.group(categoryName) %}
+					-->{% if catList and catList.one() and catList.one().urlAddress %}<!--
+					--><input type="text" class="feature-block-option-mylist-input feature-block-option-mylist-input-url" placeholder="{{ 'URL'|t }} e.g. moodhwb.org.uk">
+					{% endif %}
+					<button class="button feature-block-option-mylist-input-button">{{ "Add"|t }} {{ categoryName |t}}</button>
+				</div>
+			</div>
+
 		</div>
-
-	</div>
 	</div>
 
 	{% if not currentUser.hasProfile %}
