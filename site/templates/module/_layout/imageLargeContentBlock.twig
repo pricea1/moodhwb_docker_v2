@@ -28,13 +28,27 @@
 		</div>
 
 	</div>
-
+	
 	<div class="row">
-		<div class="small-12 column">
-			<div class="two-columns content-block content-block-main-text">
-				{{ entry.body }}
+		{% if entry.secondaryImage or entry.quote %}
+			<div class="small-12 medium-4 column">
+				<div class="content-block-aside">
+					{% if entry.secondaryImage %}
+					{% endif %}
+				</div>
 			</div>
-		</div>
+			<div class="small-12 medium-8 column">
+				<div class="content-block content-block-main-text">
+					{{ entry.body }}
+				</div>
+			</div>
+		{% else %}
+			<div class="small-12 column">
+				<div class="content-block content-block-main-text">
+					{{ entry.body }}
+				</div>
+			</div>
+		{% endif %}
 	</div>
 
 	{% include "_partials/collapsible-content" %}
