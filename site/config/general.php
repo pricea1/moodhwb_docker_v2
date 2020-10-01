@@ -23,7 +23,7 @@ return array(
             'cy_gb' => 'login?status=passwordreset'
         ),
         'useBugherd' => false,
-        'verificationCodeDuration' => 'P4W',
+        'verificationCodeDuration' => 'P8W',
         'omitScriptNameInUrls' => true,
         'securityKey' => 'BztZemBp0C4y_mFeqavkvlfIemLaoVkaroot@a59da8de3e86'
     ),
