@@ -67,6 +67,7 @@ class AuthController extends UsersController
         $currentUser =  Craft::$app->getUser()->getIdentity();
 
         $userLogin->data["jwtToken"] = MobileApp::$plugin->authService->getJwtToken($currentUser);
+        //$tmp = MobileApp::$plugin->authService->getJwtToken($currentUser);
         
         $this->setNotificationToken();
 

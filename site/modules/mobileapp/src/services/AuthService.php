@@ -55,22 +55,22 @@ class AuthService extends Component
      */
     public function getJwtToken($user){
 
-      $host = Craft::$app->request->getHostInfo();
+        $host = Craft::$app->request->getHostInfo();
 
-      $signer = new Sha256();
-      $time = time();
+        $signer = new Sha256();
+        $time = time();
 
-      $token = (new Builder())->issuedBy($host) // Configures the issuer (iss claim)
+        error_reporting(0);
+        $token = (new Builder())->issuedBy($host) // Configures the issuer (iss claim)
                               ->permittedFor($host) // Configures the audience (aud claim)
-                              ->identifiedBy('4f1g23a12aa', true) // Configures the id (jti claim), replicating as a header item
+                              ->identifiedBy('4f1g23a12aa') // Configures the id (jti claim), replicating as a header item
                               ->issuedAt($time) // Configures the time that the token was issue (iat claim)
-                     //         ->canOnlyBeUsedAfter($time + 60) // Configures the time that the token can be used (nbf claim)
-                     //         ->expiresAt($time + 3600) // Configures the expiration time of the token (exp claim)
+                              ->canOnlyBeUsedAfter($time + 60) // Configures the time that the token can be used (nbf claim)
+                              ->expiresAt($time + 3600) // Configures the expiration time of the token (exp claim)
                               ->withClaim('email', $user->username) // Configures a new claim, called "uid"
                               ->getToken($signer, new Key($this->jwtSecretKey)); // Retrieves the generated token
 
-
-      return $token->__toString();
+      return $token->toString();
     } 
 
     /*
