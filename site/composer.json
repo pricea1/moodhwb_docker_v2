@@ -26,7 +26,7 @@
     "nystudio107/craft-cookies": "1.1.12",
     "craftcms/contact-form": "2.2.7",
     "craftcms/aws-s3": "1.2.11",
-    "lcobucci/jwt": "3.3",
+    "lcobucci/jwt": "4.1.0",
     "alymosul/exponent-server-sdk-php": "^1.2",
     "panlatent/schedule": "0.2.2",
     "rlanvin/php-rrule": "^2.2"
