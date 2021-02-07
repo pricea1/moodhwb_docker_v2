@@ -1,0 +1,40 @@
+{
+  "name": "modules/userlogionmodule",
+  "description": "User login for MoodHwb",
+  "type": "craft-plugin",
+  "version": "1.0.1",
+  "keywords": [
+      "craft",
+      "cms",
+      "craftcms",
+      "craft-plugin",
+      "userloginmodule"
+  ],
+  "support": {
+      "docs": "https://github.com/pricea1/userloginmodule/blob/master/README.md",
+      "issues": "https://github.com/pricea1/userloginmodule/issues"
+  },
+  "license": "MIT",
+  "authors": [
+      {
+          "name": "Andrew Price",
+          "homepage": "www.github.com/pricea1"
+      }
+  ],
+  "require": {
+      "craftcms/cms": "^3.0.0-RC1"
+  },
+  "autoload": {
+      "psr-4": {
+        "modules\\userloginmodule\\": "src/"
+      }
+  },
+  "extra": {
+      "name": "userloginmodule",
+      "handle": "UserLoginModule",
+      "hasCpSettings": false,
+      "hasCpSection": false,
+      "changelogUrl": "https://raw.githubusercontent.com/pricea1/userloginmodule/master/CHANGELOG.md",
+      "class": "modules\\userloginmodule\\UserLoginModule"
+  }
+}

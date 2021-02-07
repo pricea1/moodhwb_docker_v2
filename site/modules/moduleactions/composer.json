@@ -1,0 +1,40 @@
+{
+  "name": "modules/moduleactions",
+  "description": "Interface for MoodHwb Module Actions",
+  "type": "craft-plugin",
+  "version": "1.0.0",
+  "keywords": [
+      "craft",
+      "cms",
+      "craftcms",
+      "craft-plugin",
+      "moduleactions"
+  ],
+  "support": {
+      "docs": "https://github.com/pricea1/moduleactions/blob/master/README.md",
+      "issues": "https://github.com/pricea1/moduleactions/issues"
+  },
+  "license": "MIT",
+  "authors": [
+      {
+          "name": "Andrew Price",
+          "homepage": "www.github.com/pricea1"
+      }
+  ],
+  "require": {
+      "craftcms/cms": "^3.0.0-RC1"
+  },
+  "autoload": {
+      "psr-4": {
+        "modules\\moduleactions\\": "src/"
+      }
+  },
+  "extra": {
+      "name": "ModuleActions",
+      "handle": "moduleactions",
+      "hasCpSettings": false,
+      "hasCpSection": false,
+      "changelogUrl": "https://raw.githubusercontent.com/pricea1/moduleactions/master/CHANGELOG.md",
+      "class": "modules\\moduleactions\\Moduleactions"
+  }
+}
