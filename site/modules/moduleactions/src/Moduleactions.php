@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2019 Andrew Price
  */
 
-namespace modules\moduleactions;
+namespace \modules\moduleactions;
 
 use modules\moduleactions\assetbundles\moduleactions\ModuleactionsAsset;
 use modules\moduleactions\services\ModuleactionsService as ModuleactionsService;

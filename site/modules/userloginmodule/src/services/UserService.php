@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2019 Andrew Price
  */
 
-namespace modules\userloginmodule\services;
+namespace \modules\userloginmodule\services;
 
 use modules\userloginmodule\UserLoginModule;
 

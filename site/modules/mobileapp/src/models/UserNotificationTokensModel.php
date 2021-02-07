@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2019 Andrew Price
  */
 
-namespace moodhwb\mobileapp\models;
+namespace \moodhwb\mobileapp\models;
 use moodhwb\mobileapp\MobileApp;
 
 use Craft;

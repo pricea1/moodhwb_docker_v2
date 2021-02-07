@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2019 Andrew Price
  */
 
-namespace modules\moduleactions\assetbundles\Moduleactions;
+namespace \modules\moduleactions\assetbundles\Moduleactions;
 
 use Craft;
 use craft\web\AssetBundle;

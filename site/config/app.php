@@ -19,7 +19,7 @@
 
 return [
     'modules' => [
-        'user-login-module' => [
+        'userloginmodule' => [
             'class' => \modules\userloginmodule\UserLoginModule::class,
             'components' => [
                 'userService' => [
@@ -47,5 +47,5 @@ return [
             'class' => \moodhwb\mobileapp\MobileApp::class,
         ],
     ],
-    'bootstrap' => ['user-login-module','moduleactions','profiler','mobileapp'],
+    'bootstrap' => ['userloginmodule','moduleactions','profiler','mobileapp'],
 ];

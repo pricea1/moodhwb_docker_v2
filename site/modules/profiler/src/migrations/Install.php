@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2019 Andrew Price
  */
 
-namespace moodhwb\profiler\migrations;
+namespace \moodhwb\profiler\migrations;
 
 use moodhwb\profiler\Profiler;
 

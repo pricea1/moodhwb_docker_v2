@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2019 Andrew Price
  */
 
-namespace moodhwb\mobileapp;
+namespace \moodhwb\mobileapp;
 
 use moodhwb\mobileapp\services\AuthService as AuthService;
 use edenspiekermann\craftjwtauth\CraftJwtAuth;

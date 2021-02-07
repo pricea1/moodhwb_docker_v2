@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2019 Andrew Price
  */
 
-namespace modules\userloginmodule\assetbundles\UserLoginModule;
+namespace \modules\userloginmodule\assetbundles\UserLoginModule;
 
 use Craft;
 use craft\web\AssetBundle;

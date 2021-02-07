@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2019 Andrew Price
  */
 
-namespace moodhwb\profiler\services;
+namespace \moodhwb\profiler\services;
 
 use moodhwb\profiler\Profiler;
 use moodhwb\profiler\models\Question as QuestionModel;

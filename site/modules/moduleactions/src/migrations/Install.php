@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2019 Andrew Price
  */
 
-namespace modules\moduleactions\migrations;
+namespace \modules\moduleactions\migrations;
 
 use modules\moduleactions\Moduleactions;
 

@@ -1,6 +1,6 @@
 {
-    "name": "moodhwb/mobileapp",
-    "description": "Interface for MoodHwb App",
+    "name": "modules/moduleactions",
+    "description": "Interface for MoodHwb Module Actions",
     "type": "craft-plugin",
     "version": "1.0.0",
     "keywords": [
@@ -8,11 +8,11 @@
         "cms",
         "craftcms",
         "craft-plugin",
-        "mobileapp"
+        "moduleactions"
     ],
     "support": {
-        "docs": "https://github.com/pricea1/mobileapp/blob/master/README.md",
-        "issues": "https://github.com/pricea1/mobileapp/issues"
+        "docs": "https://github.com/pricea1/moduleactions/blob/master/README.md",
+        "issues": "https://github.com/pricea1/moduleactions/issues"
     },
     "license": "MIT",
     "authors": [
@@ -26,15 +26,15 @@
     },
     "autoload": {
         "psr-4": {
-          "moodhwb\\mobileapp\\": "src/"
+          "modules\\moduleactions\\": "src/"
         }
     },
     "extra": {
-        "name": "MobileApp",
-        "handle": "mobileapp",
+        "name": "ModuleActions",
+        "handle": "moduleactions",
         "hasCpSettings": false,
         "hasCpSection": false,
-        "changelogUrl": "https://raw.githubusercontent.com/pricea1/mobileapp/master/CHANGELOG.md",
-        "class": "moodhwb\\mobileapp\\MobileApp"
+        "changelogUrl": "https://raw.githubusercontent.com/pricea1/moduleactions/master/CHANGELOG.md",
+        "class": "modules\\moduleactions\\Moduleactions"
     }
 }

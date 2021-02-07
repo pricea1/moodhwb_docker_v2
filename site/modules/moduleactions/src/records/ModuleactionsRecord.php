@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2019 Andrew Price
  */
 
-namespace modules\moduleactions\records;
+namespace \modules\moduleactions\records;
 
 use modules\moduleactions\Moduleactions;
 

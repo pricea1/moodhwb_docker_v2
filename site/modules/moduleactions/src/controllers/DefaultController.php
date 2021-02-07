@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2019 Andrew Price
  */
 
-namespace modules\moduleactions\controllers;
+namespace \modules\moduleactions\controllers;
 
 use modules\moduleactions\Moduleactions;
 use modules\moduleactions\models\ModuleactionsModel;

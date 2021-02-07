@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2019 Andrew Price
  */
 
-namespace modules\moduleactions\variables;
+namespace \modules\moduleactions\variables;
 
 use modules\moduleactions\Moduleactions;
 

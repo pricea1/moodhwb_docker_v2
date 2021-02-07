@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2019 Andrew Price
  */
 
-namespace moodhwb\mobileapp\records;
+namespace \moodhwb\mobileapp\records;
 
 use Craft;
 use craft\db\ActiveRecord;

@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2019 Andrew Price
  */
 
-namespace moodhwb\profiler\controllers;
+namespace \moodhwb\profiler\controllers;
 
 use moodhwb\profiler\Profiler;
 use moodhwb\profiler\models\Goal as GoalModel;

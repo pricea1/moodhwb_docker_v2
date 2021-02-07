@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2019 Andrew Price
  */
 
-namespace moodhwb\mobileapp\services;
+namespace \moodhwb\mobileapp\services;
 
 use moodhwb\mobileapp\MobileApp;
 use moodhwb\mobileapp\models\UserNotificationTokensModel;

@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2019 Andrew Price
  */
 
-namespace moodhwb\profiler\models;
+namespace \moodhwb\profiler\models;
 
 use moodhwb\profiler\Profiler;
 

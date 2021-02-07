@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2019 Andrew Price
  */
 
-namespace modules\userloginmodule;
+namespace \modules\userloginmodule;
 
 use modules\userloginmodule\assetbundles\userloginmodule\UserLoginModuleAsset;
 use modules\userloginmodule\services\UserService as UserServiceService;
@@ -60,10 +60,55 @@ class UserLoginModule extends Module
     /**
      * @inheritdoc
      */
-    public function __construct($id, $parent = null, array $config = [])
+    // public function __construct($id, $parent = null, array $config = [])
+    // {
+    //     Craft::setAlias('@modules/userloginmodule', $this->getBasePath());
+    //     $this->controllernamespace \= 'modules\userloginmodule\controllers';
+
+    //     // Translation category
+    //     $i18n = Craft::$app->getI18n();
+    //     /** @noinspection UnSafeIsSetOverArrayInspection */
+    //     if (!isset($i18n->translations[$id]) && !isset($i18n->translations[$id.'*'])) {
+    //         $i18n->translations[$id] = [
+    //             'class' => PhpMessageSource::class,
+    //             'sourceLanguage' => 'en-US',
+    //             'basePath' => '@modules/userloginmodule/translations',
+    //             'forceTranslation' => true,
+    //             'allowOverrides' => true,
+    //         ];
+    //     }
+
+    //     // Base template directory
+    //     Event::on(View::class, View::EVENT_REGISTER_CP_TEMPLATE_ROOTS, function (RegisterTemplateRootsEvent $e) {
+    //         if (is_dir($baseDir = $this->getBasePath().DIRECTORY_SEPARATOR.'templates')) {
+    //             $e->roots[$this->id] = $baseDir;
+    //         }
+    //     });
+
+    //     // Set this as the global instance of this module class
+    //     static::setInstance($this);
+
+    //     parent::__construct($id, $parent, $config);
+    // }
+
+    /**
+     * Set our $instance static property to this class so that it can be accessed via
+     * UserLoginModule::$instance
+     *
+     * Called after the module class is instantiated; do any one-time initialization
+     * here such as hooks and events.
+     *
+     * If you have a '/vendor/autoload.php' file, it will be loaded for you automatically;
+     * you do not need to load it in your init() method.
+     *
+     */
+    public function init()
     {
+        parent::init();
+        self::$instance = $this;
+
         Craft::setAlias('@modules/userloginmodule', $this->getBasePath());
-        $this->controllerNamespace = 'modules\userloginmodule\controllers';
+        $this->controllernamespace \= 'modules\userloginmodule\controllers';
 
         // Translation category
         $i18n = Craft::$app->getI18n();
@@ -84,28 +129,6 @@ class UserLoginModule extends Module
                 $e->roots[$this->id] = $baseDir;
             }
         });
-
-        // Set this as the global instance of this module class
-        static::setInstance($this);
-
-        parent::__construct($id, $parent, $config);
-    }
-
-    /**
-     * Set our $instance static property to this class so that it can be accessed via
-     * UserLoginModule::$instance
-     *
-     * Called after the module class is instantiated; do any one-time initialization
-     * here such as hooks and events.
-     *
-     * If you have a '/vendor/autoload.php' file, it will be loaded for you automatically;
-     * you do not need to load it in your init() method.
-     *
-     */
-    public function init()
-    {
-        parent::init();
-        self::$instance = $this;
 
         // Load our AssetBundle
         if (Craft::$app->getRequest()->getIsCpRequest()) {

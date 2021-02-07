@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2019 Andrew Price
  */
 
-namespace moodhwb\profiler;
+namespace \moodhwb\profiler;
 
 use moodhwb\profiler\services\Question as QuestionService;
 use moodhwb\profiler\services\Goal as GoalService;

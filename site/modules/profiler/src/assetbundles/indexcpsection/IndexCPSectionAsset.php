@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2019 Andrew Price
  */
 
-namespace moodhwb\profiler\assetbundles\indexcpsection;
+namespace \moodhwb\profiler\assetbundles\indexcpsection;
 
 use Craft;
 use craft\web\AssetBundle;
