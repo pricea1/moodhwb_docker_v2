@@ -18,11 +18,11 @@ use Craft;
 use craft\base\Component;
 use craft\helpers\StringHelper;
 
-use Lcobucci\JWT\Signer\Key\InMemory;
-use Lcobucci\JWT\Configuration;
-use Lcobucci\JWT\Token;
+use Lcobucci\JWT\Builder;
+use Lcobucci\JWT\Signer\Key;
+use Lcobucci\JWT\Signer\Hmac\Sha256;
 use Lcobucci\JWT\Parser;
-
+use Lcobucci\JWT\Token;
 /**
  * mobileapp Service
  *
@@ -37,20 +37,8 @@ use Lcobucci\JWT\Parser;
  * @since     1
  */
 class AuthService extends Component
-{   
-    private $config;
-    private $jwtSecretKey;
-
-    public function init() {
-        $this->jwtSecretKey = InMemory::plainText("G_qk8bFqGL43UU_TMAeH");
-        $this->config = Configuration::forSymmetricSigner(
-            // You may use any HMAC variations (256, 384, and 512)
-            new Sha256(),
-            // replace the value below with a key of your own!
-            InMemory::base64Encoded($jwtSecretKey)
-            // You may also override the JOSE encoder/decoder if needed by providing extra arguments here
-        );
-    }
+{
+    private $jwtSecretKey = "G_qk8bFqGL43UU_TMAeH";
 
     // Public Methods
     // =========================================================================
@@ -70,22 +58,19 @@ class AuthService extends Component
         $host = Craft::$app->request->getHostInfo();
 
         $signer = new Sha256();
-        $now   = new DateTimeImmutable();
+        $time = time();
 
-        error_reporting(0);
-
-        $token = $config->builder()
-                    ->issuedBy($host) // Configures the issuer (iss claim)
-                    ->permittedFor($host) // Configures the audience (aud claim)
-                    ->identifiedBy('4f1g23a12aa') // Configures the id (jti claim), replicating as a header item
-                    ->issuedAt($now) // Configures the time that the token was issue (iat claim)
-                    ->canOnlyBeUsedAfter($now->modify('+1 minute'))
-                    ->expiresAt($now->modify('+1 hour')) // Configures the expiration time of the token (exp claim)
-                    ->withClaim('email', $user->username) // Configures a new claim, called "uid"
-                    ->getToken($config->signer(), $config->signingKey());
-        print_r($token);
-        return $token->toString();
-    }
+  //      error_reporting(0);
+        $token = (new Builder())->issuedBy($host) // Configures the issuer (iss claim)
+                            ->permittedFor($host) // Configures the audience (aud claim)
+                            ->identifiedBy('4f1g23a12aa') // Configures the id (jti claim), replicating as a header item
+                            // ->issuedAt($time) // Configures the time that the token was issue (iat claim)
+                            // ->canOnlyBeUsedAfter($time + 60) // Configures the time that the token can be used (nbf claim)
+                            // ->expiresAt($time + 3600) // Configures the expiration time of the token (exp claim)
+                            ->withClaim('email', $user->username) // Configures a new claim, called "uid"
+                            ->getToken($signer, new Key($this->jwtSecretKey)); // Retrieves the generated token
+      return $token->toString();
+    } 
 
     /*
      * @return mixed
@@ -124,7 +109,8 @@ class AuthService extends Component
     public function parseJWT($accessToken)
     {
         if (count(explode('.', $accessToken)) === 3) {
-            return $config->parser()->parse($accessToken);
+            $token = (new Parser())->parse((string) $accessToken);
+            return $token;
         }
         return null;
     }
@@ -135,7 +121,8 @@ class AuthService extends Component
     public function verifyJWT(Token $token)
     {
         // Attempt to verify the token
-        return  $config->validator()->validate($token, ...$config->validationConstraints());
+        $verify = $token->verify((new Sha256()), $this->jwtSecretKey);
+        return $verify;
     }
 
      /*
