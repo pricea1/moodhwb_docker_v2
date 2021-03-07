@@ -82,19 +82,22 @@ class MobileApp extends Plugin
         Craft::$app->on(Application::EVENT_INIT, function (Event $event) {
 
             $token = self::$plugin->authService->parseAndVerifyJWT(self::$plugin->authService->getJWTFromRequest());
-            $currentUser =  Craft::$app->getUser();
+            if ($token) {
 
-            // If the token passes verification...
-            if (!$currentUser->id && $token) {
-                // Look for the user
-                   
-                $user = self::$plugin->authService->getUserByJWT($token);
- 
-                // Attempt to login as the user we have found or created
-                if ($user->id) {
-                    Craft::$app->user->loginByUserId($user->id);
+                $currentUser =  Craft::$app->getUser();
+
+                // If the token passes verification...
+                if (!$currentUser->id) {
+                    // Look for the user
+                    
+                    $user = self::$plugin->authService->getUserByJWT($token);
+
+                    // Attempt to login as the user we have found or created
+                    if ($user->id) {
+                        Craft::$app->user->loginByUserId($user->id);
+                    }
                 }
-            }
+            }   
         });
 
         // Register service

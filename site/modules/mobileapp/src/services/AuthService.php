@@ -18,11 +18,8 @@ use Craft;
 use craft\base\Component;
 use craft\helpers\StringHelper;
 
-use Lcobucci\JWT\Builder;
-use Lcobucci\JWT\Signer\Key;
-use Lcobucci\JWT\Signer\Hmac\Sha256;
-use Lcobucci\JWT\Parser;
-use Lcobucci\JWT\Token;
+use \Firebase\JWT\JWT;
+
 /**
  * mobileapp Service
  *
@@ -39,6 +36,7 @@ use Lcobucci\JWT\Token;
 class AuthService extends Component
 {
     private $jwtSecretKey = "G_qk8bFqGL43UU_TMAeH";
+    private $signingAlg = "HS256";
 
     // Public Methods
     // =========================================================================
@@ -54,37 +52,31 @@ class AuthService extends Component
      * @return mixed
      */
     public function getJwtToken($user){
-
         $host = Craft::$app->request->getHostInfo();
+        
+        $payload = array(
+            "iss" => $host,
+            "aud" => array("username"=>$user->username)
+        );
 
-        $signer = new Sha256();
-        $time = time();
-
-  //      error_reporting(0);
-        $token = (new Builder())->issuedBy($host) // Configures the issuer (iss claim)
-                            ->permittedFor($host) // Configures the audience (aud claim)
-                            ->identifiedBy('4f1g23a12aa') // Configures the id (jti claim), replicating as a header item
-                            // ->issuedAt($time) // Configures the time that the token was issue (iat claim)
-                            // ->canOnlyBeUsedAfter($time + 60) // Configures the time that the token can be used (nbf claim)
-                            // ->expiresAt($time + 3600) // Configures the expiration time of the token (exp claim)
-                            ->withClaim('email', $user->username) // Configures a new claim, called "uid"
-                            ->getToken($signer, new Key($this->jwtSecretKey)); // Retrieves the generated token
-      return $token->toString();
+        $jwt = JWT::encode($payload, $this->jwtSecretKey, $this->signingAlg);
+        return $jwt;
     } 
 
     /*
      * @return mixed
      */
     public function getJWTFromRequest()
-    {
+    {     
         // Look for an access token in the settings
         $accessToken = Craft::$app->request->headers->get('authorization') ?: Craft::$app->request->headers->get('x-access-token');
         // If "Bearer " is present, strip it to get the token.
         if (StringHelper::startsWith($accessToken, 'Bearer ')) {
             $accessToken = StringHelper::substr($accessToken, 7);
         }
+
         // If we find one, and it looks like a JWT...
-        if ($accessToken) {
+        if ($accessToken && $accessToken !== "null") {
             return $accessToken;
         }
         return null;
@@ -93,49 +85,28 @@ class AuthService extends Component
     /*
     * @return mixed
     */
-    public function parseAndVerifyJWT($accessToken)
-    {
-        $token = $this->parseJWT($accessToken);
-        return $token;
-
-        if ($token && $this->verifyJWT($token)) {
-            return $token;
+    public function parseAndVerifyJWT($jwt)
+    {   
+        if ($jwt){
+            try {
+                $decoded = JWT::decode($jwt, $this->jwtSecretKey, array($this->signingAlg));
+                return $decoded;    
+            } catch(\Exception $e) {
+                return null;
+            }
         }
-        return null;
-    }
-    /*
-    * @return mixed
-    */
-    public function parseJWT($accessToken)
-    {
-        if (count(explode('.', $accessToken)) === 3) {
-            $token = (new Parser())->parse((string) $accessToken);
-            return $token;
-        }
-        return null;
-    }
-
-    /*
-    * @return mixed
-    */
-    public function verifyJWT(Token $token)
-    {
-        // Attempt to verify the token
-        $verify = $token->verify((new Sha256()), $this->jwtSecretKey);
-        return $verify;
     }
 
      /*
     * @return mixed
     */
-    public function getUserByJWT(Token $token)
+    public function getUserByJWT($token)
     {
-        if ($this->verifyJWT($token)) {
+        if ($token) {
             // Derive the username from the subject in the token
-            $email = $token->getClaim('email', '');
-            $userName = $token->getClaim('sub', '');
-            // Look for the user with email
-            $user = Craft::$app->users->getUserByUsernameOrEmail($email ?: $userName);
+            $userName = $token->aud->username;
+            // Look for the user
+            $user = Craft::$app->users->getUserByUsernameOrEmail($userName);
             return $user;
         }
         return null;
