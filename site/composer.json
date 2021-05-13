@@ -33,10 +33,10 @@
   },
   "autoload": {
     "psr-4": {
-      "modules\\moduleactions\\": "modules/moduleactions/",
-      "modules\\userloginmodule\\": "modules/userloginmodule/",
-      "moodhwb\\profiler\\": "modules/profiler/",
-      "moodhwb\\mobileapp\\": "modules/mobileapp/"
+      "modules\\moduleactions\\": "modules/moduleactions/src",
+      "modules\\userloginmodule\\": "modules/userloginmodule/src",
+      "moodhwb\\profiler\\": "modules/profiler/src",
+      "moodhwb\\mobileapp\\": "modules/mobileapp/src"
     }
   },
   "config": {
