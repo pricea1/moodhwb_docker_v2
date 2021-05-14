@@ -15,7 +15,7 @@
 		{% endif %}
 
 <div class="show-for-medium-up">
-	{% for image in entry.image %}
+	{% for image in entry.image.all() %}
 		<img src="/resources/images/{{ welcomeImage }}.png">
 	{% endfor %}
 </div>

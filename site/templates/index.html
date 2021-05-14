@@ -6,7 +6,7 @@
 {% set summaryScore = craft.profiler.getSummaryMoodScore() %}
 {% set lastViewedModuleId = craft.moduleactions.getLastViewedModuleId() %}
 {% if lastViewedModuleId %}
-	{% set lastViewedModule = craft.entries.id(lastViewedModuleId).first() %}
+	{% set lastViewedModule = craft.entries.id(lastViewedModuleId).one() %}
 {% endif %}
 
 {% extends "_layout" %}
@@ -52,7 +52,7 @@
 
 				{% set modules = craft.entries.section('modules').level('1') %}
 					<div class="home-module-container">
-					{% for module in modules %}	
+					{% for module in modules.all() %}	
 							{% set image = module.image|first %}
 
 							<div class="home-module-container-item {{ module.moduleColour }}">

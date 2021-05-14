@@ -10,7 +10,7 @@
    
      {% if entry is defined %}
    
-       {% for siteForEntry in entry.getSupportedSites %}
+       {% for siteForEntry in entry.getSupportedSites.all() %}
          {# get the site #}
          {% set site = craft.app.getSites.getSiteById(siteForEntry.siteId) %}
          {# check if it's the current site #}
