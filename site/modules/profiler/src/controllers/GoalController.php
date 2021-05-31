@@ -46,7 +46,7 @@ class GoalController extends Controller
         $weekId = $this->getWeekId();
 
         Profiler::$plugin->goalService->deleteWeekGoalInstances($goal, $weekId);
-        
+
         $rrule = new \RRule\RRule([
             'freq' => 'weekly',
             'byday' => $byDays,
@@ -62,7 +62,9 @@ class GoalController extends Controller
             $goalInstance->goalId = $goal->id;
             $goalInstance->weekId = $weekId;
             $goalInstance->date = $occurrence->format('Y-m-d');
-            $goalInstance->thumbnailUri = $goal->thumbnailUri;
+            if ($goal->thumbnailUri){
+                $goalInstance->thumbnailUri = $goal->thumbnailUri;
+            }
 
             $newGoalInstance = Profiler::$plugin->goalService->createGoalInstance($goalInstance);            
             $goalInstances[] = $newGoalInstance;
