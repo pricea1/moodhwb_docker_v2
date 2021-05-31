@@ -35,13 +35,18 @@ class Goal extends Component
         $goalTrackerRecord->goalId = $goalTrackerModel->goalId;
         $goalTrackerRecord->weekId = $goalTrackerModel->weekId;
         $goalTrackerRecord->date = $goalTrackerModel->date;
-        $goalTrackerRecord->thumbnailUri = $goalTrackerModel->thumbnailUri;
+        if ($goalTrackerModel->thumbnailUri){
+            $goalTrackerRecord->thumbnailUri = $goalTrackerModel->thumbnailUri;
+        }
         
         //nb default status defined in DB
-
         $goalTrackerRecord->save();
     
         return $goalTrackerRecord;
+    }
+
+    public function deleteWeekGoalInstances($goalModel, $weekId) {
+        GoalTrackerRecord::deleteAll(['userId' => $goalModel->userId, 'goalId' => $goalModel->id, 'weekId' => $weekId]);
     }
 
     // Public Methods

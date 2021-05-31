@@ -45,6 +45,8 @@ class GoalController extends Controller
 
         $weekId = $this->getWeekId();
 
+        Profiler::$plugin->goalService->deleteWeekGoalInstances($goal, $weekId);
+        
         $rrule = new \RRule\RRule([
             'freq' => 'weekly',
             'byday' => $byDays,
@@ -52,7 +54,7 @@ class GoalController extends Controller
         ]);
 
         $goalInstances = array();
-
+        
         foreach ($rrule as $occurrence) {
 
             $goalInstance = new GoalTrackerModel();
@@ -209,7 +211,9 @@ class GoalController extends Controller
             $model->onceDate = $request->post('onceDate');
         }
 
-        $model->thumbnailUri = $request->post('thumbnailUri');
+        if ( $request->post('thumbnailUri') ){
+            $model->thumbnailUri = $request->post('thumbnailUri');
+        }
 
         $newGoal = Profiler::$plugin->goalService->addGoal($model);
         Craft::$app->session->setNotice(Craft::t('site','Goal saved.'));
