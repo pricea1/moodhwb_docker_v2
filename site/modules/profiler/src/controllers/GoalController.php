@@ -34,7 +34,7 @@ class GoalController extends Controller
      *         The actions must be in 'kebab-case'
      * @access protected
      */
-    protected $allowAnonymous = [];
+    protected $allowAnonymous = ['send-notifications'];
 
     private function generateWeeklyGoalInstances($goal){
  
@@ -259,5 +259,20 @@ class GoalController extends Controller
 
         return $this->returnData($goals);
 
+    }
+
+    public function actionSendNotifications()
+    {
+        $goalsForToday = Profiler::$plugin->goalService->getAllToDoGoalsForDay('2020-02-28');
+        
+        foreach ($goalsForToday as $userGoals) {
+            print_r($userGoals);
+            $notifications = Profiler::$plugin->goalService->sendNotifications($userGoals);
+        }
+       
+        //return $this->returnData($goalsForToday);
+        
+        // $notifications = Profiler::$plugin->goalService->sendNotifications();
+        // return $notifications;
     }
 }

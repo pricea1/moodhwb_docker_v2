@@ -28,7 +28,6 @@
     "craftcms/aws-s3": "1.2.11",
     "firebase/php-jwt": "5.2.1",
     "alymosul/exponent-server-sdk-php": "^1.2",
-    "panlatent/schedule": "0.2.2.1",
     "rlanvin/php-rrule": "^2.2"
   },
   "autoload": {

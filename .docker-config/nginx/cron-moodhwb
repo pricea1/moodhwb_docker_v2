@@ -20,4 +20,5 @@
 # For more information see the manual pages of crontab(5) and cron(8)
 #
 # m h  dom mon dow   command
-* * * * * curl http://localhost/actions/profiler/stuff-i-like/send-notifications >>/var/log/cron.log 2>&1
+* * * * * echo "Cron running" >> /var/log/cron.log 2>&1
+* * * * * curl http://localhost/actions/profiler/goal/send-notifications >>/var/log/cron.log 2>&1

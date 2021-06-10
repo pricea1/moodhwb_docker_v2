@@ -125,6 +125,25 @@ class Goal extends Component
         return $groupedGoals;
     }
 
+    public function getAllToDoGoalsForDay($date) {
+        $goalTablename = GoalRecord::tableName();
+        $goalTrackerTablename = GoalTrackerRecord::tableName();
+
+        $joinCondition = $goalTrackerTablename .'.goalId=' .$goalTablename .'.id';
+
+        $todoList = GoalTrackerRecord::find()
+                    ->select([$goalTrackerTablename.'.*', $goalTablename.'.type',$goalTablename.'.title',  ])
+                    ->innerJoin($goalTablename, $joinCondition)
+                    ->where([$goalTrackerTablename.'.status' => 'todo', 'date' => $date])
+                    ->andWhere(['!=', 'status', 'skipped'])
+                    ->asArray()
+                    ->all();
+
+        $groupedTodoList = ArrayHelper::index($todoList, null, 'userId');
+    
+        return $groupedTodoList;
+    }
+
     public function updateGoalStatus($goalModel)
     {  
         $goal = GoalTrackerRecord::find()
@@ -145,6 +164,36 @@ class Goal extends Component
                 ->one();
 
         return $this->resetGoalAndSave($goal);
+
+    }
+
+    public function sendNotifications($goalList = [])
+    {   
+
+        $recipient = "ExponentPushToken[NshWfHMHbII2y-RPUJHxKn]";
+        $title = "Your MoodHwb goals";
+        $body = "Here are your goals for today\n";
+        $channelName = "moodhwb_goals";
+
+        foreach($goalList as $goal) {
+            print "Y";
+            print_r($goal);
+            $body = $body . "• " .$goal['title'] ."\n";
+        }
+
+        $expo = \ExponentPhpSDK\Expo::normalSetup();
+
+        // Subscribe the recipient to the server
+        $expo->subscribe($channelName, $recipient);
+        
+        // Build the notification data
+        $notification = ['title' => $title, 'body' => $body];
+        
+        // Notify an interest with a notification
+        $expo->notify([$channelName], $notification);
+        
+        
+        return "ZZZ";
 
     }
 }
