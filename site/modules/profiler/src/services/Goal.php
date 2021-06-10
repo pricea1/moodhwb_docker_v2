@@ -16,6 +16,8 @@ use moodhwb\profiler\models\Goal as GoalModel;
 use moodhwb\profiler\records\GoalTracker as GoalTrackerRecord;
 use moodhwb\profiler\models\GoalTracker as GoalTrackerModel;
 
+use moodhwb\mobileapp\records\UserNotificationTokensRecord;
+
 use Craft;
 use craft\base\Component;
 use yii\helpers\ArrayHelper;
@@ -169,31 +171,29 @@ class Goal extends Component
 
     public function sendNotifications($goalList = [])
     {   
-
-        $recipient = "ExponentPushToken[NshWfHMHbII2y-RPUJHxKn]";
         $title = "Your MoodHwb goals";
         $body = "Here are your goals for today\n";
-        $channelName = "moodhwb_goals";
-
-        foreach($goalList as $goal) {
-            print "Y";
-            print_r($goal);
-            $body = $body . "• " .$goal['title'] ."\n";
-        }
+        $userId = $goalList[0]['userId'];
+        $channelName = "moodhwb_goals_" .$userId;
 
         $expo = \ExponentPhpSDK\Expo::normalSetup();
 
+        $userNotificationTokensRecord = UserNotificationTokensRecord::findOne(['userId' => $userId]);
+
         // Subscribe the recipient to the server
-        $expo->subscribe($channelName, $recipient);
+        $notificationTokens = json_decode($userNotificationTokensRecord->notificationTokens);
+        foreach($notificationTokens as $notificationToken) {
+            $expo->subscribe($channelName, $notificationToken);
+        }
         
+        foreach($goalList as $goal) {
+            $body = $body . "• " .$goal['title'] ."\n";
+        }
+
         // Build the notification data
         $notification = ['title' => $title, 'body' => $body];
         
-        // Notify an interest with a notification
-        $expo->notify([$channelName], $notification);
-        
-        
-        return "ZZZ";
-
+        // Notify an interest with a notification        
+        return $expo->notify([$channelName], $notification);
     }
 }

@@ -266,13 +266,9 @@ class GoalController extends Controller
         $goalsForToday = Profiler::$plugin->goalService->getAllToDoGoalsForDay('2020-02-28');
         
         foreach ($goalsForToday as $userGoals) {
-            print_r($userGoals);
-            $notifications = Profiler::$plugin->goalService->sendNotifications($userGoals);
+            $notifications[] = Profiler::$plugin->goalService->sendNotifications($userGoals);
         }
        
-        //return $this->returnData($goalsForToday);
-        
-        // $notifications = Profiler::$plugin->goalService->sendNotifications();
-        // return $notifications;
+        return $this->asJson($notifications);
     }
 }
