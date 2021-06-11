@@ -29,7 +29,6 @@ use yii\helpers\ArrayHelper;
  */
 class Goal extends Component
 {
-    
     public function createGoalInstance(GoalTrackerModel $goalTrackerModel){
 
         $goalTrackerRecord = new GoalTrackerRecord();
@@ -123,7 +122,7 @@ class Goal extends Component
                     ->all();
 
         $groupedGoals = ArrayHelper::index($goalList, null, 'date');
-    
+
         return $groupedGoals;
     }
 
@@ -136,8 +135,8 @@ class Goal extends Component
         $todoList = GoalTrackerRecord::find()
                     ->select([$goalTrackerTablename.'.*', $goalTablename.'.type',$goalTablename.'.title',  ])
                     ->innerJoin($goalTablename, $joinCondition)
-                    ->where([$goalTrackerTablename.'.status' => 'todo', 'date' => $date])
-                    ->andWhere(['!=', 'status', 'skipped'])
+                    ->where([$goalTablename.'.setReminder' => 1])
+                    ->andWhere([$goalTrackerTablename.'.status' => 'todo', $goalTrackerTablename.'.date' => $date])
                     ->asArray()
                     ->all();
 

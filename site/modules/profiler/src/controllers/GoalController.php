@@ -161,6 +161,13 @@ class GoalController extends Controller
 
     }
 
+    private function getDate($date = "now"){
+
+        $now = new \DateTime($date);
+        return $now->format('Y-m-d');
+
+    }
+
     // Public Methods
     // =========================================================================
 
@@ -263,8 +270,10 @@ class GoalController extends Controller
 
     public function actionSendNotifications()
     {
-        $goalsForToday = Profiler::$plugin->goalService->getAllToDoGoalsForDay('2020-02-28');
+        $goalsForToday = Profiler::$plugin->goalService->getAllToDoGoalsForDay($this->getDate());
         
+        $notifications = Array();
+
         foreach ($goalsForToday as $userGoals) {
             $notifications[] = Profiler::$plugin->goalService->sendNotifications($userGoals);
         }
