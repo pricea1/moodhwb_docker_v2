@@ -78,6 +78,9 @@ class GoalController extends Controller
         $untilDate = new \DateTime('now');
         $untilDate->modify('monday 3 week');       
 
+        $weekId = $this->getWeekId();
+        Profiler::$plugin->goalService->deleteWeekGoalInstances($goal, $weekId);
+
         if ($goal->repeatWeekly){
 
             $rrule = new \RRule\RRule([
@@ -108,9 +111,9 @@ class GoalController extends Controller
             $goalInstance->goalId = $goal->id;
 
             $goalInstance->date = $goal->onceDate;
-            $goalInstance->weekId = $this->getWeekId($goal->onceDate);
+            $goalInstance->weekId = $weekId;
             $goalInstance->thumbnailUri = $goal->thumbnailUri;
-            
+
             $newGoalInstance = Profiler::$plugin->goalService->createGoalInstance($goalInstance);            
             return array($newGoalInstance);
     
