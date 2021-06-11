@@ -34,14 +34,14 @@ class GoalController extends Controller
      *         The actions must be in 'kebab-case'
      * @access protected
      */
-    protected $allowAnonymous = ['send-notifications'];
+    protected $allowAnonymous = ['send-notifications','generate-next-month-goals'];
 
-    private function generateWeeklyGoalInstances($goal){
+    private function generateWeeklyGoalInstances($goal, $startDate = 'now'){
  
         $byDays = json_decode($goal->weeklyDays);
 
-        $untilDate = new \DateTime('now');
-        $untilDate->modify('monday next week');
+        $untilDate = new \DateTime($startDate);
+        $untilDate->modify('monday 4 week');
 
         $weekId = $this->getWeekId();
 
@@ -50,18 +50,20 @@ class GoalController extends Controller
         $rrule = new \RRule\RRule([
             'freq' => 'weekly',
             'byday' => $byDays,
+            'dtstart' => $startDate,
             'until' => $untilDate
         ]);
 
         $goalInstances = array();
         
         foreach ($rrule as $occurrence) {
+            $dateStr = $occurrence->format('Y-m-d');
 
             $goalInstance = new GoalTrackerModel();
             $goalInstance->userId = $goal->userId;
             $goalInstance->goalId = $goal->id;
-            $goalInstance->weekId = $weekId;
-            $goalInstance->date = $occurrence->format('Y-m-d');
+            $goalInstance->weekId = $this->getWeekId($dateStr);
+            $goalInstance->date = $dateStr;
             if ($goal->thumbnailUri){
                 $goalInstance->thumbnailUri = $goal->thumbnailUri;
             }
@@ -74,19 +76,30 @@ class GoalController extends Controller
 
     }
 
-    private function generateOnceGoalInstances($goal){
-        $untilDate = new \DateTime('now');
-        $untilDate->modify('monday 3 week');       
+    private function generateOnceGoalInstances($goal, $startDate = 'now'){
+        $untilDate = new \DateTime($startDate);
+        $untilDate->modify('monday 4 week');       
 
         $weekId = $this->getWeekId();
         Profiler::$plugin->goalService->deleteWeekGoalInstances($goal, $weekId);
 
         if ($goal->repeatWeekly){
+            if ($startDate === 'now') {
+                $dtStart = $goal->onceDate;
+            } else {
+                $dtStart = $startDate;
+            }
+
+            $dateOnce = new \DateTime($goal->onceDate);
+            // Need days of week in MO, TU etc format
+            $dayOfWeek = substr($dateOnce->format('D'), 0, 2);
+
 
             $rrule = new \RRule\RRule([
                 'freq' => 'weekly',
                 'interval' => 1,
-                'dtstart' => $goal->onceDate,
+                'byday' => $dayOfWeek,
+                'dtstart' => $dtStart,
                 'until' => $untilDate
             ]);
 
@@ -121,13 +134,13 @@ class GoalController extends Controller
     }
     
 
-    private function generateGoalInstances($goal){
+    private function generateGoalInstances($goal, $startDate = 'now'){
         // Generate instance for this week
 
         if ($goal->type==="weekly"){
-            return $this->generateWeeklyGoalInstances($goal);
+            return $this->generateWeeklyGoalInstances($goal, $startDate);
         } else {
-            return $this->generateOnceGoalInstances($goal);
+            return $this->generateOnceGoalInstances($goal, $startDate);
         }
 
     }
@@ -282,6 +295,22 @@ class GoalController extends Controller
         }
        
         return $this->asJson($notifications);
+    }
+
+    public function actionGenerateNextMonthGoals()
+    {
+        $goalsToRepeat =  Profiler::$plugin->goalService->getAllRepeatWeeklyGoals();
+        
+        $startDate = new \DateTime('now');
+        $startDate->modify('monday 4 week'); 
+
+        $repeats = Array($startDate->format('Y-m-d'));
+
+        foreach ($goalsToRepeat as $goal) {
+            $repeats[] = $this->generateGoalInstances($goal, $startDate->format('Y-m-d'));
+        }
+
+        return $this->asJson($repeats);
     }
     
 }

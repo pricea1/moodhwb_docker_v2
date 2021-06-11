@@ -145,6 +145,14 @@ class Goal extends Component
         return $groupedTodoList;
     }
 
+    public function getAllRepeatWeeklyGoals() {
+        $goals = GoalRecord::find()
+                ->where(['repeatWeekly' => 1])
+                ->all();
+
+        return $goals;
+    }
+
     public function updateGoalStatus($goalModel)
     {  
         $goal = GoalTrackerRecord::find()
