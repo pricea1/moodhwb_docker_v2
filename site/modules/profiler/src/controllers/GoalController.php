@@ -111,7 +111,7 @@ class GoalController extends Controller
             $goalInstance->goalId = $goal->id;
 
             $goalInstance->date = $goal->onceDate;
-            $goalInstance->weekId = $weekId;
+            $goalInstance->weekId = $this->getWeekId($goal->onceDate);
             $goalInstance->thumbnailUri = $goal->thumbnailUri;
 
             $newGoalInstance = Profiler::$plugin->goalService->createGoalInstance($goalInstance);            
@@ -283,4 +283,5 @@ class GoalController extends Controller
        
         return $this->asJson($notifications);
     }
+    
 }
