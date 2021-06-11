@@ -8,6 +8,13 @@ services:
       - 80:80
     volumes:
       - ./site/web:/var/www/html/web
+  
+  cron:
+    build:
+      context: .
+      dockerfile: ./.docker-config/cron/Dockerfile
+    environment:
+      MOODHWB_URL: http://nginx
 
   php:
     build:

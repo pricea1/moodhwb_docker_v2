@@ -20,5 +20,4 @@
 # For more information see the manual pages of crontab(5) and cron(8)
 #
 # m h  dom mon dow   command
-* * * * * echo "Cron running" >> /var/log/cron.log 2>&1
-* * * * * curl http://localhost/actions/profiler/goal/send-notifications >>/var/log/cron.log 2>&1
+30 8 * * * curl $MOODHWB_URL/actions/profiler/goal/send-notifications >>/var/log/cron.log 2>&1
