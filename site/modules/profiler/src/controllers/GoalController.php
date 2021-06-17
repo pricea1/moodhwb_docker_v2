@@ -43,11 +43,11 @@ class GoalController extends Controller
         $start = new \DateTime($startDate);
 
         $untilDate = new \DateTime($startDate);
-        $untilDate->modify('monday 4 week');
+        $untilDate->modify('+5 years');
 
         $weekId = $this->getWeekId();
 
-        Profiler::$plugin->goalService->deleteWeekGoalInstances($goal, $weekId);
+        Profiler::$plugin->goalService->deleteFutureGoalInstances($goal, $start);
 
         $rrule = new \RRule\RRule([
             'freq' => 'weekly',
@@ -79,17 +79,19 @@ class GoalController extends Controller
     }
 
     private function generateOnceGoalInstances($goal, $startDate = 'now'){
+        $start = new \DateTime($startDate);
+
         $untilDate = new \DateTime($startDate);
         $untilDate->modify('monday 4 week');       
 
         $weekId = $this->getWeekId();
-        Profiler::$plugin->goalService->deleteWeekGoalInstances($goal, $weekId);
+        Profiler::$plugin->goalService->deleteFutureGoalInstances($goal, $start);
 
         if ($goal->repeatWeekly){
             if ($startDate === 'now') {
                 $dtStart = $goal->onceDate;
             } else {
-                $dtStart = $startDate;
+                $dtStart = $start->format('Y-m-d');
             }
 
             $dateOnce = new \DateTime($goal->onceDate);
@@ -299,20 +301,20 @@ class GoalController extends Controller
         return $this->asJson($notifications);
     }
 
-    public function actionGenerateNextMonthGoals()
-    {
-        $goalsToRepeat =  Profiler::$plugin->goalService->getAllRepeatWeeklyGoals();
+    // public function actionGenerateNextMonthGoals()
+    // {
+    //     $goalsToRepeat =  Profiler::$plugin->goalService->getAllRepeatWeeklyGoals();
         
-        $startDate = new \DateTime('now');
-        $startDate->modify('monday 4 week'); 
+    //     $startDate = new \DateTime('now');
+    //     $startDate->modify('monday 4 week'); 
 
-        $repeats = Array($startDate->format('Y-m-d'));
+    //     $repeats = Array($startDate->format('Y-m-d'));
 
-        foreach ($goalsToRepeat as $goal) {
-            $repeats[] = $this->generateGoalInstances($goal, $startDate->format('Y-m-d'));
-        }
+    //     foreach ($goalsToRepeat as $goal) {
+    //         $repeats[] = $this->generateGoalInstances($goal, $startDate->format('Y-m-d'));
+    //     }
 
-        return $this->asJson($repeats);
-    }
+    //     return $this->asJson($repeats);
+    // }
     
 }

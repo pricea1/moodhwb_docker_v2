@@ -46,8 +46,12 @@ class Goal extends Component
         return $goalTrackerRecord;
     }
 
-    public function deleteWeekGoalInstances($goalModel, $weekId) {
-        GoalTrackerRecord::deleteAll(['userId' => $goalModel->userId, 'goalId' => $goalModel->id, 'weekId' => $weekId]);
+    public function deleteFutureGoalInstances($goalModel, $start) {
+        GoalTrackerRecord::deleteAll(
+            'userId="' .$goalModel->userId . '" AND ' .
+            'goalId="' .$goalModel->id . '" AND ' .
+            'date BETWEEN "2021-06-17" AND "9999-99-99"'
+        );
     }
 
     // Public Methods
