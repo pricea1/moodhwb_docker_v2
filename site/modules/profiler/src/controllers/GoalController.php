@@ -39,6 +39,8 @@ class GoalController extends Controller
     private function generateWeeklyGoalInstances($goal, $startDate = 'now'){
  
         $byDays = json_decode($goal->weeklyDays);
+        
+        $start = new \DateTime($startDate);
 
         $untilDate = new \DateTime($startDate);
         $untilDate->modify('monday 4 week');
@@ -50,7 +52,7 @@ class GoalController extends Controller
         $rrule = new \RRule\RRule([
             'freq' => 'weekly',
             'byday' => $byDays,
-            'dtstart' => $startDate,
+            'dtstart' => $start->format('Y-m-d'),
             'until' => $untilDate
         ]);
 
