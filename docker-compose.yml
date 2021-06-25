@@ -22,6 +22,7 @@ services:
       dockerfile: ./.docker-config/php/Dockerfile
     expose:
       - 9000
+    user: "www-data:www-data"
     env_file:
       - ./site/.env
     volumes:
