@@ -27,6 +27,7 @@ RUN echo "upload_max_filesize = 10M" > /usr/local/etc/php/php.ini && \
     echo "memory_limit = 256M" >> /usr/local/etc/php/php.ini && \
     echo "error_reporting = E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED" >> /usr/local/etc/php/php.ini
 
+COPY --chown=www-data:www-data ./site/.env /var/www/html/.env
 COPY --chown=www-data:www-data ./site/config /var/www/html/config
 COPY --chown=www-data:www-data ./site/modules /var/www/html/modules
 COPY --chown=www-data:www-data ./site/templates /var/www/html/templates
@@ -35,11 +36,17 @@ COPY --chown=www-data:www-data ./site/web /var/www/html/web
 COPY --chown=www-data:www-data ./site/composer.json /var/www/html/composer.json
 COPY --chown=www-data:www-data ./site/craft /var/www/html/craft
 
+RUN chown www-data:www-data /var/www/html/.env && \
+    chown www-data:www-data /var/www/html/composer.json && \
+    chown www-data:www-data /var/www/html/config/license.key && \
+    chown www-data:www-data /var/www/html/config/project/* && \
+    chown www-data:www-data /var/www/html/web/cpresources/*
+
 RUN mkdir -p /var/www/html/storage/rebrand && \
     mkdir -p /var/www/html/storage/runtime/mutex && \
     mkdir -p /var/www/html/storage/logs && \
-    chown -R www-data:www-data /var/www/html/storage
+    chown -R www-data:www-data /var/www/html/storage/
 
 RUN composer install -d /var/www/html/ && \
-    chown -R www-data:www-data /var/www/html/vendor && \
+    chown -R www-data:www-data /var/www/html/vendor/ && \
     chown -R www-data:www-data /var/www/html/composer.lock
