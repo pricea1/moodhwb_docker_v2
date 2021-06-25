@@ -36,12 +36,6 @@ COPY --chown=www-data:www-data ./site/web /var/www/html/web
 COPY --chown=www-data:www-data ./site/composer.json /var/www/html/composer.json
 COPY --chown=www-data:www-data ./site/craft /var/www/html/craft
 
-RUN chown www-data:www-data /var/www/html/.env && \
-    chown www-data:www-data /var/www/html/composer.json && \
-    chown www-data:www-data /var/www/html/config/license.key && \
-    chown www-data:www-data /var/www/html/config/project/* && \
-    chown www-data:www-data /var/www/html/web/cpresources/*
-
 RUN mkdir -p /var/www/html/storage/rebrand && \
     mkdir -p /var/www/html/storage/runtime/mutex && \
     mkdir -p /var/www/html/storage/logs && \
@@ -50,3 +44,9 @@ RUN mkdir -p /var/www/html/storage/rebrand && \
 RUN composer install -d /var/www/html/ && \
     chown -R www-data:www-data /var/www/html/vendor/ && \
     chown -R www-data:www-data /var/www/html/composer.lock
+
+RUN chown www-data:www-data /var/www/html/.env
+RUN chown www-data:www-data /var/www/html/composer.json
+RUN chown www-data:www-data /var/www/html/config/license.key
+RUN chown -R www-data:www-data /var/www/html/config/project/
+RUN chown -R www-data:www-data /var/www/html/web/cpresources/
