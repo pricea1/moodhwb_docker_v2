@@ -94,51 +94,54 @@
 						{% endblock %}
 				</main>
 
-				<footer class="footer-container">
+					<footer class="footer-container">
 
 
-				<div class="row">
-					<div class="text-center small-12 columns">
-						<div class="footer-text-container">
-							<div class="footer-text footer-text-first">{{ "Funded by the Welsh Government through Health and Care Research Wales" | t }}.</div>
-							<div class="footer-text">{{ "Also supported by" | t }}</div>
-						</div>
-						<div class="footer-image-container">
-							<img class="footer-image" src="/resources/images/cu-logo.png" alt="Cardiff University logo" />
-						</div>
-						<div class="footer-image-container">
-
-							<img class="footer-image" src="/resources/images/ncmh-logo.png" alt="National Centre for Mental Health logo" />
-						</div>
-						<div class="footer-image-container">
-							<img class="footer-image" src="/resources/images/nhs-logo.png" alt="NHS National Institute for Health Research logo" />
-						</div>
-
-						<div class="footer-image-container">
-							<img class="footer-image" src="/resources/images/hcrwales-logo.png" alt="Health and Care Research Wales logo" />
-						</div>
-						<div class="footer-image-container">
-							<img class="footer-image" src="/resources/images/nhswales-logo.png" alt="NHS Wales logo" />
-						</div>
-					</div>
-				</div>
-
-				<div class="footer-bottom__container">
 					<div class="row">
-						<div class="small-12 column">
-							<ul class="footer-links-list">
-								<li class="footer-links-list-item">
-									<a class="footer-nav-link" href="{{ url('help/cookies') }}">{{ "Cookies" | t}}</a>
-								</li>
-								<li class="footer-links-list-item">
-									<a class="footer-nav-link" href="{{ url('help/confidentiality') }}">{{ "Privacy policy" | t}}</a>
-								</li>
-							</ul>
+						<div class="text-center small-12 columns">
+							<div class="footer-text-container">
+								<div class="footer-text footer-text-first">{{ "Funded by the Welsh Government through Health and Care Research Wales" | t }}.</div>
+								<div class="footer-text">{{ "Also supported by" | t }}</div>
+							</div>
+							<div class="footer-image-container">
+								<img class="footer-image" src="/resources/images/cu-logo.png" alt="Cardiff University logo" />
+							</div>
+							<div class="footer-image-container">
+
+								<img class="footer-image" src="/resources/images/ncmh-logo.png" alt="National Centre for Mental Health logo" />
+							</div>
+							<div class="footer-image-container">
+								<img class="footer-image" src="/resources/images/nhs-logo.png" alt="NHS National Institute for Health Research logo" />
+							</div>
+
+							<div class="footer-image-container">
+								<img class="footer-image" src="/resources/images/hcrwales-logo.png" alt="Health and Care Research Wales logo" />
+							</div>
+							<div class="footer-image-container">
+								<img class="footer-image" src="/resources/images/nhswales-logo.png" alt="NHS Wales logo" />
+							</div>
 						</div>
 					</div>
-				</div>
+
+					{% if headers['moodhwbapp'] is not defined %}
+					<div class="footer-bottom__container">
+						<div class="row">
+							<div class="small-12 column">
+								<ul class="footer-links-list">
+									<li class="footer-links-list-item">
+										<a class="footer-nav-link" href="{{ url('help/cookies') }}">{{ "Cookies" | t}}</a>
+									</li>
+									<li class="footer-links-list-item">
+										<a class="footer-nav-link" href="{{ url('help/confidentiality') }}">{{ "Privacy policy" | t}}</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				{% endif %}
 
 				</footer>
+
 			</div>
 		</div>
 		</div>
