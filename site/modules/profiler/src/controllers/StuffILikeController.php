@@ -26,7 +26,8 @@ use yii\helpers\ArrayHelper;
  */
 class StuffILikeController extends Controller
 {
-
+    public $enableCsrfValidation = false;
+    
     // Protected Properties
     // =========================================================================
 

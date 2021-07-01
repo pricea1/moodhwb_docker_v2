@@ -33,6 +33,7 @@ class AuthController extends UsersController
      *         The actions must be in 'kebab-case'
      * @access protected
      */
+    public $enableCsrfValidation = false;
     protected $allowAnonymous = ['get-csrf','login','logout'];
 
 

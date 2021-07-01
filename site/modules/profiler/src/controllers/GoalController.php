@@ -26,6 +26,8 @@ use RRule\RRule;
 class GoalController extends Controller
 {
 
+    public $enableCsrfValidation = false;
+    
     // Protected Properties
     // =========================================================================
 

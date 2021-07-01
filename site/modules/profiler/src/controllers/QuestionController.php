@@ -24,7 +24,8 @@ use craft\elements\Category;
  */
 class QuestionController extends Controller
 {
-
+    public $enableCsrfValidation = false;
+    
     // Protected Properties
     // =========================================================================
 
