@@ -27,6 +27,8 @@ RUN echo "upload_max_filesize = 10M" > /usr/local/etc/php/php.ini && \
     echo "memory_limit = 256M" >> /usr/local/etc/php/php.ini && \
     echo "error_reporting = E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED" >> /usr/local/etc/php/php.ini
 
+RUN echo "pm.max_children = 12" >> /usr/local/etc/php-fpm.conf
+
 COPY --chown=www-data:www-data ./site/.env /var/www/html/.env
 COPY --chown=www-data:www-data ./site/config /var/www/html/config
 COPY --chown=www-data:www-data ./site/modules /var/www/html/modules
