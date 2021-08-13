@@ -205,7 +205,7 @@ class QuestionController extends Controller
         $response = [];
 
         $moodAnswers =$request->post("moodAnswers");
-        
+
         foreach ( $moodAnswers as $encodedMoodAnswer) {
 
             $moodAnswer = json_decode($encodedMoodAnswer);
@@ -220,7 +220,11 @@ class QuestionController extends Controller
             }
 
             if ($moodAnswer->type === "category") {
-                $answerArray["profileQuestionCategories"] = $moodAnswer->value;
+                if (array_key_exists("value", $moodAnswer)){
+                    $answerArray["profileQuestionCategories"] = $moodAnswer->value;
+                } else {
+                    $answerArray["profileQuestionCategories"] = [];
+                }
             }
 
             if ($moodAnswer->type === "generic") {
