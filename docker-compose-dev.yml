@@ -14,7 +14,6 @@ services:
     build:
       context: .
       dockerfile: ./.docker-config/cron/Dockerfile
-    restart: always
     environment:
       MOODHWB_URL: http://nginx
 
@@ -34,3 +33,25 @@ services:
       - ./site/modules:/var/www/html/modules
       - ./site/web:/var/www/html/web
       - ./site/composer.json:/var/www/html/composer.json
+
+  database:
+    image: mariadb:10.5
+    ports:
+      - "3306:3306"
+    restart: always
+    volumes:
+      - ./db:/var/lib/mysql
+      - ./db_init:/docker-entrypoint-initdb.d
+      - ./db_conf:/etc/mysql/conf.d
+    environment:
+      - MYSQL_ROOT_PASSWORD=craftcms
+      - MYSQL_DATABASE=craftcms5
+      - MYSQL_USER=craftcms
+      - MYSQL_PASSWORD=craftcms
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8085:80
+    environment:
+      PMA_HOST: database

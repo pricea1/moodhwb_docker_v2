@@ -25,7 +25,7 @@ return array(
         'useBugherd' => false,
         'verificationCodeDuration' => 'P8W',
         'omitScriptNameInUrls' => true,
-        'securityKey' => 'BztZemBp0C4y_mFeqavkvlfIemLaoVkaroot@a59da8de3e86'
+        'securityKey' => getenv('SECURITY_KEY')
     ),
     
     'moodhwb.dev' => array(
@@ -35,37 +35,11 @@ return array(
             'en_gb' => 'http://moodhwb.dev/en/',
             'cy_gb' => 'http://moodhwb.dev/cy/',
         ),
-        'useBugherd' => true,
+        'useBugherd' => false,
 //        'cacheMethod' => 'redis',
-        'securityKey' => 'BztZemBp0C4y_mFeqavkvlfIemLaoVkaroot@a59da8de3e86'
+        'securityKey' => getenv('SECURITY_KEY')
 
     ),
-    '165.22.117.164' => array(
-        'devMode' => true,
-       'useCompressedJs' => false,
-       'siteUrl' => array(
-           'en_gb' => 'http://165.22.117.164/en/',
-           'cy_gb' => 'http://165.22.117.164/cy/',
-       ),
-       'useBugherd' => false,
-       'cache' => false,
-//        'cacheMethod' => 'redis',
-       'securityKey' => 'BztZemBp0C4y_mFeqavkvlfIemLaoVkaroot@a59da8de3e86'
-
-   ),
-   '167.172.51.199' => array(
-    'devMode' => true,
-   'useCompressedJs' => false,
-   'siteUrl' => array(
-       'en_gb' => 'http://167.172.51.199/en/',
-       'cy_gb' => 'http://167.172.51.199/cy/',
-   ),
-   'useBugherd' => false,
-   'cache' => false,
-//        'cacheMethod' => 'redis',
-   'securityKey' => 'BztZemBp0C4y_mFeqavkvlfIemLaoVkaroot@a59da8de3e86'
-
-),
     'moodhwb.lemoncog.com' => array(
         'devMode' => true,
     'useCompressedJs' => false,
@@ -76,64 +50,22 @@ return array(
     'useBugherd' => false,
     'cache' => false,
     //        'cacheMethod' => 'redis',
-    'securityKey' => 'BztZemBp0C4y_mFeqavkvlfIemLaoVkaroot@a59da8de3e86'
+    'securityKey' => getenv('SECURITY_KEY')
 
     ),
     'dev' => array(
      	'devMode' => true,
 	    'useCompressedJs' => false,
         'siteUrl' => array(
-	        'en_gb' => 'http://127.0.0.1/en/',
-	        'cy_gb' => 'http://127.0.0.1/cy/',
+	        'en_gb' => 'http://192.168.4.40/en/',
+	        'cy_gb' => 'http://192.168.4.40/cy/',
     	),
-        'useBugherd' => true,
+        'useBugherd' => false,
         'cache' => false,
 //        'cacheMethod' => 'redis',
-        'securityKey' => 'BztZemBp0C4y_mFeqavkvlfIemLaoVkaroot@a59da8de3e86'
+        'securityKey' => getenv('SECURITY_KEY')
 
     ),
-    '192.168.0.24' => array(
-//      'devMode' => true,
-        'useCompressedJs' => false,
-        'siteUrl' => array(
-            'en_gb' => 'https://192.168.0.24/en/',
-            'cy_gb' => 'https://192.168.0.24/cy/',
-        ),
-        'useCompressedJs' => true,
-        'omitScriptNameInUrls' => true,
-        'useBugherd' => true,
-//        'cacheMethod' => 'redis',
-        'securityKey' => 'BztZemBp0C4y_mFeqavkvlfIemLaoVkaroot@a59da8de3e86'
-
-    ),
-    'stage' => array(
-//      'devMode' => true,
-        'useCompressedJs' => false,
-        'siteUrl' => array(
-            'en_gb' => 'https://moodhwb.madebymoon.com/en/',
-            'cy_gb' => 'https://moodhwb.madebymoon.com/cy/',
-        ),
-        'useCompressedJs' => true,
-        'omitScriptNameInUrls' => true,
-        'useBugherd' => true,
-//        'cacheMethod' => 'redis',
-        'securityKey' => 'BztZemBp0C4y_mFeqavkvlfIemLaoVkaroot@a59da8de3e86'
-    ),
-    'stage.madebymoon.com' =>array(
-//      'devMode' => true,
-        'useCompressedJs' => false,
-        'siteUrl' => array(
-            'en_gb' => 'https://stage.madebymoon.com/en/',
-            'cy_gb' => 'https://stage.madebymoon.com/cy/',
-        ),
-        'useCompressedJs' => true,
-        'omitScriptNameInUrls' => true,
-        'useBugherd' => true,
-//        'cacheMethod' => 'redis',
-        'securityKey' => 'BztZemBp0C4y_mFeqavkvlfIemLaoVkaroot@a59da8de3e86'
-
-    ),
-
     'stage.moodhwb.org' => array(
         'devMode' => true,
         'siteUrl' => array(
@@ -142,24 +74,10 @@ return array(
         ),
         'useCompressedJs' => true,
         'omitScriptNameInUrls' => true,
-        'useBugherd' => true,
+        'useBugherd' => false,
         'cacheDuration' => 'P1W',
         'cacheMethod' => 'redis',
-        'securityKey' => 'BztZemBp0C4y_mFeqavkvlfIemLaoVkaroot@a59da8de3e86'
-
-    ),
-
-
-    'stage.hwbhwyliau.org' => array(
-        'devMode' => true,
-        'siteUrl' => array(
-            'en_gb' => 'https://stage.moodhwb.org',
-            'cy_gb' => 'https://stage.hwbhwyliau.org',
-        ),
-        'useCompressedJs' => true,
-        'omitScriptNameInUrls' => true,
-        'useBugherd' => true,
-        'securityKey' => 'BztZemBp0C4y_mFeqavkvlfIemLaoVkaroot@a59da8de3e86'
+        'securityKey' => getenv('SECURITY_KEY')
 
     ),
 
@@ -170,22 +88,10 @@ return array(
         ),
         'useCompressedJs' => true,
         'omitScriptNameInUrls' => true,
-        'useBugherd' => true,
+        'useBugherd' => false,
     'cacheDuration' => 'P1W',
     'cacheMethod' => 'redis',
-    'securityKey' => 'BztZemBp0C4y_mFeqavkvlfIemLaoVkaroot@a59da8de3e86'
+    'securityKey' => getenv('SECURITY_KEY')
 
-    ),
-
-/*
-    'www.hwbhwyliau.org' => array(
-        'siteUrl' => array(
-            'en_gb' => 'https://www.moodhwb.org',
-            'cy_gb' => 'https://www.hwbhwyliau.org',
-        ),
-        'useCompressedJs' => true,
-        'omitScriptNameInUrls' => true,
-        'useBugherd' => true
     )
-    */
 );
