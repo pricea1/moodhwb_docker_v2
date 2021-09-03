@@ -16,13 +16,13 @@
 
 <div class="show-for-medium-up">
 	{% for image in entry.image.all() %}
-		<img src="/resources/images/{{ welcomeImage }}.png">
+		<img src="/resources/images/{{ welcomeImage }}.png" alt="{{ "Your current mood score"  | t}} {{ summaryScore }}">
 	{% endfor %}
 </div>
 <div class="home-top-section">
 
 		<div class="hide-for-medium-up">
-			<img class="" src="/resources/images/{{ welcomeImage }}-small.png" />
+			<img class="" src="/resources/images/{{ welcomeImage }}-small.png" alt="{{ "Your current mood score"  | t}} {{ summaryScore }}" />
 		</div>
 
 		<h1 class="home-heading">

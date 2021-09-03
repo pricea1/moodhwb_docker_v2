@@ -205,7 +205,7 @@
 
 .home-heading{
 	margin-top: rem-calc(15);
-	margin-bottom: rem-calc(10);
+	margin-bottom: 0;
 	@extend .font-style-xl-device-lg;
 
 	&-subtext{
@@ -218,6 +218,7 @@
 
 		.link__promo {
 			font-size: rem-calc(22);
+			line-height: rem-calc(48);
 		}
 	}
 }
