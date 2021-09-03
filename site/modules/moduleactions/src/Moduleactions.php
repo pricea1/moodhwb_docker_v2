@@ -156,6 +156,9 @@ class Moduleactions extends Module
         
         // Register hook
         Craft::$app->view->hook('moduleActions_moduleViewed', function(array &$context) {
+            if (array_key_exists('isAppPreload', $context) && $context['isAppPreload']){
+                return;
+            }
             return Moduleactions::getInstance()->moduleactionsService->saveModuleViewed($context['entry']->id, $context['currentUser']->id);
         });
 

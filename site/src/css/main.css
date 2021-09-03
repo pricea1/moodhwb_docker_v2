@@ -6908,7 +6908,7 @@ input.login-radio {
 
 .home-heading {
   margin-top: 0.9375rem;
-  margin-bottom: 0.625rem;
+  margin-bottom: 0;
 }
 .home-heading-subtext {
   margin-bottom: 2.5rem;
@@ -6921,6 +6921,7 @@ input.login-radio {
 }
 .home-heading-subtext .link__promo {
   font-size: 1.375rem;
+  line-height: 3rem;
 }
 
 .home-browse {
