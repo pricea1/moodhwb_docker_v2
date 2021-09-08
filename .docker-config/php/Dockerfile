@@ -29,7 +29,7 @@ RUN echo "upload_max_filesize = 10M" > /usr/local/etc/php/php.ini && \
 
 RUN echo "pm.max_children = 12" >> /usr/local/etc/php-fpm.conf
 
-COPY --chown=www-data:www-data ./site/.env /var/www/html/.env
+COPY --chown=www-data:www-data .env /var/www/html/.env
 COPY --chown=www-data:www-data ./site/config /var/www/html/config
 COPY --chown=www-data:www-data ./site/modules /var/www/html/modules
 COPY --chown=www-data:www-data ./site/templates /var/www/html/templates
@@ -50,5 +50,6 @@ RUN composer install -d /var/www/html/ && \
 RUN chown www-data:www-data /var/www/html/.env
 RUN chown www-data:www-data /var/www/html/composer.json
 RUN chown www-data:www-data /var/www/html/config/license.key
+RUN mkdir /var/www/html/config/project/
 RUN chown -R www-data:www-data /var/www/html/config/project/
 RUN chown -R www-data:www-data /var/www/html/web/cpresources/
