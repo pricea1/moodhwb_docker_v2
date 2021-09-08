@@ -3,7 +3,7 @@ node_modules
 .DS_Store
 .sass-cache
 .env*
-site/config/project
+site/config/project*
 site/jwt_key
 site/src/jwt_key
 .expo
