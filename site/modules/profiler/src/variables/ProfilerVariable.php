@@ -11,6 +11,7 @@
 namespace moodhwb\profiler\variables;
 
 use moodhwb\profiler\Profiler;
+use yii\helpers\ArrayHelper;
 
 use Craft;
 
@@ -62,7 +63,11 @@ class ProfilerVariable
     
     public function getAllStuffILike(){
         $currentUser = Craft::$app->getUser()->getIdentity();
-        return Profiler::$plugin->stuffILikeService->getAllStuffILike($currentUser->id);
+
+ //       $stuffILike = Profiler::$plugin->stuffILikeService->getAllStuffILike($currentUser->id);
+        return Profiler::$plugin->stuffILikeController->actionGetStuffILike($currentUser->id);
+        // $groupedLinks = ArrayHelper::index($stuffILike, null, 'category');
+        // return $groupedLinks;
     }
 
     public function getSummaryMoodScore(){

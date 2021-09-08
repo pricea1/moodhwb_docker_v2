@@ -34,6 +34,7 @@ class StuffILike extends Model
     public $url;
     public $category;
     public $userCategory;
+    public $categoryTitle;
 
     // Public Methods
     // =========================================================================
@@ -49,7 +50,8 @@ class StuffILike extends Model
             ['title', 'string'],
             ['url', 'string'],
             ['category', 'number'],
-            ['userCategory', 'string']
+            ['userCategory', 'string'],
+            ['categoryTitle', 'string']
         ];
     }
 }

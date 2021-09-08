@@ -4,6 +4,7 @@
 {% set urgentHelpPage = craft.entries.slug("urgent-help").one() %}
 {% set moodDiaryPage = craft.entries.slug("mood-monitor").one() %}
 {% set goalsPage = craft.entries.slug("goals").one() %}
+{% set stuffILikePage = craft.entries.slug("stuff-i-like").one() %}
 {% set depressionPage = craft.entries.slug("what-is-depression").one() %}
 {% set possibleReasonsPage = craft.entries.slug("possible-reasons").one() %}
 {% set otherHealthPage = craft.entries.slug("other-health-issues").one() %}
@@ -20,7 +21,7 @@
 
   <li class="menu-item menu-item--separator"><a href="{{ moodDiaryPage.url }}" class="menu-item-link">{{ "Mood diary" | t }}</a></li>
   <li class="menu-item"><a href="{{ goalsPage.url }}" class="menu-item-link">{{ "Goals" | t }}</a></li>
-  <li class="menu-item"><a href="" class="menu-item-link">{{ "Useful links" | t }}</a></li>
+  <li class="menu-item"><a href="{{ stuffILikePage.url }}" class="menu-item-link">{{ "Useful links" | t }}</a></li>
 
   <li class="menu-item menu-item--separator"><a href="{{ depressionPage.url }}" class="menu-item-link">{{ depressionPage.title }}</a></li>
   <li class="menu-item"><a href="{{ possibleReasonsPage.url }}" class="menu-item-link">{{ possibleReasonsPage.title}}</a></li>

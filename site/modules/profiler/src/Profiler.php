@@ -13,6 +13,8 @@ namespace moodhwb\profiler;
 use moodhwb\profiler\services\Question as QuestionService;
 use moodhwb\profiler\services\Goal as GoalService;
 use moodhwb\profiler\services\StuffILike as StuffILikeService;
+use moodhwb\profiler\controllers\StuffILikeController as StuffILikeController;
+
 use moodhwb\profiler\variables\ProfilerVariable;
 
 use Craft;
@@ -127,7 +129,8 @@ class Profiler extends Plugin
         $this->setComponents([
             'questionService' => QuestionService::class,
             'goalService' => GoalService::class,
-            'stuffILikeService' => StuffILikeService::class
+            'stuffILikeService' => StuffILikeService::class,
+            'stuffILikeController' => StuffILikeController::class
         ]);
 
         Craft::info(

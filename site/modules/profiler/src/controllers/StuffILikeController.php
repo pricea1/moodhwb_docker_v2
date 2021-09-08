@@ -144,9 +144,9 @@ class StuffILikeController extends Controller
 
     }
 
-    public function actionGetStuffILike()
+    public function actionGetStuffILike($returnRawData)
     {   
-        $currentUser = Craft::$app->getUser()->getIdentity();
+
         $returnStuffILike = $this->groupedLinks();
 
         $categories = Category::find()
@@ -158,20 +158,23 @@ class StuffILikeController extends Controller
 
 
         $returnCats = array();
+        $catLookup = array();
 
         foreach( $categories as $key => $category){
-            $catDetails = array(
-                "id" => $category->id,
-                "siteId" => $category->siteId,
-                "title" => $category->title
-            );
             $returnCats[] = $category;
+            if (Craft::$app->language == $category->language){
+                $catLookup[$category->id] = $category->title;
+            }
         }
         
 
-        $stuffILikeData = array('userStuffILike' => $returnStuffILike, 'categories' => $returnCats);
+        $stuffILikeData = array('userStuffILike' => $returnStuffILike, 'categories' => $returnCats, 'categoryLookup' => $catLookup);
 
-        return $this->returnData($stuffILikeData);
+        if ($returnRawData) {
+            return $stuffILikeData;
+        } else {
+            return $this->returnData($stuffILikeData);
+        }
     }
 
 }

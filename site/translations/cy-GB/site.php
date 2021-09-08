@@ -156,6 +156,7 @@ return array(
 	"Add this" => "Adio hwn",
 	"Question" => "Cam", // -> Profile questions: Question 1 out of 10
 	"out of" => "mas o",
+	"Save" => "Arbed",
 	"Save and continue" => "Arbed a pharhau",
 	"Save and finish" => "Arbed a gorffen",
 	"Skip question" => "Sgipio'r cam yma",
@@ -168,9 +169,10 @@ return array(
 	"weeklygoals-step3" => "Ychwanegwch ef, a phan y'ch chi wedi'i wneud, ticiwch ef o'r rhestr",
 	/* Profile Stuff I Like */
 	"This is where you can add some stuff that makes you feel good." => "Dyma ble ry'ch chi'n gallu adio pethau sy'n gwneud i chi deimlo'n dda",
-	"Add a website, image or video" => "Adio gwefan, llun neu fideo",
+	"Add a website" => "Adio gwefan",
 	"stuff" => "pethe",
 	"Add stuff" => "Adio stwff",
+	"Add" => "Adio",
 	"Add some stuff" => "Ychwanegwch bethau yma",
 	"Enter a name for this" => "Cofnodwch enw am hyn",
 
@@ -199,6 +201,7 @@ return array(
 	"Stuff I Like" => "Pethau rwy'n hoffi",
 	"Delete" => "Dileu",
 	"Enter a URL" => "Cofnodi ‘URL'",
+	"Uncategorised" => "Uncategorised (cy)",
 	/* End Profile */
 
 	/* Goals */
