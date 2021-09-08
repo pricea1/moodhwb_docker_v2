@@ -10,7 +10,7 @@ Install
 4. npm install
 5. src/gulp build
 6. src/gulp watch
-7. docker-compose up --build
+7. docker compose -f docker-compose-dev.yml up --build (live: docker-compose up --build)
 
 Hosting
 -
