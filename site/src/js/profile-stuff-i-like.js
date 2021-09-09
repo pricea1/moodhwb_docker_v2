@@ -11,91 +11,106 @@
 		});
 
 
-		$('#profileStuffILikeForm').submit( function(ev){
+		// Uncomment to add AJAX stuff I like form submission
+		
+		// $('#profileStuffILikeForm').submit( function(ev){
 
-			// Override form submission with AJAX call
-			ev.preventDefault();
+		// 	// Override form submission with AJAX call
+		// 	ev.preventDefault();
 
-			var $this = $(this);
-			var action = $this.find('[name="action"]').attr('value').split('/');
-			var inputs = $this.find('[name]');
-
-
-			var request = {
-				plugin: action[0],
-				controller: action[1],
-				action: action[2]
-			}
-
-			var data = {};
-
-			var $input;
-
-			// Create data object for AJAX from form inputs
-			for (var i = 0; i < inputs.length; i++){
-				$input = $(inputs[i]);
-
-				if ($input.attr('name') !== "action"){
-					data[$input.attr('name')] = $input.val();
-				}
-			}
-
-			// Add default goal data
-			data.id = "placeholder";
-
-			// Add item to goal lists quickly before repopulating after AJAX call
-			var newItem = opad.templates.profileStuffILikeItem({
-				stuffILike: data
-			});
-			$('.profile-stuff-i-like__list').append(newItem);
+		// 	var $this = $(this);
+		// 	var action = $this.find('[name="action"]').attr('value').split('/');
+		// 	var inputs = $this.find('[name]');
 
 
-			showWelcomeMsg(false);
+		// 	var request = {
+		// 		plugin: action[0],
+		// 		controller: action[1],
+		// 		action: action[2]
+		// 	}
 
-			opad.postActionRequest(request, data, successCB, errorCB);
+		// 	var data = {};
 
+		// 	var $input;
 
-		})
+		// 	// Create data object for AJAX from form inputs
+		// 	for (var i = 0; i < inputs.length; i++){
+		// 		$input = $(inputs[i]);
 
-		function successCB(res){
-			// Update URL as server might have changed it to add http://
-			if (res.url){
-				$('.profile-stuff-i-like__list-item[data-stuff-i-like-id="placeholder"] .profile-stuff-i-like__user-link')
-					.attr('href', res.url);
-			}
+		// 		if ($input.attr('name') !== "action"){
+		// 			data[$input.attr('name')] = $input.val();
+		// 		}
+		// 	}
 
-			// Add Category CSS class icons
-			if (res.categoryCssClass){
-				$('.profile-stuff-i-like__list-item[data-stuff-i-like-id="placeholder"] .profile-stuff-i-like-icon')
-					.addClass(res.categoryCssClass);
-			}
+		// 	if (!data.id){
+		// 		data.id = "placeholder";
+		// 	}
 
-			// Update placeholder details with returned data from server
-			$('.profile-stuff-i-like__list-item[data-stuff-i-like-id="placeholder"]').attr('data-stuff-i-like-id', res.id)
-				.find('.profile-stuff-i-like__action-link')
-				.each(function(){
-
-					var $this = $(this);
-					var href = $this.attr('href');
-					href = href.replace('placeholder', res.id);
-					$this.attr('href', href);
-				})
-
-			craftEventTracker.sendEvent({
-				interactionId: 			'profile-stuff-i-like-add' ,
-				interactionCategory: 	'profile',
-				parameter1: 			res.userId,
-				parameter2: 			res.title
-			});
-		}
-
-		function errorCB(){
-
-		}
+		// 	data.returnSingleItem = "true";
 
 
+		// 	var translations = $('#translationsForJS').attr('value');
 
-		$('.profile-stuff-i-like__list').delegate('.profile-stuff-i-like__action-link', 'click', function(ev){
+		// 	// Add item to goal lists quickly before repopulating after AJAX call
+		// 	var newItem = opad.templates.profileStuffILikeItem({
+		// 		stuffILike: data,
+		// 		translations: JSON.parse(translations)
+		// 	});
+			
+		// 	// Does it alredy exist in category?
+		// 	var $existingItem =	$('.profile-stuff-i-like__list--' + data.category + ' .profile-goals__list-item[data-stuff-i-like-id="' + data.id +'"]');
+
+		// 	if ($existingItem.length) {
+		// 		$existingItem.replaceWith(newItem);
+		// 	} else {
+		// 		$('.profile-goals__list-item[data-stuff-i-like-id="' + data.id +'"]').remove();
+		// 		$('.profile-stuff-i-like__list--' + data.category).append(newItem);
+		// 	}
+
+		// 	showWelcomeMsg(false);
+
+		// 	opad.postActionRequest(request, data, successCB, errorCB);
+		// })
+
+		// function successCB(res){
+		// 	// Update URL as server might have changed it to add http://
+		// 	if (res.url){
+		// 		$('.profile-stuff-i-like__list-item[data-stuff-i-like-id="placeholder"] .profile-stuff-i-like__user-link')
+		// 			.attr('href', res.url);
+		// 	}
+
+		// 	// Add Category CSS class icons
+		// 	if (res.categoryCssClass){
+		// 		$('.profile-stuff-i-like__list-item[data-stuff-i-like-id="placeholder"] .profile-stuff-i-like-icon')
+		// 			.addClass(res.categoryCssClass);
+		// 	}
+
+		// 	// Update placeholder details with returned data from server
+		// 	$('.profile-stuff-i-like__list-item[data-stuff-i-like-id="placeholder"]').attr('data-stuff-i-like-id', res.id)
+		// 		.find('.profile-stuff-i-like__action-link')
+		// 		.each(function(){
+
+		// 			var $this = $(this);
+		// 			var href = $this.attr('href');
+		// 			href = href.replace('placeholder', res.id);
+		// 			$this.attr('href', href);
+		// 		})
+
+		// 	craftEventTracker.sendEvent({
+		// 		interactionId: 			'profile-stuff-i-like-add' ,
+		// 		interactionCategory: 	'profile',
+		// 		parameter1: 			res.userId,
+		// 		parameter2: 			res.title
+		// 	});
+		// }
+
+		// function errorCB(){
+
+		// }
+
+
+
+		$('.profile-stuff-i-like__list').delegate('[data-stuff-i-like-action]', 'click', function(ev){
 
 			var $this = $(this),
 				hasCompleted,

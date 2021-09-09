@@ -202,6 +202,8 @@ return array(
 	"Delete" => "Dileu",
 	"Enter a URL" => "Cofnodi ‘URL'",
 	"Uncategorised" => "Uncategorised (cy)",
+	"Your categories" => "Your categories (cy)",
+	"Our categories" => "Our categories (cy)",
 	/* End Profile */
 
 	/* Goals */

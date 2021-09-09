@@ -81,11 +81,13 @@
 
     $.post(url, data)
       .done(function(res) {
+        console.log({res});
         if (typeof cbSuccess === "function") {
           cbSuccess(res);
         }
       })
       .error(function(err) {
+        console.log({err})
         if (typeof cbError === "function") {
           cbError(err);
         }

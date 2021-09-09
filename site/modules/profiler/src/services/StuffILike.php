@@ -39,9 +39,13 @@ class StuffILike extends Component
         return $usersStuffILike;
     }
 
+    function getOneStuffILike($userId, $stuffILikeId){
+        return StuffILikeRecord::findOne(['id' => $stuffILikeId, 'userId' => $userId]);
+    }
+
     public function addStuffILike(StuffILikeModel $stuffILikeModel)
     {
-        if ($stuffILikeModel->id){
+        if ($stuffILikeModel->id && $stuffILikeModel->id !== "placeholder" ){
             $stuffILikeRecord = StuffILikeRecord::findOne(['id' => $stuffILikeModel->id, 'userId' => $stuffILikeModel->userId]);
         } else {
             $stuffILikeRecord = new StuffILikeRecord();

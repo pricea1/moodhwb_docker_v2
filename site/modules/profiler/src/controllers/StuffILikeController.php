@@ -121,8 +121,12 @@ class StuffILikeController extends Controller
 
         Craft::$app->session->setNotice(Craft::t('site','Stuff I Like saved.'));
 
-        $stuffILike = $this->groupedLinks();
-        return $this->returnData($stuffILike);
+        if ($request->post('returnSingleItem')) {
+            return $this->returnData($newStuffILike);
+        } else {
+            $stuffILike = $this->groupedLinks();
+            return $this->returnData($stuffILike);    
+        }
     }
 
     public function actionDeleteStuffILike()

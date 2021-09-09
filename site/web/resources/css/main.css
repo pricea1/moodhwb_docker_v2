@@ -6646,6 +6646,19 @@ ul.off-canvas-list .off-canvas-list__item a {
   background-color: #2D5976;
 }
 
+.select2-container {
+  font-size: 1rem;
+}
+.select2-container .select2-selection {
+  height: 2.5rem !important;
+}
+.select2-container .select2-selection__rendered {
+  line-height: 2.5rem !important;
+}
+.select2-container .select2-selection__arrow {
+  height: 2.5rem !important;
+}
+
 .login-container {
   min-height: 29.375rem;
   padding-top: 0.625rem;
@@ -8306,6 +8319,7 @@ a.module-theme-6 {
   max-height: 3.75rem;
   overflow: hidden;
   border-bottom: 1px solid #ccc;
+  background: #fff;
   -o-transition-property: max-height;
   -webkit-transition-property: max-height;
   transition-property: max-height;
@@ -8335,6 +8349,10 @@ a.module-theme-6 {
 .profile-goals__list--todo .profile-goals__list-item[data-status="completed"] .profile-goals__activity {
   color: rgba(51, 51, 51, 0.3);
   text-decoration: line-through;
+}
+
+.profile-goals-select {
+  line-height: 2.5rem;
 }
 
 .profile-stuff-i-like__title {

@@ -1,0 +1,16 @@
+
+.select2-container {
+  font-size: 1rem;
+  
+  .select2-selection {
+    height: rem-calc(40) !important;
+  }
+  
+  .select2-selection__rendered {
+    line-height: rem-calc(40) !important;
+  }
+
+  .select2-selection__arrow {
+    height: rem-calc(40) !important;
+  }
+}

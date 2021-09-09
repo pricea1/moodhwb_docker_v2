@@ -70,6 +70,11 @@ class ProfilerVariable
         // return $groupedLinks;
     }
 
+    public function getOneStuffILike($id){
+        $currentUser = Craft::$app->getUser()->getIdentity();
+        return Profiler::$plugin->stuffILikeService->getOneStuffILike($currentUser->id, $id );
+    }
+
     public function getSummaryMoodScore(){
         $currentUser = Craft::$app->getUser()->getIdentity();
         if (!$currentUser){

@@ -2,6 +2,12 @@
 
 {% block content %}
 
+{% set stuffILikeList = craft.profiler.getAllStuffILike() %}
+{% set stuffILikeEdit = craft.profiler.getOneStuffILike(craft.app.request.getQueryParam('id')) %}
+{% if not stuffILikeEdit %}
+	{% set stuffILikeEdit = { "title":"", "url": "", "id":"", "category": "" } %}
+{% endif %}
+
 <div id="profileDashboardContainer" class="profile-goals-container">
 
 	<div id="profileDashboardHeadingContainer" class="profile-dashboard-heading-container">
@@ -22,28 +28,60 @@
 				<div class="row">
 
 						<div class="profile-stuff-i-like__new-container">
-							<form id="profileStuffILikeForm" class="profile-goals-form" method="post" accept-charset="UTF-8">
+								<input id="translationsForJS" type="hidden" value='{ "delete": "{{ "Delete"|t }}", "edit": "{{ "Edit"|t }}" }' />
+
+							<form id="profileStuffILikeForm" class="profile-goals-form" method="post" action="/{{craft.app.request.fullPath}}"accept-charset="UTF-8">
 							{{ csrfInput() }}
 
 							    <input type="hidden" name="action" value="profiler/stuff-i-like/add-stuff-i-like">
+									<input name="id" class="radius profile-goals-input" type="hidden" value="{{ stuffILikeEdit.id }}" required>
+						
 
-									<div  class="small-12 medium-4 column">
+								<div  class="small-12 medium-3 column">
 
-										<input id="profileStuffILikeUrl" name="url" class="radius profile-goals-input"  placeholder="{{ "Enter a URL"| t }}" type="text">
-
-									</div>
-
-								<div  class="small-12 medium-4 column">
-
-								    <input id="profileGoalActivity" name="title" class="radius profile-goals-input" type="text" placeholder="{{ "Enter a name for this"|t }}" required>
+								    <input id="profileGoalActivity" name="title" class="radius profile-goals-input" type="text" placeholder="{{ "Enter a title"|t }}" value="{{ stuffILikeEdit.title }}" required>
 
 								</div>
 
+									<div  class="small-12 medium-3 column">
 
+										<input id="profileStuffILikeUrl" name="url" class="radius profile-goals-input"  placeholder="{{ "Enter a website"| t }}" type="text" value="{{ stuffILikeEdit.url }}">
 
+									</div>
 
-								<div class="small-12 medium-4 column">
-									<button type="submit" class="button radius round profile-goals-add-button">{{ 'Add stuff'|t }}</button>
+								<div  class="small-12 medium-3 column">
+									<select name="category" class="profile-goals-select">
+										<option></option>
+										{% set userCats = stuffILikeList.userStuffILike |filter(g=>g[0].userCategory) %}
+										{% if userCats| length > 0 %}
+											<optgroup label="{{ 'Your categories'|t }}">
+											{% for stuffILikeGroup in userCats -%}
+														<option 
+															{% if stuffILikeEdit.userCategory is defined and stuffILikeGroup[0].userCategory is same as(stuffILikeEdit.userCategory) %}selected{% endif %}>
+															{{ stuffILikeGroup[0].userCategory }}
+														</option>
+											{% endfor %}
+											</optgroup>
+										{% endif %}
+
+										{% set presetCats = stuffILikeList.userStuffILike |filter(g=>g[0].category) %}
+										{% if presetCats |length > 0 %}
+											<optgroup label="{{ 'Our categories'|t }}">
+											{% for stuffILikeGroup in presetCats -%}
+													<option 
+														{% if stuffILikeEdit.category is defined and stuffILikeGroup[0].category is same as(stuffILikeEdit.category) %}selected{% endif %}
+														value="{{ stuffILikeGroup[0].category }}">
+														{{ stuffILikeList.categoryLookup[stuffILikeGroup[0].category] }}
+													</option>
+											{% endfor %}
+											</optgroup>
+										{% endif %}
+									</select>
+
+								</div>
+								
+								<div class="small-12 medium-3 column">
+									<button type="submit" class="button radius round profile-goals-add-button">{{ 'Save'|t }}</button>
 								</div>
 						    </form>
 
@@ -55,10 +93,6 @@
 		</div>
 
 	</div>
-
-
-
-{% set stuffILikeList = craft.profiler.getAllStuffILike() %}
 
 	<div class="text-center profile-goals__welcome-msg {% if stuffILikeList | length != 0 %}hide{% endif %}">
 
@@ -106,36 +140,52 @@
 
 	<div class="profile-stuff-i-like__list-container {% if stuffILikeList | length == 0 %}hide{% endif %}">
 
-
-		<div class="profile-stuff-i-lie__todo-list">
-			<ul class="profile-stuff-i-like__list ">
-				{% for stuffILike in stuffILikeList %}
-
-					<li data-stuff-i-like-id="{{ stuffILike.id }}" class="profile-goals__list-item profile-stuff-i-like__list-item">
-
-						<div class="row">
+		<div class="profile-stuff-i-like__todo-list">
+			{% for stuffILikeGroup in stuffILikeList.userStuffILike %}
+					<div class="row">
 						<div class="small-12 column">
-
-						{% if stuffILike.url %}
-						<a class="profile-stuff-i-like__user-link" href="{{ stuffILike.url }}">
-						{% endif %}
-
-						<span class="profile-stuff-i-like-icon">
-						</span><!--
-					--><span class="profile-stuff-i-like__title">{{ stuffILike.title}}</span>
-
-						<a href="{{ actionUrl('profiler/stuff-i-like/delete-stuff-i-like', { stuffILikeId: stuffILike.id }) }}" class="profile-goal__action-link profile-stuff-i-like__action-link" data-stuff-i-like-action="delete"><span class="show-for-sr">{{ 'Delete'|t }}</span><span class="ss-icon ss-icon-circle ss-delete"></span></a>
-
-						{% if stuffILike.url %}
-							</a>
-						{% endif %}
-
+							<h3>
+								{% if stuffILikeGroup[0].category and stuffILikeList.categoryLookup[stuffILikeGroup[0].category] is defined %}
+									{{ stuffILikeList.categoryLookup[stuffILikeGroup[0].category] }}
+								{% else %}
+									{% if stuffILikeGroup[0].userCategory %}
+										{{ stuffILikeGroup[0].userCategory }}		
+									{% else %}
+										{{ "Uncategorised"|t }}
+									{% endif %}
+								{% endif %}
+							</h3>
 						</div>
-						</div>
+					</div>
+					<div class="row">
+						<div class="small-12 column">
+						<ul class="profile-stuff-i-like__list profile-stuff-i-like__list--{{ stuffILikeGroup[0].category }}{{stuffILikeGroup[0].userCategory}}">
+								{% for stuffILike in stuffILikeGroup %}
+								<li data-stuff-i-like-id="{{ stuffILike.id }}" class="profile-goals__list-item profile-stuff-i-like__list-item">
 
-					</li>
-				{% endfor %}
-			</ul>
+									<div class="row">
+									<div class="small-12 column">
+
+									{% if stuffILike.url %}
+									<a class="profile-stuff-i-like__user-link" target="_blank" href="{{ stuffILike.url }}">
+									{% endif %}
+
+									<span class="profile-stuff-i-like__title">{{ stuffILike.title}}</span>
+									{% if stuffILike.url %}
+										</a>						
+									{% endif %}
+									<a href="{{ actionUrl('profiler/stuff-i-like/delete-stuff-i-like', { stuffILikeId: stuffILike.id }) }}" class="profile-goal__action-link profile-stuff-i-like__action-link" data-stuff-i-like-action="delete">{{ 'Delete'|t }}</a>
+									<a href="?id={{stuffILike.id}}" class="profile-goal__action-link profile-stuff-i-like__action-link" >{{ 'Edit'|t }}</a>
+
+									</div>
+									</div>
+
+								</li>
+								{% endfor %}
+						</ul>
+						</div>
+					</div>
+			{% endfor %}
 		</div>
 	</div>
 
@@ -146,6 +196,10 @@
 	<script>
 		$(document).ready(function(){
 			opad.initJsModule(['profile-stuff-i-like']);
+			$('.profile-goals-select').select2({
+				placeholder:'{{"Category" |t }}',
+				tags: true
+			});
 		});
 	</script>
 {% endblock %}
