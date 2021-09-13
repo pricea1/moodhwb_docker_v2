@@ -7,6 +7,8 @@ services:
     restart: always
     ports:
       - 8080:80
+    volumes:
+      - ./site/web:/var/www/html/web
   
   cron:
     build:
@@ -25,3 +27,5 @@ services:
       - 9000
     env_file:
       - .env
+    volumes:
+      - ./site/web:/var/www/html/web

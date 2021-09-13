@@ -41,7 +41,7 @@ services:
     restart: always
     volumes:
       - ./db:/var/lib/mysql
-      - ./db_init:/docker-entrypoint-initdb.d
+      # - ./db_init:/docker-entrypoint-initdb.d
       - ./db_conf:/etc/mysql/conf.d
     environment:
       - MYSQL_ROOT_PASSWORD=craftcms
