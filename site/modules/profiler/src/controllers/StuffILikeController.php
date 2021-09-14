@@ -43,7 +43,30 @@ class StuffILikeController extends Controller
         $currentUser = Craft::$app->getUser()->getIdentity();
         
         $stuffILike = Profiler::$plugin->stuffILikeService->getAllStuffILike($currentUser->id);
-        $returnStuffILike = ArrayHelper::index($stuffILike, null, 'category');
+        
+        $stuffILikeModels = [];
+
+        foreach ($stuffILike as $stuff){
+            $model = new StuffILikeModel();
+            $model->id = $stuff->id;
+            $model->userId = $stuff->userId;
+            $model->title = $stuff->title;
+            $model->url = $stuff->url;
+            $model->category = $stuff->category;
+            $model->userCategory = $stuff->userCategory;
+
+            $presetCategory = Category::findOne($stuff->category);
+            if ($presetCategory){
+                $model->categoryTitle = $presetCategory->title;
+            } else {
+                $model->categoryTitle = $stuff->userCategory;
+            }    
+            $stuffILikeModels[] = $model;
+        }
+
+        $returnStuffILike = ArrayHelper::index($stuffILikeModels, null, function($item){
+            return $item->userCategory? $item['userCategory'] : $item['category'];
+        });
         return $returnStuffILike;
     }
 
@@ -110,6 +133,17 @@ class StuffILikeController extends Controller
             $model->userCategory = $userCategory;
         }
 
+        $mixedCategory = $request->post('mixedCategory');
+        if (isset($mixedCategory)){
+            $isPresetCategory = Category::findOne($mixedCategory);
+            if ($isPresetCategory){
+                $model->category = $mixedCategory;
+            } else {
+                $model->category = 0;
+                $model->userCategory = $mixedCategory;
+            }
+        }
+
         // Add http if not included
         if (!is_numeric(str_replace([' ','(',')','-'], "", $model->url)) && $model->url && preg_match("#https?://#",  $model->url) === 0) {
              $model->url = 'http://'. $model->url;
@@ -164,14 +198,26 @@ class StuffILikeController extends Controller
         $returnCats = array();
         $catLookup = array();
 
+        foreach ($returnStuffILike as $key=>$category){
+            $catLookup[$key] = Array("id" => $key, "title" => $key);
+        }
+
         foreach( $categories as $key => $category){
             $returnCats[] = $category;
             if (Craft::$app->language == $category->language){
-                $catLookup[$category->id] = $category->title;
+                $catLookup[$category->id] = Array("id" => $category->id, "title"=>$category->title);
             }
         }
         
-
+        ArrayHelper::multisort($catLookup, ['title'], [SORT_ASC], SORT_STRING | SORT_FLAG_CASE);
+        ArrayHelper::multisort($returnStuffILike, function($item){
+            if ($item[0]->category == 0 && !$item[0]->categoryTitle){
+                // Uncategorised so want to go at end of list
+                return "ZZZZZZZ";
+            }
+            return $item[0]->categoryTitle;
+        }, [SORT_ASC], SORT_STRING | SORT_FLAG_CASE);
+        
         $stuffILikeData = array('userStuffILike' => $returnStuffILike, 'categories' => $returnCats, 'categoryLookup' => $catLookup);
 
         if ($returnRawData) {

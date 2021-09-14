@@ -50,32 +50,16 @@
 									</div>
 
 								<div  class="small-12 medium-3 column">
-									<select name="category" class="profile-goals-select">
+									<select name="mixedCategory" class="profile-goals-select">
 										<option></option>
-										{% set userCats = stuffILikeList.userStuffILike |filter(g=>g[0].userCategory) %}
-										{% if userCats| length > 0 %}
-											<optgroup label="{{ 'Your categories'|t }}">
-											{% for stuffILikeGroup in userCats -%}
-														<option 
-															{% if stuffILikeEdit.userCategory is defined and stuffILikeGroup[0].userCategory is same as(stuffILikeEdit.userCategory) %}selected{% endif %}>
-															{{ stuffILikeGroup[0].userCategory }}
-														</option>
-											{% endfor %}
-											</optgroup>
-										{% endif %}
-
-										{% set presetCats = stuffILikeList.userStuffILike |filter(g=>g[0].category) %}
-										{% if presetCats |length > 0 %}
-											<optgroup label="{{ 'Our categories'|t }}">
-											{% for stuffILikeGroup in presetCats -%}
-													<option 
-														{% if stuffILikeEdit.category is defined and stuffILikeGroup[0].category is same as(stuffILikeEdit.category) %}selected{% endif %}
-														value="{{ stuffILikeGroup[0].category }}">
-														{{ stuffILikeList.categoryLookup[stuffILikeGroup[0].category] }}
+											{% for category in stuffILikeList.categoryLookup -%}
+													<option
+														value="{{ category.id }}"
+														{% if stuffILikeEdit.category is defined and category.id is same as(stuffILikeEdit.category) %}selected{% endif %}
+													>
+														{{ category.title }}
 													</option>
 											{% endfor %}
-											</optgroup>
-										{% endif %}
 									</select>
 
 								</div>
@@ -136,17 +120,17 @@
 
 	</div>
 
-
-
 	<div class="profile-stuff-i-like__list-container {% if stuffILikeList | length == 0 %}hide{% endif %}">
 
 		<div class="profile-stuff-i-like__todo-list">
 			{% for stuffILikeGroup in stuffILikeList.userStuffILike %}
+
 					<div class="row">
 						<div class="small-12 column">
 							<h3>
-								{% if stuffILikeGroup[0].category and stuffILikeList.categoryLookup[stuffILikeGroup[0].category] is defined %}
-									{{ stuffILikeList.categoryLookup[stuffILikeGroup[0].category] }}
+								{% if stuffILikeGroup[0].category %}
+									{% set presetCat = stuffILikeList.categoryLookup| filter(c => c.id is same as(stuffILikeGroup[0].category) ) |first %}
+									{{ presetCat.title }}
 								{% else %}
 									{% if stuffILikeGroup[0].userCategory %}
 										{{ stuffILikeGroup[0].userCategory }}		
