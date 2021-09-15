@@ -1,14 +1,14 @@
 version: "2"
 services:
-  nginx:
-    build:
-      context: .
-      dockerfile: ./.docker-config/nginx/Dockerfile
-    restart: always
-    ports:
-      - 8080:80
-    volumes:
-      - ./site/web:/var/www/html/web
+  # nginx:
+  #   build:
+  #     context: .
+  #     dockerfile: ./.docker-config/nginx/Dockerfile
+  #   restart: always
+  #   ports:
+  #     - 8080:80
+  #   volumes:
+  #     - ./site/web:/var/www/html/web
   
   cron:
     build:
@@ -16,16 +16,12 @@ services:
       dockerfile: ./.docker-config/cron/Dockerfile
     restart: always
     environment:
-      MOODHWB_URL: http://nginx
-
-  php:
+      MOODHWB_URL: http://web:8080
+      
+  web:
     build:
       context: .
-      dockerfile: ./.docker-config/php/Dockerfile
-    restart: always
+      dockerfile: ./.docker-config/craft/Dockerfile
     expose:
-      - 9000
-    env_file:
-      - .env
-    volumes:
-      - ./site/web:/var/www/html/web
+      - 8080
+    env_file: .env
