@@ -50,6 +50,7 @@ RUN composer install -d /var/www/html/ && \
 RUN chown www-data:www-data /var/www/html/.env
 RUN chown www-data:www-data /var/www/html/composer.json
 RUN chown www-data:www-data /var/www/html/config/license.key
-RUN mkdir /var/www/html/config/project/
 RUN chown -R www-data:www-data /var/www/html/config/project/
 RUN chown -R www-data:www-data /var/www/html/web/cpresources/
+
+RUN chmod -R 775 /var/www/html
