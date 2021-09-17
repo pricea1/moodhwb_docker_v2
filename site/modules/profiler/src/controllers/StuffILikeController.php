@@ -182,7 +182,7 @@ class StuffILikeController extends Controller
 
     }
 
-    public function actionGetStuffILike($returnRawData)
+    public function actionGetStuffILike($returnRawData = false)
     {   
 
         $returnStuffILike = $this->groupedLinks();
