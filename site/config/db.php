@@ -17,5 +17,6 @@ return [
     'schema' => getenv('DB_SCHEMA'),
     'tablePrefix' => getenv('DB_TABLE_PREFIX'),
     'port' => getenv('DB_PORT'),
-    'charset' => 'utf8mb4'
+    'charset' => 'utf8mb4',
+    'attributes' => [PDO::MYSQL_ATTR_INIT_COMMAND => 'SET sql_mode="TRADITIONAL"']
 ];
