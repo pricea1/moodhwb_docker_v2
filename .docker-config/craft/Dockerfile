@@ -4,12 +4,16 @@ COPY ./site/composer.lock composer.lock
 RUN composer install --ignore-platform-reqs --no-interaction --prefer-dist
 
 FROM craftcms/nginx:8.0
+USER root
 
-RUN openssl req -x509 -nodes -days 365 -subj "/C=CA/ST=QC/O=Moodhwb, Inc./CN=moodhwb.org" \
+RUN mkdir -p ./ssl && \
+    openssl req -x509 -nodes -days 365 -subj "/C=CA/ST=QC/O=Moodhwb, Inc./CN=moodhwb.org" \
     -addext "subjectAltName=DNS:moodhwb.org" \
     -newkey rsa:2048 \
-    -keyout /etc/ssl/private/nginx-selfsigned.key \
-    -out /etc/ssl/certs/nginx-selfsigned.crt;
+    -keyout ./ssl/nginx-selfsigned.key \
+    -out ./ssl/nginx-selfsigned.crt;
+
+RUN chown -R www-data:www-data ./ssl
 
 COPY ./.docker-config/craft/default.conf /etc/nginx/conf.d/default.conf
 
@@ -17,6 +21,7 @@ COPY ./.docker-config/craft/default.conf /etc/nginx/conf.d/default.conf
 COPY --chown=www-data:www-data ./site .
 COPY --chown=www-data:www-data --from=vendor /app/vendor/ /app/vendor/
 
+USER www-data
 RUN mkdir -p ./config/project/
 
 RUN mkdir -p ./storage/rebrand && \
