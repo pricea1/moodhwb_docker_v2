@@ -126,7 +126,6 @@ class Goal extends Component
                     ->all();
 
         $groupedGoals = ArrayHelper::index($goalList, null, 'date');
-
         return $groupedGoals;
     }
 

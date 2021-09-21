@@ -201,7 +201,7 @@ class GoalController extends Controller
         return $this->returnData($goal);
     }
 
-    public function actionGetGoalsForWeek()
+    public function actionGetGoalsForWeek($returnRawData = false)
     {
 
         $currentUser = Craft::$app->getUser()->getIdentity();
@@ -209,7 +209,13 @@ class GoalController extends Controller
 
         $goalInstances = Profiler::$plugin->goalService->getAllGoalsForWeek($currentUser->id, $weekId);
 
-        return $this->returnData($goalInstances);
+        if ($returnRawData) {
+            return $goalInstances;
+        } else {
+            return $this->returnData($goalInstances);
+        }
+
+        
     }
 
     /**
