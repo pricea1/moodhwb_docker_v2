@@ -208,6 +208,9 @@ return array(
 
 	/* Goals */
 	"Completed" => "Wedi'i gwblhau",
+	"Done" => "Wedi gorffen",
+	"Skip" => "Sgipio",
+	"Remove": 'Cael gwared',
 	/* Forms */
 	"Change my picture" => "Newid fy llun",
 	"Updating picture" => "Diweddaru llun",

@@ -14,6 +14,7 @@ use moodhwb\profiler\services\Question as QuestionService;
 use moodhwb\profiler\services\Goal as GoalService;
 use moodhwb\profiler\services\StuffILike as StuffILikeService;
 use moodhwb\profiler\controllers\StuffILikeController as StuffILikeController;
+use moodhwb\profiler\controllers\GoalController as GoalController;
 
 use moodhwb\profiler\variables\ProfilerVariable;
 
@@ -130,7 +131,8 @@ class Profiler extends Plugin
             'questionService' => QuestionService::class,
             'goalService' => GoalService::class,
             'stuffILikeService' => StuffILikeService::class,
-            'stuffILikeController' => StuffILikeController::class
+            'stuffILikeController' => StuffILikeController::class,
+            'goalController' => GoalController::class
         ]);
 
         Craft::info(
