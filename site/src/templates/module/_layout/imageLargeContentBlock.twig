@@ -30,33 +30,11 @@
 	</div>
 	
 	<div class="row">
-		{% if entry.secondaryImage.one() or entry.quote %}
-			<div class="small-12 medium-4 column">
-				<div class="content-block-aside">
-					{% set secondaryImage = entry.secondaryImage.one() %}
-					{% if secondaryImage %}
-						<img class="content-block-aside-image"
-							alt="{{secondaryImage.imageAlt}}"
-							src="{{ secondaryImage.url }}"
-						>	
-					{% endif %}
-					{% if entry.quote %}
-						<blockquote  class="content-block-aside-quote" cite="{{entry.quoteSource}}">{{ entry.quote}}</blockquote>
-					{% endif %}
+				<div class="small-12 column">
+					<div class="content-block content-block-main-text">
+						{{ entry.body }}
+					</div>
 				</div>
-			</div>
-			<div class="small-12 medium-8 column">
-				<div class="content-block content-block-main-text">
-					{{ entry.body }}
-				</div>
-			</div>
-		{% else %}
-			<div class="small-12 column">
-				<div class="content-block content-block-main-text">
-					{{ entry.body }}
-				</div>
-			</div>
-		{% endif %}
 	</div>
 
 	{% include "_partials/collapsible-content" %}

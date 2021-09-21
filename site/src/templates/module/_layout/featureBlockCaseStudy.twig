@@ -28,8 +28,12 @@
 
 		</div>
 
-
+		{% if entry.contentBlockItems is defined and entry.contentBlockItems %}
 		{% set contentBlockItems = entry.contentBlockItems.all() %}
+		{% else %}
+		{% set contentBlockItems = [] %}
+		{% endif %}
+
 			<div class="row">
 			<div class="small-12 column">
 			{% if contentBlockItems|length > 0 %}
@@ -51,7 +55,7 @@
 						</div>
 				{% endfor %}
 				</div>
-		{% else %}
+			{% else %}
 					<div class="feature-block-case-study-more-container">
 						<a class="feature-block-case-study-link">{{entry.featureBlockCaseStudyLinkName}}</a>
 
