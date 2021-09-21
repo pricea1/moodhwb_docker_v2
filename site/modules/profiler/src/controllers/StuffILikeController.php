@@ -65,7 +65,8 @@ class StuffILikeController extends Controller
         }
 
         $returnStuffILike = ArrayHelper::index($stuffILikeModels, null, function($item){
-            return $item->userCategory? $item['userCategory'] : $item['category'];
+            // Need to add _ to return key as string, otherwise stupid PHP just adds as new element of array rather than use id as key
+            return $item->userCategory? $item['userCategory'] : '_' .$item['category'];
         });
         return $returnStuffILike;
     }
@@ -123,13 +124,14 @@ class StuffILikeController extends Controller
         $model->url = $request->post('url');
 
         $category = $request->post('category');
+
+        $model->category = 0;
         if (isset($category)){
             $model->category = $category;
         }
 
         $userCategory = $request->post('userCategory');
         if (isset($userCategory)){
-            $model->category = 0;
             $model->userCategory = $userCategory;
         }
 
@@ -199,7 +201,9 @@ class StuffILikeController extends Controller
         $catLookup = array();
 
         foreach ($returnStuffILike as $key=>$category){
-            $catLookup[$key] = Array("id" => $key, "title" => $key);
+            if (substr($key, 0, 1) !== "_"){
+                $catLookup[$key] = Array("id" => $key, "title" => $key);
+            }
         }
 
         foreach( $categories as $key => $category){
