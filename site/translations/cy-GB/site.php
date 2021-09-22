@@ -210,7 +210,7 @@ return array(
 	"Completed" => "Wedi'i gwblhau",
 	"Done" => "Wedi gorffen",
 	"Skip" => "Sgipio",
-	"Remove": 'Cael gwared',
+	"Remove" => 'Cael gwared',
 	/* Forms */
 	"Change my picture" => "Newid fy llun",
 	"Updating picture" => "Diweddaru llun",

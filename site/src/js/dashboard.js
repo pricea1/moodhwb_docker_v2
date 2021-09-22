@@ -65,7 +65,6 @@
 		var moodItemsWidth = 0;
 		for (var i=0; i < moodItems.length; i++){
 			moodItemsWidth += moodItems[i].clientWidth;
-console.log(moodItems[i], moodItems[i].clientWidth);
 		}
 
 		$(moodListEl).width( moodItemsWidth ).addClass('profile-dashboard-mood-list--show');

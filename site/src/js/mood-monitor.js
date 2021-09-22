@@ -2,10 +2,11 @@
 (function(window, document, $) {
   var moodData = {};
   var moodDataFreetext = [];
-
+  var categories = {};
   var moodDataFreetextDate = {};
   var thisDate;
   var chartList = {};
+  var categoryLookup;
 
   var isLargeViewport = window.Modernizr.mq("(min-width: 1024px)");
 
@@ -39,7 +40,8 @@
     };
 
     function success(res) {
-      setMoodData(res);
+      categoryLookup = res.catLookup;
+      setMoodData(res.moodScores);
 
       setupCharts(month, day);
     }
@@ -146,22 +148,20 @@
     }
   }
 
-  function getDateRange(moodDate) {
-    var hour = moodDate.getHours();
-
-    if (hour < 5) {
-      return "12am to 5am";
+  function getPeriod(period) {
+    switch (period) {
+      case 1:
+        return "Morning";
+      
+      case 2:
+        return "Afternoon";
+      
+      case 3:
+        return "Evening";
     }
 
-    if (hour < 12) {
-      return "5am to 12pm";
-    }
+    return "";
 
-    if (hour < 17) {
-      return "12pm to 5pm";
-    }
-
-    return "5pm to 12am";
   }
 
   function parseDateString(dateStr, period) {
@@ -182,6 +182,7 @@
   function setMoodData(data) {
     moodData = {};
     moodDataFreetext = [];
+    categories = {};
 
     var pointOptions = {};
     var moodDate, moodPopup, freeTextMoodPopup;
@@ -190,57 +191,91 @@
         data[i].questionId !== "freetext" &&
         typeof moodData[data[i].questionId] == "undefined"
       ) {
-        moodData[data[i].questionId] = [];
+
+        moodData[data[i].questionId] = [];    
       }
       moodDate = parseDateString(data[i].dateAnswered, data[i].period);
 
       moodPopup =
         "<div>" +
-        moodDate.getDate() +
-        " " +
-        monthNames[moodDate.getMonth()] +
+          moodDate.getDate() +
+          " " +
+          monthNames[moodDate.getMonth()] +
         "</div>" +
         "<div>" +
-        getDateRange(moodDate) +
+          getPeriod(data[i].period) +
         "</div>";
 
       if (data[i].questionId === "freetext") {
         moodDataFreetext.push(data[i]);
         // var freetextDate = parseDateString(data[i].dateCreated);
-        var freetextDateRef = moodDate.toDateString();
+        var freetextDateRef = moodDate.toDateString() + '_' +data[i].period;
 
         freeTextMoodPopup =
           '<div class="google-visualization-tooltip__text">' +
           data[i].textValue +
-          "</div>";
+          "</div><br>";
 
         if (!moodDataFreetextDate[freetextDateRef]) {
           moodDataFreetextDate[freetextDateRef] = "";
         }
         moodDataFreetextDate[freetextDateRef] += freeTextMoodPopup;
       } else {
-        pointOptions =
+        if (data[i].value === -1){
+          //Is category
+          var catKey = moodDate.toDateString() + '_' +data[i].period;
+
+          if (!categories[catKey]){
+            categories[catKey] = {}
+          }
+
+          try {
+            var moodCats = JSON.parse(data[i].textValue);
+
+            if (moodCats.length) {
+              var moodCatTitles = moodCats.map( function(catId){
+                return "<li>" + categoryLookup[data[i].questionId][catId] +"</li>";
+              } );
+  
+              categories[catKey][data[i].questionId] = "<ul>" + moodCatTitles.join('') + "</ul>";
+  
+            }
+           }catch(err){}
+
+        } else {
+          pointOptions =
           "point { fill-color: " + getFillColor(data[i].value) + " }";
         // moodDate = parseDateString(data[i].dateAnswered);
 
-        moodData[data[i].questionId].push([
-          moodDate,
-          parseInt(data[i].value),
-          pointOptions,
-          moodPopup
-        ]);
+          moodData[data[i].questionId].push([
+            moodDate,
+            parseInt(data[i].value),
+            pointOptions,
+            moodPopup,
+            data[i].period
+          ]);
+        }
+
       }
     }
 
     // Insert all diary entries into each moodData dataset
-    for (var questionId in moodData) {
-      var moodDataDate = moodData[questionId][0][0].toDateString();
 
-      if (moodDataFreetextDate[moodDataDate]) {
-        moodData[questionId].forEach(function(item, index) {
-          item[3] += moodDataFreetextDate[moodDataDate];
-        });
+    for (var questionId in moodData) {
+      for (var i = 0; i < moodData[questionId].length; i++){
+        var moodDataDate = moodData[questionId][i][0].toDateString();
+         var period = moodData[questionId][i].pop();
+        if (moodDataFreetextDate[moodDataDate+'_'+period]) {
+          moodData[questionId][i][3] += moodDataFreetextDate[moodDataDate+'_'+period];;
+        }
+
+        if (categories[moodDataDate+'_'+period]) {
+          Object.entries(categories[moodDataDate+'_'+period]).forEach(function([key, val]){
+            moodData[questionId][i][3] += "<div>" + key + "</div>" + val;
+          })
+        }
       }
+
     }
   }
 

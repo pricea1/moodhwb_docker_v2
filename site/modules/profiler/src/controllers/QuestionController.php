@@ -16,6 +16,7 @@ use moodhwb\profiler\models\Question as QuestionModel;
 use Craft;
 use craft\web\Controller;
 use craft\elements\Category;
+use yii\helpers\ArrayHelper;
 
 /**
  * @author    Andrew Price
@@ -298,14 +299,27 @@ return $this->asJson($request->post());
         $currentUser = Craft::$app->getUser()->getIdentity();
 
         $moodScores =  Profiler::$plugin->questionService->getAllMoodScores($currentUser->id, $currentUser->hereFor, $month);
+        $questions = $this->actionGetMoodQuestions(false);
+        $categoryQuestions = array_filter($questions, function($v) {
+           return array_key_exists('categoryId', $v);
+        });
 
-        return $this->asJson($moodScores);
+        $cats = [];
+        foreach ($categoryQuestions as $categoryQuestion) {
+            $langCats = array_filter($categoryQuestion['categories'], function($v) {
+                return $v['siteId'] === Craft::$app->getSites()->currentSite->id;               
+            });
+            $langCatsKeyed = ArrayHelper::map($langCats, 'categoryId', 'title');
+            $cats[$categoryQuestion['categoryId']] = $langCatsKeyed;
+        }
+        $return = Array('moodScores' => $moodScores, 'catLookup' => $cats);
+        return $this->asJson($return);
     }
 
     /**
      * Gets all Mood Questions for App
      */
-    public function actionGetMoodQuestions(){
+    public function actionGetMoodQuestions($returnAsJson = true){
 
         $questions = Profiler::$plugin->questionService->getMoodQuestions();
         $currentUser = Craft::$app->getUser()->getIdentity();
@@ -369,7 +383,11 @@ return $this->asJson($request->post());
             }
         }
 
-        return $this->asJson($return);
+        if ($returnAsJson){
+            return $this->asJson($return);
+        } else {
+            return $return;
+        }
 
     }
     
