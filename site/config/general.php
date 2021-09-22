@@ -80,7 +80,7 @@ return array(
 
     ),
 
-    'production' => array(
+    'www.moodhwb.org' => array(
         'siteUrl' => array(
             'en_gb' => 'https://www.moodhwb.org',
             'cy_gb' => 'https://www.hwbhwyliau.org',
