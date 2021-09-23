@@ -5893,6 +5893,10 @@ button:focus {
   }
 }
 
+.footer-image {
+  height: 64px;
+}
+
 .footer-text {
   color: #104949;
 }
