@@ -32,8 +32,8 @@
 
 {% block content %}
 {% hook "moduleActions_moduleViewed" %}
-  {% cache using key currentModule.uri ~ isAppRequest %}
 
+  {% cache using key currentModule.uri ~ isAppRequest %}
   <div
     class="{{ moduleColourClass }}" data-modules="module">
     {#
@@ -42,7 +42,13 @@
     {% set modules = craft.entries.section('modules').level(1) %}
 
     <div class="module-nav-container">
-      {% if not isAppRequest %}      
+      {% if isAppRequest %}  
+        <div class="row">
+          <div class="small-12 columns">  
+          <h2>{{ currentPage.title }}</h2>
+          </div>
+        </div>
+      {% else %}  
       {#
           Create nav of current sub modules
       #}
