@@ -30,10 +30,15 @@
   <li class="menu-item"><a href="{{ whereToGetHelpPage.url }}" class="menu-item-link">{{ whereToGetHelpPage.title}}</a></li>
   <li class="menu-item"><a href="{{ familyPage.url }}" class="menu-item-link">{{ familyPage.title}}</a></li>
   <li class="menu-item menu-item--separator">
+  
     {% if craft.app.language == "cy-GB" %}
-      <a href="{{ craft.app.config.general.siteUrl['en_gb'] }}" class="menu-item-link">English</a>
+      {% set site = craft.app.getSites.getSiteById(1) %}
+      {% set site_entry = craft.entries().id(entry.id).site(site).one() %}
+      <a href="{{ url(site_entry.url) }}" class="menu-item-link">English</a>
       {% else %}
-      <a href="{{ craft.app.config.general.siteUrl['cy_gb'] }}" class="menu-item-link">Cymraeg</a>
+      {% set site = craft.app.getSites.getSiteById(2) %}
+       {% set site_entry = craft.entries().id(entry.id).site(site).one() %}
+      <a href="{{ url(site_entry.url) }}" class="menu-item-link">Cymraeg</a>
     {% endif %}
   </li>
   <li class="menu-item"><a href="{{ changePasswordPage.url }}" class="menu-item-link">{{ "Change password" | t }}</a></li>
