@@ -29,9 +29,13 @@
   <li class="menu-item"><a href="{{ selfHelpPage.url }}" class="menu-item-link">{{ selfHelpPage.title}}</a></li>
   <li class="menu-item"><a href="{{ whereToGetHelpPage.url }}" class="menu-item-link">{{ whereToGetHelpPage.title}}</a></li>
   <li class="menu-item"><a href="{{ familyPage.url }}" class="menu-item-link">{{ familyPage.title}}</a></li>
-
-
-  <li class="menu-item menu-item--separator"><a href="" class="menu-item-link">{{ "Language settings" | t }}</a></li>
+  <li class="menu-item menu-item--separator">
+    {% if craft.app.language == "cy-GB" %}
+      <a href="{{ craft.app.config.general.siteUrl['en_gb'] }}" class="menu-item-link">English</a>
+      {% else %}
+      <a href="{{ craft.app.config.general.siteUrl['cy_gb'] }}" class="menu-item-link">Cymraeg</a>
+    {% endif %}
+  </li>
   <li class="menu-item"><a href="{{ changePasswordPage.url }}" class="menu-item-link">{{ "Change password" | t }}</a></li>
   
 {% endcache %}
