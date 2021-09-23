@@ -10,11 +10,11 @@
 		{% if craft.request.urlReferrer == url('profile/mood-monitor') %}
 			{% set redirectUrl = craft.request.urlReferrer %}
 		{% else %}
-			{% set redirectUrl = url('profile/dashboard') %}
+			{% set redirectUrl = url('/') %}
 		{% endif %}
 
 	    <input type="hidden" name="action" value="profiler/question/save-all-questions">
-		<input id="profileQuestionRedirect" type="hidden" name="redirect" value="profile/dashboard" data-uri="{{ redirectUrl }}">
+		<input id="profileQuestionRedirect" type="hidden" name="redirect" value="/" data-uri="{{ redirectUrl }}">
 		<div>
 
 		<div class="profile-question-container slick-carousel-container">

@@ -145,7 +145,7 @@ class QuestionController extends Controller
     
                 $model->userId = $currentUser->id;
                 $model->questionId = $question['profileQuestionId'];
-                $model->textValue = json_encode($question['profileQuestionCategories']);
+                $model->textValue = json_encode($relations);
                 $model->value = -1;
                 $model->hereFor = $hereFor;
                 $model->period = $period;

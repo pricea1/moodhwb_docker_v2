@@ -51,7 +51,7 @@
 	
 
 						<li class="user-options-category__item profile-user-options__category {% if loopCount == 1 %}profile-user-options__category--first {% endif %} {% if loopCount == itemCount %}profile-user-options__category--last {% endif %} {% if isStartOfColumn %}profile-user-options__category--column-start{% endif %} {% if isEndOfColumn %}profile-user-options__category--column-end{% endif %} {% if hasCategory is not null %}profile-user-options__mycategory{% else %}profile-user-options__notmycategory{% endif %} input-custom-checkbox-container">				        	
-							<input id="profileInput{{ fieldName | kebab }}{{ category.id }}" class="profile-user-options__input user-category-input" type="checkbox" name="fields[{{ fieldName }}][]" {% if hasCategory is not null %}checked{% endif %} value="{{ category.id }}">
+							<input id="profileInput{{ fieldName | kebab }}{{ category.id }}" class="profile-user-options__input user-category-input" type="checkbox" name="fields[{{ fieldName }}][]" value="{{ category.id }}">
 							<label for="profileInput{{ fieldName | kebab }}{{ category.id }}" class="profile-user-options__label profile-user-options__{{ categoryName }} profile-user-options-__{{ categoryName }}-{{ category.slug }}">{{ category.title }}</label>
 							{% if category.urlAddress %}
 								<div>
@@ -70,12 +70,12 @@
 								</div>
 							{% endif %}
 							</li>
-			    {% else %}
+			    {# {% else %}
 					{% if hasCategory %}
 						<li style="display:none">
 							<input id="profileInput{{ fieldName | kebab }}{{ category.id }}" class="profile-user-options__input user-category-input" type="checkbox" name="fields[{{ fieldName }}][]" checked value="{{ category.id }}">
 						</li>
-					{% endif %}    
+					{% endif %}     #}
 		        {% endif %}
 
 					{% ifchildren %}

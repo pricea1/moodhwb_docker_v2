@@ -160,7 +160,8 @@
         interactionId: "mood-complete",
         interactionCategory: "mood"
       });
-      questionChange(event, slick, currentSlide, nextSlide, function() {
+
+      questionChange(event, slick, currentSlide, function() {
         window.location.href = redirectUri;
       });
     }
