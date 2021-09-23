@@ -115,7 +115,7 @@
 	position: relative;
 
 	&:after{
-		content: $symbol-delete;
+		content: $symbol-cross;
 		font-family: $symbol-font-family;
 		position: absolute;
 		top: 8px;
@@ -177,13 +177,14 @@
     	position: relative;
     	top: 0;
     	left:0;
+			display: inline-block;
     }
 
     &__left{
 	    left: 0;
-	 	&:after{
-	 		@include rotate(-90deg);
-	 	}
+			&:after{
+				@include rotate(-90deg);
+			}
     }
 
     &__right{

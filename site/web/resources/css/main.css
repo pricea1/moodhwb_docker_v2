@@ -7101,6 +7101,7 @@ input.login-radio {
   position: absolute;
   top: 0;
   right: 0;
+  line-height: 3.125rem;
 }
 .module-nav__list--level1.nav-arrow--closed:after {
   -ms-transform: rotate(180deg);
@@ -7118,6 +7119,7 @@ input.login-radio {
     position: absolute;
     top: 0;
     right: 0;
+    line-height: 3.125rem;
   }
   .module-nav .module-nav__row:first-child .module-nav__item.nav-arrow--closed:after {
     -ms-transform: rotate(180deg);
@@ -7137,6 +7139,7 @@ input.login-radio {
     position: absolute;
     top: 0;
     right: 0;
+    line-height: 3.125rem;
   }
   .module-nav--closed .module-nav__row--current .module-nav__item.nav-arrow--closed:after {
     -ms-transform: rotate(180deg);
@@ -8428,6 +8431,7 @@ a.module-theme-6 {
   position: absolute;
   top: 0;
   right: 0;
+  line-height: 3.75rem;
 }
 .profile-dashboard-heading.profile-dashboard--nav-arrow.nav-arrow--closed:after {
   -ms-transform: rotate(180deg);
@@ -9232,7 +9236,7 @@ a.module-theme-6 {
   position: relative;
 }
 .google-visualization-tooltip:after {
-  content: "␡";
+  content: "close";
   font-family: "Material Icons";
   position: absolute;
   top: 8px;
@@ -9292,6 +9296,7 @@ a.module-theme-6 {
   position: absolute;
   top: 0;
   right: 0;
+  line-height: 3.75rem;
 }
 .mood-monitor-arrow.nav-arrow--closed:after {
   -ms-transform: rotate(180deg);
@@ -9302,6 +9307,7 @@ a.module-theme-6 {
   position: relative;
   top: 0;
   left: 0;
+  display: inline-block;
 }
 .mood-monitor-arrow__left {
   left: 0;
@@ -9868,6 +9874,7 @@ a.module-theme-6 {
   position: absolute;
   top: 0;
   right: 0;
+  line-height: 3.125rem;
 }
 .feature-block-case-study-link.nav-arrow--closed:after {
   -ms-transform: rotate(180deg);
