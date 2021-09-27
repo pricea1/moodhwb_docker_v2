@@ -211,6 +211,8 @@ return array(
 	"Done" => "Wedi gorffen",
 	"Skip" => "Sgipio",
 	"Remove" => 'Cael gwared',
+	"To Do" =>  'I wneud',
+	"Undo" => 'Dadwneud',
 	/* Forms */
 	"Change my picture" => "Newid fy llun",
 	"Updating picture" => "Diweddaru llun",

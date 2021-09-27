@@ -283,8 +283,17 @@ class GoalController extends Controller
 
         $goalInstance = new GoalTrackerModel();
         $goalInstance->userId = $currentUser->id;
-        $goalInstance->id = $request->post('id');
-        $goalInstance->status = $request->post('status');
+        
+        $id = $request->post('id');
+        $status = $request->post('status');
+
+        if (!$id){
+            $id = $request->getQueryParam('id');
+            $status = $request->getQueryParam('status');
+        }
+
+        $goalInstance->id = $id;
+        $goalInstance->status = $status;
 
         Profiler::$plugin->goalService->updateGoalStatus($goalInstance);
 

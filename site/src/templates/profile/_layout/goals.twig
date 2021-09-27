@@ -1,5 +1,10 @@
 {% extends "_layout" %}
 
+{% set status = craft.app.request.getQueryParam('status') %}
+{% if not status %}
+	{% set status = "todo" %}
+{% endif %}
+
 {% block content %}
 
 <div id="profileDashboardContainer" class="profile-goals-container">
@@ -104,26 +109,52 @@
 
 
 	<div class="profile-goals__list-container {% if goalList | length == 0 %}hide{% endif %}">
+		<div class="row">
+			<div class="small-3 column">
+					{% if status=="todo" %}
+						<h3>{{ "To Do"|t}}</h3>
+					{% else %}
+							<a class="button radius round profile-goals-add-button" href="?status=todo">{{"To Do" |t}}</a>
+					{% endif %}</h3>
+
+			</div>
+			<div class="small-3 column">
+				{% if status=="todo" %}
+					<a class="button radius round profile-goals-add-button" href="?status=done">{{"Done" |t }}</a>
+				{% else %}
+					<h3 class="right">{{"Done" |t}}</h3>
+				{% endif %}
+			</div>
+		</div>
 
 		<div class="profile-goals__todo-list ">
+			{% for date, goals in goalList
+					|sort ((a,b) => a[0].date <=> b[0].date ) %}
+					{% set statusGoals = goals |filter(g => g.status == status) %}
 
-			{% for date, goals in goalList |sort ((a,b) => a[0].date <=> b[0].date ) %}
+					{% if (statusGoals | length > 0) %}
 					<div class="row">
 						<div class="small-12 column">
 							<h3>{{ date |date("l d F") }}</h3>
 						</div>
 					</div>
+				 	{% endif %}
 
 			<div class="row">
 			<div class="small-12 column">
 			<ul class="profile-goals__list--todo ">
-					{% for goal in goals %}
+					{% for goal in goals |filter (g => g.status is same as(status)) %}
 					<li data-goal-id="{{ goal.id }}" class="profile-goals__list-item" data-status="{{ goal.status }}">
 							<span class="profile-goals__activity" id="profileGoalActivity">{{ goal.title}}</span>
+							
+							{% if status == "todo" %}
+								<a href="{{ actionUrl('profiler/goal/update-goal-status', { id: goal.id, status: 'done'}) }}" class="profile-goal__action-link" data-goal-status="{{ goal.status }}"  data-goal-action="complete">{{ 'Done'|t }}</a>
+								<a href="{{ actionUrl('profiler/goal/update-goal-status', { id: goal.id, status: 'skipped'}) }}" class="profile-goal__action-link" data-goal-status="{{ goal.status }}"  data-goal-action="skipped">{{ 'Skip'|t }}</a>
+								<a href="{{ actionUrl('profiler/goal/delete-goal', { goalId: goal.goalId }) }}" class="profile-goal__action-link" data-goal-action="delete">{{ 'Remove'|t }}</a>
+							{% else %}
+								<a href="{{ actionUrl('profiler/goal/update-goal-status', { id: goal.id, status: 'todo'}) }}" class="profile-goal__action-link" data-goal-status="{{ goal.status }}"  data-goal-action="complete">{{ 'Undo'|t }}</a>
+							{% endif %}
 
-							<a href="{{ actionUrl('actions/profiler/goal/update-goal-status', { id: goal.id, status: 'done'}) }}" class="profile-goal__action-link" data-goal-status="{{ goal.status }}"  data-goal-action="complete">{{ 'Done'|t }}</a>
-							<a href="{{ actionUrl('actions/profiler/goal/update-goal-status', { id: goal.id, status: 'skipped'}) }}" class="profile-goal__action-link" data-goal-status="{{ goal.status }}"  data-goal-action="skipped">{{ 'Skip'|t }}</a>
-							<a href="{{ actionUrl('profiler/goal/delete-goal', { goalId: goal.id }) }}" class="profile-goal__action-link" data-goal-action="delete">{{ 'Remove'|t }}</a>
 					</li>
 					{% endfor %}
 
