@@ -9,6 +9,7 @@
 {% set possibleReasonsPage = craft.entries.slug("possible-reasons").one() %}
 {% set otherHealthPage = craft.entries.slug("other-health-issues").one() %}
 {% set selfHelpPage = craft.entries.slug("self-help").one() %}
+{% set selfHelpThinkDifferentPage = craft.entries.slug("self-help-think-about-things-differently").one() %}
 {% set whereToGetHelpPage = craft.entries.slug("where-to-get-help").one() %}
 {% set familyPage = craft.entries.slug("families-friends-and-carers").one() %}
 {% set changePasswordPage = craft.entries.slug("forgotten-password").one() %}
@@ -25,9 +26,10 @@
 
   <li class="menu-item menu-item--separator"><a href="{{ depressionPage.url }}" class="menu-item-link">{{ depressionPage.title }}</a></li>
   <li class="menu-item"><a href="{{ possibleReasonsPage.url }}" class="menu-item-link">{{ possibleReasonsPage.title}}</a></li>
-  <li class="menu-item"><a href="{{ otherHealthPage.url }}" class="menu-item-link">{{ otherHealthPage.title}}</a></li>
   <li class="menu-item"><a href="{{ selfHelpPage.url }}" class="menu-item-link">{{ selfHelpPage.title}}</a></li>
+  <li class="menu-item"><a href="{{ selfHelpThinkDifferentPage.url }}" class="menu-item-link">{{ selfHelpThinkDifferentPage.title}}</a></li>
   <li class="menu-item"><a href="{{ whereToGetHelpPage.url }}" class="menu-item-link">{{ whereToGetHelpPage.title}}</a></li>
+  <li class="menu-item"><a href="{{ otherHealthPage.url }}" class="menu-item-link">{{ otherHealthPage.title}}</a></li>
   <li class="menu-item"><a href="{{ familyPage.url }}" class="menu-item-link">{{ familyPage.title}}</a></li>
   <li class="menu-item menu-item--separator">
   
