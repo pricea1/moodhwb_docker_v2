@@ -17,15 +17,18 @@
 		}
 
 		&.hide-collapsible {
-			.content-block-sub-item{
-				display: none;
-			}
-		
-			.module-collapsible__link{
-				&:before {
-					transform: rotate(-90deg);
+			@media screen {
+				.content-block-sub-item{
+					display: none;
 				}
+			
+				.module-collapsible__link{
+					&:before {
+						transform: rotate(-90deg);
+					}
+				}	
 			}
+
 		}
 
 	}

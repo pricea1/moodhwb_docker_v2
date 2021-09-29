@@ -7957,13 +7957,15 @@ a.module-theme-6 {
 .module-collapsible__container .content-block-sub-item p:last-of-type {
   margin-bottom: revert;
 }
-.module-collapsible__container.hide-collapsible .content-block-sub-item {
-  display: none;
-}
-.module-collapsible__container.hide-collapsible .module-collapsible__link:before {
-  -webkit-transform: rotate(-90deg);
-      -ms-transform: rotate(-90deg);
-          transform: rotate(-90deg);
+@media screen {
+  .module-collapsible__container.hide-collapsible .content-block-sub-item {
+    display: none;
+  }
+  .module-collapsible__container.hide-collapsible .module-collapsible__link:before {
+    -webkit-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+  }
 }
 .module-collapsible__link {
   background: none;
