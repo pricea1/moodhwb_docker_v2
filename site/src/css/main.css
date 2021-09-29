@@ -9882,7 +9882,7 @@ a.module-theme-6 {
   transform: rotate(180deg);
 }
 .feature-block-case-study-link:after {
-  top: 0.9375rem;
+  line-height: 3.75rem;
 }
 .feature-block-case-study-link:focus, .feature-block-case-study-link:hover {
   text-decoration: none;
@@ -9912,11 +9912,12 @@ a.module-theme-6 {
   }
 }
 
-.module-nav--closed .feature-block-case-study-text {
-  max-height: 0;
-  padding-bottom: 0;
+@media screen {
+  .module-nav--closed .feature-block-case-study-text {
+    max-height: 0;
+    padding-bottom: 0;
+  }
 }
-
 .no-js .feature-block-option-mylist-container {
   display: none;
 }

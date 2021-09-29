@@ -85,7 +85,7 @@
 
 	@include nav-arrow();
 	&:after {
-		top: rem-calc(15); // Slighly adjust vertical centering of arrow
+		line-height: rem-calc(60);
 	}
 
 	&:focus, &:hover{
@@ -113,9 +113,12 @@
 	}
 }
 
-.module-nav--closed{
-	.feature-block-case-study-text{
-		max-height: 0;
-		padding-bottom: 0;
+@media screen{
+	.module-nav--closed{
+		.feature-block-case-study-text{
+			max-height: 0;
+			padding-bottom: 0;
+		}
 	}
-}
+} 
+

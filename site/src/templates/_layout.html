@@ -172,7 +172,7 @@
 					</div>
 
 					{% if headers['moodhwbapp'] is not defined %}
-					<div class="footer-bottom__container">
+					<div class="footer-bottom__container hide-for-print">
 						<div class="row">
 							<div class="small-12 column">
 								<ul class="footer-links-list">
@@ -185,6 +185,9 @@
 								</ul>
 							</div>
 						</div>
+					</div>
+					<div class="show-for-print">
+						{{ craft.request.getUrl() }}
 					</div>
 				{% endif %}
 
