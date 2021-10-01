@@ -187,15 +187,27 @@ class Goal extends Component
         $channelName = "moodhwb_goals_" .$userId;
 
         $expo = \ExponentPhpSDK\Expo::normalSetup();
-
         $userNotificationTokensRecord = UserNotificationTokensRecord::findOne(['userId' => $userId]);
 
+        $hasNotifications = false;
+
+        try {
+            $notificationTokens = json_decode($userNotificationTokensRecord->notificationTokens);
+        } catch (\Exception $e) { return $e->getMessage() .'. userId:' .$userId; };
+
         // Subscribe the recipient to the server
-        $notificationTokens = json_decode($userNotificationTokensRecord->notificationTokens);
+
         foreach($notificationTokens as $notificationToken) {
-            $expo->subscribe($channelName, $notificationToken);
+            try{
+                $expo->subscribe($channelName, $notificationToken);
+                $hasNotifications = true;
+            } catch (\Exception $e) {  }
         }
         
+        if (!$hasNotifications){
+            return "No notifications for userId: " .$userId;
+        }
+
         foreach($goalList as $goal) {
             $body = $body . "• " .$goal['title'] ."\n";
         }
@@ -204,6 +216,7 @@ class Goal extends Component
         $notification = ['title' => $title, 'body' => $body];
         
         // Notify an interest with a notification        
-        return $expo->notify([$channelName], $notification);
+        $result = $expo->notify([$channelName], $notification);
+        return Array("userId" => $userId, "result" => $result, "goals" => $goalList);
     }
 }

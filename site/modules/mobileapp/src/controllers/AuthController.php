@@ -41,6 +41,10 @@ class AuthController extends UsersController
         $request = Craft::$app->getRequest();
         $currentUser =  Craft::$app->getUser()->getIdentity();
 
+        if (!$request->post('notificationToken') || $request->post('notificationToken') == "undefined"){
+            return;
+        }
+        
         $model = new UserNotificationTokensModel();
         $model->userId = $currentUser->id;
         $model->notificationTokens = $request->post('notificationToken');
