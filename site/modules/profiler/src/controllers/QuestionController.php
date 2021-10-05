@@ -189,7 +189,7 @@ class QuestionController extends Controller
         }
 */
 
-        if(!array_key_exists('hasAnsweredQuestions', $currentUser)){
+        if(!isset($currentUser->hasAnsweredQuestions)){
             $currentUser->setFieldValue("hasAnsweredQuestions", 'true' );
             Craft::$app->getElements()->saveElement($currentUser, false);    
         }
