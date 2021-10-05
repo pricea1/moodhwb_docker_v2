@@ -6807,6 +6807,10 @@ input.login-radio {
   }
 }
 
+body[data-os="linux"] .home-module-recommended-counter-container-item {
+  width: 2.5rem;
+}
+
 .home-module-image-container {
   position: relative;
   border-radius: 100px;

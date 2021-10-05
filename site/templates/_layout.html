@@ -80,7 +80,7 @@
 	{% endif %}
 </head>
 
-<body>
+<body data-os="{{ craft.request.clientOs | escape('html_attr') | lower }}">
 	<div id="container">
 
 		<div class="off-canvas-wrap" data-offcanvas>

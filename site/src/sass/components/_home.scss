@@ -88,9 +88,16 @@
 			line-height: rem-calc(48);
 		}
 	}
-
 }
 
+body[data-os="linux"] {
+	// Adjust for android phones
+	.home-module-recommended-counter-container {
+		&-item {
+			width: rem-calc(40);
+		}
+	}
+}
 .home-module-image-container {
 	position: relative;
 	border-radius: 100px;
