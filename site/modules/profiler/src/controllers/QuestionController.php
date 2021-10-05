@@ -221,7 +221,7 @@ class QuestionController extends Controller
             }
 
             if ($moodAnswer->type === "category") {
-                if (array_key_exists("value", $moodAnswer)){
+                if (isset($moodAnswer->value)){
                     $answerArray["profileQuestionCategories"] = $moodAnswer->value;
                 } else {
                     $answerArray["profileQuestionCategories"] = [];
@@ -229,59 +229,17 @@ class QuestionController extends Controller
             }
 
             if ($moodAnswer->type === "generic" ) {
-               if (array_key_exists("value", $moodAnswer)){
-                $answerArray["profileQuestionValue"] = $moodAnswer->value;
-               } else {
-                $answerArray["profileQuestionValue"] = "";
-              }
+                if (isset($moodAnswer->value)){
+                    $answerArray["profileQuestionValue"] = $moodAnswer->value;
+                } else {
+                    $answerArray["profileQuestionValue"] = "";
+                }
             }
 
             $response[$moodAnswer->id] = $this->actionSaveQuestion($answerArray, false);
         }
 
         return $this->asJson($response);
-
-    }
-
-    public function actionSaveAllQuestionsOLD()
-    {
-
-        /* TODO Make sure this works with both question and category question types */
-        
-        $request = Craft::$app->getRequest();
-
-        $profileIds = $request->post('profileQuestionId');
-        $profileQuestionAnswer = $request->post('profileQuestionAnswer');
-        $profileQuestionType = $request->post('profileQuestionType');
-        $profileQuestionCategories = $request->post('fields');
-        $profileQuestionValues = $request->post('profileQuestionValue');
-
-        foreach( $profileIds as $key => $profileId){
-
-            $answerArray = array(
-                "profileQuestionId" => $profileId
-            );
-
-            if (array_key_exists($key, $profileQuestionType)){
-                $answerArray["profileQuestionType"] = $profileQuestionType[$key];
-            }
-
-            if (array_key_exists($key, $profileQuestionAnswer)){
-                $answerArray["profileQuestionAnswer"] = $profileQuestionAnswer[$key];
-            }
-
-            if (array_key_exists($key, $profileQuestionCategories)){
-                $answerArray["profileQuestionCategories"] = $profileQuestionCategories[$key];
-            }
-
-            if (array_key_exists($key, $profileQuestionValues)){
-                $answerArray["profileQuestionValue"] = $profileQuestionValues[$key];
-            }
-
-            $this->actionSaveQuestion($answerArray, false);
-        }
-return $this->asJson($request->post());
-        return $this->redirect($request->post('redirect'));
 
     }
 
