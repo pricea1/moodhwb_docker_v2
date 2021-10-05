@@ -11,7 +11,7 @@
 return array(
     // ...
     '*' => array(
-        'enableCsrfProtection' => true,
+        'enableCsrfProtection' => false,
         'useEmailAsUsername' => true,
         'setPasswordPath' => array(
             'en_gb' => 'login/set-password',

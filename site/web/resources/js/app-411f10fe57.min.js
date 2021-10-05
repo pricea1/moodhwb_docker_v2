@@ -68,6 +68,7 @@
   opad.postActionRequest = function(req, data, cbSuccess, cbError) {
     // Add csrf token
     data[craftSettings.csrfTokenName] = craftSettings.csrfTokenValue;
+    data["appId"] = craftSettings.appId;
 
     var url =
       "/" +

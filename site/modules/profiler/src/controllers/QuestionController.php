@@ -228,8 +228,12 @@ class QuestionController extends Controller
                 }
             }
 
-            if ($moodAnswer->type === "generic") {
-                $answerArray["profileQuestionValue"] =$moodAnswer->value;
+            if ($moodAnswer->type === "generic" ) {
+               if (array_key_exists("value", $moodAnswer)){
+                $answerArray["profileQuestionValue"] = $moodAnswer->value;
+               } else {
+                $answerArray["profileQuestionValue"] = "";
+              }
             }
 
             $response[$moodAnswer->id] = $this->actionSaveQuestion($answerArray, false);

@@ -47,8 +47,8 @@ class DefaultController extends Controller
      *         The actions must be in 'kebab-case'
      * @access protected
      */
-    protected $allowAnonymous = ['index', 'get-recommended-modules'];
-
+     protected $allowAnonymous = ['index', 'get-recommended-modules', 'get-recommended-modules-summary'];
+     
     // Public Methods
     // =========================================================================
 
@@ -108,13 +108,22 @@ class DefaultController extends Controller
     {
         $categories = ['difficulty', 'reason', 'symptom','strengths','help'];
         $userSelectedIds = array();
+        $post = Craft::$app->getRequest()->getBodyParams();
 
-        $currentUser =  Craft::$app->getUser()->getIdentity();
+        // Pass userId as appId variable as app loses session
+        if (array_key_exists('appId', $post)){
+            Craft::$app->getUser()->loginByUserId($post['appId']);
+        }
+
+        $currentUser = Craft::$app->getUser()->getIdentity();
 
         foreach ($categories as $cat){
-            $userSelectedIds = array_merge($userSelectedIds, $currentUser[$cat]->ids() );
+                try {
+                   $userSelectedIds = array_merge($userSelectedIds, $currentUser[$cat]->ids() );
+                } catch (Exception $e) {}
+
         }
-        
+
         $submodules =  Moduleactions::$instance->moduleactionsService->getSubmodulesByCatId($currentUser->id, $userSelectedIds );
 
         $summary = array();

@@ -25,6 +25,7 @@ RUN echo "upload_max_filesize = 10M" > /usr/local/etc/php/php.ini && \
     echo "post_max_size = 10M" >> /usr/local/etc/php/php.ini && \
     echo "max_execution_time = 300" >> /usr/local/etc/php/php.ini && \
     echo "memory_limit = 256M" >> /usr/local/etc/php/php.ini && \
+    echo "session.cookie_lifetime = 0" >> /usr/local/etc/php/php.ini && \
     echo "error_reporting = E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED" >> /usr/local/etc/php/php.ini
 
 RUN echo "pm.max_children = 12" >> /usr/local/etc/php-fpm.conf

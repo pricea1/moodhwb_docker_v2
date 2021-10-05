@@ -18,6 +18,7 @@
 {% endif %}
 
 {% set lastViewed = craft.userLogin.updateLastViewed() %}
+{% set headers = craft.app.request.getHeaders() %} 
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" class="no-js">
@@ -42,6 +43,9 @@
 	    	csrfTokenValue: "{{ craft.app.request.csrfToken|e('js') }}",
 	    	actionTrigger: "{{ craft.app.config.general.actionTrigger }}",
 	    	language: "{{ craft.app.language }}",
+				{% if headers['moodhwbapp'] is defined %}
+					appId	: "{{ craft.app.user.id}}"
+				{% endif %}
 	    }
 
 	</script>
@@ -59,7 +63,7 @@
       };
     </script>
 
-	<script src="/resources/js/app-dd74ddc219.min.js"></script>
+	<script src="/resources/js/app-411f10fe57.min.js"></script>
 
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -81,7 +85,6 @@
 
 		<div class="off-canvas-wrap" data-offcanvas>
 		<div class="inner-wrap">
-			 {% set headers = craft.app.request.getHeaders() %} 
 			{% if headers['moodhwbapp'] is not defined %}
 			  {% include "./_partials/header.twig" %}
 			{% endif %}
