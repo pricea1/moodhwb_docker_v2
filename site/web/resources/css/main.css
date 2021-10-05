@@ -9357,8 +9357,7 @@ a.module-theme-6 {
 .content-block-sub-item ul li:before {
   content: "arrow_forward";
   font-family: "Material Icons";
-  position: absolute;
-  left: 0;
+  margin-right: 14px;
   width: 14px;
   height: 14px;
 }

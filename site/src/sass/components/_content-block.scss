@@ -15,8 +15,7 @@
 			&:before {
 				content: $symbol-arrow-right;
 				font-family: $symbol-font-family;
-				position: absolute;
-				left: 0;
+				margin-right: 14px;
 				width: 14px;
 				height: 14px;
 			}
