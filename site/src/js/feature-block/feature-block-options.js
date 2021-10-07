@@ -5,8 +5,10 @@
 
 	function init(){
 		var initialSettings;
-		
+
 		$('.feature-block-option-mylist-add').on('click', addUserOption);
+		$('.feature-block-option-mylist-input-button-user').on('click', saveUserOptions);
+
 		$('.feature-block-option-mylist-input').on('change', function(){
 
 			var $container = $(this).parents('.feature-block-option-mylist-container');
@@ -33,15 +35,7 @@
 			 	return;
 			 }
 
-			if (userType == "other"){
-				userOptionsOther = userOptionsOther || JSON.parse($listData.attr('data-json'));
-				if (userOptionsOther && typeof userOptionsOther[$listData.attr('id')] != 'undefined'){
 
-					userOptionsOther[$listData.attr('id')].forEach(function(item){
-						addUserOptionToPage(item, $container);				
-					})				
-				}
-			} else {
 				userOptions = userOptions || JSON.parse($listData.attr('data-json'));
 
 
@@ -50,39 +44,75 @@
 						addUserOptionToPage(item, $container);				
 					})				
 				}
-			}
 
 		});
 	}
 
+	function saveUserOptions(formEl){
+		var $form = $(this).parents('form');
+
+		var title = $form.find('#enterUserCategory').val();
+		var url = $form.find('#enterUserUrl').val();
+
+		if (!title || !url){
+			return;
+		}
+		
+		var params = {
+			title,
+			url
+		}
+
+		$.ajax({
+			url: "/actions/profiler/stuff-i-like/add-stuff-i-like",
+			type: "POST",
+			data: params,
+			success: function(data, status){
+			},
+			error: function(err){
+				// Error saving -- notify user?
+			}
+		});	
+		$form.find('#enterUserCategory').val('');
+		$form.find('#enterUserUrl').val('');
+		
+		return false;
+	}
+
 	function saveOptions(formEl, profileAgreed){
 
-		var $form = $($(formEl).parents('.feature-block-option').find('form'));
+		var $form = $($(formEl).parents('form'));
 
-		var $inputEl = $form.find('input[name="fields[userDefinedOptions]"]');
-		var $inputOtherEl = $form.find('input[name="fields[userDefinedOptionsOther]"]');
+		var $profileQuestionId = $form.find('input[name="profileQuestionId"]');
+		var formType = $profileQuestionId.val();
+		var params;
 
-		if (!profileAgreed && $('#saveProfileOverlay').first().hasClass('not-answered')){
-			opad.modal.openModal('#saveProfileOverlay', function(profileAgreed){
-				// Do saveOptions again if agreed to have user profile
-				document.getElementById('featureBlockOptionHasProfile').value = profileAgreed;
-				saveOptions(formEl, profileAgreed);
-			});
+		if (formType === "resource"){
+			if ( formEl.checked){
 
+				params = {
+						title:formEl.dataset.title,
+						url : formEl.dataset.url
+				}
+
+				$.ajax({
+					url: "/actions/profiler/stuff-i-like/add-stuff-i-like",
+					type: "POST",
+					data: params,
+					success: function(data, status){
+					},
+					error: function(err){
+						// Error saving -- notify user?
+					}
+				});	
+			}
+
+			 
 		} else {
-
-			if ($inputEl.length){
-				$inputEl.val( JSON.stringify(userOptions) );
-			}
-
-			if ($inputOtherEl.length){
-				$inputOtherEl.val( JSON.stringify(userOptionsOther) );
-			}
-
 			var formData = $form.serializeArray();
 			
 			$.ajax({
-				url: "",
+				url: "/actions/profiler/question/save-question",
 				type: "POST",
 				data: formData,
 				success: function(data, status){
