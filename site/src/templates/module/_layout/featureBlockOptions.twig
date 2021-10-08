@@ -5,7 +5,6 @@
 	{% set fieldName = "hereForOther" ~ fieldName|capitalize %}
 {% endif %}
 
-
 <div id="feature-block-option-{{entry.slug}}" data-option-id="{{ entry.categorieslist.value }}" class="module-block module-block-themed feature-block-option non-js-hide" data-modules="feature-block-options,feature-block-save-profile-modal">
 
 	<div class="row">
@@ -22,6 +21,7 @@
 					<input type="hidden" name="profileQuestionType" value="category">
 					<input type="hidden" name="profileQuestionId" value="{{ categoryName }}">
 					<input type="hidden" name="profileQuestionAnswer" value="0">
+					<input type="hidden" name="profileQuestionNotMoodUpdate" value="true">
 
 
 						{% include "_partials/user-category-list.twig" %}
@@ -34,40 +34,43 @@
 
 		</div>
 	</div>
-	<div class="row">
-		<div class="small-12 columns">
 
-			<div class="feature-block-option-mylist-container" data-user-type="{% if entry.hereFor == "other" %}other{% else %}self{% endif %}">
-				{% if categoryName != "" %}
-					{% set categoryList = craft.categories.group(categoryName) %}
-					{% if categoryList|length != 0 %}
-						<h3 class="feature-block-option-subheading">{{ "Anything not listed here?"|t }}</h3>
+	{% if categoryName == "resource" %}
+		<div class="row">
+			<div class="small-12 columns">
+
+				<div class="feature-block-option-mylist-container" data-user-type="{% if entry.hereFor == "other" %}other{% else %}self{% endif %}">
+					{% if categoryName != "" %}
+						{% set categoryList = craft.categories.group(categoryName) %}
+						{% if categoryList|length != 0 %}
+							<h3 class="feature-block-option-subheading">{{ "Anything not listed here?"|t }}</h3>
+						{% endif %}
+
+						{% set userCatId = entry.categorieslist.value %}
+					{% else %}
+						{% set userCatId = entry.title %}
 					{% endif %}
+						<ul id="{{ userCatId | kebab }}" data-json="{% if currentUser.userDefinedOptions %}{{ currentUser.userDefinedOptions }}{% else %}{}{% endif %}" class="hide feature-block-option-mylist"></ul>
+					
+					<form>
+						<input type="hidden" name="profileQuestionId" value="{{ categoryName }}">
+						<div class="feature-block-option-mylist-input-container">
+						<label for="enterUserCategory" class="feature-block-option-mylist-input-label">{{ "Enter"|t }} {{ categoryName |t}}</label>
+						<input id="enterUserCategory" type="text" class="feature-block-option-mylist-input"><!--
 
-					{% set userCatId = entry.categorieslist.value %}
-				{% else %}
-					{% set userCatId = entry.title %}
-				{% endif %}
-					<ul id="{{ userCatId | kebab }}" data-json="{% if currentUser.userDefinedOptions %}{{ currentUser.userDefinedOptions }}{% else %}{}{% endif %}" class="hide feature-block-option-mylist"></ul>
-				
-				<form>
-					<input type="hidden" name="profileQuestionId" value="{{ categoryName }}">
-				<div class="feature-block-option-mylist-input-container">
-					<label for="enterUserCategory" class="feature-block-option-mylist-input-label">{{ "Enter"|t }} {{ categoryName |t}}</label>
-					<input id="enterUserCategory" type="text" class="feature-block-option-mylist-input"><!--
+						{# if 1st category has URL then show URL field too #}
+						{% set catList = craft.categories.group(categoryName) %}
+						-->{% if catList and catList.one() and catList.one().urlAddress %}<!--
+						--><input id="enterUserUrl" type="text" class="feature-block-option-mylist-input feature-block-option-mylist-input-url" placeholder="{{ 'URL'|t }} e.g. moodhwb.org.uk">
+						{% endif %}
+						<button id="enterUserButton" class="button feature-block-option-mylist-input-button feature-block-option-mylist-input-button-user">{{ "Add"|t }} {{ categoryName |t}}</button>
+					</div>
+					</form>
 
-					{# if 1st category has URL then show URL field too #}
-					{% set catList = craft.categories.group(categoryName) %}
-					-->{% if catList and catList.one() and catList.one().urlAddress %}<!--
-					--><input id="enterUserUrl" type="text" class="feature-block-option-mylist-input feature-block-option-mylist-input-url" placeholder="{{ 'URL'|t }} e.g. moodhwb.org.uk">
-					{% endif %}
-					<button id="enterUserButton" class="button feature-block-option-mylist-input-button feature-block-option-mylist-input-button-user">{{ "Add"|t }} {{ categoryName |t}}</button>
 				</div>
-				</form>
 
 			</div>
-
 		</div>
-	</div>
+	{% endif %}
 
 </div>
