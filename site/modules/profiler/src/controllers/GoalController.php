@@ -36,7 +36,7 @@ class GoalController extends Controller
      *         The actions must be in 'kebab-case'
      * @access protected
      */
-    protected $allowAnonymous = ['send-notifications','generate-next-month-goals'];
+    protected $allowAnonymous = ['send-notifications','generate-next-goals'];
 
     private function generateWeeklyGoalInstances($goal, $startDate = 'now'){
  
@@ -45,7 +45,7 @@ class GoalController extends Controller
         $start = new \DateTime($startDate);
 
         $untilDate = new \DateTime($startDate);
-        $untilDate->modify('+5 years');
+        $untilDate->modify('+1 week');
 
         $weekId = $this->getWeekId();
 
@@ -84,7 +84,7 @@ class GoalController extends Controller
         $start = new \DateTime($startDate);
 
         $untilDate = new \DateTime($startDate);
-        $untilDate->modify('monday 4 week');       
+        $untilDate->modify('+1 week');       
 
         $weekId = $this->getWeekId();
         Profiler::$plugin->goalService->deleteFutureGoalInstances($goal, $start);
@@ -318,20 +318,21 @@ class GoalController extends Controller
         return $this->asJson($notifications);
     }
 
-    // public function actionGenerateNextMonthGoals()
-    // {
-    //     $goalsToRepeat =  Profiler::$plugin->goalService->getAllRepeatWeeklyGoals();
+
+    public function actionGenerateNextGoals()
+    {
+        //To be run on Sundays for following weeks goals
+        $goalsToRepeat =  Profiler::$plugin->goalService->getAllRepeatWeeklyGoals();
         
-    //     $startDate = new \DateTime('now');
-    //     $startDate->modify('monday 4 week'); 
+        $startDate = new \DateTime('tomorrow');
 
-    //     $repeats = Array($startDate->format('Y-m-d'));
+        $repeats = Array($startDate->format('Y-m-d'));
 
-    //     foreach ($goalsToRepeat as $goal) {
-    //         $repeats[] = $this->generateGoalInstances($goal, $startDate->format('Y-m-d'));
-    //     }
+        foreach ($goalsToRepeat as $goal) {
+            $repeats[] = $this->generateGoalInstances($goal, $startDate->format('Y-m-d'));
+        }
 
-    //     return $this->asJson($repeats);
-    // }
+        return $this->asJson($repeats);
+    }
     
 }

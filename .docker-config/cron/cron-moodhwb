@@ -21,3 +21,4 @@
 #
 # m h  dom mon dow   command
 30 8 * * * curl $MOODHWB_URL/actions/profiler/goal/send-notifications >>/var/log/cron.log 2>&1
+0 8 * * SUN curl $MOODHWB_URL/actions/profiler/goal/generate-next-goals >>/var/log/cron.log 2>&1
