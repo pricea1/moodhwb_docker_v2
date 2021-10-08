@@ -129,12 +129,16 @@ class DefaultController extends Controller
         $summary = array();
 
         foreach ($submodules as $submodule){
+            if ($submodule->parent){
+
             if ($submodule->parent->type == "modules") {
                 if (!array_key_exists($submodule->parent->id, $summary)){
                     $summary[$submodule->parent->id] = []; 
                 }
                 $summary[$submodule->parent->id][] = $submodule->id;
             }
+        }
+
         }
 
         return $this->asJson($summary);
