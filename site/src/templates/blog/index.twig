@@ -1,0 +1,25 @@
+{% extends "_layout" %}
+
+{% set query = craft.entries()
+  .section('blog')
+  .limit(10) %}
+
+{% paginate query as pageInfo, posts %}
+
+{% block content %}
+	<div class="row">
+	<div class="small-12 columns">
+    <h1 class="large heading">{{ "Blog"|t}}</h1>
+  </div>
+  </div>
+  {% include "blog/_includes/listing" with { posts: posts } only %}
+
+  <div class="row">
+  <div class="small-6 column">
+      {% if pageInfo.prevUrl %}<a href="{{ pageInfo.prevUrl }}">{{ "Previous" | t }}</a>{% endif %}
+  </div>
+  <div class="small-6 column text-right">
+    {% if pageInfo.nextUrl %}<a href="{{ pageInfo.nextUrl }}">{{ "Next" | t }}</a>{% endif %}
+  </div>
+  </div>
+{% endblock %}

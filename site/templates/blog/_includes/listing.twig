@@ -1,0 +1,12 @@
+{% for post in posts %}
+<div class="row">
+<div class="small-12 columns">
+  <div class="blog-listing-item">
+  <a href="{{ post.url }}" class="">
+    <h3 class="">{{ post.title }}</h3>
+  </a>
+  <div>{{ post.summary }}</div>
+  </div>
+</div>
+</div>
+{% endfor %}

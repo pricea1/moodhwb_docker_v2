@@ -250,6 +250,22 @@ return array(
 	"No search results found for" => "No search results found for (welsh)",
 	"Type something" => "Teipiwch rywbeth fan hyn",
 
-	"Yn Gymraeg" => "Yn Saesneg"
+	"Yn Gymraeg" => "Yn Saesneg",
 
+	/* Blog */
+	"Blog" => "Blog (cy)",
+
+	/* Dates */
+	'Jan' => 'Ion',
+	'Feb' => 'Chw',
+	'Mar' => 'Maw',
+	'Apr' => 'Ebr',
+	'May' => 'Mai',
+	'Jun' => 'Meh',
+	'Jul' => 'Gor',
+	'Aug' => 'Awst',
+	'Sep' => 'Medi',
+	'Oct' => 'Hyd',
+	'Nov' => 'Tach',
+	'Dec' => 'Rhag'
 );

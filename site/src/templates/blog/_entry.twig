@@ -1,0 +1,35 @@
+{% extends "_layout" %}
+
+{% set featureImage = {
+  mode: 'crop',
+  width: 900,
+  height: 600,
+  quality: 90
+} %}
+
+{% block content %}
+<div class="row">
+<div class="small-12 column">
+  <header class="blog-header">
+  <h1>{{ entry.title }}</h1>
+  
+  <time class="text-sm block pb-4" datetime="{{ entry.postDate | date('Y-m-d') }}">
+    {{ entry.postDate | date('d') }} {{ entry.postDate | date('M')|t }} {{ entry.postDate | date('Y')}}
+   </time>
+  </header>
+</div>
+</div>
+
+<div class="row">
+<div class="small-12 column">
+  {% if entry.featureImage | length %}
+    {% for image in entry.featureImage.all() %}
+      <img class="blog-image" src="{{ image.getUrl(featureImage) }}" alt="{{ image.title }}" />
+    {% endfor %}
+  {% endif %}
+
+  {% include "blog/_includes/post-blocks" with { blocks: entry.postContent.all() } only %}
+
+</div>
+</div>
+{% endblock %}

@@ -10278,3 +10278,15 @@ a.module-theme-6 {
   max-width: 483px;
   margin: auto;
 }
+
+.blog-listing-item {
+  margin-bottom: 20px;
+}
+
+.blog-header {
+  margin-bottom: 20px;
+}
+
+.blog-image {
+  margin-bottom: 20px;
+}
