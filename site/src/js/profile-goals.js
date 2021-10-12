@@ -3,7 +3,7 @@
 
 	function init(){
 
-		$('#profileGoalForm').submit( function(ev){
+		$('#profileGoalWeeklyForm').submit( function(ev){
 
 			// Override form submission with AJAX call
 			ev.preventDefault();
@@ -28,31 +28,41 @@
 				$input = $(inputs[i]);
 
 				if ($input.attr('name') !== "action"){
-					data[$input.attr('name')] = $input.val();
+					if (inputs[i].type === "checkbox"){
+						if (inputs[i].checked){
+							if (inputs[i].name.match(/\[\]$/)){
+								if (data[$input.attr('name')]) {
+									data[$input.attr('name')].push( $input.val());
+								} else {
+									data[$input.attr('name')]=[$input.val()];
+								}
+							
+							} else {
+								data[$input.attr('name')] = $input.val();
+							}
+						}
+					} else {
+						data[$input.attr('name')] = $input.val();
+					}
+					
 				}
 			}
 
 			// Add default goal data
 		//	data.id = "placeholder";
-			data.isTodo = true;
-			data.timesCompleted = 0;
-			data.status = "todo";
-			data.type = "weekly";
-
-			data.timesLeft = data.timesPerWeek - data.timesCompleted;
+		console.log({data});
 
 
+			// // Add item to goal lists quickly before repopulating after AJAX call
+			// var newToDoItem = opad.templates.profileGoalItemToDo({
+			// 	goal: data
+			// });
+			// $('.profile-goals__list--todo').prepend(newToDoItem);
 
-			// Add item to goal lists quickly before repopulating after AJAX call
-			var newToDoItem = opad.templates.profileGoalItemToDo({
-				goal: data
-			});
-			$('.profile-goals__list--todo').prepend(newToDoItem);
-
-			var newCompletedItem = opad.templates.profileGoalItemCompleted({
-				goal: data
-			});
-			$('.profile-goals__list--completed').prepend(newCompletedItem);
+			// var newCompletedItem = opad.templates.profileGoalItemCompleted({
+			// 	goal: data
+			// });
+			// $('.profile-goals__list--completed').prepend(newCompletedItem);
 
 
 			showWelcomeMsg(false);
@@ -64,7 +74,7 @@
 
 		function successCB(res){
 
-
+console.log({res});
 			// Update placeholder details with returned data from server
 			$('.profile-goals__list-item[data-goal-id="placeholder"]').attr('data-goal-id', res.id)
 				.find('a')
@@ -85,8 +95,8 @@
 
 		}
 
-		function errorCB(){
-
+		function errorCB(err){
+			console.log({err})
 		}
 
 

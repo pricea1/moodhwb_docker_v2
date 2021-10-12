@@ -167,6 +167,8 @@ return array(
 	"weeklygoals-step1" => "Cofnodwch y gweithgaredd hoffech ei wneud",
 	"weeklygoals-step2" => "Cofnodwch pa mor aml hoffech ei wneud bob wythnos",
 	"weeklygoals-step3" => "Ychwanegwch ef, a phan y'ch chi wedi'i wneud, ticiwch ef o'r rhestr",
+	"Create weekly goal" => "Creu targed wythnosol",
+	"The title of your goal" => "Teitl eich targed",
 	/* Profile Stuff I Like */
 	"This is where you can add some stuff that makes you feel good." => "Dyma ble ry'ch chi'n gallu adio pethau sy'n gwneud i chi deimlo'n dda",
 	"Add a website" => "Adio gwefan",
@@ -213,6 +215,8 @@ return array(
 	"Remove" => 'Cael gwared',
 	"To Do" =>  'I wneud',
 	"Undo" => 'Dadwneud',
+	"Select the days of the week" => "Dewiswch ddiwrnodau'r wythnos",
+	"Set reminder" => "Gosod nodyn atgoffa",
 	/* Forms */
 	"Change my picture" => "Newid fy llun",
 	"Updating picture" => "Diweddaru llun",
@@ -267,5 +271,13 @@ return array(
 	'Sep' => 'Medi',
 	'Oct' => 'Hyd',
 	'Nov' => 'Tach',
-	'Dec' => 'Rhag'
+	'Dec' => 'Rhag',
+
+	"SU"=> 'Sul',
+	"MO"=> 'Llun',
+	"TU"=> 'Mawrth',
+	"WE"=> 'Mercher',
+	"TH"=> 'Iau',
+	"FR"=> 'Gwener',
+	"SA"=> 'Sadwrn'
 );

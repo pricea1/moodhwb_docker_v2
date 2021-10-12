@@ -22,4 +22,12 @@ return array(
 	"welcome-summary-normal" => "Things could be better",
 	"welcome-summary-good" => "Things look pretty good",
 	"welcome-summary-bad" => "Things don't look very good",
+
+	"SU"=> 'Sunday',
+	"MO"=> 'Monday',
+	"TU"=> 'Tuesday',
+	"WE"=> 'Wednesday',
+	"TH"=> 'Thursday',
+	"FR"=> 'Friday',
+	"SA"=> 'Saturday'
 );

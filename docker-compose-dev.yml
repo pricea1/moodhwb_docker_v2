@@ -33,6 +33,8 @@ services:
       - ./site/modules:/var/www/html/modules
       - ./site/web:/var/www/html/web
       - ./site/composer.json:/var/www/html/composer.json
+    environment:
+      DB_SERVER: database
 
   database:
     image: mariadb:10.5
