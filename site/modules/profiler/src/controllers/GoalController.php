@@ -243,7 +243,13 @@ class GoalController extends Controller
         $model->repeatWeekly = $request->post('repeatWeekly') === "true";
 
         if ($model->type === "weekly") {
-            $model->weeklyDays = $request->post('weeklyDays');
+            $weeklyDays = $request->post('weeklyDays');
+            if (is_array($weeklyDays)){
+                $model->weeklyDays = '["' .implode('","', $request->post('weeklyDays')) .'"]';
+
+            } else {
+                $model->weeklyDays = $request->post('weeklyDays');
+            }
         } else {
             $model->onceDate = $request->post('onceDate');
         }

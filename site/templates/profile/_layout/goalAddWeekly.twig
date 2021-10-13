@@ -44,7 +44,7 @@
                     <label for="{{dayKey}}">{{dayKey|t }}</label>
                   </div>
                   <div  class="small-8 medium-10 column">
-                    <input id="{{dayKey}}" type="checkbox" name="updateDays[]" value="{{dayKey}}">
+                    <input id="{{dayKey}}" type="checkbox" name="weeklyDays[]" value="{{dayKey}}">
                   </div>
                   </div>
                   {% endfor %}
@@ -69,12 +69,4 @@
 
 						    </form>
 </div>
-{% endblock %}
-
-{% block jsBlock %}
-	<script>
-		$(document).ready(function(){
-			opad.initJsModule(['profile-goals']);
-		});
-	</script>
 {% endblock %}
