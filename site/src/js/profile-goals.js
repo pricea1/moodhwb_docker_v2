@@ -3,101 +3,13 @@
 
 	function init(){
 
-		$('#profileGoalWeeklyForm').submit( function(ev){
-
-			// Override form submission with AJAX call
-			ev.preventDefault();
-
-			var $this = $(this);
-			var action = $this.find('[name="action"]').attr('value').split('/');
-			var inputs = $this.find('[name]');
-
-
-			var request = {
-				plugin: action[0],
-				controller: action[1],
-				action: action[2]
-			}
-
-			var data = {};
-
-			var $input;
-
-			// Create data object for AJAX from form inputs
-			for (var i = 0; i < inputs.length; i++){
-				$input = $(inputs[i]);
-
-				if ($input.attr('name') !== "action"){
-					if (inputs[i].type === "checkbox"){
-						if (inputs[i].checked){
-							if (inputs[i].name.match(/\[\]$/)){
-								if (data[$input.attr('name')]) {
-									data[$input.attr('name')].push( $input.val());
-								} else {
-									data[$input.attr('name')]=[$input.val()];
-								}
-							
-							} else {
-								data[$input.attr('name')] = $input.val();
-							}
-						}
-					} else {
-						data[$input.attr('name')] = $input.val();
-					}
-					
-				}
-			}
-
-			// Add default goal data
-		//	data.id = "placeholder";
-		console.log({data});
-
-
-			// // Add item to goal lists quickly before repopulating after AJAX call
-			// var newToDoItem = opad.templates.profileGoalItemToDo({
-			// 	goal: data
-			// });
-			// $('.profile-goals__list--todo').prepend(newToDoItem);
-
-			// var newCompletedItem = opad.templates.profileGoalItemCompleted({
-			// 	goal: data
-			// });
-			// $('.profile-goals__list--completed').prepend(newCompletedItem);
-
-
-			showWelcomeMsg(false);
-			showAllTodoDoneMsg(false);
-
-			opad.postActionRequest(request, data, successCB, errorCB);
-
-		})
-
-		function successCB(res){
-
-console.log({res});
-			// Update placeholder details with returned data from server
-			$('.profile-goals__list-item[data-goal-id="placeholder"]').attr('data-goal-id', res.id)
-				.find('a')
-				.each(function(){
-
-					var $this = $(this);
-					var href = $this.attr('href');
-					href = href.replace('placeholder', res.id);
-					$this.attr('href', href);
-				})
-
-			craftEventTracker.sendEvent({
-				interactionId: 			'profile-goal-add',
-				interactionCategory: 	'profile',
-				parameter1: 			res.userId,
-				parameter2: 			res.activity
-			});
-
-		}
-
-		function errorCB(err){
-			console.log({err})
-		}
+		datePickerController.createDatePicker({
+            // Associate the text input to a DD/MM/YYYY date format                            
+            formElements: { "onceDate": "%Y-%m-%d" },
+            noFadeEffect: true,
+						noPopup: true,
+            labelText: "Date"
+        });
 
 
 

@@ -169,6 +169,7 @@ return array(
 	"weeklygoals-step3" => "Ychwanegwch ef, a phan y'ch chi wedi'i wneud, ticiwch ef o'r rhestr",
 	"Create weekly goal" => "Creu targed wythnosol",
 	"The title of your goal" => "Teitl eich targed",
+	"Repeat weekly" => "Ail-wneud yn wythnosol",
 	/* Profile Stuff I Like */
 	"This is where you can add some stuff that makes you feel good." => "Dyma ble ry'ch chi'n gallu adio pethau sy'n gwneud i chi deimlo'n dda",
 	"Add a website" => "Adio gwefan",

@@ -250,18 +250,21 @@ class GoalController extends Controller
             } else {
                 $model->weeklyDays = $request->post('weeklyDays');
             }
+
+            if (!$model->title || !$model->weeklyDays){
+                return;
+            }
         } else {
             $model->onceDate = $request->post('onceDate');
+            if (!$model->title || !$model->onceDate){
+                return;
+            }
         }
 
         if ( $request->post('thumbnailUri') ){
             $model->thumbnailUri = $request->post('thumbnailUri');
         }
 
-        if (!$model->title || !$model->weeklyDays){
-            return;
-        }
-        
         $newGoal = Profiler::$plugin->goalService->addGoal($model);
         Craft::$app->session->setNotice(Craft::t('site','Goal saved.'));
         

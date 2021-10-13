@@ -1,0 +1,87 @@
+{% extends "_layout" %}
+
+{% set days= ['MO', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU'] %}
+
+{% block content %}
+
+<div id="profileDashboardContainer" class="profile-goals-container">
+
+	<div id="profileDashboardHeadingContainer" class="profile-dashboard-heading-container">
+
+		<div class="row">
+			<div  class="small-12 column">
+				<div id="profileDashboardHeading" class="profile-dashboard-heading profile-dashboard--no-arrow">
+					<h2 class="profile-dashboard-heading__text">{{ "Create weekly goal" |t}}</h2>
+				</div>
+			</div>
+		</div>
+  </div>
+
+  
+
+  						<form id="profileGoalWeeklyForm" class="profile-goals-form" method="post" accept-charset="UTF-8">
+							{{ csrfInput() }}
+
+							  <input type="hidden" name="action" value="profiler/goal/add-goal">
+                <input type="hidden" name="type" value="once">
+                
+                  <div class="row">
+								  <div  class="small-12 medium-4 column">
+                    <label for="profileGoalActivity"><h3>{{ "The title of your goal"|t }}</h3></label>
+								    <input id="profileGoalActivity" name="title" class="	radius profile-goals-input" type="text" placeholder="{{ "Title"|t }}">
+								</div>
+                </div>
+
+                 <div class="row">
+								  <div  class="small-12 column">
+                  <h3>{{ "Select the days of the week"|t}}</h3>
+                </div>
+                </div>
+
+                <div class="row">
+                <div  class="small-4 medium-2 column">
+
+                    <label for="onceDate">{{ "Select a day" | t}}</label>
+                    <input type="text" id="onceDate" name="onceDate" value="" maxlength="10" />
+                 </div>
+                 </div>
+
+                 <div class="row">
+								  <div  class="small-4 medium-2 column">
+                    <label for="setReminder">{{ "Set reminder"|t }}</label>
+                  </div>
+                  <div  class="small-8 medium-10 column">
+								    <input id="setReminder" name="setReminder" class="	radius profile-goals-input" type="checkbox" value="true">
+								  </div>
+								</div>
+                <div class="row">
+								  <div  class="small-4 medium-2 column">
+                    <label for="repeatWeekly">{{ "Repeat weekly"|t }}</label>
+                  </div>
+                  <div  class="small-8 medium-10 column">
+								    <input id="repeatWeekly" name="repeatWeekly" class="	radius profile-goals-input" type="checkbox" value="true">
+								  </div>
+								</div>
+
+                 <div class="row">
+								<div  class="small-12 medium-4 column">
+
+									<button type="submit" class="button radius round profile-goals-add-button">{{ 'Add goal'|t }}</button>
+								</div>
+                </div>
+
+						    </form>
+</div>
+
+<link rel="stylesheet" href="//assets.cms.gov/resources/libs/datepicker/v6/css/datepicker.css" />
+<script type="text/javascript" src="//assets.cms.gov/resources/libs/datepicker/v6/js/datepicker.js"></script> 
+
+{% endblock %}
+
+{% block jsBlock %}
+	<script>
+		$(document).ready(function(){
+			opad.initJsModule(['profile-goals']);
+		});
+	</script>
+{% endblock %}
