@@ -258,6 +258,10 @@ class GoalController extends Controller
             $model->thumbnailUri = $request->post('thumbnailUri');
         }
 
+        if (!$model->title || !$model->weeklyDays){
+            return;
+        }
+        
         $newGoal = Profiler::$plugin->goalService->addGoal($model);
         Craft::$app->session->setNotice(Craft::t('site','Goal saved.'));
         
