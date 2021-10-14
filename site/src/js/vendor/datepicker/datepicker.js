@@ -1,5 +1,7 @@
 ﻿/*! DatePicker v6a MIT/GPL2 @freqdec */
-var datePickerController = (function datePickerController() {
+;(function(window, document, $){
+
+window.datePickerController = (function datePickerController() {
 
     var debug = false,
         urlLocal = $("html").attr("lang"),
@@ -2138,14 +2140,13 @@ var datePickerController = (function datePickerController() {
         var altText = this.labelText ? getTitleTranslation(14, [this.labelText]) : but.title;
         var fontIconHolder = document.createElement("span");
 
-        fontIconHolder.className = "fa fa-calendar";
-        fontIconHolder.style.fontFamily = "FontAwesome";
-        fontIconHolder.innerHTML = '<span class="adobeBlank">Calendar</span>';
+        fontIconHolder.className = "calendar-button";
+        fontIconHolder.innerHTML = '<span class="material-icons">calendar_today</span>';
         span.appendChild(fontIconHolder);
         but.appendChild(span);
 
         span = document.createElement('span');
-        span.className = "sr-only";
+        span.className = "show-for-sr";
         span.appendChild(document.createTextNode(altText));
         but.appendChild(span);
         //setARIAProperty(but, "label", altText);
@@ -3682,3 +3683,4 @@ var datePickerController = (function datePickerController() {
         }
     };
 })();
+})(window, document, jQuery);

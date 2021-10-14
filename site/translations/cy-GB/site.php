@@ -24,6 +24,7 @@ return array(
 	"MoodHwb_Strapline" => "Mood: (noun, English) A state of mind or feeling. Hwb: (noun, Welsh) 1) hub; 2) boost, lift, fillip. [WELSH]",
 	"Privacy policy" => "Privacy policy (CY)",
 	"Cookies" => "Cookies (CY)",
+	"e.g." => "e.e.",
 	/* End general mapping */
 
 

@@ -57,6 +57,10 @@
 	font-weight: bold;
 }
 
+.profile-goals__list-container {
+	padding-top: rem-calc(20);
+}
+
 .profile-goals__list{
 	margin-bottom: 0;
 }
@@ -112,4 +116,15 @@
 
 .profile-goals-days-list {
 	margin-bottom: 20px;
+}
+
+.profile-goals-date-input {
+	width: calc(100% - 50px) !important; 
+	display: inline-block !important;
+}
+
+.date-picker-control {
+	float: right !important; 
+	border: none !important; 
+	box-shadow: none !important; 
 }

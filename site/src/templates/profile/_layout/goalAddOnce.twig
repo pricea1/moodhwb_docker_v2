@@ -32,17 +32,11 @@
 								</div>
                 </div>
 
-                 <div class="row">
-								  <div  class="small-12 column">
-                  <h3>{{ "Select the days of the week"|t}}</h3>
-                </div>
-                </div>
-
                 <div class="row">
-                <div  class="small-4 medium-2 column">
+                <div  class="small-4 medium-4 column">
 
-                    <label for="onceDate">{{ "Select a day" | t}}</label>
-                    <input type="text" id="onceDate" name="onceDate" value="" maxlength="10" />
+                    <label for="onceDate"><h3>{{ "Select a day" | t}}</h3></label>
+                    <input class="profile-goals-date-input" type="text" id="onceDate" name="onceDate" value="" maxlength="10" placeholder="{{ "e.g."|t }} {{ "now" |date("Y-m-d") }}"/>
                  </div>
                  </div>
 
@@ -64,17 +58,16 @@
 								</div>
 
                  <div class="row">
-								<div  class="small-12 medium-4 column">
-
-									<button type="submit" class="button radius round profile-goals-add-button">{{ 'Add goal'|t }}</button>
-								</div>
+									<div class="small-12 medium-4 column">
+										<button type="submit" class="button radius round profile-goals-add-button">{{ 'Add goal'|t }}</button>
+									</div>
+									<div class="small-12 medium-4 column end">
+										<a href="{{ url('profile/goals') }}" type="submit" class="button button--outline radius round profile-goals-add-button">{{ 'Cancel'|t }}</a>
+									</div>
                 </div>
 
 						    </form>
 </div>
-
-<link rel="stylesheet" href="//assets.cms.gov/resources/libs/datepicker/v6/css/datepicker.css" />
-<script type="text/javascript" src="//assets.cms.gov/resources/libs/datepicker/v6/js/datepicker.js"></script> 
 
 {% endblock %}
 

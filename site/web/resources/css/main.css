@@ -5670,6 +5670,12 @@ button:focus {
   background: rgba(0, 0, 0, 0.3);
 }
 
+.button--outline {
+  background: none;
+  border: 1px solid #2D5976;
+  color: #2D5976;
+}
+
 .row {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
@@ -8323,6 +8329,10 @@ a.module-theme-6 {
   font-weight: bold;
 }
 
+.profile-goals__list-container {
+  padding-top: 1.25rem;
+}
+
 .profile-goals__list {
   margin-bottom: 0;
 }
@@ -8370,6 +8380,18 @@ a.module-theme-6 {
 
 .profile-goals-days-list {
   margin-bottom: 20px;
+}
+
+.profile-goals-date-input {
+  width: calc(100% - 50px) !important;
+  display: inline-block !important;
+}
+
+.date-picker-control {
+  float: right !important;
+  border: none !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
 }
 
 .profile-stuff-i-like__title {

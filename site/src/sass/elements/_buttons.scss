@@ -44,3 +44,9 @@ button:focus{
 		background: $button-bg-color-hover-invert;
 	}
 }
+.button--outline{
+	background: none;
+	border: 1px solid $button-bg-color;
+	color: $button-bg-color;
+
+}

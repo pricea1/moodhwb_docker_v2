@@ -21,7 +21,7 @@
 {% set headers = craft.app.request.getHeaders() %} 
 
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" class="no-js">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="{{ craft.app.language |lower }}" class="no-js">
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,6 +36,7 @@
       rel="stylesheet">
 
 	<!-- build:css /resources/css/main.css -->
+		<link rel="stylesheet" href="/js/vendor/datepicker/datepicker.css">
     <link rel="stylesheet" href="/css/main.css">
 	<!-- endbuild -->
 
@@ -77,6 +78,8 @@
 	    <script type="text/javascript" src="/bower_components/picturefill/dist/picturefill.min.js"></script>
 
 	    <script src="/js/vendor/jwplayer-7.0.0/jwplayer.js"></script>
+			<script src="/js/vendor/datepicker/datepicker.js"></script>
+
 
 	<!-- endbuild -->
 

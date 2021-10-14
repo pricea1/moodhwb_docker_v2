@@ -256,7 +256,14 @@ class GoalController extends Controller
             }
         } else {
             $model->onceDate = $request->post('onceDate');
+            
             if (!$model->title || !$model->onceDate){
+                return;
+            }
+
+            $checkDateFormat = \DateTime::createFromFormat("Y-m-d", $model->onceDate);
+            $isValid =  $checkDateFormat && $checkDateFormat->format("Y-m-d") === $model->onceDate;
+            if (!$isValid){
                 return;
             }
         }
