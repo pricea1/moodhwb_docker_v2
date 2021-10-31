@@ -237,7 +237,7 @@
 
 		&__list--level2 {
 			@include dot-breadcrumb(module-nav__row, module-nav__link, module-nav__link-text);
-			margin: rem-calc(20) rem-calc(50) rem-calc(50) rem-calc(50);
+			margin: rem-calc(20) rem-calc(50);
 
 			.module-nav__row {
 				float: left;

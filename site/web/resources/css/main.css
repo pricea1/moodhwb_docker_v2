@@ -5599,7 +5599,7 @@ h2 {
 }
 
 [data-modules="module"] .large-heading {
-  margin-top: 0;
+  margin: 2rem 0;
 }
 
 .light-heading, .profile-goals__welcome-msg p, .profile-dashboard-subheading {
@@ -7226,7 +7226,7 @@ body[data-os="linux"] .home-module-recommended-counter-container-item {
     min-height: 4.44444rem;
     margin-left: 0.27778rem;
     margin-right: 0.27778rem;
-    margin: 1.11111rem 2.77778rem 2.77778rem 2.77778rem;
+    margin: 1.11111rem 2.77778rem 1.11111rem 2.77778rem;
   }
 }
 @media only screen and (min-width: 42.66667em) and (min-width: 42.66667em) {
