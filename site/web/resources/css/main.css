@@ -5827,7 +5827,9 @@ button:focus {
 }
 
 .header-nav-link-menu-icon {
-  vertical-align: text-top;
+  vertical-align: inherit;
+  display: inline-block;
+  line-height: 60px;
 }
 
 .header-nav-link-list {

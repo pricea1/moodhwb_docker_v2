@@ -81,7 +81,9 @@
 
 .header-nav-link-menu-icon {
         @extend .material-icons;
-        vertical-align: text-top;
+        vertical-align: inherit;
+        display: inline-block;
+        line-height: 60px;
 }
 
 
