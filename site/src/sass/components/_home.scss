@@ -212,7 +212,7 @@ body[data-os="linux"] {
 
 .home-heading{
 	margin-top: rem-calc(15);
-	margin-bottom: 0;
+	margin-bottom: rem-calc(18);
 	@extend .font-style-xl-device-lg;
 
 	&-subtext{
