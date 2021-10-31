@@ -75,6 +75,7 @@
 
     &.active {
         color: $menu-color-highlight;
+        border-bottom: 5px solid $menu-color-highlight;
     }
 }
 

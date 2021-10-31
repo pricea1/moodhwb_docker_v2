@@ -6590,6 +6590,7 @@ button:focus {
 .header-nav-link:focus.active,
 .footer-nav-link:focus.active {
   color: #F7C53E;
+  border-bottom: 5px solid #F7C53E;
 }
 
 .header-nav-link-menu-icon {
