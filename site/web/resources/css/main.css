@@ -3488,7 +3488,7 @@ p {
   font-family: inherit;
   font-size: 0.88889rem;
   font-weight: normal;
-  line-height: 1.22222rem;
+  line-height: 1.5rem;
   margin-bottom: 1.11111rem;
   text-rendering: optimizeLegibility;
 }
@@ -3594,7 +3594,7 @@ ol,
 dl {
   font-family: inherit;
   font-size: 0.88889rem;
-  line-height: 1.22222rem;
+  line-height: 1.5rem;
   list-style-position: outside;
   margin-bottom: 1.11111rem;
 }
@@ -3692,7 +3692,7 @@ blockquote cite a:visited {
 
 blockquote,
 blockquote p {
-  line-height: 1.22222rem;
+  line-height: 1.5rem;
   color: #6f6f6f;
 }
 
@@ -6168,7 +6168,7 @@ ul.off-canvas-list .off-canvas-list__item a {
   }
   .two-columns > p,
   .three-columns > p {
-    padding-bottom: 1.22222rem;
+    padding-bottom: 1.5rem;
   }
 
   .two-columns {
