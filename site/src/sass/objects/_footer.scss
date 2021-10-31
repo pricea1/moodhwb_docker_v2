@@ -14,11 +14,20 @@
 }
 
 .footer-image-container{
-	display:block;
-	margin-top: rem-calc(30);
+	text-align: center;
+
+	img {
+		display: block;
+		margin: 32px auto
+	}
+
 	@media #{$medium-up}{
-		display: inline-block;
-		margin: rem-calc(20);
+		display: flex;
+		justify-content: space-between;
+
+		img {
+			margin: 0;
+		}
 	}
 }
 
@@ -62,6 +71,7 @@
 .footer-strapline{
 	text-align: center;
 	font-size: rem-calc(16);
+	line-height: rem-calc(32);
 
 	&-container {
 		padding: rem-calc(30) 0;

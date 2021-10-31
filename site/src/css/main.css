@@ -5890,13 +5890,23 @@ button:focus {
 }
 
 .footer-image-container {
+  text-align: center;
+}
+.footer-image-container img {
   display: block;
-  margin-top: 1.66667rem;
+  margin: 32px auto;
 }
 @media only screen and (min-width: 42.66667em) {
   .footer-image-container {
-    display: inline-block;
-    margin: 1.11111rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .footer-image-container img {
+    margin: 0;
   }
 }
 
@@ -5938,6 +5948,7 @@ button:focus {
 .footer-strapline {
   text-align: center;
   font-size: 0.88889rem;
+  line-height: 1.77778rem;
 }
 .footer-strapline-container {
   padding: 1.66667rem 0;
