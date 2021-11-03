@@ -5360,6 +5360,22 @@ a, a:hover, a:focus {
   text-decoration: underline;
 }
 
+a:focus {
+  outline: 3px solid transparent !important;
+  color: #333 !important;
+  background-color: #fd0 !important;
+  -webkit-box-shadow: 0 -2px #fd0, 0 4px #333 !important;
+          box-shadow: 0 -2px #fd0, 0 4px #333 !important;
+  text-decoration: none !important;
+}
+
+a.button:focus, .js .profile-dashboard__details__item a.profile-dashboard-category-label:focus {
+  outline: 3px solid #fd0;
+  outline-offset: 0;
+  -webkit-box-shadow: inset 0 0 0 4px #333;
+          box-shadow: inset 0 0 0 4px #333;
+}
+
 p a, p a:hover, p a:focus {
   text-decoration: underline;
 }
@@ -5391,6 +5407,12 @@ input {
 }
 input[type="text"], input[type="password"] {
   height: 2.22222rem;
+}
+input:focus {
+  outline: 3px solid #fd0 !important;
+  outline-offset: 0;
+  -webkit-box-shadow: inset 0 0 0 2px;
+          box-shadow: inset 0 0 0 2px;
 }
 
 .input-custom-radio-container {
@@ -5621,7 +5643,10 @@ h2 {
 }
 
 button:focus {
-  outline: 0;
+  outline: 3px solid #fd0;
+  outline-offset: 0;
+  -webkit-box-shadow: inset 0 0 0 2px;
+          box-shadow: inset 0 0 0 2px;
 }
 
 .button-container {
@@ -7226,7 +7251,7 @@ body[data-os="linux"] .home-module-recommended-counter-container-item {
     min-height: 4.44444rem;
     margin-left: 0.27778rem;
     margin-right: 0.27778rem;
-    margin: 1.11111rem 2.77778rem 1.11111rem 2.77778rem;
+    margin: 1.11111rem 2.77778rem;
   }
 }
 @media only screen and (min-width: 42.66667em) and (min-width: 42.66667em) {
