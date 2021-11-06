@@ -5433,23 +5433,20 @@ input:focus {
   visibility: hidden;
   position: absolute;
 }
-.input-custom-radio-container input[type="radio"]:checked + label:before {
-  background: #fff;
-  border: 3px solid #333333;
-}
 .input-custom-radio-container input[type="radio"] + label {
   cursor: pointer;
   margin-left: 1.66667rem;
 }
 .input-custom-radio-container input[type="radio"] + label:before {
-  content: ' ';
+  font-family: "Material Icons";
+  content: "radio_button_unchecked";
+  font-size: 1.33333rem;
   position: absolute;
-  left: 0;
-  top: 0.11111rem;
-  width: 1.11111rem;
-  height: 1.11111rem;
-  background: #333333;
-  border-radius: 1.11111rem;
+  left: 2px;
+  top: -4px;
+}
+.input-custom-radio-container input[type="radio"]:checked + label:before {
+  content: "radio_button_checked";
 }
 
 .range-slider {

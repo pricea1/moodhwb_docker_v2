@@ -6,30 +6,26 @@
 		visibility: hidden;
 		position: absolute;
 
-		&:checked{
-			&+label{
-				&:before{
-					background: $white;
-					border: 3px solid $oil;
-				}
-			}
-		}
+
 
 		&+label{
 			cursor: pointer;
 			margin-left: rem-calc(30);
 
 			&:before{
-				content: ' ';
+				font-family: $symbol-font-family;
+				content: $symbol-radio-unchecked;
+				font-size: rem-calc(24);
 				position: absolute;
-				left: 0;
-				top: rem-calc(2);
-				width: rem-calc(20);
-				height: rem-calc(20);
+				left: 2px;
+				top: -4px;			}
+		}
 
-				background: $oil;
-
-				@include border-radius(rem-calc(20));
+		&:checked{
+			&+label{
+				&:before{
+					content: $symbol-radio-checked;
+				}
 			}
 		}
 	}
