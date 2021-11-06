@@ -17,7 +17,7 @@
 			&:before{
 				content: ' ';
 				font-family: $symbol-font-family;
-				line-height: 22px; // pixels instead of rem for IE (line-height on :before IE bug)
+				line-height: 20px; // pixels instead of rem for IE (line-height on :before IE bug)
 				position: absolute;
 				left: 12px;
 				box-sizing: content-box;
@@ -36,6 +36,8 @@
 				font-weight: bold;
 				&:before{
 					content: $symbol-checked;
+					color: $white;
+					background: $primary-text-color;
 				}
 			}
 		}

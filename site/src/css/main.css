@@ -6616,7 +6616,7 @@ ul.off-canvas-list .off-canvas-list__item a {
 .input-custom-checkbox-container input[type="checkbox"] + label:before {
   content: ' ';
   font-family: "Material Icons";
-  line-height: 22px;
+  line-height: 20px;
   position: absolute;
   left: 12px;
   -webkit-box-sizing: content-box;
@@ -6633,6 +6633,8 @@ ul.off-canvas-list .off-canvas-list__item a {
 }
 .input-custom-checkbox-container input[type="checkbox"]:checked + label:before {
   content: "done";
+  color: #fff;
+  background: #333;
 }
 
 .link {
