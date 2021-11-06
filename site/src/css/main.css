@@ -5382,8 +5382,8 @@ a:focus .display-on-focus {
 a.button:focus, .js .profile-dashboard__details__item a.profile-dashboard-category-label:focus {
   outline: 3px solid #fd0;
   outline-offset: 0;
-  -webkit-box-shadow: inset 0 0 0 4px #333;
-          box-shadow: inset 0 0 0 4px #333;
+  -webkit-box-shadow: inset 0 0 0 3px #333 !important;
+          box-shadow: inset 0 0 0 3px #333 !important;
 }
 
 p a, p a:hover, p a:focus {
