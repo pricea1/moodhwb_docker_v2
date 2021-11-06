@@ -30,7 +30,12 @@
 						<a class="header-logo-link" href="/">
 							<span class="show-for-sr">{{ siteName }}"</span>
 							{# include logo inline so it can be changed with CSS and doesn't require additional network call #}
+							<div class="hide-on-focus">
 							{% include "_images/logo_" ~ craft.app.language ~ ".svg" %}
+							</div>
+							<div class="display-on-focus">
+								{% include "_images/logo_dark_" ~ craft.app.language ~ ".svg" %}
+							</div>
 						</a>
 					</h1>
 				</div>

@@ -2,12 +2,24 @@ a, a:hover, a:focus {
 	text-decoration: underline;
 }
 
+.display-on-focus {
+	display: none;
+}
+
 a:focus {
 	outline: 3px solid transparent !important;
 	color: $primary-text-color !important;
 	background-color: $focus-color !important;
 	box-shadow: 0 -2px $focus-color,0 4px $primary-text-color !important;
-	text-decoration: none !important;;
+	text-decoration: none !important;
+	
+	.hide-on-focus {
+		display: none;
+	}
+
+	.display-on-focus {
+		display: block;
+	}
 }
 
 a.button:focus {

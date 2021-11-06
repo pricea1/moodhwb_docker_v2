@@ -5360,6 +5360,10 @@ a, a:hover, a:focus {
   text-decoration: underline;
 }
 
+.display-on-focus {
+  display: none;
+}
+
 a:focus {
   outline: 3px solid transparent !important;
   color: #333 !important;
@@ -5367,6 +5371,12 @@ a:focus {
   -webkit-box-shadow: 0 -2px #fd0, 0 4px #333 !important;
           box-shadow: 0 -2px #fd0, 0 4px #333 !important;
   text-decoration: none !important;
+}
+a:focus .hide-on-focus {
+  display: none;
+}
+a:focus .display-on-focus {
+  display: block;
 }
 
 a.button:focus, .js .profile-dashboard__details__item a.profile-dashboard-category-label:focus {
@@ -5895,7 +5905,7 @@ button:focus {
 
 .header-logo-link {
   display: block;
-  padding-top: 15px;
+  padding: 15px;
 }
 .header-logo-link .logo {
   display: block;
