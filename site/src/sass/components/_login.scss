@@ -2,6 +2,7 @@
 .login-container{
 	min-height: rem-calc(470);
 	padding-top: rem-calc(10);
+	padding-bottom: rem-calc(27);
 
 	@media #{$medium-up}{
 		padding-top: rem-calc(32);
@@ -10,22 +11,27 @@
 }
 
 .login-heading{
+	margin-bottom: rem-calc(27);
 
 	@media #{$medium-up}{
 
-		margin-bottom: rem-calc(50);
+		margin-bottom: rem-calc(36);
 	}
 }
 
 .login-form{
 	@media #{$medium-up}{
-		max-width: rem-calc(308);
+		max-width: rem-calc(328);
 		margin: auto;
 	}
 }
 
 .login-error {
 	background: none !important;
+}
+
+.login-input-container {
+	margin-bottom: rem-calc(27);
 }
 
 input.login-input{
@@ -36,19 +42,27 @@ input.login-radio{
 	margin: 0;
 }
 
-.login-radio-row{
-	margin-top: rem-calc(20);
-	height: rem-calc(20);
 
-}
 
 .input-custom-radio-container{
 	display: inline-block;
 	width: 49%;
+
+	.login-radio[type="radio"] {
+		+ label {
+			margin-left: rem-calc(36);
+		}
+	}
 }
 
-.login-submit{
-	margin: rem-calc(20) auto;
-	width: 100%;
+.login-submit[type="submit"]{
+	margin: rem-calc(27) auto;
+	border-radius: 6px;
 
+}
+
+.login-label{
+	font-size: rem-calc(18);
+	font-weight: 700;
+	margin-bottom: rem-calc(9);
 }

@@ -5412,17 +5412,17 @@ input {
   line-height: 1.11111rem;
   padding: 0.27778rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   color: #333333;
 }
 input[type="text"], input[type="password"] {
-  height: 2.22222rem;
+  -webkit-box-shadow: inset 0 0 0 2px;
+          box-shadow: inset 0 0 0 2px;
+  height: 2.66667rem;
 }
 input:focus {
   outline: 3px solid #fd0 !important;
   outline-offset: 0;
-  -webkit-box-shadow: inset 0 0 0 2px;
-          box-shadow: inset 0 0 0 2px;
 }
 
 .input-custom-radio-container {
@@ -6722,6 +6722,7 @@ ul.off-canvas-list .off-canvas-list__item a {
 .login-container {
   min-height: 26.11111rem;
   padding-top: 0.55556rem;
+  padding-bottom: 1.5rem;
 }
 @media only screen and (min-width: 42.66667em) {
   .login-container {
@@ -6730,21 +6731,28 @@ ul.off-canvas-list .off-canvas-list__item a {
   }
 }
 
+.login-heading {
+  margin-bottom: 1.5rem;
+}
 @media only screen and (min-width: 42.66667em) {
   .login-heading {
-    margin-bottom: 2.77778rem;
+    margin-bottom: 2rem;
   }
 }
 
 @media only screen and (min-width: 42.66667em) {
   .login-form {
-    max-width: 17.11111rem;
+    max-width: 18.22222rem;
     margin: auto;
   }
 }
 
 .login-error {
   background: none !important;
+}
+
+.login-input-container {
+  margin-bottom: 1.5rem;
 }
 
 input.login-input {
@@ -6755,19 +6763,23 @@ input.login-radio {
   margin: 0;
 }
 
-.login-radio-row {
-  margin-top: 1.11111rem;
-  height: 1.11111rem;
-}
-
 .input-custom-radio-container {
   display: inline-block;
   width: 49%;
 }
+.input-custom-radio-container .login-radio[type="radio"] + label {
+  margin-left: 2rem;
+}
 
-.login-submit {
-  margin: 1.11111rem auto;
-  width: 100%;
+.login-submit[type="submit"] {
+  margin: 1.5rem auto;
+  border-radius: 6px;
+}
+
+.login-label {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
 }
 
 .home-container {

@@ -3,12 +3,17 @@
 
 {% block content %}
 
-<div class="login-container text-center primary-panel">
+<div class="login-container primary-panel">
 
 <div class="row">
-<div class="small-12 column">
+<div class="small-12 column ">
 
-<h1 class="light-heading login-heading">{{ "Please enter your username and password"|t}}</h1>
+<h1 class="light-heading login-heading text-center">
+   {% if errorMessage is defined %}
+{{ "That password or email appears to be wrong"|t}}</h1>
+   {% else %}
+{{ "Welcome to MoodHwb"|t}}</h1>
+   {% endif %}
 
 </div>
 </div>
@@ -42,51 +47,49 @@
         <input type="hidden" name="action" value="users/login">
         <input id="rememberMe" type="hidden" name="rememberMe" value="1">
 
-    <div>
+    <div class="login-input-container">
+        <label for="loginName" class="login-label">{{"Enter your email address"|t}}</label>
         <input id="loginName" class="radius login-input" type="text" name="loginName"
             value="{{ craft.app.user.rememberedUsername }}" required aria-required="true" placeholder="{{ "Username" | t }}">
     </div>
 
-    <div>
-
+    <div class="login-input-container">
+        <label for="password" class="login-label">{{"Enter your password"|t}}</label>
         <input id="password" type="password" class="radius login-input" name="password" required aria-required="true" placeholder="{{ "Password" | t }}">
     </div>
 
     <div class="text-left login-radio-row">
-        <div class="input-custom-radio-container">
-            <input id="langEnglish"  class="login-radio" type="radio" value="en-GB" name="language" {% if craft.app.language == "en-GB" %}checked{% endif %}>
-            <label for="langEnglish">English</label>
+        <div class="login-label">{{"Choose your language"|t}}</div>
+
+        <div class="user-options-category__item profile-user-options__category profile-user-options__category--first   profile-user-options__category--column-start  profile-user-options__notmycategory input-custom-checkbox-container">
+            <div class="input-custom-radio-container">
+                <input id="langEnglish"  class="login-radio" type="radio" value="en-GB" name="language" {% if craft.app.language == "en-GB" %}checked{% endif %}>
+                <label for="langEnglish" class="login-label">English</label>
+            </div>
         </div>
 
-        <div class="input-custom-radio-container">
-            <input id="langWelsh"  class="login-radio" type="radio" value="cy-GB" name="language" {% if craft.app.language == "cy-GB" %}checked{% endif %}>
-            <label for="langWelsh">Cymraeg</label>
+        <div class="user-options-category__item profile-user-options__category  profile-user-options__category--last   profile-user-options__category--column-end profile-user-options__notmycategory input-custom-checkbox-container">
+            <div class="input-custom-radio-container">
+                <input id="langWelsh"  class="login-radio" type="radio" value="cy-GB" name="language" {% if craft.app.language == "cy-GB" %}checked{% endif %}>
+                <label for="langWelsh" class="login-label">Cymraeg</label>
+            </div>
         </div>
-
     </div>
 
     <div>
 
-        <input class="button round login-submit" type="submit" value="{{ 'Log me in' | t }}">
+        <input class="button login-submit" type="submit" value="{{ 'Sign in to MoodHwb' | t }}">
 
     </div>
-
-    {% if errorMessage is defined %}
-    <div class="row">
-    <div class="small-12 column">
-
-            <p>{{ errorMessage | t }}</p>
+    <div>
+    <a class="login-forgot" href="{{ url('forgotten-password') }}">{{ "Forgot your password" | t }}?</a>
     </div>
-    </div>
-    {% endif %}
 
     </form>
 
 
 
-    <div>
-    <a class="login-forgot" href="{{ url('forgotten-password') }}">{{ "Forgot your password" | t }}?</a>
-    </div>
+
 
 </div>
 </div>

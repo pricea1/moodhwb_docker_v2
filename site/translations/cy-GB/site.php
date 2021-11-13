@@ -46,6 +46,11 @@ return array(
 	"Cancel" => "Canslo",
 	"Invalid username or password." => "Enw defnyddiwr a chyfrinair annilys",
 	"Logout" => "Allgofnodi",
+	"Enter your email address" => "Enter your email address (CY)",
+	"Enter your password" => "Enter your password (CY)",
+	"Sign in to MoodHwb" => "Sign in to MoodHwb (CY)",
+	"Forgotton your password?" => "Forgotton your password? (CY)",
+	"That password or email appears to be wrong" => "That password or email appears to be wrong (CY)",
 	/* End Login mapping */
 
 
@@ -54,6 +59,7 @@ return array(
 	"I'm here for someone else" => "Rwyf yma ar gyfer rhywun arall",
 	"Browse the topics" => "Browse the topics (CY)",
 	"Welcome" => "Croeso",
+	"Welcome to MoodHwb" => "Welcome to MoodHwb (cy)",
 	"Welcome back" => "Welcome back (cy)",
 	"Hello again" => "Hello again (cy)",
 	"Perhaps you’d like to answer some questions to see how things are?" => "Perhaps you’d like to answer some questions to see how things are? (CY)",
