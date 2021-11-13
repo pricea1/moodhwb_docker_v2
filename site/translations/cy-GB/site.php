@@ -169,7 +169,7 @@ return array(
 	"Skip question" => "Sgipio'r cam yma",
 	"Drag the slider" => "Drag the slider (Welsh)",
 	"No data" => "Dim data",
-	"Is there anything about the last 7 days you'd like to add?" => "Oes yna unrhyw beth am y 7 diwrnod diwethaf yr hoffech ychwanegu?",
+	"Almost done. Is there anything you'd like to add?" => "Almost done. Is there anything you'd like to add? (CY)",
 	"For example this could be a diary entry over the last 7 days" => "Er enghraifft gall hwn fod yn gofnod dyddiadur dros y 7 diwrnod",
 	"weeklygoals-step1" => "Cofnodwch y gweithgaredd hoffech ei wneud",
 	"weeklygoals-step2" => "Cofnodwch pa mor aml hoffech ei wneud bob wythnos",
