@@ -10267,16 +10267,30 @@ a.module-theme-6 {
   width: 1.55556rem;
 }
 
-.search-form-close-button {
-  line-height: 3.33333rem;
+.search-bar {
+  padding: 0 20px;
+  height: 3.33333rem;
+}
+@media only screen and (min-width: 42.66667em) {
+  .search-bar {
+    padding: 0 32px;
+  }
+}
+.search-bar .header-nav-link-menu-icon {
+  line-height: inherit;
+}
+
+.search-form__container {
+  border-bottom: 2px solid #333333;
 }
 .search-form__input[type="search"] {
   display: inline-block;
   font-size: 1.55556rem;
-  padding: 0;
-  line-height: 3.33333rem;
-  height: 3.33333rem;
-  width: 100%;
+  padding: 0 1rem;
+  line-height: 3rem;
+  height: 3rem;
+  margin-top: 0.16667rem;
+  width: calc(100% - 100px);
   margin-bottom: 0;
   border: none;
   background: none;

@@ -8,19 +8,32 @@
 	}
 }
 
+.search-bar {
+	padding: 0 20px;
+	height: rem-calc(60);
+	@media #{$medium-up}{
+			padding: 0 32px;
+	}
+
+	.header-nav-link-menu-icon{
+		line-height: inherit;
+	}
+}
+
 .search-form{
 
-	&-close-button{
-		line-height: rem-calc(60);
+	&__container {
+		border-bottom: 2px solid $oil;
 	}
 
 	&__input[type="search"] {
 	    display: inline-block;
 	    font-size: rem-calc(28);
-	    padding: 0;
-	    line-height: rem-calc(60);
-	    height: rem-calc(60);
-	    width: 100%;
+	    padding: 0 rem-calc(18);
+	    line-height: rem-calc(54);
+	    height: rem-calc(54);
+			margin-top: rem-calc(3);
+			width: calc(100% - 100px);
 			margin-bottom: 0;
 			border: none;
 			background: none;
