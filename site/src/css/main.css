@@ -5692,14 +5692,14 @@ button:focus {
   text-decoration: none;
 }
 
-.button--invert, .slick-prev {
+.button--invert {
   background: white;
   color: #333333;
 }
-.button--invert:hover, .slick-prev:hover, .button--invert:visited, .slick-prev:visited {
+.button--invert:hover, .button--invert:visited {
   text-decoration: none;
 }
-.button--invert:hover, .slick-prev:hover {
+.button--invert:hover {
   color: #333333;
   background: rgba(0, 0, 0, 0.3);
 }
@@ -6348,39 +6348,16 @@ ul.off-canvas-list .off-canvas-list__item a {
   margin-bottom: 0;
 }
 
-.slick-skip {
-  line-height: 2.77778rem;
-  font-size: 1.11111rem;
-  text-decoration: none;
-  width: 20%;
-  text-align: left;
+.slick-next__container-js {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
-.slick-skip:hover {
-  text-decoration: none;
-}
-.slick-skip--right {
-  text-align: right;
-}
-.slick-skip.hidden {
+.slick-next__container-js .hidden {
   visibility: hidden;
-}
-
-.slick-next {
-  margin: 0 auto;
-  display: inline-block;
-  background-color: #346688;
-}
-.slick-next__container {
-  position: relative;
-  text-align: center;
-}
-
-@media only screen and (min-width: 42.66667em) {
-  .slick-next__container-js {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-  }
 }
 
 .no-js .slick-next__container-js {
@@ -6638,22 +6615,22 @@ ul.off-canvas-list .off-canvas-list__item a {
   font-size: 1rem;
   cursor: pointer;
 }
-.link--dark, .slick-skip {
+.link--dark {
   color: #2D5976;
 }
 .link--dark__icon {
   background: #2D5976;
 }
-.link--dark:visited, .slick-skip:visited, .link--dark:hover, .slick-skip:hover, .link--dark:focus, .slick-skip:focus {
+.link--dark:visited, .link--dark:hover, .link--dark:focus {
   color: #2D5976;
 }
 .link:visited, .link:hover, .link:focus {
   cursor: pointer;
 }
-.link:visited .link--dark, .link:visited .slick-skip, .link:hover .link--dark, .link:hover .slick-skip, .link:focus .link--dark, .link:focus .slick-skip {
+.link:visited .link--dark, .link:hover .link--dark, .link:focus .link--dark {
   color: #2D5976;
 }
-.link:visited .link--dark .link--dark__icon, .link:visited .slick-skip .link--dark__icon, .link:hover .link--dark .link--dark__icon, .link:hover .slick-skip .link--dark__icon, .link:focus .link--dark .link--dark__icon, .link:focus .slick-skip .link--dark__icon {
+.link:visited .link--dark .link--dark__icon, .link:hover .link--dark .link--dark__icon, .link:focus .link--dark .link--dark__icon {
   background: #2D5976;
 }
 .link__promo {

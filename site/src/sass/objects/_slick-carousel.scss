@@ -33,48 +33,14 @@
 
 }
 
-.slick-skip{
-	@extend .link--dark;
- line-height: rem-calc(50);
- font-size: rem-calc(20);
- text-decoration: none;
- width: 20%;
- text-align: left;
-
-	&:hover{
-	text-decoration: none;
-	}
-
-	&--right{
-		text-align: right;
-	}
-
-	&.hidden{
-		visibility: hidden;
-	}
-}
-
-
-.slick-prev{
-	@extend .button--invert;
-
-}
-
-.slick-next{
-    margin: 0 auto;
-    display: inline-block;
-		background-color: $primary-color;
-	
-    &__container{
-    	position: relative;
-			text-align: center;
-		}
-}
 
 .slick-next__container-js{
-	@media #{$medium-up}{
 		display: flex;
-	}
+		justify-content: space-between;
+
+		.hidden {
+			visibility: hidden;
+		}
 }
 
 .no-js {
