@@ -24,6 +24,11 @@
 	}
 }
 
+.home-module-separator {
+	border-top: 2px solid #EEE;
+	padding-top: rem-calc(46);
+}
+
 .home-module-container {
 
 	@media #{$medium-up}{

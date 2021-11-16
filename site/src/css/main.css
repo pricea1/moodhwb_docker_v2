@@ -6784,6 +6784,11 @@ input.login-radio {
   }
 }
 
+.home-module-separator {
+  border-top: 2px solid #EEE;
+  padding-top: 2.55556rem;
+}
+
 @media only screen and (min-width: 42.66667em) {
   .home-module-container {
     display: -webkit-box;

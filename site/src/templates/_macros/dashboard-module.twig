@@ -1,0 +1,37 @@
+{% cache %}
+
+{% macro renderDashboardModule(module, userStatus, lastViewedModule) %}
+
+    {% set image = module.image|first %}
+
+    <div class="home-module-container-item {{ module.moduleColour }}">
+        {% if userStatus != "newUser" %}
+            {% include "./_partials/homepage-hints.twig" %}
+        {% endif %}
+
+        {% if image %}
+            <div class="home-module-image-container">
+                <div id="moduleRecommendedCounterContainer-{{module.id}}" class="home-module-recommended-counter-container">
+                    <div id="moduleRecommendedCounter-{{module.id}}" class="home-module-recommended-counter-container-item">5</div>
+                </div>
+                <img class="home-module-image-container-item" src="{{ image.imageFile.one().url }}" alt="{{ image.imageAlt }}" />
+            </div>
+        {% endif %}
+        <div>
+            <h4 class="home-module-heading">
+                <a class="link" href="{{ module.url }}">
+                {{ module.title }}
+                </a>
+
+            </h4>
+            {% if module.summary %}
+                {{ module.summary }}
+            {% else %}
+                {{ module.body }}
+            {% endif %}
+        </div>
+    </div>
+
+{% endmacro %}
+
+{% endcache %}
