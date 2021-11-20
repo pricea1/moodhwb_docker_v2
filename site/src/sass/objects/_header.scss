@@ -125,9 +125,16 @@
 
 .header-logo-link {
     display: block;
-    padding: 15px;
+    padding: 14px;
+    margin-top: 3px;
 
     .logo {
         display: block;
+    }
+
+    &:focus {
+        background-color: transparent !important;
+        outline: 3px solid $focus-color !important;    
+        box-shadow: none !important;
     }
 }

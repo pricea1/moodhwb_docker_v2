@@ -5902,10 +5902,17 @@ button:focus {
 
 .header-logo-link {
   display: block;
-  padding: 15px;
+  padding: 14px;
+  margin-top: 3px;
 }
 .header-logo-link .logo {
   display: block;
+}
+.header-logo-link:focus {
+  background-color: transparent !important;
+  outline: 3px solid #fd0 !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
 }
 
 .footer-container,
