@@ -17,7 +17,8 @@
 
     &-column {
         display: flex;
-        justify-content: space-between;    
+        justify-content: space-between;   
+        height: 60px; 
     }
 
     &-menu {
@@ -56,7 +57,9 @@
 .header-nav-link:hover,
 .header-nav-link:focus
  {
-	line-height: rem-calc(60);
+	line-height: rem-calc(51);
+    margin: rem-calc(3);
+    // border-bottom: 5px solid transparent;
 	color: $white;
 	text-decoration: none;
     display: inline-block !important;
@@ -74,8 +77,14 @@
     }
 
     &.active {
-        color: $menu-color-highlight;
         border-bottom: 5px solid $menu-color-highlight;
+    }
+
+    &:focus {
+        color: $white !important;
+        background-color: transparent !important;
+        outline: 3px solid $focus-color !important;    
+        box-shadow: none !important;
     }
 }
 
@@ -83,7 +92,7 @@
         @extend .material-icons;
         vertical-align: inherit;
         display: inline-block;
-        line-height: 60px;
+        line-height: rem-calc(51);
 }
 
 

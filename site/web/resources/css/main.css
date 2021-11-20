@@ -5779,6 +5779,7 @@ button:focus {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  height: 60px;
 }
 .header-bar-menu {
   width: 30%;
@@ -5817,7 +5818,8 @@ button:focus {
 .footer-nav-link:hover,
 .header-nav-link:focus,
 .footer-nav-link:focus {
-  line-height: 3.33333rem;
+  line-height: 2.83333rem;
+  margin: 0.16667rem;
   color: #fff;
   text-decoration: none;
   display: inline-block !important;
@@ -5856,14 +5858,26 @@ button:focus {
 .footer-nav-link:hover.active,
 .header-nav-link:focus.active,
 .footer-nav-link:focus.active {
-  color: #F7C53E;
   border-bottom: 5px solid #F7C53E;
+}
+.header-nav-link:focus, .footer-nav-link:focus,
+.header-nav-link:visited:focus,
+.footer-nav-link:visited:focus,
+.header-nav-link:hover:focus,
+.footer-nav-link:hover:focus,
+.header-nav-link:focus:focus,
+.footer-nav-link:focus:focus {
+  color: #fff !important;
+  background-color: transparent !important;
+  outline: 3px solid #fd0 !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
 }
 
 .header-nav-link-menu-icon {
   vertical-align: inherit;
   display: inline-block;
-  line-height: 60px;
+  line-height: 2.83333rem;
 }
 
 .header-nav-link-list {
