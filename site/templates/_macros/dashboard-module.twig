@@ -20,7 +20,11 @@
         <div>
             <h4 class="home-module-heading">
                 <a class="link" href="{{ module.url }}">
+                {% if module.heading %}
+                {{ module.heading }}
+                {% else %}
                 {{ module.title }}
+                {% endif %}
                 </a>
 
             </h4>
