@@ -9700,6 +9700,11 @@ a.module-theme-6 {
 
 .two-column-content-block .content-block-left-col-image {
   margin-bottom: 1.11111rem;
+  width: 143px;
+}
+.two-column-content-block .content-block-left {
+  font-size: 1.33333rem;
+  line-height: 2rem;
 }
 .two-column-content-block .content-block-left p {
   font-size: 1.33333rem;

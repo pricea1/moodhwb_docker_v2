@@ -320,9 +320,13 @@
 .two-column-content-block {
 	.content-block-left-col-image {
 		margin-bottom: rem-calc(20);
+		width: 143px;
 	}
 
 	.content-block-left {
+		font-size: rem-calc(24);
+		line-height: rem-calc(36);
+
 		p {
 			font-size: rem-calc(24);
 			line-height: rem-calc(36);
