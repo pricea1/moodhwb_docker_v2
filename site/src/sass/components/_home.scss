@@ -11,6 +11,8 @@
 	position: relative;
 
 	@media #{$medium-up}{
+		display: flex;
+
 		img{
 			height: 310px;
 		}
@@ -186,10 +188,6 @@ body[data-os="linux"] {
 	padding-top: rem-calc(20);
 
 	@media #{$medium-up}{
-		position: absolute;
-		padding-top: rem-calc(50);
-		right: 0;
-		top: 0;
 		width: 50%;
 	}
 }
@@ -261,8 +259,9 @@ body[data-os="linux"] {
 	display: block;
 	width: inherit;
 	max-width: rem-calc(300);
-	padding: 0 20px;
-	line-height: rem-calc(50);
+	padding: 13px 20px;
+	line-height: rem-calc(24);
+	min-height: rem-calc(50);
 	margin-bottom: rem-calc(20);
 
 }

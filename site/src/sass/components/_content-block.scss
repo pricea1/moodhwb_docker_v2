@@ -316,3 +316,16 @@
 
 
 }
+
+.two-column-content-block {
+	.content-block-left-col-image {
+		margin-bottom: rem-calc(20);
+	}
+
+	.content-block-left {
+		p {
+			font-size: rem-calc(24);
+			line-height: rem-calc(36);
+		}
+	}
+}

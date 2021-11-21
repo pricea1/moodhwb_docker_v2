@@ -65,13 +65,21 @@
 	</div>
 	</div>
 	{% endif %}
-	<div class="row">
-	<div class="small-12 columns">
-		<div class="content-block content-block-large-paragraph intro-content-block-text two-columns">{{ entry.body }}</div>
+	<div class="two-column-content-block">
+		<div class="row">
+			<div class="small-12 medium-4 columns">
+				{% if  entry.secondaryImage.one() %}
+					<img class="content-block-left-col-image" src="{{ entry.secondaryImage.one().getUrl() }}">
+				{% endif %}
+				<div class="content-block content-block-left">{{ entry.contentBlockText2 }}</div>
+				<div class="content-block">{{ entry.quote }}</div>
+			</div>
+			<div class="small-12 medium-8 columns">
+				<div class="content-block content-block-large-paragraph intro-content-block-text">{{ entry.body }}</div>
 
+			</div>
+		</div>
 	</div>
-	</div>
-
 	</article>
 </div>
 {% endblock %}

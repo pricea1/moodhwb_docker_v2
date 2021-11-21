@@ -6794,6 +6794,11 @@ input.login-radio {
   position: relative;
 }
 @media only screen and (min-width: 42.66667em) {
+  .home-top-section-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
   .home-top-section-container img {
     height: 310px;
   }
@@ -6967,10 +6972,6 @@ body[data-os="linux"] .home-module-recommended-counter-container-item {
 }
 @media only screen and (min-width: 42.66667em) {
   .home-top-section {
-    position: absolute;
-    padding-top: 2.77778rem;
-    right: 0;
-    top: 0;
     width: 50%;
   }
 }
@@ -7042,8 +7043,9 @@ body[data-os="linux"] .home-module-recommended-counter-container-item {
   display: block;
   width: inherit;
   max-width: 16.66667rem;
-  padding: 0 20px;
-  line-height: 2.77778rem;
+  padding: 13px 20px;
+  line-height: 1.33333rem;
+  min-height: 2.77778rem;
   margin-bottom: 1.11111rem;
 }
 
@@ -9694,6 +9696,14 @@ a.module-theme-6 {
 }
 .alternate-image-content-block .content-block-subtext-container {
   padding-top: 1.66667rem;
+}
+
+.two-column-content-block .content-block-left-col-image {
+  margin-bottom: 1.11111rem;
+}
+.two-column-content-block .content-block-left p {
+  font-size: 1.33333rem;
+  line-height: 2rem;
 }
 
 .feature-block-heading {
