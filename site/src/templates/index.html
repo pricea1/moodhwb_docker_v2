@@ -65,18 +65,14 @@
 
 			<div class="row">
 				<div class="home-module-separator">
-				<div class="small-12 medium-6 column">
+				<div class="small-12">
 					<div class="home-module-container">
 					{% set friendsModule =craft.entries.slug('families-friends-and-carers').one() %}
 					{{ dashboardModuleMacro.renderDashboardModule(friendsModule, userStatus, lastViewedModule) }}
-					</div>
-				</div>
-				<div class="small-12 medium-6 column">
-					<div class="home-module-container">
 					{% set about = craft.entries.slug('about-this').one() %}
 					{{ dashboardModuleMacro.renderDashboardModule(about, userStatus, lastViewedModule) }}
-					</div>
 
+					</div>
 				</div>
 				</div>
 			</div>
