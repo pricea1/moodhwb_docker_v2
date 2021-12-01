@@ -6,6 +6,10 @@ RUN composer install --ignore-platform-reqs --no-interaction --prefer-dist
 FROM craftcms/nginx:8.0
 USER root
 
+RUN apk update update && apk upgrade && \
+    apk add --no-cache \
+    ssmtp mailx
+
 RUN mkdir -p ./ssl && \
     openssl req -x509 -nodes -days 365 -subj "/C=CA/ST=QC/O=Moodhwb, Inc./CN=moodhwb.org" \
     -addext "subjectAltName=DNS:moodhwb.org" \
