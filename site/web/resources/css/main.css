@@ -5619,11 +5619,13 @@ h2 {
     font-size: 1rem;
   }
 }
+.large-heading {
+  font-weight: bold;
+}
 @media only screen and (min-width: 42.66667em) {
   .large-heading {
     font-size: 2rem;
     line-height: 2.77778rem;
-    font-weight: bold;
   }
 }
 

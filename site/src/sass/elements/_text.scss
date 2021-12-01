@@ -17,10 +17,10 @@ h2 {
 }
 
 .large-heading{
+	font-weight: bold;
 	@media #{$medium-up}{
 		font-size: rem-calc(36);
-    line-height: rem-calc(50);
-    font-weight: bold;
+    	line-height: rem-calc(50);
 	}
 
 }
