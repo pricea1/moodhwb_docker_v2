@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y \
         libpng-dev libbz2-dev \
         libssl-dev autoconf \
         ca-certificates curl g++ libicu-dev \
-        libzip-dev
+        libzip-dev sendmail
 
 RUN docker-php-ext-install \
         bcmath bz2 exif \
@@ -56,3 +56,6 @@ RUN chown -R www-data:www-data /var/www/html/config/project/
 RUN chown -R www-data:www-data /var/www/html/web/cpresources/
 
 RUN chmod -R 775 /var/www/html
+
+RUN sed -i '/#!\/bin\/sh/aservice sendmail restart' /usr/local/bin/docker-php-entrypoint
+RUN sed -i '/#!\/bin\/sh/aecho "$(hostname -i)\t$(hostname) $(hostname).localhost" >> /etc/hosts' /usr/local/bin/docker-php-entrypoint
