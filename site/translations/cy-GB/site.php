@@ -22,8 +22,8 @@ return array(
 	"Funded by the Welsh Government through Health and Care Research Wales" => "Ariannwyd gan Lywodraeth Cymru drwy Ymchwil Iechyd a Gofal Cymru",
 	"Also supported by" => "Cefnogaeth hefyd gan",
 	"MoodHwb_Strapline" => "Mood: (noun, English) A state of mind or feeling. Hwb: (noun, Welsh) 1) hub; 2) boost, lift, fillip. [WELSH]",
-	"Privacy policy" => "Privacy policy (CY)",
-	"Cookies" => "Cookies (CY)",
+	"Privacy policy" => "Polisi preifatrwydd",
+	"Cookies" => "Cwcis",
 	"e.g." => "e.e.",
 	/* End general mapping */
 
@@ -46,33 +46,33 @@ return array(
 	"Cancel" => "Canslo",
 	"Invalid username or password." => "Enw defnyddiwr a chyfrinair annilys",
 	"Logout" => "Allgofnodi",
-	"Enter your email address" => "Enter your email address (CY)",
-	"Enter your password" => "Enter your password (CY)",
-	"Sign in to MoodHwb" => "Sign in to MoodHwb (CY)",
-	"Forgotton your password?" => "Forgotton your password? (CY)",
-	"That password or email appears to be wrong" => "That password or email appears to be wrong (CY)",
+	"Enter your email address" => "Nodwch eich cyfeiriad e-bost",
+	"Enter your password" => "Nodwch eich cyfrinair",
+	"Sign in to MoodHwb" => "Mewngofnodwch i HwbHwyliau",
+	"Forgotten your password?" => "Wedi anghofio'ch cyfrinair?",
+	"That password or email appears to be wrong" => "Mae'n ymddangos bod y cyfrinair neu'r e-bost hwnnw'n anghywir",
 	/* End Login mapping */
 
 
 	/* Welcome page */
 	"I'm here for myself" => "Rwyf yma ar gyfer fy hun",
 	"I'm here for someone else" => "Rwyf yma ar gyfer rhywun arall",
-	"Browse the topics" => "Browse the topics (CY)",
+	"Browse the topics" => "Porwch yr adrannau",
 	"Welcome" => "Croeso",
-	"Welcome to MoodHwb" => "Welcome to MoodHwb (cy)",
-	"Welcome back" => "Welcome back (cy)",
-	"Hello again" => "Hello again (cy)",
-	"Perhaps you’d like to answer some questions to see how things are?" => "Perhaps you’d like to answer some questions to see how things are? (CY)",
-	"welcome-message" => "Why not personalise MoodHwb by telling us how you feel? (CY)",
-	"welcome-summary-normal" => "Things could be better (cy)",
-	"welcome-summary-good" => "Things look pretty good (cy)",
-	"welcome-summary-bad" => "Things don't look very good (cy)",
+	"Welcome to MoodHwb" => "Croeso i HwbHwyliau",
+	"Welcome back" => "Croeso nol",
+	"Hello again" => "Helo eto",
+	"Perhaps you’d like to answer some questions to see how things are?" => "Efallai yr hoffech ateb rhai cwestiynau i weld sut mae pethau?",
+	"welcome-message" => "Beth am bersonoli HwbHwyliau trwy ddweud wrthym sut rydych chi'n teimlo?",
+	"welcome-summary-normal" => "Gallai pethau fod yn well",
+	"welcome-summary-good" => "Mae pethau'n edrych yn eithaf da",
+	"welcome-summary-bad" => "Nid yw pethau'n edrych yn dda iawn",
 	"Play introduction video" => "Chwarae'r fideo cyflwyno",
-	"Get started here" => "Get started here (CY)",
-	"Why not start with" => "Why not start with (CY)",
-	"To prevent things getting worse you might like to look at" => "To prevent things getting worse you might like to look at (CY)",
-	"You should talk to somebody as soon as possible, see" => "You should talk to somebody as soon as possible, see (CY)",
-	"You last visited" => "You last visited (cy)",
+	"Get started here" => "Cychwyn arni yma",
+	"Why not start with" => "Beth am ddechrau gyda",
+	"To prevent things getting worse you might like to look at" => "Er mwyn atal pethau rhag gwaethygu efallai yr hoffech edrych ar",
+	"You should talk to somebody as soon as possible, see" => "YDylech siarad â rhywun cyn gynted â phosibl, gweler",
+	"You last visited" => "Fe ymweloch chi ddiwethaf",
 	/* End Welcome page */
 
 	/* Module pages */
@@ -82,8 +82,8 @@ return array(
 	"You last viewed" => "Roeddech yma dro diwethaf",
 	"Start your journey here" => "Start your journey here (Welsh)",
 	"Highlighted for you" => "Highlighted for you (Welsh)",
-	"Learn about goal setting" => "Learn about goal setting (CY)",
-	"If you need to talk to someone" => "If you need to talk to someone (CY)",
+	"Learn about goal setting" => "Dysgu am osod targedau",
+	"If you need to talk to someone" => "Os oes angen siarad â rhywun",
 	/* End Module pages */
 
 	/* Feature block quiz */
@@ -114,7 +114,7 @@ return array(
 	"Hello there!" => "Helo yna!",
 	"Your current mood score" => "Eich sgorau hwyliau presennol",
 	"Within each topic we've highlighted" => "O fewn pob adran rydyn ni wedi rhoi",
-	" the number of areas that might be helpful based on your answers" => " the number of areas that might be helpful based on your answers (CY)",
+	" the number of areas that might be helpful based on your answers" => " nifer y meysydd a allai fod yn ddefnyddiol yn seiliedig ar eich atebion",
 	/* End Dashboard */
 
 	/* Feature block feedback */
@@ -168,7 +168,7 @@ return array(
 	"Skip question" => "Sgipio'r cam yma",
 	"Drag the slider" => "Drag the slider (Welsh)",
 	"No data" => "Dim data",
-	"Almost done. Is there anything you'd like to add?" => "Almost done. Is there anything you'd like to add? (CY)",
+	"Almost done. Is there anything you'd like to add?" => "Bron a gorffen. A oes unrhyw beth hoffech ei ychwanegu?",
 	"finalQuestionPlaceholder" => "Er enghraifft gall hwn fod yn gofnod dyddiadur dros y 7 diwrnod",
 	"Select the box to add your entry" => "Dewiswch y blwch i ychwanegu cofnod",
 	"weeklygoals-step1" => "Cofnodwch y gweithgaredd hoffech ei wneud",
@@ -211,9 +211,9 @@ return array(
 	"Stuff I Like" => "Pethau rwy'n hoffi",
 	"Delete" => "Dileu",
 	"Enter a URL" => "Cofnodi ‘URL'",
-	"Uncategorised" => "Uncategorised (cy)",
-	"Your categories" => "Your categories (cy)",
-	"Our categories" => "Our categories (cy)",
+	"Uncategorised" => "Heb gategori",
+	"Your categories" => "Eich categorïau",
+	"Our categories" => "Ein categorïau",
 	/* End Profile */
 
 	/* Goals */
@@ -251,7 +251,7 @@ return array(
 	"Home" => "Hafan",
 	"About Moodhwb" => "Am HwbHwyliau",
 	"Urgent help" => "Help brys",
-	"Download the app" => "Download the app (CY)",
+	"Download the app" => "Ein categorïau",
 	"Mood diary" => "Dyddiadur hwyliau",
 	"Goals" => "Targedau",
 	"Useful links" => "Dolennau defnyddiol",
@@ -265,7 +265,7 @@ return array(
 	"Yn Gymraeg" => "Yn Saesneg",
 
 	/* Blog */
-	"Blog" => "Blog (cy)",
+	"Blog" => "Blog",
 
 	/* Dates */
 	'Jan' => 'Ion',
