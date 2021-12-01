@@ -21,7 +21,7 @@ return array(
 	"Confidentiality information" => "Cyfrinachedd",
 	"Funded by the Welsh Government through Health and Care Research Wales" => "Ariannwyd gan Lywodraeth Cymru drwy Ymchwil Iechyd a Gofal Cymru",
 	"Also supported by" => "Cefnogaeth hefyd gan",
-	"MoodHwb_Strapline" => "Mood: (noun, English) A state of mind or feeling. Hwb: (noun, Welsh) 1) hub; 2) boost, lift, fillip. [WELSH]",
+	"MoodHwb_Strapline" => "Mood: (noun, English) A state of mind or feeling. Hwb: (noun, Welsh) 1) hub; 2) boost, lift, fillip. (CY)",
 	"Privacy policy" => "Polisi preifatrwydd",
 	"Cookies" => "Cwcis",
 	"e.g." => "e.e.",
@@ -80,8 +80,8 @@ return array(
 	"List submodules" =>  "Rhestru isfodiwlau",
 	"Skip submodules navigation" => "Sgipio mordwyo isfodiwlau",
 	"You last viewed" => "Roeddech yma dro diwethaf",
-	"Start your journey here" => "Start your journey here (Welsh)",
-	"Highlighted for you" => "Highlighted for you (Welsh)",
+	"Start your journey here" => "Start your journey here (cy)",
+	"Highlighted for you" => "Highlighted for you (cy)",
 	"Learn about goal setting" => "Dysgu am osod targedau",
 	"If you need to talk to someone" => "Os oes angen siarad â rhywun",
 	/* End Module pages */
@@ -152,7 +152,7 @@ return array(
 	"If you need to talk to someone" => "Os ydych angen siarad â rhywun",
 	"Would you like to continue where you left off?" => "Hoffech barhau o ble wnaethoch adael y tro diwethaf?",
 	"Or from the beginning?" => "Neu o'r dechrau?",
-	"Introduction" => "Introduction (Welsh)",
+	"Introduction" => "Cyflwyniad",
 	"My mood diary" => "Fy nyddiadur hwyliau",
 	"My answers" => "Fy atebion",
 	"My Answers" => "Fy Atebion",
@@ -166,7 +166,7 @@ return array(
 	"Save and continue" => "Arbed a pharhau",
 	"Save and finish" => "Arbed a gorffen",
 	"Skip question" => "Sgipio'r cam yma",
-	"Drag the slider" => "Drag the slider (Welsh)",
+	"Drag the slider" => "Drag the slider (CY)",
 	"No data" => "Dim data",
 	"Almost done. Is there anything you'd like to add?" => "Bron a gorffen. A oes unrhyw beth hoffech ei ychwanegu?",
 	"finalQuestionPlaceholder" => "Er enghraifft gall hwn fod yn gofnod dyddiadur dros y 7 diwrnod",
@@ -188,7 +188,7 @@ return array(
 
 	"stuffilike-step1" => "Cofnodwch URL o'ch hoff wefan, fideo neu ffoto",
 	"stuffilike-step2" => "Cofnodwch enw am hyn",
-	"stuffilike-step3" => "Then when you are feeling a little low remind your self of some good stuff (welsh)",
+	"stuffilike-step3" => "Then when you are feeling a little low remind your self of some good stuff (cy)",
 
 
 	/* Account Pages */
@@ -242,7 +242,7 @@ return array(
 	/* Mood monitor */
 	"Mood monitor" => "Dyddiadur hwyliau",
 	"This is where the young person can view what they have recorded about their mood and other issues. This is not available when viewing for someone else." => "Dyma ble mae'r person ifanc yn gallu gweld beth yr ydyn nhw wedi nodi am eu hwyliau ag ati. Nid yw ar gael ar gyfer person sy'n defnyddio'r pecyn er mwyn helpu'r person ifanc.",
-	"No diary entries" => "No diary entries (welsh)",
+	"No diary entries" => "No diary entries (cy)",
 
 	/* Main menu */
 	"Main menu" => "Prif ddewislen",
@@ -258,8 +258,8 @@ return array(
 	
 	/* Search */
 	"Search" => "Chwilio",
-	"Search results for" => "Search results for (welsh)",
-	"No search results found for" => "No search results found for (welsh)",
+	"Search results for" => "Search results for (cy)",
+	"No search results found for" => "No search results found for (cy)",
 	"Type something" => "Teipiwch rywbeth fan hyn",
 
 	"Yn Gymraeg" => "Yn Saesneg",
