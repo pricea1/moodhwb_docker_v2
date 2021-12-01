@@ -332,4 +332,15 @@
 			line-height: rem-calc(36);
 		}
 	}
+
+	.row {
+		@media #{$small-only} {
+			display: flex;
+			flex-direction: column-reverse;
+
+			.columns {
+				margin-bottom: rem-calc(36);
+			}
+		}
+	}
 }
