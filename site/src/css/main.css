@@ -8022,9 +8022,12 @@ a.module-theme-6 {
   background: #3f3d32;
 }
 
+.module-block[data-modules="feature-block-collapsible"] {
+  padding-bottom: 1rem;
+}
+
 .module-collapsible__container {
-  margin-top: 1.11111rem;
-  margin-bottom: 32px;
+  margin-top: 1rem;
 }
 .module-collapsible__container .content-block-sub-item {
   padding-left: 15px;
