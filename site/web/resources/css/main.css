@@ -9761,10 +9761,12 @@ a.module-theme-6 {
 .feature-block-quiz {
   background: #76D0CA;
   padding-top: 20px;
+  padding-bottom: 20px;
 }
 @media only screen and (min-width: 42.66667em) {
   .feature-block-quiz {
     padding-top: 30px;
+    padding-bottom: 30px;
   }
 }
 .feature-block-quiz .slick-dots button {
@@ -9849,12 +9851,6 @@ a.module-theme-6 {
 
 .feature-block-quiz-question-container {
   margin: 0 1px;
-  padding-bottom: 10px;
-}
-@media only screen and (min-width: 42.66667em) {
-  .feature-block-quiz-question-container {
-    padding-bottom: 30px;
-  }
 }
 .feature-block-quiz-question-container .slick-dots {
   margin-bottom: 1.66667rem;
