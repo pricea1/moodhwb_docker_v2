@@ -33,7 +33,7 @@
 			{% if summaryScore < -5 %}
 				<p class="home-heading-subtext">{{"You should talk to somebody as soon as possible, see"|t}} <a class="link link__promo" href="{{ helpPage.url }}">{{ helpPage.title}}</a></p>
 			{% elseif summaryScore >= -5 %}
-				<p class="home-heading-subtext">{{"You last visited "|t}} <a class="link link__promo" href="{{ lastViewedModule.url }}">{{ lastViewedModule.parent.title }}</a></p>
+				<p class="home-heading-subtext">{{"You last visited"|t}} <a class="link link__promo" href="{{ lastViewedModule.url }}">{{ lastViewedModule.parent.title }}</a></p>
 			{% endif %}
 		{% else %}
 			{% if summaryScore > 5 %}

@@ -12,7 +12,7 @@
 		{{ "Hello again" | t }}
 		</h1>
 		{% if lastViewedModule is defined %}
-					<p class="home-heading-subtext">{{"You last visited "|t}} <a class="link link__promo" href="{{ lastViewedModule.url }}">{{ lastViewedModule.parent.title }}</a></p>
+					<p class="home-heading-subtext">{{"You last visited"|t}} <a class="link link__promo" href="{{ lastViewedModule.url }}">{{ lastViewedModule.parent.title }}</a></p>
 		{% else %}
 					<p class="home-heading-subtext">{{"Why not start with"|t}} <a class="link link__promo" href="{{ depressionPage.url }}">{{ depressionPage.title}}</a></p>
 		{% endif %}
