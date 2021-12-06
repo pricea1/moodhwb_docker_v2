@@ -6848,6 +6848,9 @@ input.login-radio {
             flex: 0 472px;
   }
 }
+.home-module-container-item p {
+  margin-bottom: 0;
+}
 
 .home-module-recommended-counter-container {
   position: absolute;

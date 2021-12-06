@@ -51,6 +51,10 @@
 		@media #{$large-up}{
 			flex: 0 472px;
 		}
+
+		p {
+			margin-bottom: 0;
+		}
 	}
 }
 
