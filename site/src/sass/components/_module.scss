@@ -354,6 +354,22 @@
 			}
 		}
 
+		&--cancel {
+			padding-left: 26px;
+			position: absolute;
+			top: rem-calc(14);
+			font-size: rem-calc(18);
+
+			&:before {
+				content: $symbol-cross;
+				font-family: $symbol-font-family;
+				position: absolute;
+				left: 0;
+				width: 16px;
+				height: 16px;
+			}
+		}
+
 		&--next {
 			padding-right: 26px;
 			position: relative;

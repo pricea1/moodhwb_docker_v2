@@ -6378,6 +6378,9 @@ ul.off-canvas-list .off-canvas-list__item a {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
 }
 .slick-next__container-js .hidden {
   visibility: hidden;
@@ -7472,6 +7475,20 @@ body[data-os="linux"] .home-module-recommended-counter-container-item {
 }
 .module-nav__next-link--previous:before {
   content: "arrow_back";
+  font-family: "Material Icons";
+  position: absolute;
+  left: 0;
+  width: 16px;
+  height: 16px;
+}
+.module-nav__next-link--cancel {
+  padding-left: 26px;
+  position: absolute;
+  top: 0.77778rem;
+  font-size: 1rem;
+}
+.module-nav__next-link--cancel:before {
+  content: "close";
   font-family: "Material Icons";
   position: absolute;
   left: 0;

@@ -1,8 +1,15 @@
 <div class="profile-question">
 <div class="profile-question-slider">
+	<div class="row">
+	<div class="small-12 columns">
 			<div class="profile-question__progress">
 				{{ "Question"|t }} <span class="profile-question_progress-indicator">{{ loop.index }}</span> {{ "out of"|t }} {{ entry.profileQuestions|length + 1}}
 			</div>
+			<a href="/" class="module-nav__next-link module-nav__next-link--cancel">{{ "Cancel" | t}}</a>
+
+	</div>
+	</div>
+
 	<div class="profile-question--inner">
 		<input name="profileQuestionType[{{ question.questionId }}]" class="profile-question-type" type="hidden" value="{{ question.type }}" />
 		

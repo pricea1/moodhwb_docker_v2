@@ -174,6 +174,12 @@
       $('#prevArrowButton').addClass('hidden');
     }
 
+    if (currentSlide === 8){
+      $('#skipStep').removeClass('hidden');
+    } else {
+      $('#skipStep').addClass('hidden');
+    }
+
     if (isEndOfQuestions) {
       // Last slide being viewed so get click event so we can redirect
       $("#nextArrowButton").on("click", endOfQuestions);

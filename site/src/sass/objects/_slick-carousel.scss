@@ -37,7 +37,8 @@
 .slick-next__container-js{
 		display: flex;
 		justify-content: space-between;
-
+		align-items: baseline;
+		
 		.hidden {
 			visibility: hidden;
 		}

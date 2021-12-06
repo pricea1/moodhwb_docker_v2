@@ -13,6 +13,7 @@ return array(
 	"Where to go next?" => "Ble i fynd nesaf?",
 	"Next" => "Nesaf",
 	"Previous" => "Blaenorol",
+	"Previous question" => "Cwestiwn blaenorol",
 	"More information" => "More information",
 	"Loading" => "Llwytho",
 	"Close" => "Cau",
