@@ -28,10 +28,10 @@
 				<div class="row">
 
 							<div  class="small-12 medium-4 column">
-								<a class="button radius round profile-goals-add-button" href="{{ url('profile/goals/create-weekly-goal') }}">{{ "Create weekly goal" | t}}</a>
+								<a class="button radius profile-goals-add-button" href="{{ url('profile/goals/create-weekly-goal') }}">{{ "Create weekly goal" | t}}</a>
 							</div>
 							<div  class="small-12 medium-4 column">
-								<a class="button radius round profile-goals-add-button" href="{{ url('profile/goals/create-once-goal') }}">{{ "Create once only goal" | t}}</a>
+								<a class="button radius profile-goals-add-button" href="{{ url('profile/goals/create-once-goal') }}">{{ "Create once only goal" | t}}</a>
 							</div>
 							{# <form id="profileGoalForm" class="profile-goals-form" method="post" accept-charset="UTF-8">
 							{{ csrfInput() }}
@@ -116,13 +116,13 @@
 					{% if status=="todo" %}
 						<h3>{{ "To Do"|t}}</h3>
 					{% else %}
-							<a class="button radius round profile-goals-add-button" href="?status=todo">{{"To Do" |t}}</a>
+							<a class="button radius  profile-goals-add-button" href="?status=todo">{{"To Do" |t}}</a>
 					{% endif %}</h3>
 
 			</div>
 			<div class="small-3 column">
 				{% if status=="todo" %}
-					<a class="button radius round profile-goals-add-button" href="?status=done">{{"Done" |t }}</a>
+					<a class="button radius  profile-goals-add-button" href="?status=done">{{"Done" |t }}</a>
 				{% else %}
 					<h3 class="right">{{"Done" |t}}</h3>
 				{% endif %}
