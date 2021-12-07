@@ -1,10 +1,6 @@
 {% set categoryName = entry.categorieslist.value %}
 {% set fieldName = entry.categorieslist.value %}
 
-{% if entry.hereFor == "other" %}
-	{% set fieldName = "hereForOther" ~ fieldName|capitalize %}
-{% endif %}
-
 <div id="feature-block-option-{{entry.slug}}" data-option-id="{{ entry.categorieslist.value }}" class="module-block module-block-themed feature-block-option non-js-hide" data-modules="feature-block-options,feature-block-save-profile-modal">
 
 	<div class="row">

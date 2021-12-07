@@ -20,8 +20,14 @@
 			{% nav category in navCategories %}
 				{% set hasCategory = null %}
 				{% if  currentUser[fieldName] is defined %}
+				{{ fieldName }}
 					{% set currentUserCategories = currentUser[fieldName].all() %}
+				{{ currentUserCategories | length }}
+
 					{% for myCategory in currentUserCategories %}
+					myCategory.id: {{myCategory.id }}
+					== category.id : {{ category.id }}
+
 						{% if myCategory.id == category.id %}
 							{% set hasCategory = 'true' %}
 						{% endif %}
