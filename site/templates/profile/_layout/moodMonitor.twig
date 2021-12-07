@@ -62,7 +62,7 @@ var monthNames = ["{{ "January"|t }}", "{{ "February"|t }}", "{{ "March"|t}}", "
 						<div class="row">
 						<div class="small-12 column">
 						{% for moodDate in moodMonthList %}<!--
-							--><button class="button radius round mood-monitor-date-button {% if moodCurrentYear and loop.last %}mood-monitor-date-button__last{% endif %}" data-mood-month="{{moodYear}}-{{moodDate.num}}">{{ moodDate.text |t}}</button><!--
+							--><button class="button radius mood-monitor-date-button {% if moodCurrentYear and loop.last %}mood-monitor-date-button__last{% endif %}" data-mood-month="{{moodYear}}-{{moodDate.num}}">{{ moodDate.text |t}}</button><!--
 				
 						-->{% endfor %}
 
@@ -78,8 +78,8 @@ var monthNames = ["{{ "January"|t }}", "{{ "February"|t }}", "{{ "March"|t}}", "
 
 		</div>
 		<div class="row">
-			<div class="small-12 medium-4 medium-offset-4 column profile-dashboard-mood-button-container">
-				<a class="button profile-dashboard-mood-button profile-dashboard-mood-button--invert" href="{{ url('profile/questions-self') }}" class="button">{{ "Update my mood" | t}}</a>
+			<div class="small-12 column text-center profile-dashboard-mood-button-container">
+				<a href="{{ url('profile/questions-self') }}" class="button">{{ "Update my mood" | t}}</a>
 			</div>
 		</div>
 		<div class="row">
