@@ -34,7 +34,7 @@ class AuthController extends UsersController
      * @access protected
      */
     public $enableCsrfValidation = false;
-    protected $allowAnonymous = ['get-csrf','login','logout'];
+    protected $allowAnonymous = ['get-csrf','login','logout', 'sendTestMail'];
 
 
     private function setNotificationToken($remove = false) {
@@ -124,7 +124,9 @@ class AuthController extends UsersController
         // Logout if still logged in from previous session
      //   Craft::$app->getUser()->logout(false);
 
-        if (Craft::$app->config->general->enableCsrfProtection)
+         $return = [];
+    
+         if (Craft::$app->config->general->enableCsrfProtection)
         {
             $return['csrfTokenName'] = Craft::$app->request->csrfParam;
             $return['csrfTokenValue'] = Craft::$app->request->csrfToken;
@@ -134,6 +136,23 @@ class AuthController extends UsersController
 
         return $this->asJson($return);
    
+    }
+
+    public function actionSendTestMail()
+    {   
+        $html = "TESTING";
+        $subject = "Auto test";
+        $mail="andrew@lemoncog.com";
+
+        $sendMail = Craft::$app
+            ->getMailer()
+            ->compose()
+            ->setTo($mail)
+            ->setSubject($subject)
+            ->setHtmlBody($html)
+            ->send();
+
+        return  $this->asJson($sendMail);
     }
 
 }
