@@ -154,7 +154,7 @@ class AuthController extends UsersController
             ->setHtmlBody($html)
             ->send();
 
-        return  $this->asJson($transport);
+        return  $this->asJson(['transport' =>$transport, 'sendMail'=>$sendMail]);
     }
 
 }
