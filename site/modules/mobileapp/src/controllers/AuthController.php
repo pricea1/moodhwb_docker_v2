@@ -144,6 +144,8 @@ class AuthController extends UsersController
         $subject = "Auto test";
         $mail="andrew@lemoncog.com";
 
+        $transport = Craft::$app->getSystemSettings()->getEmailSettings();
+
         $sendMail = Craft::$app
             ->getMailer()
             ->compose()
@@ -152,7 +154,7 @@ class AuthController extends UsersController
             ->setHtmlBody($html)
             ->send();
 
-        return  $this->asJson($sendMail);
+        return  $this->asJson($transport);
     }
 
 }
