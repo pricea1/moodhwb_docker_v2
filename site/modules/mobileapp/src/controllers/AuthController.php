@@ -34,7 +34,7 @@ class AuthController extends UsersController
      * @access protected
      */
     public $enableCsrfValidation = false;
-    protected $allowAnonymous = ['get-csrf','login','logout', 'sendTestMail'];
+    protected $allowAnonymous = ['get-csrf','login','logout', 'send-test-mail'];
 
 
     private function setNotificationToken($remove = false) {
@@ -144,9 +144,9 @@ class AuthController extends UsersController
         $subject = "Auto test";
         $mail="andrew@lemoncog.com";
 
-        $transport = Craft::$app->getSystemSettings()->getEmailSettings();
+        $settings = Craft::$app->getSystemSettings()->getEmailSettings();
 
-        $sendMail = Craft::$app
+        $sendMail =  Craft::$app
             ->getMailer()
             ->compose()
             ->setTo($mail)
@@ -154,7 +154,7 @@ class AuthController extends UsersController
             ->setHtmlBody($html)
             ->send();
 
-        return  $this->asJson(['transport' =>$transport, 'sendMail'=>$sendMail]);
+        return  $this->asJson(['settings' => $settings, 'sendMail'=>$sendMail]);
     }
 
 }
