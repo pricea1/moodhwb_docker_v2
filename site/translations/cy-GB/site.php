@@ -26,6 +26,7 @@ return array(
 	"Privacy policy" => "Polisi preifatrwydd",
 	"Cookies" => "Cwcis",
 	"e.g." => "e.e.",
+	"Enter" => "Nodwch",
 	/* End general mapping */
 
 
@@ -109,7 +110,7 @@ return array(
 	"Enter your symptom" => "Cofnodwch eich symptom",
 	"Anything not listed here?" => "Unrhywbeth heb ei restru yma?",
 	"Enter resource title" => "Cofnodwch yma",
-	
+	"EnterUrlPlaceholder" => "URL e.e. hwbhwyliau.org",
 	/* End Feature block options */
 
 	/* Dashboard */

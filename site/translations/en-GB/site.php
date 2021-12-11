@@ -16,8 +16,8 @@ return array(
 	"stuffilike-step2" => "Enter a title to help you organise the thing you’ve added",
 	"stuffilike-step3" => "Then when you are feeling a little low remind your self of some good stuff",
 	
-	"Enter a URL" => "Enter a URL e.g. www.moodhwb.org",
-
+	"Enter a URL" => "Enter a URL e.g. moodhwb.org",
+	"EnterUrlPlaceholder" => "URL e.g. moodhwb.org",
 	"finalQuestionPlaceholder" => "For example this could be a diary entry over the last 7 days",
 	
 	"welcome-message" => "Why not personalise MoodHwb by telling us how you feel?",
