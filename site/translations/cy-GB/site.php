@@ -115,8 +115,8 @@ return array(
 	/* Dashboard */
 	"Hello there!" => "Helo yna!",
 	"Your current mood score" => "Eich sgorau hwyliau presennol",
-	"Within each topic we've highlighted" => "O fewn pob adran rydyn ni wedi rhoi",
-	" the number of areas that might be helpful based on your answers" => " nifer y meysydd a allai fod yn ddefnyddiol yn seiliedig ar eich atebion",
+	"Within each topic we've highlighted" => "Yn yr adran hon mae",
+	" the number of areas that might be helpful based on your answers" => " yn dangos nifer y meysydd a allai fod yn ddefnyddiol yn seiliedig ar eich atebion",
 	/* End Dashboard */
 
 	/* Feature block feedback */
