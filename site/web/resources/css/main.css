@@ -9535,13 +9535,6 @@ a.module-theme-6 {
 
 .four-image-content-block .content-block-sub-item {
   width: 100%;
-  padding-top: 20px;
-  border-top: 2px solid #ccc;
-}
-@media only screen and (min-width: 42.66667em) {
-  .four-image-content-block .content-block-sub-item {
-    min-height: 265px;
-  }
 }
 .four-image-content-block .content-block-sub-item__image {
   width: 46%;

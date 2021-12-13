@@ -1,4 +1,4 @@
-{% if entry.collapsibleContent %}
+{% if entry.collapsibleContent | length %}
 	<div class="module-block" data-modules="feature-block-collapsible">
 	{% set collapsibleContent = entry.collapsibleContent.all() %}
 	{% for item in collapsibleContent %}
