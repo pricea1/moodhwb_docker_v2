@@ -1,6 +1,19 @@
+.user-category-list-container {
+	@media #{$medium-up}{
+		display: flex;
+		justify-content: space-between;
+	}
+}
+
 .user-category-list{
+	margin-top: 0;
+	margin-bottom: 0;
+
+	@media #{$medium-up}{
 		margin-top: rem-calc(27);	
 		margin-bottom: rem-calc(10);
+		width: rem-calc(308);
+	}
 }
 .user-category-list__label{
 	margin-bottom: 6px;

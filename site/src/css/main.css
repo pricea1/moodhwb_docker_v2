@@ -6525,9 +6525,27 @@ ul.off-canvas-list .off-canvas-list__item a {
   margin: auto;
 }
 
+@media only screen and (min-width: 42.66667em) {
+  .user-category-list-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+}
+
 .user-category-list {
-  margin-top: 1.5rem;
-  margin-bottom: 0.55556rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+@media only screen and (min-width: 42.66667em) {
+  .user-category-list {
+    margin-top: 1.5rem;
+    margin-bottom: 0.55556rem;
+    width: 17.11111rem;
+  }
 }
 
 .user-category-list__label {

@@ -1,7 +1,5 @@
 	{% if categoryName is defined and fieldName is defined and categoryName != "" %}
-
-		<ul class="user-category-list three-columns">
-
+		<div class="user-category-list-container">
 			{% set navCategories = craft.categories.group(categoryName).all() %}
 
 			{% set itemCount = 0 %}
@@ -20,14 +18,8 @@
 			{% nav category in navCategories %}
 				{% set hasCategory = null %}
 				{% if  currentUser[fieldName] is defined %}
-				{{ fieldName }}
 					{% set currentUserCategories = currentUser[fieldName].all() %}
-				{{ currentUserCategories | length }}
-
 					{% for myCategory in currentUserCategories %}
-					myCategory.id: {{myCategory.id }}
-					== category.id : {{ category.id }}
-
 						{% if myCategory.id == category.id %}
 							{% set hasCategory = 'true' %}
 						{% endif %}
@@ -53,7 +45,9 @@
 							{% set isEndOfColumn = true %}
 						{% endif %}
 
-	
+						{% if isStartOfColumn %}
+							<ul class="user-category-list">
+						{% endif %}
 
 						<li class="user-options-category__item profile-user-options__category {% if loopCount == 1 %}profile-user-options__category--first {% endif %} {% if loopCount == itemCount %}profile-user-options__category--last {% endif %} {% if isStartOfColumn %}profile-user-options__category--column-start{% endif %} {% if isEndOfColumn %}profile-user-options__category--column-end{% endif %} {% if hasCategory is not null %}profile-user-options__mycategory{% else %}profile-user-options__notmycategory{% endif %} input-custom-checkbox-container">				        	
 							<input id="profileInput{{ fieldName | kebab }}{{ category.id }}" class="profile-user-options__input user-category-input" type="checkbox" {% if hasCategory %}checked{% endif %} name="profileQuestionCategories[]" value="{{ category.id }}" data-title="{{ category.title | escape('html_attr') }}" data-url="{{ category.urlAddress | escape('html_attr') }}">
@@ -75,6 +69,10 @@
 								</div>
 							{% endif %}
 							</li>
+
+							{% if isEndOfColumn %}
+								</ul>
+							{% endif %}
 			    {# {% else %}
 					{% if hasCategory %}
 						<li style="display:none">
@@ -87,7 +85,7 @@
 						{% children %}
 					{% endifchildren %}
 		    {% endnav %}
-		</ul>
 
+		</div>
 
 	{% endif %}
