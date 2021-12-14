@@ -112,10 +112,10 @@
       {% endif %}
     {% endif %}
 
-    {% set previousSibling = entry.getPrevSibling() %}
+    {% set previousSibling = craft.entries.prevSiblingOf(entry).one() %}
 
     {% if not previousSibling %}
-      {% set previousSiblingModule = entry.parent.getPrevSibling() %}
+      {% set previousSiblingModule = craft.entries.prevSiblingOf(entry.parent).one() %}
       {% if previousSiblingModule and previousSiblingModule.type == "modules" %}
         {% set previousSibling = previousSiblingModule %}
       {% endif %}
