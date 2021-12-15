@@ -268,9 +268,9 @@ class GoalController extends Controller
             }
         }
 
-        if ( $request->post('thumbnailUri') ){
-            $model->thumbnailUri = $request->post('thumbnailUri');
-        }
+        // if ( $request->post('thumbnailUri') ){
+        //     $model->thumbnailUri = $request->post('thumbnailUri');
+        // }
 
         $newGoal = Profiler::$plugin->goalService->addGoal($model);
         Craft::$app->session->setNotice(Craft::t('site','Goal saved.'));
