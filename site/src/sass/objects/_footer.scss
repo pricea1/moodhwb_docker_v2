@@ -112,9 +112,15 @@
 	&-nav-link {
 		@extend .header-nav-link;
 		line-height: 40px;
-
+		
 		@media #{$medium-up}{
 			line-height: 60px;
+			
+			&:visited,
+			&:hover,
+			&:focus {
+				line-height: 60px;
+			}
 		}
 	}
 }

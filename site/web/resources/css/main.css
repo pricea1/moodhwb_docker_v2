@@ -6046,6 +6046,9 @@ button:focus {
   .footer-nav-link {
     line-height: 60px;
   }
+  .footer-nav-link:visited, .footer-nav-link:hover, .footer-nav-link:focus {
+    line-height: 60px;
+  }
 }
 
 .menu-inline-list {
