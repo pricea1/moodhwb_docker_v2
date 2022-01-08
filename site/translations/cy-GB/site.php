@@ -255,7 +255,7 @@ return array(
 	"Menu" => "Dewislen",
 	"Close menu" => "Cau'r ddewislen",
 	"Home" => "Hafan",
-	"About Moodhwb" => "Am HwbHwyliau",
+	"About MoodHwb" => "Am HwbHwyliau",
 	"Urgent help" => "Help brys",
 	"Download the app" => "Lawrlwytho'r ap",
 	"Mood diary" => "Dyddiadur hwyliau",
