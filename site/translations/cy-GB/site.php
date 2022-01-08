@@ -142,6 +142,7 @@ return array(
 	"Completed activity" => "Gweithgaredd wedi'i gwblhau",
 	"Reset activity" => "Ailosod gweithgaredd",
 	"Update mood" => "Diweddaru fy hwyliau",
+	"Update my mood" => "Diweddaru fy hwyliau",
 	"Monitor your mood with the mobile application" => "Monitro'ch hwyliau gyda'r ‘app' symudol",
 	"Get the mobile app" => "Cael yr ‘app' symudol",
 	"Their ability to cope" => "Eu gallu i ymdopi",
