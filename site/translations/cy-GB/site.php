@@ -178,6 +178,7 @@ return array(
 	"weeklygoals-step2" => "Cofnodwch pa mor aml hoffech ei wneud bob wythnos",
 	"weeklygoals-step3" => "Ychwanegwch ef, a phan y'ch chi wedi'i wneud, ticiwch ef o'r rhestr",
 	"Create weekly goal" => "Creu targed wythnosol",
+	"Create once only goal" => "Targed unwaith yn unig",
 	"The title of your goal" => "Teitl eich targed",
 	"Repeat weekly" => "Ail-wneud yn wythnosol",
 	/* Profile Stuff I Like */
