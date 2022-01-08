@@ -56,8 +56,8 @@ return array(
      	'devMode' => true,
 	    'useCompressedJs' => false,
         'siteUrl' => array(
-	        'en_gb' => 'http://127.0.0.1/en/',
-	        'cy_gb' => 'http://127.0.0.1/cy/',
+	        'en_gb' => 'http://192.168.4.148/en/',
+	        'cy_gb' => 'http://192.168.4.148/cy/',
     	),
         'useBugherd' => false,
         'cache' => false,
