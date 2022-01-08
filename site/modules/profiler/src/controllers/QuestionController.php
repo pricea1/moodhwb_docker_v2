@@ -316,7 +316,8 @@ class QuestionController extends Controller
                         'title' => $category->title,
                         'categoryId' => $category->id,
                         'isChecked' => in_array($category->id, $userCatIds),
-                        'siteId' => $category->siteId
+                        'siteId' => $category->siteId,
+                        'showAlertMessage' => $category->showAlertMessage
                     ));
                 }
 
