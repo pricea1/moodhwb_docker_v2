@@ -68,6 +68,10 @@
 	.content-block-sub-item {
 		width: 100%;
 
+		@media #{$medium-up}{
+			min-height: 261px;
+		}
+		
 		&__image{
 			width: 46%;
 			border-radius: 500px;

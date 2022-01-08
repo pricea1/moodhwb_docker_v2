@@ -9539,6 +9539,11 @@ a.module-theme-6 {
 .four-image-content-block .content-block-sub-item {
   width: 100%;
 }
+@media only screen and (min-width: 42.66667em) {
+  .four-image-content-block .content-block-sub-item {
+    min-height: 261px;
+  }
+}
 .four-image-content-block .content-block-sub-item__image {
   width: 46%;
   border-radius: 500px;
