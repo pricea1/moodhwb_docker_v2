@@ -257,7 +257,7 @@ return array(
 	"Home" => "Hafan",
 	"About Moodhwb" => "Am HwbHwyliau",
 	"Urgent help" => "Help brys",
-	"Download the app" => "Ein categorïau",
+	"Download the app" => "Lawrlwytho'r ap",
 	"Mood diary" => "Dyddiadur hwyliau",
 	"Goals" => "Targedau",
 	"Useful links" => "Dolennau defnyddiol",
