@@ -24,7 +24,8 @@ return array(
         'useBugherd' => false,
         'verificationCodeDuration' => 'P8W',
         'omitScriptNameInUrls' => true,
-        'securityKey' => getenv('SECURITY_KEY')
+        'securityKey' => getenv('SECURITY_KEY'),
+        'maxUploadFileSize' => "200mb",
     ),
     
     'moodhwb.dev' => array(
