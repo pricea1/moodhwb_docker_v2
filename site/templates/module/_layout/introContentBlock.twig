@@ -44,11 +44,19 @@
 	</div>
 
 	<div class="row">
-	<div class="small-12 columns">
+			<div class="small-12 medium-4 columns">
+				{% if  entry.secondaryImage.one() %}
+					<img class="content-block-left-col-image" src="{{ entry.secondaryImage.one().getUrl() }}">
+				{% endif %}
+				<div class="content-block content-block-left">{{ entry.quote }}</div>
+				<div class="content-block">{{ entry.quoteSource }}</div>
+			</div>
+			<div class="small-12 medium-8 columns">
 		<div class="content-block content-block-large-paragraph intro-content-block-text">{{ entry.introContentBlockText }}</div>
 
-	</div>
-	</div>
+			</div>
+		</div>
+
 
 	{% include "_partials/collapsible-content" %}
 </div>
