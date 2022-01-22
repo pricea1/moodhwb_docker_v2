@@ -18,7 +18,7 @@ return array(
 	
 	"Enter a URL" => "Enter a URL e.g. moodhwb.org",
 	"EnterUrlPlaceholder" => "URL e.g. moodhwb.org",
-	"finalQuestionPlaceholder" => "For example this could be a diary entry over the last 7 days",
+	"finalQuestionPlaceholder" => "For example this could be a diary entry",
 	
 	"welcome-message" => "Why not personalise MoodHwb by telling us how you feel?",
 	"welcome-summary-normal" => "Things could be better",

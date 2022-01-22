@@ -173,7 +173,7 @@ return array(
 	"Drag the slider" => "Llusgwch y llithrydd",
 	"No data" => "Dim data",
 	"Almost done. Is there anything you'd like to add?" => "Bron a gorffen. A oes unrhyw beth hoffech ei ychwanegu?",
-	"finalQuestionPlaceholder" => "Er enghraifft gall hwn fod yn gofnod dyddiadur dros y 7 diwrnod",
+	"finalQuestionPlaceholder" => "Er enghraifft gall hwn fod yn gofnod dyddiadur",
 	"Select the box to add your entry" => "Dewiswch y blwch i ychwanegu cofnod",
 	"weeklygoals-step1" => "Cofnodwch y gweithgaredd hoffech ei wneud",
 	"weeklygoals-step2" => "Cofnodwch pa mor aml hoffech ei wneud bob wythnos",
