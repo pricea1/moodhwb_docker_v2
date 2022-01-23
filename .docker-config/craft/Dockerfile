@@ -12,7 +12,7 @@ USER root
 
 RUN apk update update && apk upgrade && \
     apk add --no-cache \
-    ssmtp mailx
+    ssmtp mailx curl
 
 RUN mkdir -p ./ssl && \
     openssl req -x509 -nodes -days 365 -subj "/C=CA/ST=QC/O=Moodhwb, Inc./CN=moodhwb.org" \
