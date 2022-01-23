@@ -4,6 +4,10 @@ COPY ./site/composer.lock composer.lock
 RUN composer install --ignore-platform-reqs --no-interaction --prefer-dist
 
 FROM craftcms/nginx:8.0
+
+ENV PHP_UPLOAD_MAX_FILESIZE=200M
+ENV PHP_POST_MAX_SIZE=200M
+
 USER root
 
 RUN apk update update && apk upgrade && \
