@@ -12,6 +12,7 @@
 
 			{% set itemsPerColumn = itemCount/3 %}
 			{% set maxItemsPerColumn = itemsPerColumn|round(0,'ceil') %}
+
 			{% set middleColumnNotMax = itemCount % 3 == 1 %}
 
 			{% set loopCount = 0 %}
@@ -28,12 +29,6 @@
 
 				{% set categoryMatchesModule =  category.moduleList.ids() | indexOf(entry.id) %}
 				{% if showAllCats is defined or category.moduleList is not defined or category.moduleList |length == 0 or categoryMatchesModule != -1 %}
-						{% if loopCount > maxItemsPerColumn and middleColumnNotMax %}
-							{% set maxItemsPerColumn = maxItemsPerColumn - 1 %}
-							{% set middleColumnNotMax = false %}
-							{% set loopCount = loopCount + 1 %}
-							{% set itemCount = itemCount + 1 %}
-						{% endif %}
 
 						{% set loopCount = loopCount + 1 %}
 
