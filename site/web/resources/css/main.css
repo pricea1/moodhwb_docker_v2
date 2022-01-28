@@ -5799,6 +5799,11 @@ button:focus {
 .header-bar-menu-item-left .header-nav-link-menu-icon {
   margin-right: 10px;
 }
+@media only screen and (min-width: 42.66667em) and (max-width: 776px) {
+  .header-bar-menu-item-left .header-nav-link-menu-icon {
+    display: none;
+  }
+}
 
 .header-bar-menu-item-right {
   margin-right: 0;
@@ -5811,6 +5816,11 @@ button:focus {
 }
 .header-bar-menu-item-right .header-nav-link-menu-icon {
   margin-left: 10px;
+}
+@media only screen and (min-width: 42.66667em) and (max-width: 776px) {
+  .header-bar-menu-item-right .header-nav-link-menu-icon {
+    display: none;
+  }
 }
 
 .header-nav-link, .footer-nav-link,
