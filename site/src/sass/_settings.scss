@@ -19,6 +19,8 @@ $mood-color-positive: #50A667;
 $mood-color-neutral: #FEC236;
 $mood-color-negative: #FD4048;
 $focus-color: #fd0;
+$alert-text: #DE020D;
+$alert-background: #FCF3F3;
 
 @import "foundation-settings";
 
@@ -78,5 +80,4 @@ $themes: (
 		background: #f7737c,
 		color: $dark
 	),
-
 )

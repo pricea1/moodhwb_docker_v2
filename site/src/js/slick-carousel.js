@@ -38,6 +38,10 @@
 			opad.skipMoodSave = true;
 			$slickContainer.slick('slickNext');
 		})
+
+		$('.user-category-input').on('click', function(){
+			$slickContainer.slick('animateHeight');
+		})
 	}
 
 	opad.addToJsModules({

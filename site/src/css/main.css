@@ -6580,12 +6580,9 @@ ul.off-canvas-list .off-canvas-list__item a {
 
 .user-category-alert-message {
   display: none;
-  background: red;
-  color: white;
-  padding: 0.55556rem 1.11111rem;
+  color: #DE020D;
+  padding-top: 0.55556rem;
   line-height: 1.11111rem;
-  max-width: 250px;
-  border-radius: 20px;
 }
 
 .js .profile-dashboard__details__item--edit .user-category-alert-message {
@@ -6593,12 +6590,16 @@ ul.off-canvas-list .off-canvas-list__item a {
   margin-top: 0.55556rem;
 }
 
+.user-category-input:checked ~ .user-category-alert-label {
+  color: #DE020D;
+}
+.user-category-input:checked ~ .user-category-alert-label::before {
+  background-color: #DE020D !important;
+  color: #FCF3F3 !important;
+  border-color: #DE020D;
+}
 .user-category-input:checked ~ .user-category-alert-message {
   display: block;
-  position: absolute;
-  top: 40px;
-  left: 10px;
-  z-index: 999;
 }
 
 .reveal-modal {
