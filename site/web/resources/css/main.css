@@ -6585,11 +6585,27 @@ ul.off-canvas-list .off-canvas-list__item a {
   line-height: 1.11111rem;
 }
 
+.user-options-category__item.hide-background {
+  background: none;
+}
+
+.user-category-alert-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  background: #fff;
+  z-index: -1;
+}
+
 .js .profile-dashboard__details__item--edit .user-category-alert-message {
   line-height: 1.11111rem;
   margin-top: 0.55556rem;
 }
 
+.user-category-input:checked ~ .user-category-alert-background {
+  background: #FCF3F3;
+}
 .user-category-input:checked ~ .user-category-alert-label {
   color: #DE020D;
 }
