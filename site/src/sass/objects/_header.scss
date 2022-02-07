@@ -51,11 +51,15 @@
         margin-left: 30px;
     }
 
+    @media #{$medium-up} and (max-width: 845px){
+        margin-left: 18px;
+    }
+
     
     .header-nav-link-menu-icon{
         margin-left: 10px;
 
-        @media #{$medium-up} and (max-width: 776px){
+        @media #{$medium-up} and (max-width: 845px){
             display: none;
         }
     }

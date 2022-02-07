@@ -5814,10 +5814,15 @@ button:focus {
     margin-left: 30px;
   }
 }
+@media only screen and (min-width: 42.66667em) and (max-width: 845px) {
+  .header-bar-menu-item-right {
+    margin-left: 18px;
+  }
+}
 .header-bar-menu-item-right .header-nav-link-menu-icon {
   margin-left: 10px;
 }
-@media only screen and (min-width: 42.66667em) and (max-width: 776px) {
+@media only screen and (min-width: 42.66667em) and (max-width: 845px) {
   .header-bar-menu-item-right .header-nav-link-menu-icon {
     display: none;
   }
