@@ -37,10 +37,16 @@
 						{% set isStartOfColumn = loopCount % maxItemsPerColumn == 1 %}
 						{% set isEndOfColumn = loopCount % maxItemsPerColumn == 0 %}
 
-						{% if itemCount < 3 %}
+						{% if itemCount < 5 and loopCount > 2 %}
 							{% set isStartOfColumn = true %}
 							{% set isEndOfColumn = true %}
 						{% endif %}
+
+						{% if itemCount < 4 %}
+							{% set isStartOfColumn = true %}
+							{% set isEndOfColumn = true %}
+						{% endif %}
+
 
 						{% if isStartOfColumn %}
 							<ul class="user-category-list">
