@@ -9505,6 +9505,7 @@ a.module-theme-6 {
   font-weight: bold;
 }
 
+.module-block ul li,
 .content-block ul li,
 .content-block-sub-item ul li {
   list-style-type: none;
@@ -9512,12 +9513,14 @@ a.module-theme-6 {
   margin-bottom: 6px;
 }
 @media only screen and (min-width: 42.66667em) {
+  .module-block ul li,
   .content-block ul li,
   .content-block-sub-item ul li {
     font-size: 1rem;
     margin-bottom: 0.66667rem;
   }
 }
+.module-block ul li:before,
 .content-block ul li:before,
 .content-block-sub-item ul li:before {
   content: "arrow_forward";
@@ -9525,8 +9528,11 @@ a.module-theme-6 {
   margin-right: 14px;
   width: 14px;
   height: 14px;
+  vertical-align: bottom;
 }
-.content-block ul, .content-block ol,
+.module-block ul, .module-block ol,
+.content-block ul,
+.content-block ol,
 .content-block-sub-item ul,
 .content-block-sub-item ol {
   padding-left: 0;
