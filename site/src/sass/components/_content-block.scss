@@ -39,7 +39,7 @@
 .content-block-subtext-container {
 	clear: left;
 	padding-top: 20px;
-
+	
 	@media #{$medium-up}{
 		clear: initial;
 		margin-left: 245px;
@@ -69,7 +69,8 @@
 
 	.content-block-sub-item {
 		width: 100%;
-
+		margin-bottom: 60px;
+		
 		@media #{$medium-up}{
 			min-height: 261px;
 		}

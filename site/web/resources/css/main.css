@@ -9585,6 +9585,7 @@ a.module-theme-6 {
 
 .four-image-content-block .content-block-sub-item {
   width: 100%;
+  margin-bottom: 60px;
 }
 @media only screen and (min-width: 42.66667em) {
   .four-image-content-block .content-block-sub-item {
