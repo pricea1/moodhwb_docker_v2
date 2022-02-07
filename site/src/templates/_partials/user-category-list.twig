@@ -1,3 +1,5 @@
+	{% set urgentHelpPage = craft.entries.slug("urgent-help").one() %}
+
 	{% if categoryName is defined and fieldName is defined and categoryName != "" %}
 		<div class="user-category-list-container">
 			{% set navCategories = craft.categories.group(categoryName).all() %}
@@ -60,7 +62,10 @@
 							
 							{% if category.showAlertMessage %}
 								<div class="user-category-alert-message">
-									{{ "We recommend you speak to someone about this" | t }}
+									{{ "We recommend you speak to someone about this" | t }}.
+									{{ "In" | t}}
+									<a href="{{ urgentHelpPage.url }}">{{ "Urgent help" | t }}</a>
+									{{ "we list helplines and resources" | t }}
 								</div>
 								<div class="user-category-alert-background"></div>
 
