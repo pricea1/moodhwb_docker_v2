@@ -227,6 +227,11 @@
 			border-bottom: 2px solid $primary-text-color;
 			border-bottom-right-radius: 6px;
 			border-bottom-left-radius: 6px;
+
+			.user-category-alert-background {
+				border-bottom-right-radius: 6px;
+				border-bottom-left-radius: 6px;
+			}
 		}
 	}
 

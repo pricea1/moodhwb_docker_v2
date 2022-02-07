@@ -6586,7 +6586,7 @@ ul.off-canvas-list .off-canvas-list__item a {
 }
 
 .user-options-category__item.hide-background {
-  background: none;
+  z-index: 1;
 }
 
 .user-category-alert-background {
@@ -8347,6 +8347,10 @@ a.module-theme-6 {
 @media only screen and (min-width: 1023px) {
   .profile-user-options__category--column-end {
     border-bottom: 2px solid #333;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+  }
+  .profile-user-options__category--column-end .user-category-alert-background {
     border-bottom-right-radius: 6px;
     border-bottom-left-radius: 6px;
   }
