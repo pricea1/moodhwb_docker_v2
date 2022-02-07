@@ -9505,23 +9505,23 @@ a.module-theme-6 {
   font-weight: bold;
 }
 
-.module-block ul li,
 .content-block ul li,
+.content-block-text-container ul li,
 .content-block-sub-item ul li {
   list-style-type: none;
   position: relative;
   margin-bottom: 6px;
 }
 @media only screen and (min-width: 42.66667em) {
-  .module-block ul li,
   .content-block ul li,
+  .content-block-text-container ul li,
   .content-block-sub-item ul li {
     font-size: 1rem;
     margin-bottom: 0.66667rem;
   }
 }
-.module-block ul li:before,
 .content-block ul li:before,
+.content-block-text-container ul li:before,
 .content-block-sub-item ul li:before {
   content: "arrow_forward";
   font-family: "Material Icons";
@@ -9530,9 +9530,9 @@ a.module-theme-6 {
   height: 14px;
   vertical-align: bottom;
 }
-.module-block ul, .module-block ol,
-.content-block ul,
-.content-block ol,
+.content-block ul, .content-block ol,
+.content-block-text-container ul,
+.content-block-text-container ol,
 .content-block-sub-item ul,
 .content-block-sub-item ol {
   padding-left: 0;
