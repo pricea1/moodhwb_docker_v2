@@ -5988,6 +5988,11 @@ button:focus {
   height: 48px;
 }
 
+.footer-image-small {
+  height: 38px;
+  padding-top: 5px;
+}
+
 .footer-text {
   color: #104949;
 }
