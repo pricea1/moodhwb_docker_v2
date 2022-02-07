@@ -8,6 +8,11 @@
 		padding-top: rem-calc(32);
 		padding-bottom: rem-calc(32);
 	}
+
+	input[type="text"],
+	input[type="password"]{
+		box-shadow: inset 0 0 0 2px;
+	}
 }
 
 .login-heading{
