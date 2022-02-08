@@ -74,8 +74,12 @@ return array(
 	"Get started here" => "Cychwyn arni yma",
 	"Why not start with" => "Beth am ddechrau gyda",
 	"To prevent things getting worse you might like to look at" => "Er mwyn atal pethau rhag gwaethygu efallai yr hoffech edrych ar",
-	"You should talk to somebody as soon as possible, see" => "YDylech siarad â rhywun cyn gynted â phosibl, gweler",
+	"Talk to somebody you trust, see" => "Siaradwch â rhywun rydych yn ymddiried ynddynt, gweler",
 	"You last visited" => "Fe ymweloch chi ddiwethaf",
+	"you last visited" => "fe ymweloch chi ddiwethaf",
+	"Keep doing the things you find helpful" => "Parhewch i wneud y pethau sy'n ddefnyddiol i chi",
+	"Try the self help sections and talk to somebody you trust" => "Rhowch gynnig ar yr adrannau hunangymorth, a siaradwch â rhywun rydych chi'n ymddiried ynddynt",
+	
 	/* End Welcome page */
 
 	/* Module pages */

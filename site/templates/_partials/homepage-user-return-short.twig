@@ -30,18 +30,23 @@
 		</h1>
 
 		{% if lastViewedModule is defined %}
-			{% if summaryScore < -5 %}
-				<p class="home-heading-subtext">{{"You should talk to somebody as soon as possible, see"|t}} <a class="link link__promo" href="{{ helpPage.url }}">{{ helpPage.title}}</a></p>
+			{% if summaryScore > 5 %}
+				<p class="home-heading-subtext">{{"Keep doing the things you find helpful"|t}}, {{"you last visited"|t}}... <a class="link link__promo" href="{{ lastViewedModule.url }}">{{ lastViewedModule.parent.title }}</a></p>
 			{% elseif summaryScore >= -5 %}
-				<p class="home-heading-subtext">{{"You last visited"|t}} <a class="link link__promo" href="{{ lastViewedModule.url }}">{{ lastViewedModule.parent.title }}</a></p>
+				<p class="home-heading-subtext">
+					{{ "Try the self help sections and talk to somebody you trust"|t}}, {{"you last visited" | t}}... <a class="link link__promo" href="{{ lastViewedModule.url }}">{{ lastViewedModule.parent.title }}</a>
+				</p>
+			{% else %}
+				<p class="home-heading-subtext">{{"Talk to somebody you trust, see"|t}} <a class="link link__promo" href="{{ helpPage.url }}">{{ helpPage.title}}</a></p>
 			{% endif %}
+
 		{% else %}
 			{% if summaryScore > 5 %}
 					<p class="home-heading-subtext">{{"Why not start with"|t}} <a class="link link__promo" href="{{ depressionPage.url }}">{{ depressionPage.title}}</a></p>
 			{% elseif summaryScore >= -5 %}
-					<p class="home-heading-subtext">{{"To prevent things getting worse you might like to look at"|t}} <a class="link link__promo" href="{{ selfHelpPage.url }}">{{ selfHelpPage.title}}</a></p>
+					<p class="home-heading-subtext">{{"Try the self help sections and talk to somebody you trust"|t}}. <a class="link link__promo" href="{{ selfHelpPage.url }}">{{ selfHelpPage.title}}</a></p>
 			{% else %}
-					<p class="home-heading-subtext">{{"You should talk to somebody as soon as possible, see"|t}} <a class="link link__promo" href="{{ helpPage.url }}">{{ helpPage.title}}</a></p>
+					<p class="home-heading-subtext">{{"Talk to somebody you trust, see"|t}} <a class="link link__promo" href="{{ helpPage.url }}">{{ helpPage.title}}</a></p>
 			{% endif %}
 		{% endif %}
 
