@@ -199,8 +199,8 @@ return array(
 	"stuffilike-step2" => "Cofnodwch enw am hyn",
 	"stuffilike-step3" => "Yna pan rydych yn teimlo ychydig yn isel atgoffwch eich hunan o rai pethau da",
 
-	"In" => "In (CY)",
-	"we list helplines and resources" => "we list helplines and resources (CY)",
+	"In" => "Yn",
+	"we list helplines and resources" => "rydym yn rhestru llinellau cymorth ac adnoddau",
 
 	/* Account Pages */
 	"My account" => "Fy nghyfrif",
