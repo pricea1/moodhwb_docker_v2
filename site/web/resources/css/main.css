@@ -10514,8 +10514,14 @@ a.module-theme-6 {
 }
 
 .blog-image-feature {
-  -webkit-clip-path: circle(90px at center);
-          clip-path: circle(90px at center);
+  -webkit-clip-path: circle(50px at center);
+          clip-path: circle(50px at center);
+}
+@media only screen and (min-width: 42.66667em) {
+  .blog-image-feature {
+    -webkit-clip-path: circle(90px at center);
+            clip-path: circle(90px at center);
+  }
 }
 
 .blog-listing-more-link {

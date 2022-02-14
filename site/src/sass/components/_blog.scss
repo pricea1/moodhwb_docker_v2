@@ -13,7 +13,12 @@
 }
 
 .blog-image-feature {
-  clip-path: circle(90px at center);
+  clip-path: circle(50px at center);
+
+  @media #{$medium-up}{
+    clip-path: circle(90px at center);
+  }
+
 }
 
 .blog-listing-more-link {
