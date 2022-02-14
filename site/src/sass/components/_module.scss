@@ -77,6 +77,10 @@
 
 }
 
+.module-block {
+	border-bottom: 1px solid $white;
+}
+
 @media #{$small-only}{
 	.module-block {
 		padding-top: rem-calc(10);
@@ -84,12 +88,9 @@
 }
 
 .module-block-themed{
-	padding-top: rem-calc(40);
-	padding-bottom: rem-calc(20);
+	padding-top: rem-calc(36);
+	padding-bottom: rem-calc(36);
 
-	@media #{$medium-up}{
-		padding-bottom: rem-calc(60);
-	}
 }
 
 
