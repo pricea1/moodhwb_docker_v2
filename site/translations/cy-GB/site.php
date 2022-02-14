@@ -278,6 +278,7 @@ return array(
 
 	/* Blog */
 	"Blog" => "Blog",
+	"More" => "Mwy",
 
 	/* Dates */
 	'Jan' => 'Ion',

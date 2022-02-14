@@ -10,27 +10,31 @@
 {% block content %}
 <div class="row">
 <div class="small-12 column">
-<a class="module-nav__next-link module-nav__next-link--previous" href="{{ currentSite.baseUrl }}blog">{{ "Blog" | t }}</a>
-  <header class="blog-header">
-  <h1>{{ entry.title }}</h1>
-  
-  <time class="text-sm block pb-4" datetime="{{ entry.postDate | date('Y-m-d') }}">
-    {{ entry.postDate | date('d') }} {{ entry.postDate | date('M')|t }} {{ entry.postDate | date('Y')}}
-   </time>
-  </header>
+  <a class="module-nav__next-link module-nav__next-link--previous" href="{{ currentSite.baseUrl }}blog">{{ "Blog" | t }}</a>
 </div>
 </div>
 
 <div class="row">
-<div class="small-12 column">
-  {% if entry.featureImage | length %}
+  <div class="small-4 medium-3 column">
+   {% if entry.featureImage | length %}
     {% for image in entry.featureImage.all() %}
-      <img class="blog-image" src="{{ image.getUrl(featureImage) }}" alt="{{ image.title }}" />
+      <img class="blog-image-feature" src="{{ image.getUrl() }}" alt="{{ image.title }}" />
     {% endfor %}
   {% endif %}
+  </div>
 
-  {% include "blog/_includes/post-blocks" with { blocks: entry.postContent.all() } only %}
+  <div class="small-8 medium-9 column">
+    <header class="blog-header">
+    <h1>{{ entry.title }}</h1>
+    
+    <time class="text-sm block pb-4" datetime="{{ entry.postDate | date('Y-m-d') }}">
+      {{ entry.postDate | date('d') }} {{ entry.postDate | date('M')|t }} {{ entry.postDate | date('Y')}}
+    </time>
+    </header>
 
+    {% include "blog/_includes/post-blocks" with { blocks: entry.postContent.all() } only %}
+
+  </div>
 </div>
-</div>
+
 {% endblock %}

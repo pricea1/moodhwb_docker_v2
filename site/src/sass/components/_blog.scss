@@ -1,5 +1,7 @@
 .blog-listing-item{
-  margin-bottom: 20px;
+  padding-bottom: 27px;
+  margin-bottom: 27px;
+  border-bottom: 1px solid #ccc;
 }
 
 .blog-header {
@@ -8,4 +10,29 @@
 
 .blog-image {
   margin-bottom: 20px;
+}
+
+.blog-image-feature {
+  clip-path: circle(90px at center);
+}
+
+.blog-listing-more-link {
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 18px;
+
+  &:hover,
+  &:visited {
+    text-decoration: none;
+  }
+
+  &:after {
+    content: "arrow_forward";
+    font-family: "Material Icons";
+    margin-right: 14px;
+    width: 14px;
+    height: 14px;
+    vertical-align: bottom;
+    margin-left: 12px;
+  }
 }

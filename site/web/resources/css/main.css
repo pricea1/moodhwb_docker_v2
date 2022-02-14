@@ -10500,7 +10500,9 @@ a.module-theme-6 {
 }
 
 .blog-listing-item {
-  margin-bottom: 20px;
+  padding-bottom: 27px;
+  margin-bottom: 27px;
+  border-bottom: 1px solid #ccc;
 }
 
 .blog-header {
@@ -10509,4 +10511,27 @@ a.module-theme-6 {
 
 .blog-image {
   margin-bottom: 20px;
+}
+
+.blog-image-feature {
+  -webkit-clip-path: circle(90px at center);
+          clip-path: circle(90px at center);
+}
+
+.blog-listing-more-link {
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 18px;
+}
+.blog-listing-more-link:hover, .blog-listing-more-link:visited {
+  text-decoration: none;
+}
+.blog-listing-more-link:after {
+  content: "arrow_forward";
+  font-family: "Material Icons";
+  margin-right: 14px;
+  width: 14px;
+  height: 14px;
+  vertical-align: bottom;
+  margin-left: 12px;
 }
