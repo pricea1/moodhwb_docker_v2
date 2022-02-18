@@ -26,6 +26,7 @@ return array(
         'omitScriptNameInUrls' => true,
         'securityKey' => getenv('SECURITY_KEY'),
         'maxUploadFileSize' => "200mb",
+        'useGoogleAnalytics' => false,
     ),
     
     'moodhwb.dev' => array(
@@ -63,7 +64,8 @@ return array(
         'useBugherd' => false,
         'cache' => false,
 //        'cacheMethod' => 'redis',
-        'securityKey' => getenv('SECURITY_KEY')
+        'securityKey' => getenv('SECURITY_KEY'),
+        'useGoogleAnalytics' => true,
 
     ),
     'stage.moodhwb.org' => array(
@@ -91,7 +93,7 @@ return array(
         'useBugherd' => false,
     'cacheDuration' => 'P1W',
     'cacheMethod' => 'redis',
-    'securityKey' => getenv('SECURITY_KEY')
-
+    'securityKey' => getenv('SECURITY_KEY'),
+    'useGoogleAnalytics' => true,
     )
 );

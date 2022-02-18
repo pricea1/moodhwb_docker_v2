@@ -28,7 +28,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="robots" content="noindex" />
 
-	<title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
+	<title>{% if entry.title is defined %}{{ entry.title }} - {% endif %}{{ siteName }}</title>
 	<link rel="home" href="{{ siteUrl }}" />
 
 	<link href="//fonts.googleapis.com/css?family=Lato:400,300,700,400italic" rel="stylesheet" type="text/css">
@@ -119,21 +119,21 @@
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-	{% if craft.app.config.general.useBugherd %}
-		<script type='text/javascript'>
-		(function (d, t) {
-		  var bh = d.createElement(t), s = d.getElementsByTagName(t)[0];
-		  bh.type = 'text/javascript';
-		  bh.src = '//www.bugherd.com/sidebarv2.js?apikey=lmzn5sytgnnwwr1dlgqrzg';
-		  s.parentNode.insertBefore(bh, s);
-		  })(document, 'script');
-		</script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	{% if craft.app.config.general.useGoogleAnalytics and currentUser.userId %}
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-YQEPDBKBEC"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'G-YQEPDBKBEC', {'user_id': '{{ currentUser.userId }}'});
+		gtag('set', 'user_properties', {'particpant_id' : '{{ currentUser.userId }}'});
+	</script>
 	{% endif %}
 </head>
 
 <body data-os="{{ craft.request.clientOs | escape('html_attr') | lower }}">
 	<div id="container">
-
 		<div class="off-canvas-wrap" data-offcanvas>
 		<div class="inner-wrap">
 			{% if headers['moodhwbapp'] is not defined %}
@@ -207,16 +207,6 @@
 
 	</script>
 
-	<script>
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-	  ga('create', 'UA-62774221-3', 'auto');
-	  ga('send', 'pageview');
-
-	</script>
 	{% block jsBlock %}
 	{% endblock %}
 
