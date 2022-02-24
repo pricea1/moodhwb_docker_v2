@@ -46,7 +46,6 @@
       });
     }
 
-    ga("send", "pageview", window.location.href);
     craftEventTracker.sendEvent({
       interactionId: "view",
       interactionCategory: "module",

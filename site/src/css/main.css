@@ -10045,63 +10045,29 @@ a.module-theme-6 {
 }
 
 .feature-block-case-study-more-container {
-  position: relative;
-  background: #fff;
-  border-radius: 6px;
-  padding: 0 1.11111rem;
-  margin-top: 2.33333rem;
-}
-.feature-block-case-study-more-container:before {
-  content: "▴";
-  font-family: "Material Icons";
-  color: #fff;
-  position: absolute;
-  top: -20px;
-  left: 35px;
-  font-size: 1.33333rem;
-  display: block;
-  width: 100%;
-  max-height: 1.66667rem;
-  overflow-y: hidden;
-}
-@media only screen and (min-width: 42.66667em) {
-  .feature-block-case-study-more-container:before {
-    left: 60px;
-  }
+  padding-top: 1.5rem;
 }
 
 .feature-block-case-study-link {
-  color: #346688 !important;
-  font-weight: bold;
-  font-size: 1.11111rem;
-  line-height: 3.33333rem;
+  font-size: 1rem;
+  line-height: 1.22222rem;
   display: block;
-  text-decoration: none;
-  z-index: 10;
+  padding-left: 1rem;
 }
-.feature-block-case-study-link:after {
+.feature-block-case-study-link:before {
   content: "expand_less";
   font-family: "Material Icons";
   font-size: 1.33333rem;
   position: absolute;
-  top: 0;
-  right: 0;
-  line-height: 2.77778rem;
+  left: 0;
 }
-.feature-block-case-study-link.nav-arrow--closed:after {
+.feature-block-case-study-link.nav-arrow--closed:before {
   -ms-transform: rotate(180deg);
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 }
-.feature-block-case-study-link:after {
-  line-height: 3.33333rem;
-}
-.feature-block-case-study-link:focus, .feature-block-case-study-link:hover {
-  text-decoration: none;
-}
 
 .feature-block-case-study-text {
-  padding-bottom: 1.11111rem;
   overflow: hidden;
   -o-transition-property: max-height;
   -webkit-transition-property: max-height;
@@ -10114,13 +10080,13 @@ a.module-theme-6 {
   transition-timing-function: linear;
 }
 .feature-block-case-study-text .feature-block-case-study-text-container {
-  padding-top: 1.11111rem;
+  margin-top: 1.11111rem;
   color: #333333;
+  border-left: 5px solid #333333;
+  padding-left: 0.88889rem;
 }
-@media only screen and (min-width: 42.66667em) {
-  .feature-block-case-study-text {
-    padding-bottom: 0.55556rem;
-  }
+.feature-block-case-study-text .feature-block-case-study-text-container p:last-child {
+  margin-bottom: 0;
 }
 
 @media screen {

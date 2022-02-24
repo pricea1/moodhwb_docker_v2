@@ -48,57 +48,42 @@
 }
 
 .feature-block-case-study-more-container {
-	position: relative;
-	background: $white;
-	border-radius: 6px;
-	padding: 0 rem-calc(20);
-	margin-top: rem-calc(42);
-
-	&:before{
-		content: $symbol-module-arrow;
-		font-family: $symbol-font-family;
-		color: $white;
-		
-			position: absolute;
-			top: -20px;
-			left: 35px;
-			font-size: rem-calc(24);
-			display: block;
-			width: 100%;
-			max-height: rem-calc(30);
-			overflow-y: hidden;
-
-		@media #{$medium-up}{
-			left: 60px;
-		}
-	}
-
+	padding-top:  rem-calc(27);
 }
 
 .feature-block-case-study-link{
-	color: $primary-color !important;
-	font-weight: bold;
-	font-size: rem-calc(20);
-	line-height: rem-calc(60);
+	font-size: rem-calc(18);
+	line-height: rem-calc(22);
 	display: block;
-	text-decoration: none;
+	padding-left: rem-calc(18);
 
-	@include nav-arrow();
-	&:after {
-		line-height: rem-calc(60);
+	&:before{
+		content: $symbol-chevron-up;
+		font-family: $symbol-font-family;
+		font-size: rem-calc(24);
+		position: absolute;
+		left: 0
 	}
 
-	&:focus, &:hover{
-		text-decoration: none;
+
+
+	&.nav-arrow--closed:before{
+		@include rotate(180deg);
 	}
+
 }
 
 .feature-block-case-study-text{
-	padding-bottom: rem-calc(20);
 
 	.feature-block-case-study-text-container{
-		padding-top: rem-calc(20);
+		margin-top: rem-calc(20);
 		color: $oil;
+		border-left: 5px solid $oil;
+		padding-left: rem-calc(16);
+
+		p:last-child {
+			margin-bottom: 0;
+		}
 	}
 
 	overflow: hidden;
@@ -107,9 +92,6 @@
 	@include transition-duration(0.25s);
 	@include transition-timing-function(linear);
 
-	@media #{$medium-up}{
-		padding-bottom: rem-calc(10);
-	}
 }
 
 @media screen{
