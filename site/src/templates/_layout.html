@@ -120,7 +120,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
-	{% if craft.app.config.general.useGoogleAnalytics and currentUser.userId %}
+	{% if craft.app.config.general.useGoogleAnalytics and currentUser and currentUser.userId %}
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-YQEPDBKBEC"></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
