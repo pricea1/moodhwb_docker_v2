@@ -9789,18 +9789,22 @@ a.module-theme-6 {
   padding-top: 1.66667rem;
 }
 
-.two-column-content-block .content-block-left-col-image {
+.content-block-left-col-image {
   margin-bottom: 1.11111rem;
   width: 143px;
+  -webkit-clip-path: circle(71px at center);
+          clip-path: circle(71px at center);
 }
-.two-column-content-block .content-block-left {
+
+.content-block-left {
   font-size: 1.33333rem;
   line-height: 2rem;
 }
-.two-column-content-block .content-block-left p {
+.content-block-left p {
   font-size: 1.33333rem;
   line-height: 2rem;
 }
+
 @media only screen and (max-width: 42.61111em) {
   .two-column-content-block .row {
     display: -webkit-box;

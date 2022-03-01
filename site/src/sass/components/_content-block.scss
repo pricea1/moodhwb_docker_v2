@@ -313,21 +313,23 @@
 
 }
 
-.two-column-content-block {
-	.content-block-left-col-image {
-		margin-bottom: rem-calc(20);
-		width: 143px;
-	}
+.content-block-left-col-image {
+	margin-bottom: rem-calc(20);
+	width: 143px;
+	clip-path: circle(71px at center);
+}
 
-	.content-block-left {
+.content-block-left {
+	font-size: rem-calc(24);
+	line-height: rem-calc(36);
+
+	p {
 		font-size: rem-calc(24);
 		line-height: rem-calc(36);
-
-		p {
-			font-size: rem-calc(24);
-			line-height: rem-calc(36);
-		}
 	}
+}
+
+.two-column-content-block {
 
 	.row {
 		@media #{$small-only} {
