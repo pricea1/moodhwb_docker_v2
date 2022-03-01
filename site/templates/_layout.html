@@ -149,44 +149,20 @@
 	{% block jsBlock %}
 	{% endblock %}
 
-	{% if craft.app.config.general.useGoogleAnalytics and currentUser and currentUser.userId %}
+	{% if headers['moodhwbapp'] is not defined and craft.app.config.general.useGoogleAnalytics and currentUser and currentUser.userId %}
 
-	<script type="module">
-		// Import the functions you need from the SDKs you need
-		import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js";
-		import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-analytics.js";
-		// TODO: Add SDKs for Firebase products that you want to use
-		// https://firebase.google.com/docs/web/setup#available-libraries
-	  
-		// Your web app's Firebase configuration
-		// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-		const firebaseConfig = {
-		  apiKey: "AIzaSyCyFzTi_BGVeHSp94pF0qFgDm7t_QQpcnw",
-		  authDomain: "moodhwb-analytics.firebaseapp.com",
-		  projectId: "moodhwb-analytics",
-		  storageBucket: "moodhwb-analytics.appspot.com",
-		  messagingSenderId: "306849293148",
-		  appId: "1:306849293148:web:06494fb5120286d2219799",
-		  measurementId: "G-Y4S2ZQ8H0N"
-		};
-	  
-		// Initialize Firebase
-		const app = initializeApp(firebaseConfig);
-		const analytics = getAnalytics(app);
-	  </script>
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-YQEPDBKBEC"></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y4S2ZQ8H0N"></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
 		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
-		// gtag('config', 'G-YQEPDBKBEC', {'user_id': '{{ currentUser.userId }}'});
-		gtag('set', 'user_properties', {'particpant_id' : '{{ currentUser.userId }}'});
-		// {% if headers['moodhwbapp'] is not defined %}
-		// 	gtag('set', 'user_properties', {'app_type' : 'web'});
-		// {% endif %}
-</script>
+		var now = new Date();
+		gtag('js', now);
+		gtag('config', 'G-Y4S2ZQ8H0N', {'user_id': '{{ currentUser.userId }}'});
+		gtag('set', 'user_properties', {'participant_id' : '{{ currentUser.userId }}'});
+		gtag('set', 'user_properties', {'hour_of_day' : now.getHours() });
+	</script>
 
 	{% endif %}
 

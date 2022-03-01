@@ -73,6 +73,7 @@ class AuthController extends UsersController
 
         $userLogin->data["jwtToken"] = MobileApp::$plugin->authService->getJwtToken($currentUser);
         //$tmp = MobileApp::$plugin->authService->getJwtToken($currentUser);
+        $userLogin->data["userId"] = $currentUser->userId;
         
         $this->setNotificationToken();
 
