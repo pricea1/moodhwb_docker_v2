@@ -66,6 +66,7 @@ return array(
 //        'cacheMethod' => 'redis',
         'securityKey' => getenv('SECURITY_KEY'),
         'useGoogleAnalytics' => true,
+        'GA_Key' => 'G-Y4S2ZQ8H0N'
 
     ),
     'stage.moodhwb.org' => array(
@@ -95,5 +96,6 @@ return array(
     'cacheMethod' => 'redis',
     'securityKey' => getenv('SECURITY_KEY'),
     'useGoogleAnalytics' => true,
+    'GA_Key' => 'G-2QQLEVPVP7'
     )
 );

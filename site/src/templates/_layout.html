@@ -204,15 +204,17 @@
 
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y4S2ZQ8H0N"></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id={{ craft.app.config.general.GA_Key }}"></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
 		function gtag(){dataLayer.push(arguments);}
 		var now = new Date();
 		gtag('js', now);
-		gtag('config', 'G-Y4S2ZQ8H0N', {'user_id': '{{ currentUser.userId }}'});
-		gtag('set', 'user_properties', {'participant_id' : '{{ currentUser.userId }}'});
-		gtag('set', 'user_properties', {'hour_of_day' : now.getHours() });
+		gtag('config', '{{ craft.app.config.general.GA_Key }}', {
+			'participant_id': '{{ currentUser.userId }}',
+			'hour_of_day' : now.getHours(),
+			'lang': '{{ craft.app.language }}'
+		});
 	</script>
 
 	{% endif %}
