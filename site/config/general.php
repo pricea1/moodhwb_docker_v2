@@ -25,7 +25,7 @@ return array(
         'verificationCodeDuration' => 'P8W',
         'omitScriptNameInUrls' => true,
         'securityKey' => getenv('SECURITY_KEY'),
-        'maxUploadFileSize' => "200mb",
+        'maxUploadFileSize' => "600mb",
         'useGoogleAnalytics' => false,
     ),
     
