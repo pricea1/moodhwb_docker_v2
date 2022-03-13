@@ -4,25 +4,25 @@
 {% set depressionPage = craft.entries.slug("what-is-depression").one() %}
 
 		{% if summaryScore > 5 %}
-			{% set welcomeImage = "welcome-image-good" %}
+			{% set welcomeImage = "home1" %}
 			{% set welcomeTitle = 'welcome-summary-good' %}
 		{% elseif summaryScore >= -5 %}
-			{% set welcomeImage = "welcome-image-normal" %}
+			{% set welcomeImage = "home1" %}
 			{% set welcomeTitle = 'welcome-summary-normal' %}
 		{% else %}
-			{% set welcomeImage = "welcome-image-bad" %}
+			{% set welcomeImage = "home2" %}
 			{% set welcomeTitle = 'welcome-summary-bad' %}
 		{% endif %}
 
 <div class="show-for-medium-up">
 	{% for image in entry.image.all() %}
-		<img src="/resources/images/{{ welcomeImage }}.png" alt="*">
+		<img src="/resources/images/{{ welcomeImage }}.svg" alt="*">
 	{% endfor %}
 </div>
 <div class="home-top-section">
 
 		<div class="hide-for-medium-up">
-			<img  class="home-welcome-image-small" src="/resources/images/{{ welcomeImage }}-small.png"  alt="*" />
+			<img  class="home-welcome-image-small" src="/resources/images/{{ welcomeImage }}.svg"  alt="*" />
 		</div>
 
 		<h1 class="home-heading">

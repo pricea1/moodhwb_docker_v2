@@ -1,22 +1,22 @@
 {% set aboutPage = craft.entries.slug("about-this").one() %}
 <div class="show-for-medium-up">
-		<img  src="/resources/images/welcome-return.png">
+		<img  src="/resources/images/home1.svg">
 </div>
 
-	<div class="home-top-section">
-		<div class="hide-for-medium-up">
-			<img class="" src="/resources/images/welcome-return-small.png" />
+<div class="home-top-section">
+	<div class="hide-for-medium-up">
+		<img class="" src="/resources/images/home1.svg" />
+	</div>
+
+	<h1 class="home-heading">
+	{{ "Welcome back" | t}}
+	</h1>
+	<p class="home-heading-subtext">{{"welcome-message"|t}}</p>
+
+		<div class="button-container">
+			<a href="{{ url('profile/questions-self') }}" class="button home-button">{{ "Get started here" | t}}</a>
 		</div>
-
-		<h1 class="home-heading">
-		{{ "Welcome back" | t}}
-		</h1>
-		<p class="home-heading-subtext">{{"welcome-message"|t}}</p>
-
-			<div class="button-container">
-				<a href="{{ url('profile/questions-self') }}" class="button home-button">{{ "Get started here" | t}}</a>
-			</div>
-		<p>
-		{{"Watch our video in" |t}} <a class="link link__promo" href="{{ aboutPage.url }}">{{ aboutPage.title}}</a>
-		</p> 
+	<p>
+	{{"Watch our video in" |t}} <a class="link link__promo" href="{{ aboutPage.url }}">{{ aboutPage.title}}</a>
+	</p> 
 </div>
