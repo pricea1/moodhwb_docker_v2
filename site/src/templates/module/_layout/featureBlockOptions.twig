@@ -8,7 +8,9 @@
 
 			<h2 class="light-heading feature-block-option-heading">{{ entry.heading }}</h2>
 			{% if entry.contentBlockText %}
-				<span>{{ entry.contentBlockText }}</span>
+				<div class="content-block content-block-large-paragraph content-block-text-container">
+					{{ entry.contentBlockText }}
+				</div>
 			{% endif %}
 			<form method="post" accept-charset="UTF-8">
 				{{ csrfInput() }}
