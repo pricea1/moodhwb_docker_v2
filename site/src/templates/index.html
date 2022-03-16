@@ -21,7 +21,8 @@
 			<div class="home-top-section-container">
 				{% switch userStatus %}
 						{% case "newUser" %}
-								{% include "./_partials/homepage-new-user-header.twig" %}
+							{% include "./_partials/homepage-new-user-header.twig" %}
+						
 						{% case "unansweredQuestions"%}
 							{% include "./_partials/homepage-user-unanswered.twig" %}
 
