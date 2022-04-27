@@ -27,6 +27,7 @@ return array(
         'securityKey' => getenv('SECURITY_KEY'),
         'maxUploadFileSize' => "600mb",
         'useGoogleAnalytics' => false,
+        'transformGifs' => false,
     ),
     
     'moodhwb.dev' => array(
