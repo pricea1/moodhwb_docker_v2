@@ -23,7 +23,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 RUN echo "upload_max_filesize = 100M" > /usr/local/etc/php/php.ini && \
     echo "post_max_size = 100M" >> /usr/local/etc/php/php.ini && \
-    echo "max_execution_time = 300" >> /usr/local/etc/php/php.ini && \
+    echo "max_execution_time = 600" >> /usr/local/etc/php/php.ini && \
     echo "memory_limit = 256M" >> /usr/local/etc/php/php.ini && \
     echo "session.cookie_lifetime = 0" >> /usr/local/etc/php/php.ini && \
     echo "error_reporting = E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED" >> /usr/local/etc/php/php.ini
