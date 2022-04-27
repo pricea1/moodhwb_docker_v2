@@ -43,7 +43,7 @@
 						<div class="feature-block-case-study-sub-item">
 							
 							{% if item.imageFile and item.imageFile.one() %}
-							<img class="feature-block-case-study-sub-item__image" src="{{ item.imageFile.one().getUrl('square3col') }}" alt="{{ item.imageAlt }}">
+							<img class="feature-block-case-study-sub-item__image" src="{{ item.imageFile.one().getUrl() }}" alt="{{ item.imageAlt }}">
 							{% endif %}
 							
 							{% if item.heading %}						

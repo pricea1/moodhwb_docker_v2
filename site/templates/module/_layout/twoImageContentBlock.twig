@@ -20,7 +20,7 @@
 
 					<div class="content-block content-block-sub-item">
 						{% if item.imageFile and item.imageFile.one() %}
-							<img class="content-block-sub-item__image content-block-sub-item__image--above" src="{{ item.imageFile.one().getUrl('square6col') }}" alt="{{ item.imageAlt }}">
+							<img class="content-block-sub-item__image content-block-sub-item__image--above" src="{{ item.imageFile.one().getUrl() }}" alt="{{ item.imageAlt }}">
 						{% endif %}
 						{% if item.heading %}
 						<h3 class="content-block-subheading">{{ item.heading }}</h3>
