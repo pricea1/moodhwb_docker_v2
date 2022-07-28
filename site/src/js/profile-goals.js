@@ -10,7 +10,7 @@
             formElements: { "onceDate": "%Y-%m-%d" },
             noFadeEffect: true,
             labelText: "Date",
-						rangeLow: "" + now.getFullYear() + (now.getMonth()+1) + now.getDate()
+			rangeLow: "" + now.getFullYear() + (now.getMonth()+1) + now.getDate()
         });
 
 
