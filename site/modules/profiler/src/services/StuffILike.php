@@ -45,8 +45,8 @@ class StuffILike extends Component
 
     public function addStuffILike(StuffILikeModel $stuffILikeModel)
     {
-        // CHeck if title/url already exists
-        $existingRecord = StuffILikeRecord::findOne(['title' => $stuffILikeModel->title, 'url' => $stuffILikeModel->url]);
+        // CHeck if title/url already exists for user
+        $existingRecord = StuffILikeRecord::findOne(['title' => $stuffILikeModel->title, 'url' => $stuffILikeModel->url, 'userId' => $stuffILikeModel->userId]);
         if ($existingRecord) {
             return $existingRecord;
         }
