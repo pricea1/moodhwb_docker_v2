@@ -3,6 +3,7 @@
  # ---------------
  #}
 {% set userStatus = craft.userLogin.getUserStatus() %}
+
 {% set summaryScore = craft.profiler.getSummaryMoodScore() %}
 {% set lastViewedModuleId = craft.moduleactions.getLastViewedModuleId() %}
 {% if lastViewedModuleId %}

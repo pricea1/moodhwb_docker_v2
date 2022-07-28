@@ -79,7 +79,7 @@ return array(
 	"you last visited" => "fe ymweloch chi ddiwethaf",
 	"Keep doing the things you find helpful" => "Parhewch i wneud y pethau sy'n ddefnyddiol i chi",
 	"Try the self help sections and talk to somebody you trust" => "Rhowch gynnig ar yr adrannau hunangymorth, a siaradwch â rhywun rydych chi'n ymddiried ynddynt",
-	
+	"Watch our video in" => "Gwyliwch ein fideo yn",
 	/* End Welcome page */
 
 	/* Module pages */
