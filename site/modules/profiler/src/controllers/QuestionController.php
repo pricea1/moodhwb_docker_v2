@@ -86,10 +86,10 @@ class QuestionController extends Controller
         if (array_key_exists("period", $question)){
             $period = $question['period'];
         } else {
-            if ($questionHour >= 12){
+            if ($questionHour >= 11){
                 $period = 2;
             }
-            if ($questionHour >= 17){
+            if ($questionHour >= 16){
                 $period = 3;
             }
         }
