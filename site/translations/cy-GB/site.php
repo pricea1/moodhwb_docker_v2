@@ -234,6 +234,7 @@ return array(
 	"Remove" => 'Cael gwared',
 	"To Do" =>  'I wneud',
 	"Undo" => 'Dadwneud',
+	"Select a day" => "Dewiswch ddiwrnod",
 	"Select the days of the week" => "Dewiswch ddiwrnodau'r wythnos",
 	"Set reminder" => "Gosod nodyn atgoffa",
 	/* Forms */
