@@ -114,6 +114,10 @@
 	line-height: rem-calc(40);
 }
 
+.profile-goals-input[type="text"] {
+	height: rem-calc(40);
+}
+
 .profile-goals-days-list {
 	margin-bottom: 20px;
 }
@@ -128,3 +132,4 @@
 	border: none !important; 
 	box-shadow: none !important; 
 }
+

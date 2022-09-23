@@ -190,6 +190,7 @@ return array(
 	/* Profile Stuff I Like */
 	"This is where you can add some stuff that makes you feel good." => "Dyma ble ry'ch chi'n gallu adio pethau sy'n gwneud i chi deimlo'n dda",
 	"Add a website" => "Adio gwefan",
+	"Enter a website" => "Nodwch wefan",
 	"stuff" => "pethe",
 	"Add stuff" => "Adio stwff",
 	"Add" => "Adio",
@@ -226,6 +227,7 @@ return array(
 	"Uncategorised" => "Heb gategori",
 	"Your categories" => "Eich categorïau",
 	"Our categories" => "Ein categorïau",
+	"Category" => "Categori",
 	/* End Profile */
 
 	/* Goals */

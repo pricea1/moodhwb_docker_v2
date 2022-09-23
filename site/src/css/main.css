@@ -8534,6 +8534,10 @@ a.module-theme-6 {
   line-height: 2.22222rem;
 }
 
+.profile-goals-input[type="text"] {
+  height: 2.22222rem;
+}
+
 .profile-goals-days-list {
   margin-bottom: 20px;
 }
